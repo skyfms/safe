@@ -14,7 +14,7 @@ use Safe\Exceptions\LibxmlException;
  */
 function libxml_get_last_error(): \LibXMLError
 {
-    error_clear_last();
+
     $result = \libxml_get_last_error();
     if ($result === false) {
         throw LibxmlException::createFromPhpError();
@@ -33,9 +33,9 @@ function libxml_get_last_error(): \LibXMLError
  * @throws LibxmlException
  *
  */
-function libxml_set_external_entity_loader(callable $resolver_function): void
+function libxml_set_external_entity_loader(callable $resolver_function)
 {
-    error_clear_last();
+
     $result = \libxml_set_external_entity_loader($resolver_function);
     if ($result === false) {
         throw LibxmlException::createFromPhpError();

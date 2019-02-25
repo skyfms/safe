@@ -11,9 +11,9 @@ class ComposerJsonEditor
     /**
      * @param string[] $modules A list of modules
      */
-    public static function editFiles(array $modules): void
+    public static function editFiles(array $modules)
     {
-        $files = \array_map(function (string $module) {
+        $files = \array_map(function ($module) {
             return 'generated/'.lcfirst($module).'.php';
         }, $modules);
         $files[] = 'lib/special_cases.php';

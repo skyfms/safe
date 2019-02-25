@@ -8,7 +8,7 @@ use Safe\Exceptions\ZlibException;
  * Incrementally deflates data in the specified context.
  *
  * @param resource $context A context created with deflate_init.
- * @param string $data A chunk of data to compress.
+ * @param $data A chunk of data to compress.
  * @param int $flush_mode One of ZLIB_BLOCK,
  * ZLIB_NO_FLUSH,
  * ZLIB_PARTIAL_FLUSH,
@@ -22,9 +22,9 @@ use Safe\Exceptions\ZlibException;
  * @throws ZlibException
  *
  */
-function deflate_add($context, string $data, int $flush_mode = ZLIB_SYNC_FLUSH): string
+function deflate_add($context, $data, $flush_mode = ZLIB_SYNC_FLUSH)
 {
-    error_clear_last();
+
     $result = \deflate_add($context, $data, $flush_mode);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -115,9 +115,9 @@ function deflate_add($context, string $data, int $flush_mode = ZLIB_SYNC_FLUSH):
  * @throws ZlibException
  *
  */
-function deflate_init(int $encoding, array $options = null)
+function deflate_init($encoding, array $options = null)
 {
-    error_clear_last();
+
     $result = \deflate_init($encoding, $options);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -134,9 +134,9 @@ function deflate_init(int $encoding, array $options = null)
  * @throws ZlibException
  *
  */
-function gzclose($zp): void
+function gzclose($zp)
 {
-    error_clear_last();
+
     $result = \gzclose($zp);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -152,7 +152,7 @@ function gzclose($zp): void
  * "ZLIB Compressed Data Format
  * Specification version 3.3" (RFC 1950).
  *
- * @param string $data The data to compress.
+ * @param $data The data to compress.
  * @param int $level The level of compression. Can be given as 0 for no compression up to 9
  * for maximum compression.
  *
@@ -162,9 +162,9 @@ function gzclose($zp): void
  * @throws ZlibException
  *
  */
-function gzcompress(string $data, int $level = -1, int $encoding = ZLIB_ENCODING_DEFLATE): string
+function gzcompress($data, $level = -1, $encoding = ZLIB_ENCODING_DEFLATE)
 {
-    error_clear_last();
+
     $result = \gzcompress($data, $level, $encoding);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -177,15 +177,15 @@ function gzcompress(string $data, int $level = -1, int $encoding = ZLIB_ENCODING
  * This function returns a decoded version of the input
  * data.
  *
- * @param string $data The data to decode, encoded by gzencode.
+ * @param $data The data to decode, encoded by gzencode.
  * @param int $length The maximum length of data to decode.
  * @return string The decoded string.
  * @throws ZlibException
  *
  */
-function gzdecode(string $data, int $length = null): string
+function gzdecode($data, $length = null)
 {
-    error_clear_last();
+
     if ($length !== null) {
         $result = \gzdecode($data, $length);
     } else {
@@ -206,7 +206,7 @@ function gzdecode(string $data, int $length = null): string
  * "DEFLATE Compressed Data Format
  * Specification version 1.3" (RFC 1951).
  *
- * @param string $data The data to deflate.
+ * @param $data The data to deflate.
  * @param int $level The level of compression. Can be given as 0 for no compression up to 9
  * for maximum compression. If not given, the default compression level will
  * be the default compression level of the zlib library.
@@ -215,9 +215,9 @@ function gzdecode(string $data, int $length = null): string
  * @throws ZlibException
  *
  */
-function gzdeflate(string $data, int $level = -1, int $encoding = ZLIB_ENCODING_RAW): string
+function gzdeflate($data, $level = -1, $encoding = ZLIB_ENCODING_RAW)
 {
-    error_clear_last();
+
     $result = \gzdeflate($data, $level, $encoding);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -235,7 +235,7 @@ function gzdeflate(string $data, int $level = -1, int $encoding = ZLIB_ENCODING_
  * GZIP file format specification
  * version 4.3 (RFC 1952).
  *
- * @param string $data The data to encode.
+ * @param $data The data to encode.
  * @param int $level The level of compression. Can be given as 0 for no compression up to 9
  * for maximum compression. If not given, the default compression level will
  * be the default compression level of the zlib library.
@@ -253,9 +253,9 @@ function gzdeflate(string $data, int $level = -1, int $encoding = ZLIB_ENCODING_
  * @throws ZlibException
  *
  */
-function gzencode(string $data, int $level = -1, int $encoding_mode = FORCE_GZIP): string
+function gzencode($data, $level = -1, $encoding_mode = FORCE_GZIP)
 {
-    error_clear_last();
+
     $result = \gzencode($data, $level, $encoding_mode);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -276,9 +276,9 @@ function gzencode(string $data, int $level = -1, int $encoding_mode = FORCE_GZIP
  * @throws ZlibException
  *
  */
-function gzgets($zp, int $length = null): string
+function gzgets($zp, $length = null)
 {
-    error_clear_last();
+
     if ($length !== null) {
         $result = \gzgets($zp, $length);
     } else {
@@ -299,15 +299,15 @@ function gzgets($zp, int $length = null): string
  * @param resource $zp The gz-file pointer. It must be valid, and must point to a file
  * successfully opened by gzopen.
  * @param int $length The length of data to get.
- * @param string $allowable_tags You can use this optional parameter to specify tags which should not
+ * @param $allowable_tags You can use this optional parameter to specify tags which should not
  * be stripped.
  * @return string The uncompressed and stripped string.
  * @throws ZlibException
  *
  */
-function gzgetss($zp, int $length, string $allowable_tags = null): string
+function gzgetss($zp, $length, $allowable_tags = null)
 {
-    error_clear_last();
+
     if ($allowable_tags !== null) {
         $result = \gzgetss($zp, $length, $allowable_tags);
     } else {
@@ -323,7 +323,7 @@ function gzgetss($zp, int $length, string $allowable_tags = null): string
 /**
  * This function inflates a deflated string.
  *
- * @param string $data The data compressed by gzdeflate.
+ * @param $data The data compressed by gzdeflate.
  * @param int $length The maximum length of data to decode.
  * @return string The original uncompressed data.
  *
@@ -333,9 +333,9 @@ function gzgetss($zp, int $length, string $allowable_tags = null): string
  * @throws ZlibException
  *
  */
-function gzinflate(string $data, int $length = 0): string
+function gzinflate($data, $length = 0)
 {
-    error_clear_last();
+
     $result = \gzinflate($data, $length);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -355,9 +355,9 @@ function gzinflate(string $data, int $length = 0): string
  * @throws ZlibException
  *
  */
-function gzpassthru($zp): int
+function gzpassthru($zp)
 {
-    error_clear_last();
+
     $result = \gzpassthru($zp);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -375,9 +375,9 @@ function gzpassthru($zp): int
  * @throws ZlibException
  *
  */
-function gzrewind($zp): void
+function gzrewind($zp)
 {
-    error_clear_last();
+
     $result = \gzrewind($zp);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -388,7 +388,7 @@ function gzrewind($zp): void
 /**
  * This function uncompress a compressed string.
  *
- * @param string $data The data compressed by gzcompress.
+ * @param $data The data compressed by gzcompress.
  * @param int $length The maximum length of data to decode.
  * @return string The original uncompressed data.
  *
@@ -398,9 +398,9 @@ function gzrewind($zp): void
  * @throws ZlibException
  *
  */
-function gzuncompress(string $data, int $length = 0): string
+function gzuncompress($data, $length = 0)
 {
-    error_clear_last();
+
     $result = \gzuncompress($data, $length);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -417,9 +417,9 @@ function gzuncompress(string $data, int $length = 0): string
  * @throws ZlibException
  *
  */
-function inflate_get_read_len($resource): int
+function inflate_get_read_len($resource)
 {
-    error_clear_last();
+
     $result = \inflate_get_read_len($resource);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -436,9 +436,9 @@ function inflate_get_read_len($resource): int
  * @throws ZlibException
  *
  */
-function inflate_get_status($resource): int
+function inflate_get_status($resource)
 {
-    error_clear_last();
+
     $result = \inflate_get_status($resource);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -454,7 +454,7 @@ function inflate_get_status($resource): int
  * available.
  *
  * @param resource $context A context created with inflate_init.
- * @param string $encoded_data A chunk of compressed data.
+ * @param $encoded_data A chunk of compressed data.
  * @param int $flush_mode One of ZLIB_BLOCK,
  * ZLIB_NO_FLUSH,
  * ZLIB_PARTIAL_FLUSH,
@@ -468,9 +468,9 @@ function inflate_get_status($resource): int
  * @throws ZlibException
  *
  */
-function inflate_add($context, string $encoded_data, int $flush_mode = ZLIB_SYNC_FLUSH): string
+function inflate_add($context, $encoded_data, $flush_mode = ZLIB_SYNC_FLUSH)
 {
-    error_clear_last();
+
     $result = \inflate_add($context, $encoded_data, $flush_mode);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -550,9 +550,9 @@ function inflate_add($context, string $encoded_data, int $flush_mode = ZLIB_SYNC
  * @throws ZlibException
  *
  */
-function inflate_init(int $encoding, array $options = null)
+function inflate_init($encoding, array $options = null)
 {
-    error_clear_last();
+
     $result = \inflate_init($encoding, $options);
     if ($result === false) {
         throw ZlibException::createFromPhpError();
@@ -564,15 +564,15 @@ function inflate_init(int $encoding, array $options = null)
 /**
  * Uncompress any raw/gzip/zlib encoded data.
  *
- * @param string $data
+ * @param $data
  * @param int $max_decoded_len
  * @return string Returns the uncompressed data.
  * @throws ZlibException
  *
  */
-function zlib_decode(string $data, string $max_decoded_len = null): string
+function zlib_decode($data, $max_decoded_len = null)
 {
-    error_clear_last();
+
     if ($max_decoded_len !== null) {
         $result = \zlib_decode($data, $max_decoded_len);
     } else {

@@ -18,9 +18,9 @@ use Safe\Exceptions\SqlsrvException;
  * @throws SqlsrvException
  *
  */
-function sqlsrv_begin_transaction($conn): void
+function sqlsrv_begin_transaction($conn)
 {
-    error_clear_last();
+
     $result = \sqlsrv_begin_transaction($conn);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -40,9 +40,9 @@ function sqlsrv_begin_transaction($conn): void
  * @throws SqlsrvException
  *
  */
-function sqlsrv_cancel($stmt): void
+function sqlsrv_cancel($stmt)
 {
-    error_clear_last();
+
     $result = \sqlsrv_cancel($stmt);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -90,7 +90,7 @@ function sqlsrv_cancel($stmt): void
  */
 function sqlsrv_client_info($conn): array
 {
-    error_clear_last();
+
     $result = \sqlsrv_client_info($conn);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -106,9 +106,9 @@ function sqlsrv_client_info($conn): array
  * @throws SqlsrvException
  *
  */
-function sqlsrv_close($conn): void
+function sqlsrv_close($conn)
 {
-    error_clear_last();
+
     $result = \sqlsrv_close($conn);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -130,9 +130,9 @@ function sqlsrv_close($conn): void
  * @throws SqlsrvException
  *
  */
-function sqlsrv_commit($conn): void
+function sqlsrv_commit($conn)
 {
-    error_clear_last();
+
     $result = \sqlsrv_commit($conn);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -143,7 +143,7 @@ function sqlsrv_commit($conn): void
 /**
  * Changes the driver error handling and logging configurations.
  *
- * @param string $setting The name of the setting to set. The possible values are
+ * @param $setting The name of the setting to set. The possible values are
  * "WarningsReturnAsErrors", "LogSubsystems", and "LogSeverity".
  * @param mixed $value The value of the specified setting. The following table shows possible values:
  *
@@ -182,9 +182,9 @@ function sqlsrv_commit($conn): void
  * @throws SqlsrvException
  *
  */
-function sqlsrv_configure(string $setting, $value): void
+function sqlsrv_configure($setting, $value)
 {
-    error_clear_last();
+
     $result = \sqlsrv_configure($setting, $value);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -201,9 +201,9 @@ function sqlsrv_configure(string $setting, $value): void
  * @throws SqlsrvException
  *
  */
-function sqlsrv_execute($stmt): void
+function sqlsrv_execute($stmt)
 {
-    error_clear_last();
+
     $result = \sqlsrv_execute($stmt);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -224,9 +224,9 @@ function sqlsrv_execute($stmt): void
  * @throws SqlsrvException
  *
  */
-function sqlsrv_free_stmt($stmt): void
+function sqlsrv_free_stmt($stmt)
 {
-    error_clear_last();
+
     $result = \sqlsrv_free_stmt($stmt);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -252,9 +252,9 @@ function sqlsrv_free_stmt($stmt): void
  * @throws SqlsrvException
  *
  */
-function sqlsrv_get_field($stmt, int $fieldIndex, int $getAsType = null)
+function sqlsrv_get_field($stmt, $fieldIndex, $getAsType = null)
 {
-    error_clear_last();
+
     if ($getAsType !== null) {
         $result = \sqlsrv_get_field($stmt, $fieldIndex, $getAsType);
     } else {
@@ -279,7 +279,7 @@ function sqlsrv_get_field($stmt, int $fieldIndex, int $getAsType = null)
  */
 function sqlsrv_next_result($stmt)
 {
-    error_clear_last();
+
     $result = \sqlsrv_next_result($stmt);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -300,7 +300,7 @@ function sqlsrv_next_result($stmt)
  */
 function sqlsrv_num_fields($stmt)
 {
-    error_clear_last();
+
     $result = \sqlsrv_num_fields($stmt);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -328,7 +328,7 @@ function sqlsrv_num_fields($stmt)
  */
 function sqlsrv_num_rows($stmt)
 {
-    error_clear_last();
+
     $result = \sqlsrv_num_rows($stmt);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();
@@ -342,7 +342,7 @@ function sqlsrv_num_rows($stmt)
  * that will be executed multiple times with different parameter values.
  *
  * @param resource $conn A connection resource returned by sqlsrv_connect.
- * @param string $sql The string that defines the query to be prepared and executed.
+ * @param $sql The string that defines the query to be prepared and executed.
  * @param array $params An array specifying parameter information when executing a parameterized
  * query. Array elements can be any of the following:
  *
@@ -358,9 +358,9 @@ function sqlsrv_num_rows($stmt)
  * @throws SqlsrvException
  *
  */
-function sqlsrv_prepare($conn, string $sql, array $params = null, array $options = null)
+function sqlsrv_prepare($conn, $sql, array $params = null, array $options = null)
 {
-    error_clear_last();
+
     if ($options !== null) {
         $result = \sqlsrv_prepare($conn, $sql, $params, $options);
     } elseif ($params !== null) {
@@ -379,7 +379,7 @@ function sqlsrv_prepare($conn, string $sql, array $params = null, array $options
  * Prepares and executes a query.
  *
  * @param resource $conn A connection resource returned by sqlsrv_connect.
- * @param string $sql The string that defines the query to be prepared and executed.
+ * @param $sql The string that defines the query to be prepared and executed.
  * @param array $params An array specifying parameter information when executing a parameterized query.
  * Array elements can be any of the following:
  *
@@ -395,9 +395,9 @@ function sqlsrv_prepare($conn, string $sql, array $params = null, array $options
  * @throws SqlsrvException
  *
  */
-function sqlsrv_query($conn, string $sql, array $params = null, array $options = null)
+function sqlsrv_query($conn, $sql, array $params = null, array $options = null)
 {
-    error_clear_last();
+
     if ($options !== null) {
         $result = \sqlsrv_query($conn, $sql, $params, $options);
     } elseif ($params !== null) {
@@ -420,9 +420,9 @@ function sqlsrv_query($conn, string $sql, array $params = null, array $options =
  * @throws SqlsrvException
  *
  */
-function sqlsrv_rollback($conn): void
+function sqlsrv_rollback($conn)
 {
-    error_clear_last();
+
     $result = \sqlsrv_rollback($conn);
     if ($result === false) {
         throw SqlsrvException::createFromPhpError();

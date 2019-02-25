@@ -14,7 +14,7 @@ use Safe\Exceptions\InotifyException;
  */
 function inotify_init()
 {
-    error_clear_last();
+
     $result = \inotify_init();
     if ($result === false) {
         throw InotifyException::createFromPhpError();
@@ -34,9 +34,9 @@ function inotify_init()
  * @throws InotifyException
  *
  */
-function inotify_rm_watch($inotify_instance, int $watch_descriptor): void
+function inotify_rm_watch($inotify_instance, $watch_descriptor)
 {
-    error_clear_last();
+
     $result = \inotify_rm_watch($inotify_instance, $watch_descriptor);
     if ($result === false) {
         throw InotifyException::createFromPhpError();

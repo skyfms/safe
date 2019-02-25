@@ -14,9 +14,8 @@ use Safe\Exceptions\FunchandException;
  * @throws FunchandException
  *
  */
-function create_function(string $args, string $code): string
+function create_function($args, $code)
 {
-    error_clear_last();
     $result = \create_function($args, $code);
     if ($result === false) {
         throw FunchandException::createFromPhpError();
@@ -47,7 +46,6 @@ function create_function(string $args, string $code): string
  */
 function forward_static_call_array(callable $function, array $parameters)
 {
-    error_clear_last();
     $result = \forward_static_call_array($function, $parameters);
     if ($result === false) {
         throw FunchandException::createFromPhpError();
@@ -71,9 +69,9 @@ function forward_static_call_array(callable $function, array $parameters)
  * @throws FunchandException
  *
  */
+/* Fatal error: Using argument unpacking for a call_user_func is not supported
 function forward_static_call(callable $function, ...$params)
 {
-    error_clear_last();
     if ($params !== []) {
         $result = \forward_static_call($function, ...$params);
     } else {
@@ -84,7 +82,7 @@ function forward_static_call(callable $function, ...$params)
     }
     return $result;
 }
-
+*/
 
 /**
  *
@@ -94,9 +92,8 @@ function forward_static_call(callable $function, ...$params)
  * @throws FunchandException
  *
  */
-function register_tick_function(callable $function, ...$params): void
+function register_tick_function(callable $function, ...$params)
 {
-    error_clear_last();
     if ($params !== []) {
         $result = \register_tick_function($function, ...$params);
     } else {

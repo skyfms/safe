@@ -24,9 +24,9 @@ use Safe\Exceptions\UodbcException;
  * @throws UodbcException
  *
  */
-function odbc_autocommit($connection_id, bool $OnOff = false)
+function odbc_autocommit($connection_id, $OnOff = false)
 {
-    error_clear_last();
+
     $result = \odbc_autocommit($connection_id, $OnOff);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -133,9 +133,9 @@ function odbc_autocommit($connection_id, bool $OnOff = false)
  * @throws UodbcException
  *
  */
-function odbc_binmode($result_id, int $mode): void
+function odbc_binmode($result_id, $mode)
 {
-    error_clear_last();
+
     $result = \odbc_binmode($result_id, $mode);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -172,9 +172,9 @@ function odbc_binmode($result_id, int $mode): void
  * @throws UodbcException
  *
  */
-function odbc_columnprivileges($connection_id, string $qualifier, string $owner, string $table_name, string $column_name)
+function odbc_columnprivileges($connection_id, $qualifier, $owner, $table_name, $column_name)
 {
-    error_clear_last();
+
     $result = \odbc_columnprivileges($connection_id, $qualifier, $owner, $table_name, $column_name);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -215,9 +215,9 @@ function odbc_columnprivileges($connection_id, string $qualifier, string $owner,
  * @throws UodbcException
  *
  */
-function odbc_columns($connection_id, string $qualifier = null, string $schema = null, string $table_name = null, string $column_name = null)
+function odbc_columns($connection_id, $qualifier = null, $schema = null, $table_name = null, $column_name = null)
 {
-    error_clear_last();
+
     if ($column_name !== null) {
         $result = \odbc_columns($connection_id, $qualifier, $schema, $table_name, $column_name);
     } elseif ($table_name !== null) {
@@ -244,9 +244,9 @@ function odbc_columns($connection_id, string $qualifier = null, string $schema =
  * @throws UodbcException
  *
  */
-function odbc_commit($connection_id): void
+function odbc_commit($connection_id)
 {
-    error_clear_last();
+
     $result = \odbc_commit($connection_id);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -268,9 +268,9 @@ function odbc_commit($connection_id): void
  * @throws UodbcException
  *
  */
-function odbc_data_source($connection_id, int $fetch_type): array
+function odbc_data_source($connection_id, $fetch_type): array
 {
-    error_clear_last();
+
     $result = \odbc_data_source($connection_id, $fetch_type);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -284,16 +284,16 @@ function odbc_data_source($connection_id, int $fetch_type): array
  *
  * @param resource $connection_id The ODBC connection identifier,
  * see odbc_connect for details.
- * @param string $query_string The SQL statement.
+ * @param $query_string The SQL statement.
  * @param int $flags This parameter is currently not used.
  * @return resource Returns an ODBC result identifier if the SQL command was executed
  * successfully.
  * @throws UodbcException
  *
  */
-function odbc_exec($connection_id, string $query_string, int $flags = null)
+function odbc_exec($connection_id, $query_string, $flags = null)
 {
-    error_clear_last();
+
     if ($flags !== null) {
         $result = \odbc_exec($connection_id, $query_string, $flags);
     } else {
@@ -322,9 +322,9 @@ function odbc_exec($connection_id, string $query_string, int $flags = null)
  * @throws UodbcException
  *
  */
-function odbc_execute($result_id, array $parameters_array = null): void
+function odbc_execute($result_id, array $parameters_array = null)
 {
-    error_clear_last();
+
     if ($parameters_array !== null) {
         $result = \odbc_execute($result_id, $parameters_array);
     } else {
@@ -350,9 +350,9 @@ function odbc_execute($result_id, array $parameters_array = null): void
  * @throws UodbcException
  *
  */
-function odbc_fetch_into($result_id, ?array &$result_array, int $rownumber = null): int
+function odbc_fetch_into($result_id, &$result_array, $rownumber = null)
 {
-    error_clear_last();
+
     if ($rownumber !== null) {
         $result = \odbc_fetch_into($result_id, $result_array, $rownumber);
     } else {
@@ -375,9 +375,9 @@ function odbc_fetch_into($result_id, ?array &$result_array, int $rownumber = nul
  * @throws UodbcException
  *
  */
-function odbc_field_len($result_id, int $field_number): int
+function odbc_field_len($result_id, $field_number)
 {
-    error_clear_last();
+
     $result = \odbc_field_len($result_id, $field_number);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -396,9 +396,9 @@ function odbc_field_len($result_id, int $field_number): int
  * @throws UodbcException
  *
  */
-function odbc_field_name($result_id, int $field_number): string
+function odbc_field_name($result_id, $field_number)
 {
-    error_clear_last();
+
     $result = \odbc_field_name($result_id, $field_number);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -418,9 +418,9 @@ function odbc_field_name($result_id, int $field_number): string
  * @throws UodbcException
  *
  */
-function odbc_field_num($result_id, string $field_name): int
+function odbc_field_num($result_id, $field_name)
 {
-    error_clear_last();
+
     $result = \odbc_field_num($result_id, $field_name);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -439,9 +439,9 @@ function odbc_field_num($result_id, string $field_name): int
  * @throws UodbcException
  *
  */
-function odbc_field_scale($result_id, int $field_number): int
+function odbc_field_scale($result_id, $field_number)
 {
-    error_clear_last();
+
     $result = \odbc_field_scale($result_id, $field_number);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -460,9 +460,9 @@ function odbc_field_scale($result_id, int $field_number): int
  * @throws UodbcException
  *
  */
-function odbc_field_type($result_id, int $field_number): string
+function odbc_field_type($result_id, $field_number)
 {
-    error_clear_last();
+
     $result = \odbc_field_type($result_id, $field_number);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -505,9 +505,9 @@ function odbc_field_type($result_id, int $field_number): string
  * @throws UodbcException
  *
  */
-function odbc_foreignkeys($connection_id, string $pk_qualifier, string $pk_owner, string $pk_table, string $fk_qualifier, string $fk_owner, string $fk_table)
+function odbc_foreignkeys($connection_id, $pk_qualifier, $pk_owner, $pk_table, $fk_qualifier, $fk_owner, $fk_table)
 {
-    error_clear_last();
+
     $result = \odbc_foreignkeys($connection_id, $pk_qualifier, $pk_owner, $pk_table, $fk_qualifier, $fk_owner, $fk_table);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -548,9 +548,9 @@ function odbc_foreignkeys($connection_id, string $pk_qualifier, string $pk_owner
  * @throws UodbcException
  *
  */
-function odbc_gettypeinfo($connection_id, int $data_type = null)
+function odbc_gettypeinfo($connection_id, $data_type = null)
 {
-    error_clear_last();
+
     if ($data_type !== null) {
         $result = \odbc_gettypeinfo($connection_id, $data_type);
     } else {
@@ -573,9 +573,9 @@ function odbc_gettypeinfo($connection_id, int $data_type = null)
  * @throws UodbcException
  *
  */
-function odbc_longreadlen($result_id, int $length): void
+function odbc_longreadlen($result_id, $length)
 {
-    error_clear_last();
+
     $result = \odbc_longreadlen($result_id, $length);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -594,15 +594,15 @@ function odbc_longreadlen($result_id, int $length): void
  *
  * @param resource $connection_id The ODBC connection identifier,
  * see odbc_connect for details.
- * @param string $query_string The query string statement being prepared.
+ * @param $query_string The query string statement being prepared.
  * @return resource Returns an ODBC result identifier if the SQL command was prepared
  * successfully. Returns FALSE on error.
  * @throws UodbcException
  *
  */
-function odbc_prepare($connection_id, string $query_string)
+function odbc_prepare($connection_id, $query_string)
 {
-    error_clear_last();
+
     $result = \odbc_prepare($connection_id, $query_string);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -634,9 +634,9 @@ function odbc_prepare($connection_id, string $query_string)
  * @throws UodbcException
  *
  */
-function odbc_primarykeys($connection_id, string $qualifier, string $owner, string $table)
+function odbc_primarykeys($connection_id, $qualifier, $owner, $table)
 {
-    error_clear_last();
+
     $result = \odbc_primarykeys($connection_id, $qualifier, $owner, $table);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -655,9 +655,9 @@ function odbc_primarykeys($connection_id, string $qualifier, string $owner, stri
  * @throws UodbcException
  *
  */
-function odbc_result_all($result_id, string $format = null): int
+function odbc_result_all($result_id, $format = null)
 {
-    error_clear_last();
+
     if ($format !== null) {
         $result = \odbc_result_all($result_id, $format);
     } else {
@@ -684,7 +684,7 @@ function odbc_result_all($result_id, string $format = null): int
  */
 function odbc_result($result_id, $field)
 {
-    error_clear_last();
+
     $result = \odbc_result($result_id, $field);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -701,9 +701,9 @@ function odbc_result($result_id, $field)
  * @throws UodbcException
  *
  */
-function odbc_rollback($connection_id): void
+function odbc_rollback($connection_id)
 {
-    error_clear_last();
+
     $result = \odbc_rollback($connection_id);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -741,9 +741,9 @@ function odbc_rollback($connection_id): void
  * @throws UodbcException
  *
  */
-function odbc_setoption($id, int $function, int $option, int $param): void
+function odbc_setoption($id, $function, $option, $param)
 {
-    error_clear_last();
+
     $result = \odbc_setoption($id, $function, $option, $param);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -759,8 +759,8 @@ function odbc_setoption($id, int $function, int $option, int $param): void
  * @param resource $connection_id The ODBC connection identifier,
  * see odbc_connect for details.
  * @param int $type
- * @param string $qualifier The qualifier.
- * @param string $table The table.
+ * @param $qualifier The qualifier.
+ * @param $table The table.
  * @param int $scope The scope, which orders the result set.
  * @param int $nullable The nullable option.
  * @return resource Returns an ODBC result identifier.
@@ -779,9 +779,9 @@ function odbc_setoption($id, int $function, int $option, int $param): void
  * @throws UodbcException
  *
  */
-function odbc_specialcolumns($connection_id, int $type, string $qualifier, string $table, int $scope, int $nullable)
+function odbc_specialcolumns($connection_id, $type, $qualifier, $table, $scope, $nullable)
 {
-    error_clear_last();
+
     $result = \odbc_specialcolumns($connection_id, $type, $qualifier, $table, $scope, $nullable);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -795,9 +795,9 @@ function odbc_specialcolumns($connection_id, int $type, string $qualifier, strin
  *
  * @param resource $connection_id The ODBC connection identifier,
  * see odbc_connect for details.
- * @param string $qualifier The qualifier.
- * @param string $owner The owner.
- * @param string $table_name The table name.
+ * @param $qualifier The qualifier.
+ * @param $owner The owner.
+ * @param $table_name The table name.
  * @param int $unique The unique attribute.
  * @param int $accuracy The accuracy.
  * @return resource Returns an ODBC result identifier.
@@ -821,9 +821,9 @@ function odbc_specialcolumns($connection_id, int $type, string $qualifier, strin
  * @throws UodbcException
  *
  */
-function odbc_statistics($connection_id, string $qualifier, string $owner, string $table_name, int $unique, int $accuracy)
+function odbc_statistics($connection_id, $qualifier, $owner, $table_name, $unique, $accuracy)
 {
-    error_clear_last();
+
     $result = \odbc_statistics($connection_id, $qualifier, $owner, $table_name, $unique, $accuracy);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -838,10 +838,10 @@ function odbc_statistics($connection_id, string $qualifier, string $owner, strin
  *
  * @param resource $connection_id The ODBC connection identifier,
  * see odbc_connect for details.
- * @param string $qualifier The qualifier.
- * @param string $owner The owner. Accepts the following search patterns:
+ * @param $qualifier The qualifier.
+ * @param $owner The owner. Accepts the following search patterns:
  * ('%' to match zero or more characters and '_' to match a single character)
- * @param string $name The name. Accepts the following search patterns:
+ * @param $name The name. Accepts the following search patterns:
  * ('%' to match zero or more characters and '_' to match a single character)
  * @return resource An ODBC result identifier.
  *
@@ -858,9 +858,9 @@ function odbc_statistics($connection_id, string $qualifier, string $owner, strin
  * @throws UodbcException
  *
  */
-function odbc_tableprivileges($connection_id, string $qualifier, string $owner, string $name)
+function odbc_tableprivileges($connection_id, $qualifier, $owner, $name)
 {
-    error_clear_last();
+
     $result = \odbc_tableprivileges($connection_id, $qualifier, $owner, $name);
     if ($result === false) {
         throw UodbcException::createFromPhpError();
@@ -912,12 +912,12 @@ function odbc_tableprivileges($connection_id, string $qualifier, string $owner, 
  *
  * @param resource $connection_id The ODBC connection identifier,
  * see odbc_connect for details.
- * @param string $qualifier The qualifier.
- * @param string $owner The owner. Accepts search patterns ('%' to match zero or more
+ * @param $qualifier The qualifier.
+ * @param $owner The owner. Accepts search patterns ('%' to match zero or more
  * characters and '_' to match a single character).
- * @param string $name The name. Accepts search patterns ('%' to match zero or more
+ * @param $name The name. Accepts search patterns ('%' to match zero or more
  * characters and '_' to match a single character).
- * @param string $types If table_type is not an empty string, it
+ * @param $types If table_type is not an empty string, it
  * must contain a list of comma-separated values for the types of
  * interest; each value may be enclosed in single quotes (') or
  * unquoted. For example, "'TABLE','VIEW'" or "TABLE, VIEW".  If the
@@ -937,9 +937,9 @@ function odbc_tableprivileges($connection_id, string $qualifier, string $owner, 
  * @throws UodbcException
  *
  */
-function odbc_tables($connection_id, string $qualifier = null, string $owner = null, string $name = null, string $types = null)
+function odbc_tables($connection_id, $qualifier = null, $owner = null, $name = null, $types = null)
 {
-    error_clear_last();
+
     if ($types !== null) {
         $result = \odbc_tables($connection_id, $qualifier, $owner, $name, $types);
     } elseif ($name !== null) {

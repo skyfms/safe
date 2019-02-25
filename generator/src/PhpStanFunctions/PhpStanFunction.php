@@ -30,7 +30,7 @@ class PhpStanFunction
     /**
      * @return string
      */
-    public function getReturnType(): string
+    public function getReturnType()
     {
         if ($this->returnType === 'bool') {
             $this->returnType = 'void';
@@ -46,7 +46,7 @@ class PhpStanFunction
         return $this->parameters;
     }
 
-    public function getParameter(string $name): ?PhpStanParameter
+    public function getParameter($name)
     {
         return $this->parameters[$name] ?? null;
     }

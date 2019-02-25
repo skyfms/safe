@@ -9,13 +9,13 @@ use Safe\Exceptions\Ssh2Exception;
  *
  * @param resource $session An SSH connection link identifier, obtained from a call to
  * ssh2_connect.
- * @param string $username Remote user name.
+ * @param $username Remote user name.
  * @throws Ssh2Exception
  *
  */
-function ssh2_auth_agent($session, string $username): void
+function ssh2_auth_agent($session, $username)
 {
-    error_clear_last();
+
     $result = \ssh2_auth_agent($session, $username);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -28,20 +28,20 @@ function ssh2_auth_agent($session, string $username): void
  *
  * @param resource $session An SSH connection link identifier, obtained from a call to
  * ssh2_connect.
- * @param string $username
- * @param string $hostname
- * @param string $pubkeyfile
- * @param string $privkeyfile
- * @param string $passphrase If privkeyfile is encrypted (which it should
+ * @param $username
+ * @param $hostname
+ * @param $pubkeyfile
+ * @param $privkeyfile
+ * @param $passphrase If privkeyfile is encrypted (which it should
  * be), the passphrase must be provided.
- * @param string $local_username If local_username is omitted, then the value
+ * @param $local_username If local_username is omitted, then the value
  * for username will be used for it.
  * @throws Ssh2Exception
  *
  */
-function ssh2_auth_hostbased_file($session, string $username, string $hostname, string $pubkeyfile, string $privkeyfile, string $passphrase = null, string $local_username = null): void
+function ssh2_auth_hostbased_file($session, $username, $hostname, $pubkeyfile, $privkeyfile, $passphrase = null, $local_username = null)
 {
-    error_clear_last();
+
     if ($local_username !== null) {
         $result = \ssh2_auth_hostbased_file($session, $username, $hostname, $pubkeyfile, $privkeyfile, $passphrase, $local_username);
     } elseif ($passphrase !== null) {
@@ -61,14 +61,14 @@ function ssh2_auth_hostbased_file($session, string $username, string $hostname, 
  *
  * @param resource $session An SSH connection link identifier, obtained from a call to
  * ssh2_connect.
- * @param string $username Remote user name.
- * @param string $password Password for username
+ * @param $username Remote user name.
+ * @param $password Password for username
  * @throws Ssh2Exception
  *
  */
-function ssh2_auth_password($session, string $username, string $password): void
+function ssh2_auth_password($session, $username, $password)
 {
-    error_clear_last();
+
     $result = \ssh2_auth_password($session, $username, $password);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -81,19 +81,19 @@ function ssh2_auth_password($session, string $username, string $password): void
  *
  * @param resource $session An SSH connection link identifier, obtained from a call to
  * ssh2_connect.
- * @param string $username
- * @param string $pubkeyfile The public key file needs to be in OpenSSH's format. It should look something like:
+ * @param $username
+ * @param $pubkeyfile The public key file needs to be in OpenSSH's format. It should look something like:
  *
  * ssh-rsa AAAAB3NzaC1yc2EAAA....NX6sqSnHA8= rsa-key-20121110
- * @param string $privkeyfile
- * @param string $passphrase If privkeyfile is encrypted (which it should
+ * @param $privkeyfile
+ * @param $passphrase If privkeyfile is encrypted (which it should
  * be), the passphrase must be provided.
  * @throws Ssh2Exception
  *
  */
-function ssh2_auth_pubkey_file($session, string $username, string $pubkeyfile, string $privkeyfile, string $passphrase = null): void
+function ssh2_auth_pubkey_file($session, $username, $pubkeyfile, $privkeyfile, $passphrase = null)
 {
-    error_clear_last();
+
     if ($passphrase !== null) {
         $result = \ssh2_auth_pubkey_file($session, $username, $pubkeyfile, $privkeyfile, $passphrase);
     } else {
@@ -112,7 +112,7 @@ function ssh2_auth_pubkey_file($session, string $username, string $pubkeyfile, s
  * ssh2_fingerprint, then authenticate using either
  * password or public key.
  *
- * @param string $host
+ * @param $host
  * @param int $port
  * @param array $methods methods may be an associative array with up to four parameters
  * as described below.
@@ -304,9 +304,9 @@ function ssh2_auth_pubkey_file($session, string $username, string $pubkeyfile, s
  * @throws Ssh2Exception
  *
  */
-function ssh2_connect(string $host, int $port = 22, array $methods = null, array $callbacks = null)
+function ssh2_connect($host, $port = 22, array $methods = null, array $callbacks = null)
 {
-    error_clear_last();
+
     if ($callbacks !== null) {
         $result = \ssh2_connect($host, $port, $methods, $callbacks);
     } elseif ($methods !== null) {
@@ -329,9 +329,9 @@ function ssh2_connect(string $host, int $port = 22, array $methods = null, array
  * @throws Ssh2Exception
  *
  */
-function ssh2_disconnect($session): void
+function ssh2_disconnect($session)
 {
-    error_clear_last();
+
     $result = \ssh2_disconnect($session);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -344,8 +344,8 @@ function ssh2_disconnect($session): void
  *
  * @param resource $session An SSH connection link identifier, obtained from a call to
  * ssh2_connect.
- * @param string $command
- * @param string $pty
+ * @param $command
+ * @param $pty
  * @param array $env env may be passed as an associative array of
  * name/value pairs to set in the target environment.
  * @param int $width Width of the virtual terminal.
@@ -357,9 +357,9 @@ function ssh2_disconnect($session): void
  * @throws Ssh2Exception
  *
  */
-function ssh2_exec($session, string $command, string $pty = null, array $env = null, int $width = 80, int $height = 25, int $width_height_type = SSH2_TERM_UNIT_CHARS)
+function ssh2_exec($session, $command, $pty = null, array $env = null, $width = 80, $height = 25, $width_height_type = SSH2_TERM_UNIT_CHARS)
 {
-    error_clear_last();
+
     if ($width_height_type !== SSH2_TERM_UNIT_CHARS) {
         $result = \ssh2_exec($session, $command, $pty, $env, $width, $height, $width_height_type);
     } elseif ($height !== 25) {
@@ -384,8 +384,8 @@ function ssh2_exec($session, string $command, string $pty = null, array $env = n
  *
  *
  * @param resource $pkey Publickey Subsystem resource created by ssh2_publickey_init.
- * @param string $algoname Publickey algorithm (e.g.): ssh-dss, ssh-rsa
- * @param string $blob Publickey blob as raw binary data
+ * @param $algoname Publickey algorithm (e.g.): ssh-dss, ssh-rsa
+ * @param $blob Publickey blob as raw binary data
  * @param bool $overwrite If the specified key already exists, should it be overwritten?
  * @param array $attributes Associative array of attributes to assign to this public key.
  * Refer to ietf-secsh-publickey-subsystem for a list of supported attributes.
@@ -395,9 +395,9 @@ function ssh2_exec($session, string $command, string $pty = null, array $env = n
  * @throws Ssh2Exception
  *
  */
-function ssh2_publickey_add($pkey, string $algoname, string $blob, bool $overwrite = false, array $attributes = null): void
+function ssh2_publickey_add($pkey, $algoname, $blob, $overwrite = false, array $attributes = null)
 {
-    error_clear_last();
+
     if ($attributes !== null) {
         $result = \ssh2_publickey_add($pkey, $algoname, $blob, $overwrite, $attributes);
     } else {
@@ -426,7 +426,7 @@ function ssh2_publickey_add($pkey, string $algoname, string $blob, bool $overwri
  */
 function ssh2_publickey_init($session)
 {
-    error_clear_last();
+
     $result = \ssh2_publickey_init($session);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -439,14 +439,14 @@ function ssh2_publickey_init($session)
  * Removes an authorized publickey.
  *
  * @param resource $pkey Publickey Subsystem Resource
- * @param string $algoname Publickey algorithm (e.g.): ssh-dss, ssh-rsa
- * @param string $blob Publickey blob as raw binary data
+ * @param $algoname Publickey algorithm (e.g.): ssh-dss, ssh-rsa
+ * @param $blob Publickey blob as raw binary data
  * @throws Ssh2Exception
  *
  */
-function ssh2_publickey_remove($pkey, string $algoname, string $blob): void
+function ssh2_publickey_remove($pkey, $algoname, $blob)
 {
-    error_clear_last();
+
     $result = \ssh2_publickey_remove($pkey, $algoname, $blob);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -459,14 +459,14 @@ function ssh2_publickey_remove($pkey, string $algoname, string $blob): void
  *
  * @param resource $session An SSH connection link identifier, obtained from a call to
  * ssh2_connect.
- * @param string $remote_file Path to the remote file.
- * @param string $local_file Path to the local file.
+ * @param $remote_file Path to the remote file.
+ * @param $local_file Path to the local file.
  * @throws Ssh2Exception
  *
  */
-function ssh2_scp_recv($session, string $remote_file, string $local_file): void
+function ssh2_scp_recv($session, $remote_file, $local_file)
 {
-    error_clear_last();
+
     $result = \ssh2_scp_recv($session, $remote_file, $local_file);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -479,16 +479,16 @@ function ssh2_scp_recv($session, string $remote_file, string $local_file): void
  *
  * @param resource $session An SSH connection link identifier, obtained from a call to
  * ssh2_connect.
- * @param string $local_file Path to the local file.
- * @param string $remote_file Path to the remote file.
+ * @param $local_file Path to the local file.
+ * @param $remote_file Path to the remote file.
  * @param int $create_mode The file will be created with the mode specified by
  * create_mode.
  * @throws Ssh2Exception
  *
  */
-function ssh2_scp_send($session, string $local_file, string $remote_file, int $create_mode = 0644): void
+function ssh2_scp_send($session, $local_file, $remote_file, $create_mode = 0644)
 {
-    error_clear_last();
+
     $result = \ssh2_scp_send($session, $local_file, $remote_file, $create_mode);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -501,14 +501,14 @@ function ssh2_scp_send($session, string $local_file, string $remote_file, int $c
  * mode.
  *
  * @param resource $sftp An SSH2 SFTP resource opened by ssh2_sftp.
- * @param string $filename Path to the file.
+ * @param $filename Path to the file.
  * @param int $mode Permissions on the file. See the chmod for more details on this parameter.
  * @throws Ssh2Exception
  *
  */
-function ssh2_sftp_chmod($sftp, string $filename, int $mode): void
+function ssh2_sftp_chmod($sftp, $filename, $mode)
 {
-    error_clear_last();
+
     $result = \ssh2_sftp_chmod($sftp, $filename, $mode);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -524,16 +524,16 @@ function ssh2_sftp_chmod($sftp, string $filename, int $mode): void
  * ssh2.sftp:// wrapper.
  *
  * @param resource $sftp An SSH2 SFTP resource opened by ssh2_sftp.
- * @param string $dirname Path of the new directory.
+ * @param $dirname Path of the new directory.
  * @param int $mode Permissions on the new directory.
  * @param bool $recursive If recursive is TRUE any parent directories
  * required for dirname will be automatically created as well.
  * @throws Ssh2Exception
  *
  */
-function ssh2_sftp_mkdir($sftp, string $dirname, int $mode = 0777, bool $recursive = false): void
+function ssh2_sftp_mkdir($sftp, $dirname, $mode = 0777, $recursive = false)
 {
-    error_clear_last();
+
     $result = \ssh2_sftp_mkdir($sftp, $dirname, $mode, $recursive);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -545,14 +545,14 @@ function ssh2_sftp_mkdir($sftp, string $dirname, int $mode = 0777, bool $recursi
  * Renames a file on the remote filesystem.
  *
  * @param resource $sftp An SSH2 SFTP resource opened by ssh2_sftp.
- * @param string $from The current file that is being renamed.
- * @param string $to The new file name that replaces from.
+ * @param $from The current file that is being renamed.
+ * @param $to The new file name that replaces from.
  * @throws Ssh2Exception
  *
  */
-function ssh2_sftp_rename($sftp, string $from, string $to): void
+function ssh2_sftp_rename($sftp, $from, $to)
 {
-    error_clear_last();
+
     $result = \ssh2_sftp_rename($sftp, $from, $to);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -567,13 +567,13 @@ function ssh2_sftp_rename($sftp, string $from, string $to): void
  * ssh2.sftp:// wrapper.
  *
  * @param resource $sftp An SSH2 SFTP resource opened by ssh2_sftp.
- * @param string $dirname
+ * @param $dirname
  * @throws Ssh2Exception
  *
  */
-function ssh2_sftp_rmdir($sftp, string $dirname): void
+function ssh2_sftp_rmdir($sftp, $dirname)
 {
-    error_clear_last();
+
     $result = \ssh2_sftp_rmdir($sftp, $dirname);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -586,14 +586,14 @@ function ssh2_sftp_rmdir($sftp, string $dirname): void
  * filesystem pointing to target.
  *
  * @param resource $sftp An SSH2 SFTP resource opened by ssh2_sftp.
- * @param string $target Target of the symbolic link.
- * @param string $link
+ * @param $target Target of the symbolic link.
+ * @param $link
  * @throws Ssh2Exception
  *
  */
-function ssh2_sftp_symlink($sftp, string $target, string $link): void
+function ssh2_sftp_symlink($sftp, $target, $link)
 {
-    error_clear_last();
+
     $result = \ssh2_sftp_symlink($sftp, $target, $link);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();
@@ -605,13 +605,13 @@ function ssh2_sftp_symlink($sftp, string $target, string $link): void
  * Deletes a file on the remote filesystem.
  *
  * @param resource $sftp An SSH2 SFTP resource opened by ssh2_sftp.
- * @param string $filename
+ * @param $filename
  * @throws Ssh2Exception
  *
  */
-function ssh2_sftp_unlink($sftp, string $filename): void
+function ssh2_sftp_unlink($sftp, $filename)
 {
-    error_clear_last();
+
     $result = \ssh2_sftp_unlink($sftp, $filename);
     if ($result === false) {
         throw Ssh2Exception::createFromPhpError();

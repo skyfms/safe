@@ -19,9 +19,9 @@ use Safe\Exceptions\EioException;
  * @throws EioException
  *
  */
-function eio_busy(int $delay, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_busy($delay, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_busy($delay, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -34,7 +34,7 @@ function eio_busy(int $delay, int $pri = EIO_PRI_DEFAULT, callable $callback = n
  * eio_chmod changes file, or direcrory permissions. The
  * new permissions are specified by mode.
  *
- * @param string $path Path to the target file or directory
+ * @param $path Path to the target file or directory
  * Avoid relative
  * paths
  * @param int $mode The new permissions. E.g. 0644.
@@ -71,9 +71,9 @@ function eio_busy(int $delay, int $pri = EIO_PRI_DEFAULT, callable $callback = n
  * @throws EioException
  *
  */
-function eio_chmod(string $path, int $mode, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_chmod($path, $mode, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_chmod($path, $mode, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -85,7 +85,7 @@ function eio_chmod(string $path, int $mode, int $pri = EIO_PRI_DEFAULT, callable
 /**
  * Changes file, or directory permissions.
  *
- * @param string $path Path to file or directory.
+ * @param $path Path to file or directory.
  * Avoid relative
  * paths
  * @param int $uid User ID. Is ignored when equal to -1.
@@ -123,9 +123,9 @@ function eio_chmod(string $path, int $mode, int $pri = EIO_PRI_DEFAULT, callable
  * @throws EioException
  *
  */
-function eio_chown(string $path, int $uid, int $gid = -1, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_chown($path, $uid, $gid = -1, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_chown($path, $uid, $gid, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -172,9 +172,9 @@ function eio_chown(string $path, int $uid, int $gid = -1, int $pri = EIO_PRI_DEF
  * @throws EioException
  *
  */
-function eio_close($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_close($fd, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_close($fd, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -231,9 +231,9 @@ function eio_close($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $
  * @throws EioException
  *
  */
-function eio_custom(callable $execute, int $pri, callable $callback, $data = null)
+function eio_custom(callable $execute, $pri, callable $callback, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_custom($execute, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -280,9 +280,9 @@ function eio_custom(callable $execute, int $pri, callable $callback, $data = nul
  * @throws EioException
  *
  */
-function eio_dup2($fd, $fd2, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_dup2($fd, $fd2, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_dup2($fd, $fd2, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -297,9 +297,9 @@ function eio_dup2($fd, $fd2, int $pri = EIO_PRI_DEFAULT, callable $callback = nu
  * @throws EioException
  *
  */
-function eio_event_loop(): void
+function eio_event_loop()
 {
-    error_clear_last();
+
     $result = \eio_event_loop();
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -352,9 +352,9 @@ function eio_event_loop(): void
  * @throws EioException
  *
  */
-function eio_fallocate($fd, int $mode, int $offset, int $length, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_fallocate($fd, $mode, $offset, $length, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_fallocate($fd, $mode, $offset, $length, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -402,9 +402,9 @@ function eio_fallocate($fd, int $mode, int $offset, int $length, int $pri = EIO_
  * @throws EioException
  *
  */
-function eio_fchmod($fd, int $mode, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_fchmod($fd, $mode, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_fchmod($fd, $mode, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -450,9 +450,9 @@ function eio_fchmod($fd, int $mode, int $pri = EIO_PRI_DEFAULT, callable $callba
  * @throws EioException
  *
  */
-function eio_fdatasync($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_fdatasync($fd, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_fdatasync($fd, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -499,9 +499,9 @@ function eio_fdatasync($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = nul
  * @throws EioException
  *
  */
-function eio_fstat($fd, int $pri, callable $callback, $data = null)
+function eio_fstat($fd, $pri, callable $callback, $data = null)
 {
-    error_clear_last();
+
     if ($data !== null) {
         $result = \eio_fstat($fd, $pri, $callback, $data);
     } else {
@@ -552,9 +552,9 @@ function eio_fstat($fd, int $pri, callable $callback, $data = null)
  * @throws EioException
  *
  */
-function eio_fstatvfs($fd, int $pri, callable $callback, $data = null)
+function eio_fstatvfs($fd, $pri, callable $callback, $data = null)
 {
-    error_clear_last();
+
     if ($data !== null) {
         $result = \eio_fstatvfs($fd, $pri, $callback, $data);
     } else {
@@ -604,9 +604,9 @@ function eio_fstatvfs($fd, int $pri, callable $callback, $data = null)
  * @throws EioException
  *
  */
-function eio_fsync($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_fsync($fd, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_fsync($fd, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -655,9 +655,9 @@ function eio_fsync($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $
  * @throws EioException
  *
  */
-function eio_ftruncate($fd, int $offset = 0, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_ftruncate($fd, $offset = 0, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_ftruncate($fd, $offset, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -706,9 +706,9 @@ function eio_ftruncate($fd, int $offset = 0, int $pri = EIO_PRI_DEFAULT, callabl
  * @throws EioException
  *
  */
-function eio_futime($fd, float $atime, float $mtime, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_futime($fd, $atime, $mtime, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_futime($fd, $atime, $mtime, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -750,9 +750,9 @@ function eio_futime($fd, float $atime, float $mtime, int $pri = EIO_PRI_DEFAULT,
  * @throws EioException
  *
  */
-function eio_grp(callable $callback, string $data = null)
+function eio_grp(callable $callback, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_grp($callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -765,7 +765,7 @@ function eio_grp(callable $callback, string $data = null)
  * eio_lstat returns file status information in
  * result argument of callback
  *
- * @param string $path The file path
+ * @param $path The file path
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
  * EIO_PRI_DEFAULT.
@@ -799,9 +799,9 @@ function eio_grp(callable $callback, string $data = null)
  * @throws EioException
  *
  */
-function eio_lstat(string $path, int $pri, callable $callback, $data = null)
+function eio_lstat($path, $pri, callable $callback, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_lstat($path, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -814,7 +814,7 @@ function eio_lstat(string $path, int $pri, callable $callback, $data = null)
  * eio_mkdir creates directory with specified access
  * mode.
  *
- * @param string $path Path for the new directory.
+ * @param $path Path for the new directory.
  * @param int $mode Access mode, e.g. 0755
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
@@ -849,9 +849,9 @@ function eio_lstat(string $path, int $pri, callable $callback, $data = null)
  * @throws EioException
  *
  */
-function eio_mkdir(string $path, int $mode, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_mkdir($path, $mode, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_mkdir($path, $mode, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -863,7 +863,7 @@ function eio_mkdir(string $path, int $mode, int $pri = EIO_PRI_DEFAULT, callable
 /**
  * eio_mknod creates ordinary or special(often) file.
  *
- * @param string $path Path for the new node(file).
+ * @param $path Path for the new node(file).
  * @param int $mode Specifies both the permissions to use and the type of node to be
  * created. It should be a combination (using bitwise OR) of one of the
  * file types listed below and the permissions for the new node(e.g. 0640).
@@ -914,9 +914,9 @@ function eio_mkdir(string $path, int $mode, int $pri = EIO_PRI_DEFAULT, callable
  * @throws EioException
  *
  */
-function eio_mknod(string $path, int $mode, int $dev, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_mknod($path, $mode, $dev, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_mknod($path, $mode, $dev, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -962,9 +962,9 @@ function eio_mknod(string $path, int $mode, int $dev, int $pri = EIO_PRI_DEFAULT
  * @throws EioException
  *
  */
-function eio_nop(int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_nop($pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_nop($pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1013,9 +1013,9 @@ function eio_nop(int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = 
  * @throws EioException
  *
  */
-function eio_readahead($fd, int $offset, int $length, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_readahead($fd, $offset, $length, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_readahead($fd, $offset, $length, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1030,7 +1030,7 @@ function eio_readahead($fd, int $offset, int $length, int $pri = EIO_PRI_DEFAULT
  * result argument of callback
  * function, depending on the flags argument.
  *
- * @param string $path Directory path.
+ * @param $path Directory path.
  * @param int $flags Combination of EIO_READDIR_* constants.
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
@@ -1316,9 +1316,9 @@ function eio_readahead($fd, int $offset, int $length, int $pri = EIO_PRI_DEFAULT
  * @throws EioException
  *
  */
-function eio_readdir(string $path, int $flags, int $pri, callable $callback, string $data = null)
+function eio_readdir($path, $flags, $pri, callable $callback, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_readdir($path, $flags, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1330,7 +1330,7 @@ function eio_readdir(string $path, int $flags, int $pri, callable $callback, str
 /**
  *
  *
- * @param string $path Source symbolic link path
+ * @param $path Source symbolic link path
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
  * EIO_PRI_DEFAULT.
@@ -1364,9 +1364,9 @@ function eio_readdir(string $path, int $flags, int $pri, callable $callback, str
  * @throws EioException
  *
  */
-function eio_readlink(string $path, int $pri, callable $callback, string $data = null)
+function eio_readlink($path, $pri, callable $callback, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_readlink($path, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1378,8 +1378,8 @@ function eio_readlink(string $path, int $pri, callable $callback, string $data =
 /**
  * eio_rename renames or moves a file to new location.
  *
- * @param string $path Source path
- * @param string $new_path Target path
+ * @param $path Source path
+ * @param $new_path Target path
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
  * EIO_PRI_DEFAULT.
@@ -1413,9 +1413,9 @@ function eio_readlink(string $path, int $pri, callable $callback, string $data =
  * @throws EioException
  *
  */
-function eio_rename(string $path, string $new_path, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_rename($path, $new_path, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_rename($path, $new_path, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1427,7 +1427,7 @@ function eio_rename(string $path, string $new_path, int $pri = EIO_PRI_DEFAULT, 
 /**
  * eio_rmdir removes a directory.
  *
- * @param string $path Directory path
+ * @param $path Directory path
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
  * EIO_PRI_DEFAULT.
@@ -1461,9 +1461,9 @@ function eio_rename(string $path, string $new_path, int $pri = EIO_PRI_DEFAULT, 
  * @throws EioException
  *
  */
-function eio_rmdir(string $path, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_rmdir($path, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_rmdir($path, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1517,9 +1517,9 @@ function eio_rmdir(string $path, int $pri = EIO_PRI_DEFAULT, callable $callback 
  * @throws EioException
  *
  */
-function eio_seek($fd, int $offset, int $whence, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_seek($fd, $offset, $whence, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_seek($fd, $offset, $whence, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1569,9 +1569,9 @@ function eio_seek($fd, int $offset, int $whence, int $pri = EIO_PRI_DEFAULT, cal
  * @throws EioException
  *
  */
-function eio_sendfile($out_fd, $in_fd, int $offset, int $length, int $pri = null, callable $callback = null, string $data = null)
+function eio_sendfile($out_fd, $in_fd, $offset, $length, $pri = null, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     if ($data !== null) {
         $result = \eio_sendfile($out_fd, $in_fd, $offset, $length, $pri, $callback, $data);
     } elseif ($callback !== null) {
@@ -1592,7 +1592,7 @@ function eio_sendfile($out_fd, $in_fd, int $offset, int $length, int $pri = null
  * eio_stat returns file status information in
  * result argument of callback
  *
- * @param string $path The file path
+ * @param $path The file path
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
  * EIO_PRI_DEFAULT.
@@ -1627,9 +1627,9 @@ function eio_sendfile($out_fd, $in_fd, int $offset, int $length, int $pri = null
  * @throws EioException
  *
  */
-function eio_stat(string $path, int $pri, callable $callback, $data = null)
+function eio_stat($path, $pri, callable $callback, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_stat($path, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1642,7 +1642,7 @@ function eio_stat(string $path, int $pri, callable $callback, $data = null)
  * eio_statvfs returns file system statistics information in
  * result argument of callback
  *
- * @param string $path Pathname of any file within the mounted file system
+ * @param $path Pathname of any file within the mounted file system
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
  * EIO_PRI_DEFAULT.
@@ -1677,9 +1677,9 @@ function eio_stat(string $path, int $pri, callable $callback, $data = null)
  * @throws EioException
  *
  */
-function eio_statvfs(string $path, int $pri, callable $callback, $data = null)
+function eio_statvfs($path, $pri, callable $callback, $data = null)
 {
-    error_clear_last();
+
     if ($data !== null) {
         $result = \eio_statvfs($path, $pri, $callback, $data);
     } else {
@@ -1696,8 +1696,8 @@ function eio_statvfs(string $path, int $pri, callable $callback, $data = null)
  * eio_symlink creates a symbolic link
  * new_path to path.
  *
- * @param string $path Source path
- * @param string $new_path Target path
+ * @param $path Source path
+ * @param $new_path Target path
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
  * EIO_PRI_DEFAULT.
@@ -1731,9 +1731,9 @@ function eio_statvfs(string $path, int $pri, callable $callback, $data = null)
  * @throws EioException
  *
  */
-function eio_symlink(string $path, string $new_path, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_symlink($path, $new_path, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_symlink($path, $new_path, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1790,9 +1790,9 @@ function eio_symlink(string $path, string $new_path, int $pri = EIO_PRI_DEFAULT,
  * @throws EioException
  *
  */
-function eio_sync_file_range($fd, int $offset, int $nbytes, int $flags, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_sync_file_range($fd, $offset, $nbytes, $flags, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_sync_file_range($fd, $offset, $nbytes, $flags, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1811,9 +1811,9 @@ function eio_sync_file_range($fd, int $offset, int $nbytes, int $flags, int $pri
  * @throws EioException
  *
  */
-function eio_sync(int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_sync($pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_sync($pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1859,9 +1859,9 @@ function eio_sync(int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data =
  * @throws EioException
  *
  */
-function eio_syncfs($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_syncfs($fd, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_syncfs($fd, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1874,7 +1874,7 @@ function eio_syncfs($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = null, 
  * eio_truncate causes the regular file named by path to be truncated to
  * a size of precisely length bytes
  *
- * @param string $path File path
+ * @param $path File path
  * @param int $offset Offset from beginning of the file.
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
@@ -1909,9 +1909,9 @@ function eio_syncfs($fd, int $pri = EIO_PRI_DEFAULT, callable $callback = null, 
  * @throws EioException
  *
  */
-function eio_truncate(string $path, int $offset = 0, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_truncate($path, $offset = 0, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_truncate($path, $offset, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1923,7 +1923,7 @@ function eio_truncate(string $path, int $offset = 0, int $pri = EIO_PRI_DEFAULT,
 /**
  * eio_unlink deletes  a  name from the file system.
  *
- * @param string $path Path to file
+ * @param $path Path to file
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
  * If NULL passed, pri internally is set to
  * EIO_PRI_DEFAULT.
@@ -1957,9 +1957,9 @@ function eio_truncate(string $path, int $offset = 0, int $pri = EIO_PRI_DEFAULT,
  * @throws EioException
  *
  */
-function eio_unlink(string $path, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_unlink($path, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_unlink($path, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -1971,7 +1971,7 @@ function eio_unlink(string $path, int $pri = EIO_PRI_DEFAULT, callable $callback
 /**
  *
  *
- * @param string $path Path to the file.
+ * @param $path Path to the file.
  * @param float $atime Access time
  * @param float $mtime Modification time
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
@@ -2007,9 +2007,9 @@ function eio_unlink(string $path, int $pri = EIO_PRI_DEFAULT, callable $callback
  * @throws EioException
  *
  */
-function eio_utime(string $path, float $atime, float $mtime, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_utime($path, $atime, $mtime, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_utime($path, $atime, $mtime, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();
@@ -2024,7 +2024,7 @@ function eio_utime(string $path, float $atime, float $mtime, int $pri = EIO_PRI_
  * offset from the beginning of the file.
  *
  * @param mixed $fd Stream, Socket resource, or numeric file descriptor, e.g. returned by eio_open
- * @param string $str Source string
+ * @param $str Source string
  * @param int $length Maximum number of bytes to write.
  * @param int $offset Offset from the beginning of file.
  * @param int $pri The request priority: EIO_PRI_DEFAULT, EIO_PRI_MIN, EIO_PRI_MAX, or NULL.
@@ -2060,9 +2060,9 @@ function eio_utime(string $path, float $atime, float $mtime, int $pri = EIO_PRI_
  * @throws EioException
  *
  */
-function eio_write($fd, string $str, int $length = 0, int $offset = 0, int $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
+function eio_write($fd, $str, $length = 0, $offset = 0, $pri = EIO_PRI_DEFAULT, callable $callback = null, $data = null)
 {
-    error_clear_last();
+
     $result = \eio_write($fd, $str, $length, $offset, $pri, $callback, $data);
     if ($result === false) {
         throw EioException::createFromPhpError();

@@ -16,7 +16,7 @@ class DocPage
      * @return string
      * @parameter string
      */
-    public function __construct(string $_path)
+    public function __construct($_path)
     {
         $this->path = $_path;
     }
@@ -26,7 +26,7 @@ class DocPage
      *
      * @return bool
      */
-    public function detectFalsyFunction(): bool
+    public function detectFalsyFunction()
     {
         $file = file_get_contents($this->path);
 
@@ -153,12 +153,12 @@ class DocPage
      *
      * @return string
      */
-    public function getModule(): string
+    public function getModule()
     {
         return $this->toCamelCase(\basename(\dirname($this->path, 2)));
     }
 
-    private function toCamelCase(string $str): string
+    private function toCamelCase($str)
     {
         $tokens = preg_split("/[_ ]+/", $str);
         if ($tokens === false) {
@@ -191,7 +191,7 @@ class DocPage
         return $result;
     }
 
-    public static function buildEntities(): void
+    public static function buildEntities()
     {
         $file1 = \file_get_contents(__DIR__.'/../doc/doc-en/en/language-defs.ent');
         $file2 = \file_get_contents(__DIR__.'/../doc/doc-en/en/language-snippets.ent');
@@ -203,7 +203,7 @@ class DocPage
         \file_put_contents(__DIR__.'/../doc/entities/generated.ent', $completeFile);
     }
 
-    private static function extractXmlHeader(string $content): string
+    private static function extractXmlHeader($content)
     {
         $strpos = strpos($content, '?>')+2;
         return substr($content, $strpos);

@@ -15,12 +15,12 @@ class PhpStanFunctionMapReader
         $this->functionMap = require __DIR__.'/../../vendor/phpstan/phpstan/src/Reflection/SignatureMap/functionMap.php';
     }
 
-    public function hasFunction(string $functionName): bool
+    public function hasFunction($functionName)
     {
         return isset($this->functionMap[$functionName]);
     }
 
-    public function getFunction(string $functionName): PhpStanFunction
+    public function getFunction($functionName): PhpStanFunction
     {
         return new PhpStanFunction($this->functionMap[$functionName]);
     }

@@ -12,9 +12,9 @@ use Safe\Exceptions\StringsException;
  * @throws StringsException
  *
  */
-function convert_uudecode(string $data): string
+function convert_uudecode($data)
 {
-    error_clear_last();
+
     $result = \convert_uudecode($data);
     if ($result === false) {
         throw StringsException::createFromPhpError();
@@ -36,9 +36,9 @@ function convert_uudecode(string $data): string
  * @throws StringsException
  *
  */
-function convert_uuencode(string $data): string
+function convert_uuencode($data)
 {
-    error_clear_last();
+
     $result = \convert_uuencode($data);
     if ($result === false) {
         throw StringsException::createFromPhpError();
@@ -55,9 +55,9 @@ function convert_uuencode(string $data): string
  * @throws StringsException
  *
  */
-function hex2bin(string $data): string
+function hex2bin($data)
 {
-    error_clear_last();
+
     $result = \hex2bin($data);
     if ($result === false) {
         throw StringsException::createFromPhpError();
@@ -73,16 +73,16 @@ function hex2bin(string $data): string
  * MD5 Message-Digest Algorithm, and returns that hash.
  * The hash is a 32-character hexadecimal number.
  *
- * @param string $filename The filename
+ * @param $filename The filename
  * @param bool $raw_output When TRUE, returns the digest in raw binary format with a length of
  * 16.
  * @return string Returns a string on success, FALSE otherwise.
  * @throws StringsException
  *
  */
-function md5_file(string $filename, bool $raw_output = false): string
+function md5_file($filename, $raw_output = false)
 {
-    error_clear_last();
+
     $result = \md5_file($filename, $raw_output);
     if ($result === false) {
         throw StringsException::createFromPhpError();
@@ -104,7 +104,7 @@ function md5_file(string $filename, bool $raw_output = false): string
  * Algorithms for Programmers", Binstock &amp; Rex, Addison Wesley,
  * 1995].
  *
- * @param string $str The input string.
+ * @param $str The input string.
  * @param int $phonemes This parameter restricts the returned metaphone key to
  * phonemes characters in length.
  * The default value of 0 means no restriction.
@@ -112,9 +112,9 @@ function md5_file(string $filename, bool $raw_output = false): string
  * @throws StringsException
  *
  */
-function metaphone(string $str, int $phonemes = 0): string
+function metaphone($str, $phonemes = 0)
 {
-    error_clear_last();
+
     $result = \metaphone($str, $phonemes);
     if ($result === false) {
         throw StringsException::createFromPhpError();
@@ -126,16 +126,16 @@ function metaphone(string $str, int $phonemes = 0): string
 /**
  *
  *
- * @param string $filename The filename of the file to hash.
+ * @param $filename The filename of the file to hash.
  * @param bool $raw_output When TRUE, returns the digest in raw binary format with a length of
  * 20.
  * @return string Returns a string on success, FALSE otherwise.
  * @throws StringsException
  *
  */
-function sha1_file(string $filename, bool $raw_output = false): string
+function sha1_file($filename, $raw_output = false)
 {
-    error_clear_last();
+
     $result = \sha1_file($filename, $raw_output);
     if ($result === false) {
         throw StringsException::createFromPhpError();
@@ -148,7 +148,7 @@ function sha1_file(string $filename, bool $raw_output = false): string
  * Returns a string produced according to the formatting string
  * format.
  *
- * @param string $format The format string is composed of zero or more directives:
+ * @param $format The format string is composed of zero or more directives:
  * ordinary characters (excluding %) that are
  * copied directly to the result and conversion
  * specifications, each of which results in fetching its
@@ -481,9 +481,9 @@ function sha1_file(string $filename, bool $raw_output = false): string
  * @throws StringsException
  *
  */
-function sprintf(string $format, ...$params): string
+function sprintf($format, ...$params)
 {
-    error_clear_last();
+
     if ($params !== []) {
         $result = \sprintf($format, ...$params);
     } else {
@@ -500,7 +500,7 @@ function sprintf(string $format, ...$params): string
  * Returns the portion of string specified by the
  * start and length parameters.
  *
- * @param string $string The input string. Must be one character or longer.
+ * @param $string The input string. Must be one character or longer.
  * @param int $start If start is non-negative, the returned string
  * will start at the start'th position in
  * string, counting from zero. For instance,
@@ -546,9 +546,9 @@ function sprintf(string $format, ...$params): string
  * @throws StringsException
  *
  */
-function substr(string $string, int $start, int $length = null): string
+function substr($string, $start, $length = null)
 {
-    error_clear_last();
+
     if ($length !== null) {
         $result = \substr($string, $start, $length);
     } else {

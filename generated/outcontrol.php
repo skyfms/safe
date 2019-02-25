@@ -19,9 +19,9 @@ use Safe\Exceptions\OutcontrolException;
  * @throws OutcontrolException
  *
  */
-function ob_end_clean(): void
+function ob_end_clean()
 {
-    error_clear_last();
+
     $result = \ob_end_clean();
     if ($result === false) {
         throw OutcontrolException::createFromPhpError();
@@ -45,9 +45,9 @@ function ob_end_clean(): void
  * @throws OutcontrolException
  *
  */
-function ob_end_flush(): void
+function ob_end_flush()
 {
-    error_clear_last();
+
     $result = \ob_end_flush();
     if ($result === false) {
         throw OutcontrolException::createFromPhpError();
@@ -65,14 +65,14 @@ function ob_end_flush(): void
  * url_rewriter.hosts php.ini
  * parameters.
  *
- * @param string $name The variable name.
- * @param string $value The variable value.
+ * @param $name The variable name.
+ * @param $value The variable value.
  * @throws OutcontrolException
  *
  */
-function output_add_rewrite_var(string $name, string $value): void
+function output_add_rewrite_var($name, $value)
 {
-    error_clear_last();
+
     $result = \output_add_rewrite_var($name, $value);
     if ($result === false) {
         throw OutcontrolException::createFromPhpError();
@@ -88,9 +88,9 @@ function output_add_rewrite_var(string $name, string $value): void
  * @throws OutcontrolException
  *
  */
-function output_reset_rewrite_vars(): void
+function output_reset_rewrite_vars()
 {
-    error_clear_last();
+
     $result = \output_reset_rewrite_vars();
     if ($result === false) {
         throw OutcontrolException::createFromPhpError();

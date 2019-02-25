@@ -7,7 +7,7 @@ use Safe\Exceptions\IconvException;
 /**
  * Retrieve internal configuration variables of iconv extension.
  *
- * @param string $type The value of the optional type can be:
+ * @param $type The value of the optional type can be:
  *
  * all
  * input_encoding
@@ -23,9 +23,9 @@ use Safe\Exceptions\IconvException;
  * @throws IconvException
  *
  */
-function iconv_get_encoding(string $type = "all")
+function iconv_get_encoding($type = "all")
 {
-    error_clear_last();
+
     $result = \iconv_get_encoding($type);
     if ($result === false) {
         throw IconvException::createFromPhpError();
@@ -38,19 +38,19 @@ function iconv_get_encoding(string $type = "all")
  * Changes the value of the internal configuration variable specified by
  * type to charset.
  *
- * @param string $type The value of type can be any one of these:
+ * @param $type The value of type can be any one of these:
  *
  * input_encoding
  * output_encoding
  * internal_encoding
  *
- * @param string $charset The character set.
+ * @param $charset The character set.
  * @throws IconvException
  *
  */
-function iconv_set_encoding(string $type, string $charset): void
+function iconv_set_encoding($type, $charset)
 {
-    error_clear_last();
+
     $result = \iconv_set_encoding($type, $charset);
     if ($result === false) {
         throw IconvException::createFromPhpError();
@@ -63,8 +63,8 @@ function iconv_set_encoding(string $type, string $charset): void
  * str from in_charset
  * to out_charset.
  *
- * @param string $in_charset The input charset.
- * @param string $out_charset The output charset.
+ * @param $in_charset The input charset.
+ * @param $out_charset The output charset.
  *
  * If you append the string //TRANSLIT to
  * out_charset transliteration is activated. This
@@ -85,9 +85,9 @@ function iconv_set_encoding(string $type, string $charset): void
  * @throws IconvException
  *
  */
-function iconv(string $in_charset, string $out_charset, string $str): string
+function iconv($in_charset, $out_charset, $str)
 {
-    error_clear_last();
+
     $result = \iconv($in_charset, $out_charset, $str);
     if ($result === false) {
         throw IconvException::createFromPhpError();

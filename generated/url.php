@@ -7,7 +7,7 @@ use Safe\Exceptions\UrlException;
 /**
  * Decodes a base64 encoded data.
  *
- * @param string $data The encoded data.
+ * @param $data The encoded data.
  * @param bool $strict If the strict parameter is set to TRUE
  * then the base64_decode function will return
  * FALSE if the input contains character from outside the base64
@@ -17,9 +17,9 @@ use Safe\Exceptions\UrlException;
  * @throws UrlException
  *
  */
-function base64_decode(string $data, bool $strict = false): string
+function base64_decode($data, $strict = false)
 {
-    error_clear_last();
+
     $result = \base64_decode($data, $strict);
     if ($result === false) {
         throw UrlException::createFromPhpError();
@@ -32,7 +32,7 @@ function base64_decode(string $data, bool $strict = false): string
  * get_headers returns an array with the headers sent
  * by the server in response to a HTTP request.
  *
- * @param string $url The target URL.
+ * @param $url The target URL.
  * @param int $format If the optional format parameter is set to non-zero,
  * get_headers parses the response and sets the
  * array's keys.
@@ -42,9 +42,9 @@ function base64_decode(string $data, bool $strict = false): string
  * @throws UrlException
  *
  */
-function get_headers(string $url, int $format = 0, $context = null): array
+function get_headers($url, $format = 0, $context = null): array
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \get_headers($url, $format, $context);
     } else {
@@ -133,9 +133,8 @@ function get_headers(string $url, int $format = 0, $context = null): array
  * @throws UrlException
  *
  */
-function parse_url(string $url, int $component = -1)
+function parse_url($url, $component = -1)
 {
-    error_clear_last();
     $result = \parse_url($url, $component);
     if ($result === false) {
         throw UrlException::createFromPhpError();

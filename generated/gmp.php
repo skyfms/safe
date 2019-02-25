@@ -13,9 +13,9 @@ use Safe\Exceptions\GmpException;
  * @throws GmpException
  *
  */
-function gmp_binomial($n, int $k): \GMP
+function gmp_binomial($n, $k): \GMP
 {
-    error_clear_last();
+
     $result = \gmp_binomial($n, $k);
     if ($result === false) {
         throw GmpException::createFromPhpError();
@@ -34,9 +34,9 @@ function gmp_binomial($n, int $k): \GMP
  * @throws GmpException
  *
  */
-function gmp_export(\GMP $gmpnumber, int $word_size = 1, int $options = GMP_MSW_FIRST | GMP_NATIVE_ENDIAN): string
+function gmp_export(\GMP $gmpnumber, $word_size = 1, $options = GMP_MSW_FIRST | GMP_NATIVE_ENDIAN)
 {
-    error_clear_last();
+
     $result = \gmp_export($gmpnumber, $word_size, $options);
     if ($result === false) {
         throw GmpException::createFromPhpError();
@@ -48,16 +48,16 @@ function gmp_export(\GMP $gmpnumber, int $word_size = 1, int $options = GMP_MSW_
 /**
  * Import a GMP number from a binary string
  *
- * @param string $data The binary string being imported
+ * @param $data The binary string being imported
  * @param int $word_size Default value is 1. The number of bytes in each chunk of binary data. This is mainly used in conjunction with the options parameter.
  * @param int $options Default value is GMP_MSW_FIRST | GMP_NATIVE_ENDIAN.
  * @return \GMP Returns a GMP number.
  * @throws GmpException
  *
  */
-function gmp_import(string $data, int $word_size = 1, int $options = GMP_MSW_FIRST | GMP_NATIVE_ENDIAN): \GMP
+function gmp_import($data, $word_size = 1, $options = GMP_MSW_FIRST | GMP_NATIVE_ENDIAN): \GMP
 {
-    error_clear_last();
+
     $result = \gmp_import($data, $word_size, $options);
     if ($result === false) {
         throw GmpException::createFromPhpError();
@@ -78,9 +78,9 @@ function gmp_import(string $data, int $word_size = 1, int $options = GMP_MSW_FIR
  * @throws GmpException
  *
  */
-function gmp_random_seed($seed): void
+function gmp_random_seed($seed)
 {
-    error_clear_last();
+
     $result = \gmp_random_seed($seed);
     if ($result === false) {
         throw GmpException::createFromPhpError();

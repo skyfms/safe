@@ -8,13 +8,13 @@ use Safe\Exceptions\DirException;
  * Changes PHP's current directory to
  * directory.
  *
- * @param string $directory The new current directory
+ * @param $directory The new current directory
  * @throws DirException
  *
  */
-function chdir(string $directory): void
+function chdir($directory)
 {
-    error_clear_last();
+
     $result = \chdir($directory);
     if ($result === false) {
         throw DirException::createFromPhpError();
@@ -31,13 +31,13 @@ function chdir(string $directory): void
  * only when using the CLI, CGI or Embed SAPI. Also, this function
  * requires root privileges.
  *
- * @param string $directory The path to change the root directory to.
+ * @param $directory The path to change the root directory to.
  * @throws DirException
  *
  */
-function chroot(string $directory): void
+function chroot($directory)
 {
-    error_clear_last();
+
     $result = \chroot($directory);
     if ($result === false) {
         throw DirException::createFromPhpError();
@@ -58,9 +58,9 @@ function chroot(string $directory): void
  * @throws DirException
  *
  */
-function getcwd(): string
+function getcwd()
 {
-    error_clear_last();
+
     $result = \getcwd();
     if ($result === false) {
         throw DirException::createFromPhpError();
@@ -74,7 +74,7 @@ function getcwd(): string
  * closedir, readdir, and
  * rewinddir calls.
  *
- * @param string $path The directory path that is to be opened
+ * @param $path The directory path that is to be opened
  * @param resource $context For a description of the context parameter,
  * refer to the streams section of
  * the manual.
@@ -91,9 +91,9 @@ function getcwd(): string
  * @throws DirException
  *
  */
-function opendir(string $path, $context = null)
+function opendir($path, $context = null)
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \opendir($path, $context);
     } else {
@@ -119,9 +119,9 @@ function opendir(string $path, $context = null)
  * @throws DirException
  *
  */
-function readdir($dir_handle = null): string
+function readdir($dir_handle = null)
 {
-    error_clear_last();
+
     if ($dir_handle !== null) {
         $result = \readdir($dir_handle);
     } else {
@@ -146,9 +146,9 @@ function readdir($dir_handle = null): string
  * @throws DirException
  *
  */
-function rewinddir($dir_handle = null): void
+function rewinddir($dir_handle = null)
 {
-    error_clear_last();
+
     if ($dir_handle !== null) {
         $result = \rewinddir($dir_handle);
     } else {
@@ -164,7 +164,7 @@ function rewinddir($dir_handle = null): void
  * Returns an array of files and directories from the
  * directory.
  *
- * @param string $directory The directory that will be scanned.
+ * @param $directory The directory that will be scanned.
  * @param int $sorting_order By default, the sorted order is alphabetical in ascending order.  If
  * the optional sorting_order is set to
  * SCANDIR_SORT_DESCENDING, then the sort order is
@@ -179,9 +179,9 @@ function rewinddir($dir_handle = null): void
  * @throws DirException
  *
  */
-function scandir(string $directory, int $sorting_order = SCANDIR_SORT_ASCENDING, $context = null): array
+function scandir($directory, $sorting_order = SCANDIR_SORT_ASCENDING, $context = null): array
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \scandir($directory, $sorting_order, $context);
     } else {

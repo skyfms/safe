@@ -11,9 +11,9 @@ use Safe\Exceptions\NetworkException;
  * @throws NetworkException
  *
  */
-function closelog(): void
+function closelog()
 {
-    error_clear_last();
+
     $result = \closelog();
     if ($result === false) {
         throw NetworkException::createFromPhpError();
@@ -25,7 +25,7 @@ function closelog(): void
  * Fetch DNS Resource Records associated with the given
  * hostname.
  *
- * @param string $hostname hostname should be a valid DNS hostname such
+ * @param $hostname hostname should be a valid DNS hostname such
  * as "www.example.com". Reverse lookups can be generated
  * using in-addr.arpa notation, but
  * gethostbyaddr is more suitable for
@@ -241,9 +241,9 @@ function closelog(): void
  * @throws NetworkException
  *
  */
-function dns_get_record(string $hostname, int $type = DNS_ANY, ?array &$authns = null, ?array &$addtl = null, bool $raw = false): array
+function dns_get_record($hostname, $type = DNS_ANY, &$authns = null, &$addtl = null, $raw = false): array
 {
-    error_clear_last();
+
     $result = \dns_get_record($hostname, $type, $authns, $addtl, $raw);
     if ($result === false) {
         throw NetworkException::createFromPhpError();
@@ -268,7 +268,7 @@ function dns_get_record(string $hostname, int $type = DNS_ANY, ?array &$authns =
  * provides a richer set of options, including non-blocking connection and the
  * ability to provide a stream context.
  *
- * @param string $hostname If OpenSSL support is
+ * @param $hostname If OpenSSL support is
  * installed, you may prefix the hostname
  * with either ssl:// or tls:// to
  * use an SSL or TLS client connection over TCP/IP to connect to the
@@ -284,7 +284,7 @@ function dns_get_record(string $hostname, int $type = DNS_ANY, ?array &$authns =
  * indication that the error occurred before the
  * connect() call. This is most likely due to a
  * problem initializing the socket.
- * @param string $errstr The error message as a string.
+ * @param $errstr The error message as a string.
  * @param float $timeout The connection timeout, in seconds.
  *
  * If you need to set a timeout for reading/writing data over the
@@ -300,9 +300,9 @@ function dns_get_record(string $hostname, int $type = DNS_ANY, ?array &$authns =
  * @throws NetworkException
  *
  */
-function fsockopen(string $hostname, int $port = -1, ?int &$errno = null, ?string &$errstr = null, float $timeout = null)
+function fsockopen($hostname, $port = -1, &$errno = null, &$errstr = null, $timeout = null)
 {
-    error_clear_last();
+
     if ($timeout !== null) {
         $result = \fsockopen($hostname, $port, $errno, $errstr, $timeout);
     } else {
@@ -325,9 +325,9 @@ function fsockopen(string $hostname, int $port = -1, ?int &$errno = null, ?strin
  * @throws NetworkException
  *
  */
-function getprotobyname(string $name): int
+function getprotobyname($name)
 {
-    error_clear_last();
+
     $result = \getprotobyname($name);
     if ($result === false) {
         throw NetworkException::createFromPhpError();
@@ -346,9 +346,9 @@ function getprotobyname(string $name): int
  * @throws NetworkException
  *
  */
-function getprotobynumber(int $number): string
+function getprotobynumber($number)
 {
-    error_clear_last();
+
     $result = \getprotobynumber($number);
     if ($result === false) {
         throw NetworkException::createFromPhpError();
@@ -369,9 +369,9 @@ function getprotobynumber(int $number): string
  * @throws NetworkException
  *
  */
-function header_register_callback(callable $callback): void
+function header_register_callback(callable $callback)
 {
-    error_clear_last();
+
     $result = \header_register_callback($callback);
     if ($result === false) {
         throw NetworkException::createFromPhpError();
@@ -387,9 +387,9 @@ function header_register_callback(callable $callback): void
  * @throws NetworkException
  *
  */
-function inet_ntop(string $in_addr): string
+function inet_ntop($in_addr)
 {
-    error_clear_last();
+
     $result = \inet_ntop($in_addr);
     if ($result === false) {
         throw NetworkException::createFromPhpError();
@@ -407,7 +407,7 @@ function inet_ntop(string $in_addr): string
  * necessary, in which case ident will default
  * to FALSE.
  *
- * @param string $ident The string ident is added to each message.
+ * @param $ident The string ident is added to each message.
  * @param int $option The option argument is used to indicate
  * what logging options will be used when generating a log message.
  *
@@ -530,9 +530,9 @@ function inet_ntop(string $in_addr): string
  * @throws NetworkException
  *
  */
-function openlog(string $ident, int $option, int $facility): void
+function openlog($ident, $option, $facility)
 {
-    error_clear_last();
+
     $result = \openlog($ident, $option, $facility);
     if ($result === false) {
         throw NetworkException::createFromPhpError();
@@ -598,16 +598,16 @@ function openlog(string $ident, int $option, int $facility): void
  *
  *
  *
- * @param string $message The message to send, except that the two characters
+ * @param $message The message to send, except that the two characters
  * %m will be replaced by the error message string
  * (strerror) corresponding to the present value of
  * errno.
  * @throws NetworkException
  *
  */
-function syslog(int $priority, string $message): void
+function syslog($priority, $message)
 {
-    error_clear_last();
+
     $result = \syslog($priority, $message);
     if ($result === false) {
         throw NetworkException::createFromPhpError();

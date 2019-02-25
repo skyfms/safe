@@ -10,14 +10,14 @@ use Safe\Exceptions\FtpException;
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
  * @param int $filesize The number of bytes to allocate.
- * @param string $result A textual representation of the servers response will be returned by
+ * @param $result A textual representation of the servers response will be returned by
  * reference in result if a variable is provided.
  * @throws FtpException
  *
  */
-function ftp_alloc($ftp_stream, int $filesize, string &$result = null): void
+function ftp_alloc($ftp_stream, $filesize, string &$result = null)
 {
-    error_clear_last();
+
     $result = \ftp_alloc($ftp_stream, $filesize, $result);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -29,15 +29,15 @@ function ftp_alloc($ftp_stream, int $filesize, string &$result = null): void
  *
  *
  * @param resource $ftp
- * @param string $remote_file
- * @param string $local_file
+ * @param $remote_file
+ * @param $local_file
  * @param int $mode
  * @throws FtpException
  *
  */
-function ftp_append($ftp, string $remote_file, string $local_file, int $mode = FTP_IMAGE): void
+function ftp_append($ftp, $remote_file, $local_file, $mode = FTP_IMAGE)
 {
-    error_clear_last();
+
     $result = \ftp_append($ftp, $remote_file, $local_file, $mode);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -52,9 +52,9 @@ function ftp_append($ftp, string $remote_file, string $local_file, int $mode = F
  * @throws FtpException
  *
  */
-function ftp_cdup($ftp_stream): void
+function ftp_cdup($ftp_stream)
 {
-    error_clear_last();
+
     $result = \ftp_cdup($ftp_stream);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -66,13 +66,13 @@ function ftp_cdup($ftp_stream): void
  * Changes the current directory to the specified one.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $directory The target directory.
+ * @param $directory The target directory.
  * @throws FtpException
  *
  */
-function ftp_chdir($ftp_stream, string $directory): void
+function ftp_chdir($ftp_stream, $directory)
 {
-    error_clear_last();
+
     $result = \ftp_chdir($ftp_stream, $directory);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -91,9 +91,9 @@ function ftp_chdir($ftp_stream, string $directory): void
  * @throws FtpException
  *
  */
-function ftp_chmod($ftp_stream, int $mode, string $filename): int
+function ftp_chmod($ftp_stream, $mode, $filename)
 {
-    error_clear_last();
+
     $result = \ftp_chmod($ftp_stream, $mode, $filename);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -110,9 +110,9 @@ function ftp_chmod($ftp_stream, int $mode, string $filename): int
  * @throws FtpException
  *
  */
-function ftp_close($ftp_stream): void
+function ftp_close($ftp_stream)
 {
-    error_clear_last();
+
     $result = \ftp_close($ftp_stream);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -124,7 +124,7 @@ function ftp_close($ftp_stream): void
  * ftp_connect opens an FTP connection to the
  * specified host.
  *
- * @param string $host The FTP server address. This parameter shouldn't have any trailing
+ * @param $host The FTP server address. This parameter shouldn't have any trailing
  * slashes and shouldn't be prefixed with ftp://.
  * @param int $port This parameter specifies an alternate port to connect to. If it is
  * omitted or set to zero, then the default FTP port, 21, will be used.
@@ -136,9 +136,9 @@ function ftp_close($ftp_stream): void
  * @throws FtpException
  *
  */
-function ftp_connect(string $host, int $port = 21, int $timeout = 90)
+function ftp_connect($host, $port = 21, $timeout = 90)
 {
-    error_clear_last();
+
     $result = \ftp_connect($host, $port, $timeout);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -152,13 +152,13 @@ function ftp_connect(string $host, int $port = 21, int $timeout = 90)
  * path from the FTP server.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $path The file to delete.
+ * @param $path The file to delete.
  * @throws FtpException
  *
  */
-function ftp_delete($ftp_stream, string $path): void
+function ftp_delete($ftp_stream, $path)
 {
-    error_clear_last();
+
     $result = \ftp_delete($ftp_stream, $path);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -172,16 +172,16 @@ function ftp_delete($ftp_stream, string $path): void
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
  * @param resource $handle An open file pointer in which we store the data.
- * @param string $remote_file The remote file path.
+ * @param $remote_file The remote file path.
  * @param int $mode The transfer mode. Must be either FTP_ASCII or
  * FTP_BINARY.
  * @param int $resumepos The position in the remote file to start downloading from.
  * @throws FtpException
  *
  */
-function ftp_fget($ftp_stream, $handle, string $remote_file, int $mode = FTP_IMAGE, int $resumepos = 0): void
+function ftp_fget($ftp_stream, $handle, $remote_file, $mode = FTP_IMAGE, $resumepos = 0)
 {
-    error_clear_last();
+
     $result = \ftp_fget($ftp_stream, $handle, $remote_file, $mode, $resumepos);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -194,7 +194,7 @@ function ftp_fget($ftp_stream, $handle, string $remote_file, int $mode = FTP_IMA
  * to a remote file on the FTP server.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $remote_file The remote file path.
+ * @param $remote_file The remote file path.
  * @param resource $handle An open file pointer on the local file. Reading stops at end of file.
  * @param int $mode The transfer mode. Must be either FTP_ASCII or
  * FTP_BINARY.
@@ -202,9 +202,9 @@ function ftp_fget($ftp_stream, $handle, string $remote_file, int $mode = FTP_IMA
  * @throws FtpException
  *
  */
-function ftp_fput($ftp_stream, string $remote_file, $handle, int $mode = FTP_IMAGE, int $startpos = 0): void
+function ftp_fput($ftp_stream, $remote_file, $handle, $mode = FTP_IMAGE, $startpos = 0)
 {
-    error_clear_last();
+
     $result = \ftp_fput($ftp_stream, $remote_file, $handle, $mode, $startpos);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -217,17 +217,17 @@ function ftp_fput($ftp_stream, string $remote_file, $handle, int $mode = FTP_IMA
  * and saves it into a local file.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $local_file The local file path (will be overwritten if the file already exists).
- * @param string $remote_file The remote file path.
+ * @param $local_file The local file path (will be overwritten if the file already exists).
+ * @param $remote_file The remote file path.
  * @param int $mode The transfer mode. Must be either FTP_ASCII or
  * FTP_BINARY.
  * @param int $resumepos The position in the remote file to start downloading from.
  * @throws FtpException
  *
  */
-function ftp_get($ftp_stream, string $local_file, string $remote_file, int $mode = FTP_BINARY, int $resumepos = 0): void
+function ftp_get($ftp_stream, $local_file, $remote_file, $mode = FTP_BINARY, $resumepos = 0)
 {
-    error_clear_last();
+
     $result = \ftp_get($ftp_stream, $local_file, $remote_file, $mode, $resumepos);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -239,14 +239,14 @@ function ftp_get($ftp_stream, string $local_file, string $remote_file, int $mode
  * Logs in to the given FTP stream.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $username The username (USER).
- * @param string $password The password (PASS).
+ * @param $username The username (USER).
+ * @param $password The password (PASS).
  * @throws FtpException
  *
  */
-function ftp_login($ftp_stream, string $username, string $password): void
+function ftp_login($ftp_stream, $username, $password)
 {
-    error_clear_last();
+
     $result = \ftp_login($ftp_stream, $username, $password);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -263,9 +263,9 @@ function ftp_login($ftp_stream, string $username, string $password): void
  * @throws FtpException
  *
  */
-function ftp_mkdir($ftp_stream, string $directory): string
+function ftp_mkdir($ftp_stream, $directory)
 {
-    error_clear_last();
+
     $result = \ftp_mkdir($ftp_stream, $directory);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -283,9 +283,9 @@ function ftp_mkdir($ftp_stream, string $directory): string
  * @throws FtpException
  *
  */
-function ftp_mlsd($ftp_stream, string $directory): array
+function ftp_mlsd($ftp_stream, $directory): array
 {
-    error_clear_last();
+
     $result = \ftp_mlsd($ftp_stream, $directory);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -298,7 +298,7 @@ function ftp_mlsd($ftp_stream, string $directory): array
  *
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $directory The directory to be listed. This parameter can also include arguments, eg.
+ * @param $directory The directory to be listed. This parameter can also include arguments, eg.
  * ftp_nlist($conn_id, "-la /your/dir");
  * Note that this parameter isn't escaped so there may be some issues with
  * filenames containing spaces and other characters.
@@ -306,9 +306,9 @@ function ftp_mlsd($ftp_stream, string $directory): array
  * @throws FtpException
  *
  */
-function ftp_nlist($ftp_stream, string $directory): array
+function ftp_nlist($ftp_stream, $directory): array
 {
-    error_clear_last();
+
     $result = \ftp_nlist($ftp_stream, $directory);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -331,9 +331,9 @@ function ftp_nlist($ftp_stream, string $directory): array
  * @throws FtpException
  *
  */
-function ftp_pasv($ftp_stream, bool $pasv): void
+function ftp_pasv($ftp_stream, $pasv)
 {
-    error_clear_last();
+
     $result = \ftp_pasv($ftp_stream, $pasv);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -345,17 +345,17 @@ function ftp_pasv($ftp_stream, bool $pasv): void
  * ftp_put stores a local file on the FTP server.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $remote_file The remote file path.
- * @param string $local_file The local file path.
+ * @param $remote_file The remote file path.
+ * @param $local_file The local file path.
  * @param int $mode The transfer mode. Must be either FTP_ASCII or
  * FTP_BINARY.
  * @param int $startpos The position in the remote file to start uploading to.
  * @throws FtpException
  *
  */
-function ftp_put($ftp_stream, string $remote_file, string $local_file, int $mode = FTP_IMAGE, int $startpos = 0): void
+function ftp_put($ftp_stream, $remote_file, $local_file, $mode = FTP_IMAGE, $startpos = 0)
 {
-    error_clear_last();
+
     $result = \ftp_put($ftp_stream, $remote_file, $local_file, $mode, $startpos);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -371,9 +371,9 @@ function ftp_put($ftp_stream, string $remote_file, string $local_file, int $mode
  * @throws FtpException
  *
  */
-function ftp_pwd($ftp_stream): string
+function ftp_pwd($ftp_stream)
 {
-    error_clear_last();
+
     $result = \ftp_pwd($ftp_stream);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -387,14 +387,14 @@ function ftp_pwd($ftp_stream): string
  * server.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $oldname The old file/directory name.
- * @param string $newname The new name.
+ * @param $oldname The old file/directory name.
+ * @param $newname The new name.
  * @throws FtpException
  *
  */
-function ftp_rename($ftp_stream, string $oldname, string $newname): void
+function ftp_rename($ftp_stream, $oldname, $newname)
 {
-    error_clear_last();
+
     $result = \ftp_rename($ftp_stream, $oldname, $newname);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -406,14 +406,14 @@ function ftp_rename($ftp_stream, string $oldname, string $newname): void
  * Removes the specified directory on the FTP server.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $directory The directory to delete. This must be either an absolute or relative
+ * @param $directory The directory to delete. This must be either an absolute or relative
  * path to an empty directory.
  * @throws FtpException
  *
  */
-function ftp_rmdir($ftp_stream, string $directory): void
+function ftp_rmdir($ftp_stream, $directory)
 {
-    error_clear_last();
+
     $result = \ftp_rmdir($ftp_stream, $directory);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -430,14 +430,14 @@ function ftp_rmdir($ftp_stream, string $directory): void
  * group membership.
  *
  * @param resource $ftp_stream The link identifier of the FTP connection.
- * @param string $command The SITE command. Note that this parameter isn't escaped so there may
+ * @param $command The SITE command. Note that this parameter isn't escaped so there may
  * be some issues with filenames containing spaces and other characters.
  * @throws FtpException
  *
  */
-function ftp_site($ftp_stream, string $command): void
+function ftp_site($ftp_stream, $command)
 {
-    error_clear_last();
+
     $result = \ftp_site($ftp_stream, $command);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -454,7 +454,7 @@ function ftp_site($ftp_stream, string $command): void
  * appropriate AUTH FTP command, so ftp_login will fail in
  * the mentioned cases.
  *
- * @param string $host The FTP server address. This parameter shouldn't have any trailing
+ * @param $host The FTP server address. This parameter shouldn't have any trailing
  * slashes and shouldn't be prefixed with ftp://.
  * @param int $port This parameter specifies an alternate port to connect to. If it is
  * omitted or set to zero, then the default FTP port, 21, will be used.
@@ -466,9 +466,9 @@ function ftp_site($ftp_stream, string $command): void
  * @throws FtpException
  *
  */
-function ftp_ssl_connect(string $host, int $port = 21, int $timeout = 90)
+function ftp_ssl_connect($host, $port = 21, $timeout = 90)
 {
-    error_clear_last();
+
     $result = \ftp_ssl_connect($host, $port, $timeout);
     if ($result === false) {
         throw FtpException::createFromPhpError();
@@ -485,9 +485,9 @@ function ftp_ssl_connect(string $host, int $port = 21, int $timeout = 90)
  * @throws FtpException
  *
  */
-function ftp_systype($ftp_stream): string
+function ftp_systype($ftp_stream)
 {
-    error_clear_last();
+
     $result = \ftp_systype($ftp_stream);
     if ($result === false) {
         throw FtpException::createFromPhpError();

@@ -7,7 +7,7 @@ use Safe\Exceptions\PosixException;
 /**
  * posix_access checks the user's permission of a file.
  *
- * @param string $file The name of the file to be tested.
+ * @param $file The name of the file to be tested.
  * @param int $mode A mask consisting of one or more of POSIX_F_OK,
  * POSIX_R_OK, POSIX_W_OK and
  * POSIX_X_OK.
@@ -20,9 +20,9 @@ use Safe\Exceptions\PosixException;
  * @throws PosixException
  *
  */
-function posix_access(string $file, int $mode = POSIX_F_OK): void
+function posix_access($file, $mode = POSIX_F_OK)
 {
-    error_clear_last();
+
     $result = \posix_access($file, $mode);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -83,9 +83,9 @@ function posix_access(string $file, int $mode = POSIX_F_OK): void
  * @throws PosixException
  *
  */
-function posix_getgrnam(string $name): array
+function posix_getgrnam($name): array
 {
-    error_clear_last();
+
     $result = \posix_getgrnam($name);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -103,9 +103,9 @@ function posix_getgrnam(string $name): array
  * @throws PosixException
  *
  */
-function posix_getpgid(int $pid): int
+function posix_getpgid($pid)
 {
-    error_clear_last();
+
     $result = \posix_getpgid($pid);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -117,14 +117,14 @@ function posix_getpgid(int $pid): int
 /**
  * Calculates the group access list for the user specified in name.
  *
- * @param string $name The user to calculate the list for.
+ * @param $name The user to calculate the list for.
  * @param int $base_group_id Typically the group number from the password file.
  * @throws PosixException
  *
  */
-function posix_initgroups(string $name, int $base_group_id): void
+function posix_initgroups($name, $base_group_id)
 {
-    error_clear_last();
+
     $result = \posix_initgroups($name, $base_group_id);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -141,9 +141,9 @@ function posix_initgroups(string $name, int $base_group_id): void
  * @throws PosixException
  *
  */
-function posix_kill(int $pid, int $sig): void
+function posix_kill($pid, $sig)
 {
-    error_clear_last();
+
     $result = \posix_kill($pid, $sig);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -156,7 +156,7 @@ function posix_kill(int $pid, int $sig): void
  * FIFO file which exists in the file system and acts as
  * a bidirectional communication endpoint for processes.
  *
- * @param string $pathname Path to the FIFO file.
+ * @param $pathname Path to the FIFO file.
  * @param int $mode The second parameter mode has to be given in
  * octal notation (e.g. 0644). The permission of the newly created
  * FIFO also depends on the setting of the current
@@ -165,9 +165,9 @@ function posix_kill(int $pid, int $sig): void
  * @throws PosixException
  *
  */
-function posix_mkfifo(string $pathname, int $mode): void
+function posix_mkfifo($pathname, $mode)
 {
-    error_clear_last();
+
     $result = \posix_mkfifo($pathname, $mode);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -178,7 +178,7 @@ function posix_mkfifo(string $pathname, int $mode): void
 /**
  * Creates a special or ordinary file.
  *
- * @param string $pathname The file to create
+ * @param $pathname The file to create
  * @param int $mode This parameter is constructed by a bitwise OR between file type (one of
  * the following constants: POSIX_S_IFREG,
  * POSIX_S_IFCHR, POSIX_S_IFBLK,
@@ -190,9 +190,9 @@ function posix_mkfifo(string $pathname, int $mode): void
  * @throws PosixException
  *
  */
-function posix_mknod(string $pathname, int $mode, int $major = 0, int $minor = 0): void
+function posix_mknod($pathname, $mode, $major = 0, $minor = 0)
 {
-    error_clear_last();
+
     $result = \posix_mknod($pathname, $mode, $major, $minor);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -209,9 +209,9 @@ function posix_mknod(string $pathname, int $mode, int $major = 0, int $minor = 0
  * @throws PosixException
  *
  */
-function posix_setegid(int $gid): void
+function posix_setegid($gid)
 {
-    error_clear_last();
+
     $result = \posix_setegid($gid);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -228,9 +228,9 @@ function posix_setegid(int $gid): void
  * @throws PosixException
  *
  */
-function posix_seteuid(int $uid): void
+function posix_seteuid($uid)
 {
-    error_clear_last();
+
     $result = \posix_seteuid($uid);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -250,9 +250,9 @@ function posix_seteuid(int $uid): void
  * @throws PosixException
  *
  */
-function posix_setgid(int $gid): void
+function posix_setgid($gid)
 {
-    error_clear_last();
+
     $result = \posix_setgid($gid);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -269,9 +269,9 @@ function posix_setgid(int $gid): void
  * @throws PosixException
  *
  */
-function posix_setpgid(int $pid, int $pgid): void
+function posix_setpgid($pid, $pgid)
 {
-    error_clear_last();
+
     $result = \posix_setpgid($pid, $pgid);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -300,9 +300,9 @@ function posix_setpgid(int $pid, int $pgid): void
  * @throws PosixException
  *
  */
-function posix_setrlimit(int $resource, int $softlimit, int $hardlimit): void
+function posix_setrlimit($resource, $softlimit, $hardlimit)
 {
-    error_clear_last();
+
     $result = \posix_setrlimit($resource, $softlimit, $hardlimit);
     if ($result === false) {
         throw PosixException::createFromPhpError();
@@ -319,9 +319,9 @@ function posix_setrlimit(int $resource, int $softlimit, int $hardlimit): void
  * @throws PosixException
  *
  */
-function posix_setuid(int $uid): void
+function posix_setuid($uid)
 {
-    error_clear_last();
+
     $result = \posix_setuid($uid);
     if ($result === false) {
         throw PosixException::createFromPhpError();

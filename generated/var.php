@@ -9,7 +9,7 @@ use Safe\Exceptions\VarException;
  * type.
  *
  * @param mixed $var The variable being converted.
- * @param string $type Possibles values of type are:
+ * @param $type Possibles values of type are:
  *
  *
  *
@@ -50,9 +50,9 @@ use Safe\Exceptions\VarException;
  * @throws VarException
  *
  */
-function settype(&$var, string $type): void
+function settype(&$var, $type)
 {
-    error_clear_last();
+
     $result = \settype($var, $type);
     if ($result === false) {
         throw VarException::createFromPhpError();

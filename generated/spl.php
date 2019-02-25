@@ -15,9 +15,9 @@ use Safe\Exceptions\SplException;
  * @throws SplException
  *
  */
-function class_implements($class, bool $autoload = true): array
+function class_implements($class, $autoload = true): array
 {
-    error_clear_last();
+
     $result = \class_implements($class, $autoload);
     if ($result === false) {
         throw SplException::createFromPhpError();
@@ -37,9 +37,9 @@ function class_implements($class, bool $autoload = true): array
  * @throws SplException
  *
  */
-function class_parents($class, bool $autoload = true): array
+function class_parents($class, $autoload = true): array
 {
-    error_clear_last();
+
     $result = \class_parents($class, $autoload);
     if ($result === false) {
         throw SplException::createFromPhpError();
@@ -60,9 +60,9 @@ function class_parents($class, bool $autoload = true): array
  * @throws SplException
  *
  */
-function class_uses($class, bool $autoload = true): array
+function class_uses($class, $autoload = true): array
 {
-    error_clear_last();
+
     $result = \class_uses($class, $autoload);
     if ($result === false) {
         throw SplException::createFromPhpError();
@@ -99,9 +99,9 @@ function class_uses($class, bool $autoload = true): array
  * @throws SplException
  *
  */
-function spl_autoload_register(callable $autoload_function = null, bool $throw = true, bool $prepend = false): void
+function spl_autoload_register(callable $autoload_function = null, $throw = true, $prepend = false)
 {
-    error_clear_last();
+
     if ($prepend !== false) {
         $result = \spl_autoload_register($autoload_function, $throw, $prepend);
     } elseif ($throw !== true) {
@@ -129,9 +129,9 @@ function spl_autoload_register(callable $autoload_function = null, bool $throw =
  * @throws SplException
  *
  */
-function spl_autoload_unregister($autoload_function): void
+function spl_autoload_unregister($autoload_function)
 {
-    error_clear_last();
+
     $result = \spl_autoload_unregister($autoload_function);
     if ($result === false) {
         throw SplException::createFromPhpError();

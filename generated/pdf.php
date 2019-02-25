@@ -13,9 +13,9 @@ use Safe\Exceptions\PdfException;
  * @throws PdfException
  *
  */
-function PDF_activate_item($pdfdoc, int $id): void
+function PDF_activate_item($pdfdoc, $id)
 {
-    error_clear_last();
+
     $result = \PDF_activate_item($pdfdoc, $id);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -38,13 +38,13 @@ function PDF_activate_item($pdfdoc, int $id): void
  * @param float $upperrightx
  * @param float $upperrighty
  * @param int $page
- * @param string $dest
+ * @param $dest
  * @throws PdfException
  *
  */
-function PDF_add_locallink($pdfdoc, float $lowerleftx, float $lowerlefty, float $upperrightx, float $upperrighty, int $page, string $dest): void
+function PDF_add_locallink($pdfdoc, $lowerleftx, $lowerlefty, $upperrightx, $upperrighty, $page, $dest)
 {
-    error_clear_last();
+
     $result = \PDF_add_locallink($pdfdoc, $lowerleftx, $lowerlefty, $upperrightx, $upperrighty, $page, $dest);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -57,14 +57,14 @@ function PDF_add_locallink($pdfdoc, float $lowerleftx, float $lowerlefty, float 
  * Returns TRUE on success.
  *
  * @param resource $pdfdoc
- * @param string $name
- * @param string $optlist
+ * @param $name
+ * @param $optlist
  * @throws PdfException
  *
  */
-function PDF_add_nameddest($pdfdoc, string $name, string $optlist): void
+function PDF_add_nameddest($pdfdoc, $name, $optlist)
 {
-    error_clear_last();
+
     $result = \PDF_add_nameddest($pdfdoc, $name, $optlist);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -84,16 +84,16 @@ function PDF_add_nameddest($pdfdoc, string $name, string $optlist): void
  * @param float $lly
  * @param float $urx
  * @param float $ury
- * @param string $contents
- * @param string $title
- * @param string $icon
+ * @param $contents
+ * @param $title
+ * @param $icon
  * @param int $open
  * @throws PdfException
  *
  */
-function PDF_add_note($pdfdoc, float $llx, float $lly, float $urx, float $ury, string $contents, string $title, string $icon, int $open): void
+function PDF_add_note($pdfdoc, $llx, $lly, $urx, $ury, $contents, $title, $icon, $open)
 {
-    error_clear_last();
+
     $result = \PDF_add_note($pdfdoc, $llx, $lly, $urx, $ury, $contents, $title, $icon, $open);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -116,15 +116,15 @@ function PDF_add_note($pdfdoc, float $llx, float $lly, float $urx, float $ury, s
  * @param float $bottom_left_y
  * @param float $up_right_x
  * @param float $up_right_y
- * @param string $filename
+ * @param $filename
  * @param int $page
- * @param string $dest
+ * @param $dest
  * @throws PdfException
  *
  */
-function PDF_add_pdflink($pdfdoc, float $bottom_left_x, float $bottom_left_y, float $up_right_x, float $up_right_y, string $filename, int $page, string $dest): void
+function PDF_add_pdflink($pdfdoc, $bottom_left_x, $bottom_left_y, $up_right_x, $up_right_y, $filename, $page, $dest)
 {
-    error_clear_last();
+
     $result = \PDF_add_pdflink($pdfdoc, $bottom_left_x, $bottom_left_y, $up_right_x, $up_right_y, $filename, $page, $dest);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -141,9 +141,9 @@ function PDF_add_pdflink($pdfdoc, float $bottom_left_x, float $bottom_left_y, fl
  * @throws PdfException
  *
  */
-function PDF_add_thumbnail($pdfdoc, int $image): void
+function PDF_add_thumbnail($pdfdoc, $image)
 {
-    error_clear_last();
+
     $result = \PDF_add_thumbnail($pdfdoc, $image);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -165,13 +165,13 @@ function PDF_add_thumbnail($pdfdoc, int $image): void
  * @param float $lowerlefty
  * @param float $upperrightx
  * @param float $upperrighty
- * @param string $url
+ * @param $url
  * @throws PdfException
  *
  */
-function PDF_add_weblink($pdfdoc, float $lowerleftx, float $lowerlefty, float $upperrightx, float $upperrighty, string $url): void
+function PDF_add_weblink($pdfdoc, $lowerleftx, $lowerlefty, $upperrightx, $upperrighty, $url)
 {
-    error_clear_last();
+
     $result = \PDF_add_weblink($pdfdoc, $lowerleftx, $lowerlefty, $upperrightx, $upperrighty, $url);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -191,17 +191,17 @@ function PDF_add_weblink($pdfdoc, float $lowerleftx, float $lowerlefty, float $u
  * @param float $lly
  * @param float $urx
  * @param float $ury
- * @param string $filename
- * @param string $description
- * @param string $author
- * @param string $mimetype
- * @param string $icon
+ * @param $filename
+ * @param $description
+ * @param $author
+ * @param $mimetype
+ * @param $icon
  * @throws PdfException
  *
  */
-function PDF_attach_file($pdfdoc, float $llx, float $lly, float $urx, float $ury, string $filename, string $description, string $author, string $mimetype, string $icon): void
+function PDF_attach_file($pdfdoc, $llx, $lly, $urx, $ury, $filename, $description, $author, $mimetype, $icon)
 {
-    error_clear_last();
+
     $result = \PDF_attach_file($pdfdoc, $llx, $lly, $urx, $ury, $filename, $description, $author, $mimetype, $icon);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -219,9 +219,9 @@ function PDF_attach_file($pdfdoc, float $llx, float $lly, float $urx, float $ury
  * @throws PdfException
  *
  */
-function PDF_begin_layer($pdfdoc, int $layer): void
+function PDF_begin_layer($pdfdoc, $layer)
 {
-    error_clear_last();
+
     $result = \PDF_begin_layer($pdfdoc, $layer);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -299,13 +299,13 @@ function PDF_begin_layer($pdfdoc, int $layer): void
  * @param resource $pdfdoc
  * @param float $width
  * @param float $height
- * @param string $optlist
+ * @param $optlist
  * @throws PdfException
  *
  */
-function PDF_begin_page_ext($pdfdoc, float $width, float $height, string $optlist): void
+function PDF_begin_page_ext($pdfdoc, $width, $height, $optlist)
 {
-    error_clear_last();
+
     $result = \PDF_begin_page_ext($pdfdoc, $width, $height, $optlist);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -325,9 +325,9 @@ function PDF_begin_page_ext($pdfdoc, float $width, float $height, string $optlis
  * @throws PdfException
  *
  */
-function PDF_begin_page($pdfdoc, float $width, float $height): void
+function PDF_begin_page($pdfdoc, $width, $height)
 {
-    error_clear_last();
+
     $result = \PDF_begin_page($pdfdoc, $width, $height);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -345,9 +345,9 @@ function PDF_begin_page($pdfdoc, float $width, float $height): void
  * @throws PdfException
  *
  */
-function PDF_circle($pdfdoc, float $x, float $y, float $r): void
+function PDF_circle($pdfdoc, $x, $y, $r)
 {
-    error_clear_last();
+
     $result = \PDF_circle($pdfdoc, $x, $y, $r);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -362,9 +362,9 @@ function PDF_circle($pdfdoc, float $x, float $y, float $r): void
  * @throws PdfException
  *
  */
-function PDF_clip($p): void
+function PDF_clip($p)
 {
-    error_clear_last();
+
     $result = \PDF_clip($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -380,9 +380,9 @@ function PDF_clip($p): void
  * @throws PdfException
  *
  */
-function PDF_close_pdi_page($p, int $page): void
+function PDF_close_pdi_page($p, $page)
 {
-    error_clear_last();
+
     $result = \PDF_close_pdi_page($p, $page);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -401,9 +401,9 @@ function PDF_close_pdi_page($p, int $page): void
  * @throws PdfException
  *
  */
-function PDF_close_pdi($p, int $doc): void
+function PDF_close_pdi($p, $doc)
 {
-    error_clear_last();
+
     $result = \PDF_close_pdi($p, $doc);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -422,9 +422,9 @@ function PDF_close_pdi($p, int $doc): void
  * @throws PdfException
  *
  */
-function PDF_close($p): void
+function PDF_close($p)
 {
-    error_clear_last();
+
     $result = \PDF_close($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -439,9 +439,9 @@ function PDF_close($p): void
  * @throws PdfException
  *
  */
-function PDF_closepath_fill_stroke($p): void
+function PDF_closepath_fill_stroke($p)
 {
-    error_clear_last();
+
     $result = \PDF_closepath_fill_stroke($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -456,9 +456,9 @@ function PDF_closepath_fill_stroke($p): void
  * @throws PdfException
  *
  */
-function PDF_closepath_stroke($p): void
+function PDF_closepath_stroke($p)
 {
-    error_clear_last();
+
     $result = \PDF_closepath_stroke($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -473,9 +473,9 @@ function PDF_closepath_stroke($p): void
  * @throws PdfException
  *
  */
-function PDF_closepath($p): void
+function PDF_closepath($p)
 {
-    error_clear_last();
+
     $result = \PDF_closepath($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -496,9 +496,9 @@ function PDF_closepath($p): void
  * @throws PdfException
  *
  */
-function PDF_concat($p, float $a, float $b, float $c, float $d, float $e, float $f): void
+function PDF_concat($p, $a, $b, $c, $d, $e, $f)
 {
-    error_clear_last();
+
     $result = \PDF_concat($p, $a, $b, $c, $d, $e, $f);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -510,13 +510,13 @@ function PDF_concat($p, float $a, float $b, float $c, float $d, float $e, float 
  * Prints text at the next line. Returns TRUE on success.
  *
  * @param resource $p
- * @param string $text
+ * @param $text
  * @throws PdfException
  *
  */
-function PDF_continue_text($p, string $text): void
+function PDF_continue_text($p, $text)
 {
-    error_clear_last();
+
     $result = \PDF_continue_text($p, $text);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -538,9 +538,9 @@ function PDF_continue_text($p, string $text): void
  * @throws PdfException
  *
  */
-function PDF_curveto($p, float $x1, float $y1, float $x2, float $y2, float $x3, float $y3): void
+function PDF_curveto($p, $x1, $y1, $x2, $y2, $x3, $y3)
 {
-    error_clear_last();
+
     $result = \PDF_curveto($p, $x1, $y1, $x2, $y2, $x3, $y3);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -555,9 +555,9 @@ function PDF_curveto($p, float $x1, float $y1, float $x2, float $y2, float $x3, 
  * @throws PdfException
  *
  */
-function PDF_delete($pdfdoc): void
+function PDF_delete($pdfdoc)
 {
-    error_clear_last();
+
     $result = \PDF_delete($pdfdoc);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -574,9 +574,9 @@ function PDF_delete($pdfdoc): void
  * @throws PdfException
  *
  */
-function PDF_end_layer($pdfdoc): void
+function PDF_end_layer($pdfdoc)
 {
-    error_clear_last();
+
     $result = \PDF_end_layer($pdfdoc);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -588,13 +588,13 @@ function PDF_end_layer($pdfdoc): void
  * Finishes a page, and applies various options. Returns TRUE on success.
  *
  * @param resource $pdfdoc
- * @param string $optlist
+ * @param $optlist
  * @throws PdfException
  *
  */
-function PDF_end_page_ext($pdfdoc, string $optlist): void
+function PDF_end_page_ext($pdfdoc, $optlist)
 {
-    error_clear_last();
+
     $result = \PDF_end_page_ext($pdfdoc, $optlist);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -609,9 +609,9 @@ function PDF_end_page_ext($pdfdoc, string $optlist): void
  * @throws PdfException
  *
  */
-function PDF_end_page($p): void
+function PDF_end_page($p)
 {
-    error_clear_last();
+
     $result = \PDF_end_page($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -626,9 +626,9 @@ function PDF_end_page($p): void
  * @throws PdfException
  *
  */
-function PDF_end_pattern($p): void
+function PDF_end_pattern($p)
 {
-    error_clear_last();
+
     $result = \PDF_end_pattern($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -643,9 +643,9 @@ function PDF_end_pattern($p): void
  * @throws PdfException
  *
  */
-function PDF_end_template($p): void
+function PDF_end_template($p)
 {
-    error_clear_last();
+
     $result = \PDF_end_template($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -661,9 +661,9 @@ function PDF_end_template($p): void
  * @throws PdfException
  *
  */
-function PDF_fill_stroke($p): void
+function PDF_fill_stroke($p)
 {
-    error_clear_last();
+
     $result = \PDF_fill_stroke($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -679,9 +679,9 @@ function PDF_fill_stroke($p): void
  * @throws PdfException
  *
  */
-function PDF_fill($p): void
+function PDF_fill($p)
 {
-    error_clear_last();
+
     $result = \PDF_fill($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -697,13 +697,13 @@ function PDF_fill($p): void
  * @param int $image
  * @param float $x
  * @param float $y
- * @param string $optlist
+ * @param $optlist
  * @throws PdfException
  *
  */
-function PDF_fit_image($pdfdoc, int $image, float $x, float $y, string $optlist): void
+function PDF_fit_image($pdfdoc, $image, $x, $y, $optlist)
 {
-    error_clear_last();
+
     $result = \PDF_fit_image($pdfdoc, $image, $x, $y, $optlist);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -719,13 +719,13 @@ function PDF_fit_image($pdfdoc, int $image, float $x, float $y, string $optlist)
  * @param int $page
  * @param float $x
  * @param float $y
- * @param string $optlist
+ * @param $optlist
  * @throws PdfException
  *
  */
-function PDF_fit_pdi_page($pdfdoc, int $page, float $x, float $y, string $optlist): void
+function PDF_fit_pdi_page($pdfdoc, $page, $x, $y, $optlist)
 {
-    error_clear_last();
+
     $result = \PDF_fit_pdi_page($pdfdoc, $page, $x, $y, $optlist);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -737,16 +737,16 @@ function PDF_fit_pdi_page($pdfdoc, int $page, float $x, float $y, string $optlis
  * Places a single line of text on the page, subject to various options. Returns TRUE on success.
  *
  * @param resource $pdfdoc
- * @param string $text
+ * @param $text
  * @param float $x
  * @param float $y
- * @param string $optlist
+ * @param $optlist
  * @throws PdfException
  *
  */
-function PDF_fit_textline($pdfdoc, string $text, float $x, float $y, string $optlist): void
+function PDF_fit_textline($pdfdoc, $text, $x, $y, $optlist)
 {
-    error_clear_last();
+
     $result = \PDF_fit_textline($pdfdoc, $text, $x, $y, $optlist);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -762,9 +762,9 @@ function PDF_fit_textline($pdfdoc, string $text, float $x, float $y, string $opt
  * @throws PdfException
  *
  */
-function PDF_initgraphics($p): void
+function PDF_initgraphics($p)
 {
-    error_clear_last();
+
     $result = \PDF_initgraphics($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -781,9 +781,9 @@ function PDF_initgraphics($p): void
  * @throws PdfException
  *
  */
-function PDF_lineto($p, float $x, float $y): void
+function PDF_lineto($p, $x, $y)
 {
-    error_clear_last();
+
     $result = \PDF_lineto($p, $x, $y);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -796,14 +796,14 @@ function PDF_lineto($p, float $x, float $y): void
  * current fill color. Returns TRUE on success.
  *
  * @param resource $p
- * @param string $spotname
+ * @param $spotname
  * @return int
  * @throws PdfException
  *
  */
-function PDF_makespotcolor($p, string $spotname): int
+function PDF_makespotcolor($p, $spotname)
 {
-    error_clear_last();
+
     $result = \PDF_makespotcolor($p, $spotname);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -821,9 +821,9 @@ function PDF_makespotcolor($p, string $spotname): int
  * @throws PdfException
  *
  */
-function PDF_moveto($p, float $x, float $y): void
+function PDF_moveto($p, $x, $y)
 {
-    error_clear_last();
+
     $result = \PDF_moveto($p, $x, $y);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -839,13 +839,13 @@ function PDF_moveto($p, float $x, float $y): void
  * PDF_begin_document instead.
  *
  * @param resource $p
- * @param string $filename
+ * @param $filename
  * @throws PdfException
  *
  */
-function PDF_open_file($p, string $filename): void
+function PDF_open_file($p, $filename)
 {
-    error_clear_last();
+
     $result = \PDF_open_file($p, $filename);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -867,9 +867,9 @@ function PDF_open_file($p, string $filename): void
  * @throws PdfException
  *
  */
-function PDF_place_image($pdfdoc, int $image, float $x, float $y, float $scale): void
+function PDF_place_image($pdfdoc, $image, $x, $y, $scale)
 {
-    error_clear_last();
+
     $result = \PDF_place_image($pdfdoc, $image, $x, $y, $scale);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -892,9 +892,9 @@ function PDF_place_image($pdfdoc, int $image, float $x, float $y, float $scale):
  * @throws PdfException
  *
  */
-function PDF_place_pdi_page($pdfdoc, int $page, float $x, float $y, float $sx, float $sy): void
+function PDF_place_pdi_page($pdfdoc, $page, $x, $y, $sx, $sy)
 {
-    error_clear_last();
+
     $result = \PDF_place_pdi_page($pdfdoc, $page, $x, $y, $sx, $sy);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -913,9 +913,9 @@ function PDF_place_pdi_page($pdfdoc, int $page, float $x, float $y, float $sx, f
  * @throws PdfException
  *
  */
-function PDF_rect($p, float $x, float $y, float $width, float $height): void
+function PDF_rect($p, $x, $y, $width, $height)
 {
-    error_clear_last();
+
     $result = \PDF_rect($p, $x, $y, $width, $height);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -930,9 +930,9 @@ function PDF_rect($p, float $x, float $y, float $width, float $height): void
  * @throws PdfException
  *
  */
-function PDF_restore($p): void
+function PDF_restore($p)
 {
-    error_clear_last();
+
     $result = \PDF_restore($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -948,9 +948,9 @@ function PDF_restore($p): void
  * @throws PdfException
  *
  */
-function PDF_rotate($p, float $phi): void
+function PDF_rotate($p, $phi)
 {
-    error_clear_last();
+
     $result = \PDF_rotate($p, $phi);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -965,9 +965,9 @@ function PDF_rotate($p, float $phi): void
  * @throws PdfException
  *
  */
-function PDF_save($p): void
+function PDF_save($p)
 {
-    error_clear_last();
+
     $result = \PDF_save($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -984,9 +984,9 @@ function PDF_save($p): void
  * @throws PdfException
  *
  */
-function PDF_scale($p, float $sx, float $sy): void
+function PDF_scale($p, $sx, $sy)
 {
-    error_clear_last();
+
     $result = \PDF_scale($p, $sx, $sy);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1008,9 +1008,9 @@ function PDF_scale($p, float $sx, float $sy): void
  * @throws PdfException
  *
  */
-function PDF_set_border_color($p, float $red, float $green, float $blue): void
+function PDF_set_border_color($p, $red, $green, $blue)
 {
-    error_clear_last();
+
     $result = \PDF_set_border_color($p, $red, $green, $blue);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1031,9 +1031,9 @@ function PDF_set_border_color($p, float $red, float $green, float $blue): void
  * @throws PdfException
  *
  */
-function PDF_set_border_dash($pdfdoc, float $black, float $white): void
+function PDF_set_border_dash($pdfdoc, $black, $white)
 {
-    error_clear_last();
+
     $result = \PDF_set_border_dash($pdfdoc, $black, $white);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1050,14 +1050,14 @@ function PDF_set_border_dash($pdfdoc, float $black, float $white): void
  * PDF_create_annotation instead.
  *
  * @param resource $pdfdoc
- * @param string $style
+ * @param $style
  * @param float $width
  * @throws PdfException
  *
  */
-function PDF_set_border_style($pdfdoc, string $style, float $width): void
+function PDF_set_border_style($pdfdoc, $style, $width)
 {
-    error_clear_last();
+
     $result = \PDF_set_border_style($pdfdoc, $style, $width);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1070,14 +1070,14 @@ function PDF_set_border_style($pdfdoc, string $style, float $width): void
  * value. Returns TRUE on success.
  *
  * @param resource $p
- * @param string $key
- * @param string $value
+ * @param $key
+ * @param $value
  * @throws PdfException
  *
  */
-function PDF_set_info($p, string $key, string $value): void
+function PDF_set_info($p, $key, $value)
 {
-    error_clear_last();
+
     $result = \PDF_set_info($p, $key, $value);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1091,14 +1091,14 @@ function PDF_set_info($p, string $key, string $value): void
  * This function requires PDF 1.5.
  *
  * @param resource $pdfdoc
- * @param string $type
- * @param string $optlist
+ * @param $type
+ * @param $optlist
  * @throws PdfException
  *
  */
-function PDF_set_layer_dependency($pdfdoc, string $type, string $optlist): void
+function PDF_set_layer_dependency($pdfdoc, $type, $optlist)
 {
-    error_clear_last();
+
     $result = \PDF_set_layer_dependency($pdfdoc, $type, $optlist);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1110,14 +1110,14 @@ function PDF_set_layer_dependency($pdfdoc, string $type, string $optlist): void
  * Sets some PDFlib parameter with string type. Returns TRUE on success.
  *
  * @param resource $p
- * @param string $key
- * @param string $value
+ * @param $key
+ * @param $value
  * @throws PdfException
  *
  */
-function PDF_set_parameter($p, string $key, string $value): void
+function PDF_set_parameter($p, $key, $value)
 {
-    error_clear_last();
+
     $result = \PDF_set_parameter($p, $key, $value);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1134,9 +1134,9 @@ function PDF_set_parameter($p, string $key, string $value): void
  * @throws PdfException
  *
  */
-function PDF_set_text_pos($p, float $x, float $y): void
+function PDF_set_text_pos($p, $x, $y)
 {
-    error_clear_last();
+
     $result = \PDF_set_text_pos($p, $x, $y);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1148,14 +1148,14 @@ function PDF_set_text_pos($p, float $x, float $y): void
  * Sets the value of some PDFlib parameter with numerical type. Returns TRUE on success.
  *
  * @param resource $p
- * @param string $key
+ * @param $key
  * @param float $value
  * @throws PdfException
  *
  */
-function PDF_set_value($p, string $key, float $value): void
+function PDF_set_value($p, $key, $value)
 {
-    error_clear_last();
+
     $result = \PDF_set_value($p, $key, $value);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1167,8 +1167,8 @@ function PDF_set_value($p, string $key, float $value): void
  * Sets the current color space and color. Returns TRUE on success.
  *
  * @param resource $p
- * @param string $fstype
- * @param string $colorspace
+ * @param $fstype
+ * @param $colorspace
  * @param float $c1
  * @param float $c2
  * @param float $c3
@@ -1176,9 +1176,9 @@ function PDF_set_value($p, string $key, float $value): void
  * @throws PdfException
  *
  */
-function PDF_setcolor($p, string $fstype, string $colorspace, float $c1, float $c2, float $c3, float $c4): void
+function PDF_setcolor($p, $fstype, $colorspace, $c1, $c2, $c3, $c4)
 {
-    error_clear_last();
+
     $result = \PDF_setcolor($p, $fstype, $colorspace, $c1, $c2, $c3, $c4);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1196,9 +1196,9 @@ function PDF_setcolor($p, string $fstype, string $colorspace, float $c1, float $
  * @throws PdfException
  *
  */
-function PDF_setdash($pdfdoc, float $b, float $w): void
+function PDF_setdash($pdfdoc, $b, $w)
 {
-    error_clear_last();
+
     $result = \PDF_setdash($pdfdoc, $b, $w);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1210,13 +1210,13 @@ function PDF_setdash($pdfdoc, float $b, float $w): void
  * Sets a dash pattern defined by an option list. Returns TRUE on success.
  *
  * @param resource $pdfdoc
- * @param string $optlist
+ * @param $optlist
  * @throws PdfException
  *
  */
-function PDF_setdashpattern($pdfdoc, string $optlist): void
+function PDF_setdashpattern($pdfdoc, $optlist)
 {
-    error_clear_last();
+
     $result = \PDF_setdashpattern($pdfdoc, $optlist);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1232,9 +1232,9 @@ function PDF_setdashpattern($pdfdoc, string $optlist): void
  * @throws PdfException
  *
  */
-function PDF_setflat($pdfdoc, float $flatness): void
+function PDF_setflat($pdfdoc, $flatness)
 {
-    error_clear_last();
+
     $result = \PDF_setflat($pdfdoc, $flatness);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1253,9 +1253,9 @@ function PDF_setflat($pdfdoc, float $flatness): void
  * @throws PdfException
  *
  */
-function PDF_setfont($pdfdoc, int $font, float $fontsize): void
+function PDF_setfont($pdfdoc, $font, $fontsize)
 {
-    error_clear_last();
+
     $result = \PDF_setfont($pdfdoc, $font, $fontsize);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1275,9 +1275,9 @@ function PDF_setfont($pdfdoc, int $font, float $fontsize): void
  * @throws PdfException
  *
  */
-function PDF_setgray_fill($p, float $g): void
+function PDF_setgray_fill($p, $g)
 {
-    error_clear_last();
+
     $result = \PDF_setgray_fill($p, $g);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1297,9 +1297,9 @@ function PDF_setgray_fill($p, float $g): void
  * @throws PdfException
  *
  */
-function PDF_setgray_stroke($p, float $g): void
+function PDF_setgray_stroke($p, $g)
 {
-    error_clear_last();
+
     $result = \PDF_setgray_stroke($p, $g);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1318,9 +1318,9 @@ function PDF_setgray_stroke($p, float $g): void
  * @throws PdfException
  *
  */
-function PDF_setgray($p, float $g): void
+function PDF_setgray($p, $g)
 {
-    error_clear_last();
+
     $result = \PDF_setgray($p, $g);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1337,9 +1337,9 @@ function PDF_setgray($p, float $g): void
  * @throws PdfException
  *
  */
-function PDF_setlinejoin($p, int $value): void
+function PDF_setlinejoin($p, $value)
 {
-    error_clear_last();
+
     $result = \PDF_setlinejoin($p, $value);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1355,9 +1355,9 @@ function PDF_setlinejoin($p, int $value): void
  * @throws PdfException
  *
  */
-function PDF_setlinewidth($p, float $width): void
+function PDF_setlinewidth($p, $width)
 {
-    error_clear_last();
+
     $result = \PDF_setlinewidth($p, $width);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1378,9 +1378,9 @@ function PDF_setlinewidth($p, float $width): void
  * @throws PdfException
  *
  */
-function PDF_setmatrix($p, float $a, float $b, float $c, float $d, float $e, float $f): void
+function PDF_setmatrix($p, $a, $b, $c, $d, $e, $f)
 {
-    error_clear_last();
+
     $result = \PDF_setmatrix($p, $a, $b, $c, $d, $e, $f);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1396,9 +1396,9 @@ function PDF_setmatrix($p, float $a, float $b, float $c, float $d, float $e, flo
  * @throws PdfException
  *
  */
-function PDF_setmiterlimit($pdfdoc, float $miter): void
+function PDF_setmiterlimit($pdfdoc, $miter)
 {
-    error_clear_last();
+
     $result = \PDF_setmiterlimit($pdfdoc, $miter);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1419,9 +1419,9 @@ function PDF_setmiterlimit($pdfdoc, float $miter): void
  * @throws PdfException
  *
  */
-function PDF_setrgbcolor_fill($p, float $red, float $green, float $blue): void
+function PDF_setrgbcolor_fill($p, $red, $green, $blue)
 {
-    error_clear_last();
+
     $result = \PDF_setrgbcolor_fill($p, $red, $green, $blue);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1442,9 +1442,9 @@ function PDF_setrgbcolor_fill($p, float $red, float $green, float $blue): void
  * @throws PdfException
  *
  */
-function PDF_setrgbcolor_stroke($p, float $red, float $green, float $blue): void
+function PDF_setrgbcolor_stroke($p, $red, $green, $blue)
 {
-    error_clear_last();
+
     $result = \PDF_setrgbcolor_stroke($p, $red, $green, $blue);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1466,9 +1466,9 @@ function PDF_setrgbcolor_stroke($p, float $red, float $green, float $blue): void
  * @throws PdfException
  *
  */
-function PDF_setrgbcolor($p, float $red, float $green, float $blue): void
+function PDF_setrgbcolor($p, $red, $green, $blue)
 {
-    error_clear_last();
+
     $result = \PDF_setrgbcolor($p, $red, $green, $blue);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1480,15 +1480,15 @@ function PDF_setrgbcolor($p, float $red, float $green, float $blue): void
  * Prints text in the current font. Returns TRUE on success.
  *
  * @param resource $p
- * @param string $text
+ * @param $text
  * @param float $x
  * @param float $y
  * @throws PdfException
  *
  */
-function PDF_show_xy($p, string $text, float $x, float $y): void
+function PDF_show_xy($p, $text, $x, $y)
 {
-    error_clear_last();
+
     $result = \PDF_show_xy($p, $text, $x, $y);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1501,13 +1501,13 @@ function PDF_show_xy($p, string $text, float $x, float $y): void
  * the current position. Returns TRUE on success.
  *
  * @param resource $pdfdoc
- * @param string $text
+ * @param $text
  * @throws PdfException
  *
  */
-function PDF_show($pdfdoc, string $text): void
+function PDF_show($pdfdoc, $text)
 {
-    error_clear_last();
+
     $result = \PDF_show($pdfdoc, $text);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1525,9 +1525,9 @@ function PDF_show($pdfdoc, string $text): void
  * @throws PdfException
  *
  */
-function PDF_skew($p, float $alpha, float $beta): void
+function PDF_skew($p, $alpha, $beta)
 {
-    error_clear_last();
+
     $result = \PDF_skew($p, $alpha, $beta);
     if ($result === false) {
         throw PdfException::createFromPhpError();
@@ -1543,9 +1543,9 @@ function PDF_skew($p, float $alpha, float $beta): void
  * @throws PdfException
  *
  */
-function PDF_stroke($p): void
+function PDF_stroke($p)
 {
-    error_clear_last();
+
     $result = \PDF_stroke($p);
     if ($result === false) {
         throw PdfException::createFromPhpError();

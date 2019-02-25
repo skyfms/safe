@@ -11,9 +11,9 @@ use Safe\Exceptions\SessionException;
  * @throws SessionException
  *
  */
-function session_abort(): void
+function session_abort()
 {
-    error_clear_last();
+
     $result = \session_abort();
     if ($result === false) {
         throw SessionException::createFromPhpError();
@@ -29,13 +29,13 @@ function session_abort(): void
  * By default, the unserialization method used is internal to PHP, and is not the same as unserialize.
  * The serialization method can be set using session.serialize_handler.
  *
- * @param string $data The encoded data to be stored.
+ * @param $data The encoded data to be stored.
  * @throws SessionException
  *
  */
-function session_decode(string $data): void
+function session_decode($data)
 {
-    error_clear_last();
+
     $result = \session_decode($data);
     if ($result === false) {
         throw SessionException::createFromPhpError();
@@ -59,9 +59,9 @@ function session_decode(string $data): void
  * @throws SessionException
  *
  */
-function session_destroy(): void
+function session_destroy()
 {
-    error_clear_last();
+
     $result = \session_destroy();
     if ($result === false) {
         throw SessionException::createFromPhpError();
@@ -84,9 +84,9 @@ function session_destroy(): void
  * @throws SessionException
  *
  */
-function session_regenerate_id(bool $delete_old_session = false): void
+function session_regenerate_id($delete_old_session = false)
 {
-    error_clear_last();
+
     $result = \session_regenerate_id($delete_old_session);
     if ($result === false) {
         throw SessionException::createFromPhpError();
@@ -102,9 +102,9 @@ function session_regenerate_id(bool $delete_old_session = false): void
  * @throws SessionException
  *
  */
-function session_reset(): void
+function session_reset()
 {
-    error_clear_last();
+
     $result = \session_reset();
     if ($result === false) {
         throw SessionException::createFromPhpError();
@@ -119,9 +119,9 @@ function session_reset(): void
  * @throws SessionException
  *
  */
-function session_unset(): void
+function session_unset()
 {
-    error_clear_last();
+
     $result = \session_unset();
     if ($result === false) {
         throw SessionException::createFromPhpError();
@@ -143,9 +143,9 @@ function session_unset(): void
  * @throws SessionException
  *
  */
-function session_write_close(): void
+function session_write_close()
 {
-    error_clear_last();
+
     $result = \session_write_close();
     if ($result === false) {
         throw SessionException::createFromPhpError();

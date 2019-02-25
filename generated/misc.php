@@ -7,7 +7,7 @@ use Safe\Exceptions\MiscException;
 /**
  * Defines a named constant at runtime.
  *
- * @param string $name The name of the constant.
+ * @param $name The name of the constant.
  *
  * It is possible to define constants with reserved or
  * even invalid names, whose value can (only) be retrieved with
@@ -28,9 +28,9 @@ use Safe\Exceptions\MiscException;
  * @throws MiscException
  *
  */
-function define(string $name, $value, bool $case_insensitive = false): void
+function define($name, $value, $case_insensitive = false)
 {
-    error_clear_last();
+
     $result = \define($name, $value, $case_insensitive);
     if ($result === false) {
         throw MiscException::createFromPhpError();
@@ -49,7 +49,7 @@ function define(string $name, $value, bool $case_insensitive = false): void
  * syntax highlighted source of the file. To enable this, add this
  * line to the httpd.conf:
  *
- * @param string $filename Path to the PHP file to be highlighted.
+ * @param $filename Path to the PHP file to be highlighted.
  * @param bool $return Set this parameter to TRUE to make this function return the
  * highlighted code.
  * @return string If return is set to TRUE, returns the highlighted
@@ -58,9 +58,9 @@ function define(string $name, $value, bool $case_insensitive = false): void
  * @throws MiscException
  *
  */
-function highlight_file(string $filename, bool $return = false)
+function highlight_file($filename, $return = false)
 {
-    error_clear_last();
+
     $result = \highlight_file($filename, $return);
     if ($result === false) {
         throw MiscException::createFromPhpError();
@@ -72,7 +72,7 @@ function highlight_file(string $filename, bool $return = false)
 /**
  *
  *
- * @param string $str The PHP code to be highlighted. This should include the opening tag.
+ * @param $str The PHP code to be highlighted. This should include the opening tag.
  * @param bool $return Set this parameter to TRUE to make this function return the
  * highlighted code.
  * @return string If return is set to TRUE, returns the highlighted
@@ -81,9 +81,9 @@ function highlight_file(string $filename, bool $return = false)
  * @throws MiscException
  *
  */
-function highlight_string(string $str, bool $return = false)
+function highlight_string($str, $return = false)
 {
-    error_clear_last();
+
     $result = \highlight_string($str, $return);
     if ($result === false) {
         throw MiscException::createFromPhpError();
@@ -99,9 +99,9 @@ function highlight_string(string $str, bool $return = false)
  * @throws MiscException
  *
  */
-function sapi_windows_cp_set(int $cp): void
+function sapi_windows_cp_set($cp)
 {
-    error_clear_last();
+
     $result = \sapi_windows_cp_set($cp);
     if ($result === false) {
         throw MiscException::createFromPhpError();
@@ -125,9 +125,9 @@ function sapi_windows_cp_set(int $cp): void
  * @throws MiscException
  *
  */
-function sapi_windows_vt100_support($stream, bool $enable = null): void
+function sapi_windows_vt100_support($stream, $enable = null)
 {
-    error_clear_last();
+
     if ($enable !== null) {
         $result = \sapi_windows_vt100_support($stream, $enable);
     } else {
@@ -154,9 +154,9 @@ function sapi_windows_vt100_support($stream, bool $enable = null): void
  * @throws MiscException
  *
  */
-function sleep(int $seconds): int
+function sleep($seconds)
 {
-    error_clear_last();
+
     $result = \sleep($seconds);
     if ($result === false) {
         throw MiscException::createFromPhpError();
@@ -192,9 +192,9 @@ function sleep(int $seconds): int
  * @throws MiscException
  *
  */
-function time_nanosleep(int $seconds, int $nanoseconds)
+function time_nanosleep($seconds, $nanoseconds)
 {
-    error_clear_last();
+
     $result = \time_nanosleep($seconds, $nanoseconds);
     if ($result === false) {
         throw MiscException::createFromPhpError();
@@ -211,9 +211,9 @@ function time_nanosleep(int $seconds, int $nanoseconds)
  * @throws MiscException
  *
  */
-function time_sleep_until(float $timestamp): void
+function time_sleep_until($timestamp)
 {
-    error_clear_last();
+
     $result = \time_sleep_until($timestamp);
     if ($result === false) {
         throw MiscException::createFromPhpError();

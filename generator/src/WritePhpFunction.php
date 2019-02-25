@@ -17,7 +17,7 @@ class WritePhpFunction
     /*
      * @return string
      */
-    public function getPhpPrototypeFunction(): string
+    public function getPhpPrototypeFunction()
     {
         if ($this->method->getFunctionName()) {
             return 'function '.$this->method->getFunctionName().'('.$this->displayParamsWithType($this->method->getParams()).')'.': '.$this->method->getReturnType().'{}';
@@ -28,7 +28,7 @@ class WritePhpFunction
     /*
      * return string
      */
-    public function getPhpFunctionalFunction(): string
+    public function getPhpFunctionalFunction()
     {
         if ($this->getPhpPrototypeFunction()) {
             return $this->writePhpFunction();
@@ -39,7 +39,7 @@ class WritePhpFunction
     /*
      * return string
      */
-    private function writePhpFunction(): string
+    private function writePhpFunction()
     {
         $phpFunction = $this->method->getPhpDoc();
         if ($this->method->getReturnType() !== 'mixed' && $this->method->getReturnType() !== 'resource') {
@@ -55,7 +55,7 @@ class WritePhpFunction
 
         $phpFunction .= "function {$this->method->getFunctionName()}({$this->displayParamsWithType($this->method->getParams())}){$returnType}
 {
-    error_clear_last();
+
 ";
 
         if (!$this->method->isOverloaded()) {
@@ -97,7 +97,7 @@ class WritePhpFunction
         return $phpFunction;
     }
 
-    private function generateExceptionCode(string $moduleName, Method $method) : string
+    private function generateExceptionCode($moduleName, Method $method)
     {
         // Special case for CURL: we need the first argument of the method if this is a resource.
         if ($moduleName === 'Curl') {
@@ -123,7 +123,7 @@ class WritePhpFunction
      * @param Parameter[] $params
      * @return string
      */
-    private function displayParamsWithType(array $params): string
+    private function displayParamsWithType(array $params)
     {
         $paramsAsString = [];
         $optDetected = false;
@@ -163,7 +163,7 @@ class WritePhpFunction
         return implode(', ', $paramsAsString);
     }
 
-    private function printFunctionCall(Method $function): string
+    private function printFunctionCall(Method $function)
     {
         $functionCall = '\\'.$function->getFunctionName().'(';
         $functionCall .= implode(', ', \array_map(function (Parameter $parameter) {
@@ -177,7 +177,7 @@ class WritePhpFunction
         return $functionCall;
     }
 
-    private function defaultValueToString(?string $defaultValue): string
+    private function defaultValueToString($defaultValue)
     {
         if ($defaultValue === null) {
             return 'null';

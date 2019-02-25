@@ -14,7 +14,7 @@ class Parameter
      */
     private $phpStanFunction;
 
-    public function __construct(\SimpleXMLElement $parameter, ?PhpStanFunction $phpStanFunction)
+    public function __construct(\SimpleXMLElement $parameter, $phpStanFunction)
     {
         $this->parameter = $parameter;
         $this->phpStanFunction = $phpStanFunction;
@@ -24,7 +24,7 @@ class Parameter
      * Returns the type as declared in the doc.
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         $type = $this->parameter->type->__toString();
         $strType = Type::toRootNamespace($type);
@@ -44,7 +44,7 @@ class Parameter
      * Returns the type as declared in the doc.
      * @return string
      */
-    public function getBestType(): string
+    public function getBestType()
     {
         // Get the type from PhpStan database first, then from the php doc.
         if ($this->phpStanFunction !== null) {
@@ -64,7 +64,7 @@ class Parameter
     /*
      * @return string
      */
-    public function getParameter(): string
+    public function getParameter()
     {
         if ($this->isVariadic()) {
             return 'params';
@@ -73,7 +73,7 @@ class Parameter
         return \str_replace('-', '_', $this->parameter->parameter->__toString());
     }
 
-    public function isByReference(): bool
+    public function isByReference()
     {
         return ((string)$this->parameter->parameter['role']) === 'reference';
     }
@@ -84,7 +84,7 @@ class Parameter
      *
      * @return bool
      */
-    public function isOptionalWithNoDefault(): bool
+    public function isOptionalWithNoDefault()
     {
         if (((string)$this->parameter['choice']) !== 'opt') {
             return false;
@@ -101,12 +101,12 @@ class Parameter
         return false;
     }
 
-    public function isVariadic(): bool
+    public function isVariadic()
     {
         return $this->parameter->parameter->__toString() === '...';
     }
 
-    public function isNullable(): bool
+    public function isNullable()
     {
         if ($this->phpStanFunction !== null) {
             $phpStanParameter = $this->phpStanFunction->getParameter($this->getParameter());
@@ -120,17 +120,17 @@ class Parameter
     /*
      * @return string
      */
-    public function getInitializer(): string
+    public function getInitializer()
     {
         return \str_replace(['<constant>', '</constant>'], '', $this->getInnerXml($this->parameter->initializer));
     }
 
-    public function hasDefaultValue(): bool
+    public function hasDefaultValue()
     {
         return isset($this->parameter->initializer);
     }
 
-    public function getDefaultValue(): ?string
+    public function getDefaultValue()
     {
         if (!$this->hasDefaultValue()) {
             return null;
@@ -146,7 +146,7 @@ class Parameter
         return $initializer;
     }
 
-    private function getInnerXml(\SimpleXMLElement $SimpleXMLElement): string
+    private function getInnerXml(\SimpleXMLElement $SimpleXMLElement)
     {
         $element_name = $SimpleXMLElement->getName();
         $inner_xml = $SimpleXMLElement->asXML();

@@ -88,7 +88,7 @@ use Safe\Exceptions\ExecException;
  */
 function proc_get_status($process): array
 {
-    error_clear_last();
+
     $result = \proc_get_status($process);
     if ($result === false) {
         throw ExecException::createFromPhpError();
@@ -117,9 +117,9 @@ function proc_get_status($process): array
  * @throws ExecException
  *
  */
-function proc_nice(int $increment): void
+function proc_nice($increment)
 {
-    error_clear_last();
+
     $result = \proc_nice($increment);
     if ($result === false) {
         throw ExecException::createFromPhpError();
@@ -140,7 +140,7 @@ function proc_nice(int $increment): void
  * command passed directly back without any interference, use the
  * passthru function.
  *
- * @param string $command The command that will be executed.
+ * @param $command The command that will be executed.
  * @param int $return_var If the return_var argument is present, then the
  * return status of the executed command will be written to this
  * variable.
@@ -148,9 +148,9 @@ function proc_nice(int $increment): void
  * @throws ExecException
  *
  */
-function system(string $command, int &$return_var = null): string
+function system($command, int &$return_var = null)
 {
-    error_clear_last();
+
     $result = \system($command, $return_var);
     if ($result === false) {
         throw ExecException::createFromPhpError();

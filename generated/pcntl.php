@@ -7,7 +7,7 @@ use Safe\Exceptions\PcntlException;
 /**
  * Executes the program with the given arguments.
  *
- * @param string $path path must be the path to a binary executable or a
+ * @param $path path must be the path to a binary executable or a
  * script with a valid path pointing to an executable in the shebang (
  * #!/usr/local/bin/perl for example) as the first line.  See your system's
  * man execve(2) page for additional information.
@@ -20,9 +20,9 @@ use Safe\Exceptions\PcntlException;
  * @throws PcntlException
  *
  */
-function pcntl_exec(string $path, array $args = null, array $envs = null): void
+function pcntl_exec($path, array $args = null, array $envs = null)
 {
-    error_clear_last();
+
     if ($envs !== null) {
         $result = \pcntl_exec($path, $args, $envs);
     } elseif ($args !== null) {
@@ -50,9 +50,9 @@ function pcntl_exec(string $path, array $args = null, array $envs = null): void
  * @throws PcntlException
  *
  */
-function pcntl_getpriority(int $pid = null, int $process_identifier = PRIO_PROCESS): int
+function pcntl_getpriority($pid = null, $process_identifier = PRIO_PROCESS)
 {
-    error_clear_last();
+
     if ($process_identifier !== PRIO_PROCESS) {
         $result = \pcntl_getpriority($pid, $process_identifier);
     } elseif ($pid !== null) {
@@ -83,9 +83,9 @@ function pcntl_getpriority(int $pid = null, int $process_identifier = PRIO_PROCE
  * @throws PcntlException
  *
  */
-function pcntl_setpriority(int $priority, int $pid = null, int $process_identifier = PRIO_PROCESS): void
+function pcntl_setpriority($priority, $pid = null, $process_identifier = PRIO_PROCESS)
 {
-    error_clear_last();
+
     if ($process_identifier !== PRIO_PROCESS) {
         $result = \pcntl_setpriority($priority, $pid, $process_identifier);
     } elseif ($pid !== null) {
@@ -107,9 +107,9 @@ function pcntl_setpriority(int $priority, int $pid = null, int $process_identifi
  * @throws PcntlException
  *
  */
-function pcntl_signal_dispatch(): void
+function pcntl_signal_dispatch()
 {
-    error_clear_last();
+
     $result = \pcntl_signal_dispatch();
     if ($result === false) {
         throw PcntlException::createFromPhpError();
@@ -137,9 +137,9 @@ function pcntl_signal_dispatch(): void
  * @throws PcntlException
  *
  */
-function pcntl_sigprocmask(int $how, array $set, ?array &$oldset = null): void
+function pcntl_sigprocmask($how, array $set, &$oldset = null)
 {
-    error_clear_last();
+
     $result = \pcntl_sigprocmask($how, $set, $oldset);
     if ($result === false) {
         throw PcntlException::createFromPhpError();
@@ -155,9 +155,9 @@ function pcntl_sigprocmask(int $how, array $set, ?array &$oldset = null): void
  * @throws PcntlException
  *
  */
-function pcntl_strerror(int $errno): string
+function pcntl_strerror($errno)
 {
-    error_clear_last();
+
     $result = \pcntl_strerror($errno);
     if ($result === false) {
         throw PcntlException::createFromPhpError();

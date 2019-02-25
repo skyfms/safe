@@ -13,9 +13,9 @@ use Safe\Exceptions\LzfException;
  * @throws LzfException
  *
  */
-function lzf_compress(string $data): string
+function lzf_compress($data)
 {
-    error_clear_last();
+
     $result = \lzf_compress($data);
     if ($result === false) {
         throw LzfException::createFromPhpError();
@@ -33,9 +33,9 @@ function lzf_compress(string $data): string
  * @throws LzfException
  *
  */
-function lzf_decompress(string $data): string
+function lzf_decompress($data)
 {
-    error_clear_last();
+
     $result = \lzf_decompress($data);
     if ($result === false) {
         throw LzfException::createFromPhpError();

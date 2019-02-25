@@ -11,9 +11,9 @@ use Safe\Exceptions\ApacheException;
  * @throws ApacheException
  *
  */
-function apache_get_version(): string
+function apache_get_version()
 {
-    error_clear_last();
+
     $result = \apache_get_version();
     if ($result === false) {
         throw ApacheException::createFromPhpError();
@@ -28,15 +28,15 @@ function apache_get_version(): string
  *
  * This function requires Apache 2 otherwise it's undefined.
  *
- * @param string $variable The Apache environment variable
+ * @param $variable The Apache environment variable
  * @param bool $walk_to_top Whether to get the top-level variable available to all Apache layers.
  * @return string The value of the Apache environment variable on success
  * @throws ApacheException
  *
  */
-function apache_getenv(string $variable, bool $walk_to_top = false): string
+function apache_getenv($variable, $walk_to_top = false)
 {
-    error_clear_last();
+
     $result = \apache_getenv($variable, $walk_to_top);
     if ($result === false) {
         throw ApacheException::createFromPhpError();
@@ -54,7 +54,7 @@ function apache_getenv(string $variable, bool $walk_to_top = false): string
  */
 function apache_request_headers(): array
 {
-    error_clear_last();
+
     $result = \apache_request_headers();
     if ($result === false) {
         throw ApacheException::createFromPhpError();
@@ -75,9 +75,9 @@ function apache_request_headers(): array
  * @throws ApacheException
  *
  */
-function apache_reset_timeout(): void
+function apache_reset_timeout()
 {
-    error_clear_last();
+
     $result = \apache_reset_timeout();
     if ($result === false) {
         throw ApacheException::createFromPhpError();
@@ -94,7 +94,7 @@ function apache_reset_timeout(): void
  */
 function apache_response_headers(): array
 {
-    error_clear_last();
+
     $result = \apache_response_headers();
     if ($result === false) {
         throw ApacheException::createFromPhpError();
@@ -108,15 +108,15 @@ function apache_response_headers(): array
  * environment variable specified by
  * variable.
  *
- * @param string $variable The environment variable that's being set.
- * @param string $value The new variable value.
+ * @param $variable The environment variable that's being set.
+ * @param $value The new variable value.
  * @param bool $walk_to_top Whether to set the top-level variable available to all Apache layers.
  * @throws ApacheException
  *
  */
-function apache_setenv(string $variable, string $value, bool $walk_to_top = false): void
+function apache_setenv($variable, $value, $walk_to_top = false)
 {
-    error_clear_last();
+
     $result = \apache_setenv($variable, $value, $walk_to_top);
     if ($result === false) {
         throw ApacheException::createFromPhpError();
@@ -137,7 +137,7 @@ function apache_setenv(string $variable, string $value, bool $walk_to_top = fals
  */
 function getallheaders(): array
 {
-    error_clear_last();
+
     $result = \getallheaders();
     if ($result === false) {
         throw ApacheException::createFromPhpError();
@@ -159,13 +159,13 @@ function getallheaders(): array
  * To run the sub-request, all buffers are terminated and flushed to the
  * browser, pending headers are sent too.
  *
- * @param string $filename The file that the virtual command will be performed on.
+ * @param $filename The file that the virtual command will be performed on.
  * @throws ApacheException
  *
  */
-function virtual(string $filename): void
+function virtual($filename)
 {
-    error_clear_last();
+
     $result = \virtual($filename);
     if ($result === false) {
         throw ApacheException::createFromPhpError();

@@ -12,9 +12,9 @@ use Safe\Exceptions\ShmopException;
  * @throws ShmopException
  *
  */
-function shmop_delete($shmid): void
+function shmop_delete($shmid)
 {
-    error_clear_last();
+
     $result = \shmop_delete($shmid);
     if ($result === false) {
         throw ShmopException::createFromPhpError();
@@ -34,9 +34,9 @@ function shmop_delete($shmid): void
  * @throws ShmopException
  *
  */
-function shmop_read($shmid, int $start, int $count): string
+function shmop_read($shmid, $start, $count)
 {
-    error_clear_last();
+
     $result = \shmop_read($shmid, $start, $count);
     if ($result === false) {
         throw ShmopException::createFromPhpError();
@@ -50,16 +50,16 @@ function shmop_read($shmid, int $start, int $count): string
  *
  * @param resource $shmid The shared memory block identifier created by
  * shmop_open
- * @param string $data A string to write into shared memory block
+ * @param $data A string to write into shared memory block
  * @param int $offset Specifies where to start writing data inside the shared memory
  * segment.
  * @return int The size of the written data.
  * @throws ShmopException
  *
  */
-function shmop_write($shmid, string $data, int $offset): int
+function shmop_write($shmid, $data, $offset)
 {
-    error_clear_last();
+
     $result = \shmop_write($shmid, $data, $offset);
     if ($result === false) {
         throw ShmopException::createFromPhpError();

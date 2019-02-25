@@ -61,9 +61,9 @@ use Safe\Exceptions\InfoException;
  * @throws InfoException
  *
  */
-function assert_options(int $what, $value = null)
+function assert_options($what, $value = null)
 {
-    error_clear_last();
+
     if ($value !== null) {
         $result = \assert_options($what, $value);
     } else {
@@ -81,13 +81,13 @@ function assert_options(int $what, $value = null)
  * ps. This function is available only in
  * CLI mode.
  *
- * @param string $title The new title.
+ * @param $title The new title.
  * @throws InfoException
  *
  */
-function cli_set_process_title(string $title): void
+function cli_set_process_title($title)
 {
-    error_clear_last();
+
     $result = \cli_set_process_title($title);
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -104,7 +104,7 @@ function cli_set_process_title(string $title): void
  * extensions and dynamically loaded ones (either through php.ini or
  * dl).
  *
- * @param string $library This parameter is only the filename of the
+ * @param $library This parameter is only the filename of the
  * extension to load which also depends on your platform. For example,
  * the sockets extension (if compiled
  * as a shared module, not the default!) would be called
@@ -156,9 +156,9 @@ function cli_set_process_title(string $title): void
  * @throws InfoException
  *
  */
-function dl(string $library): void
+function dl($library)
 {
-    error_clear_last();
+
     $result = \dl($library);
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -178,9 +178,9 @@ function dl(string $library): void
  * @throws InfoException
  *
  */
-function getlastmod(): int
+function getlastmod()
 {
-    error_clear_last();
+
     $result = \getlastmod();
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -196,9 +196,9 @@ function getlastmod(): int
  * @throws InfoException
  *
  */
-function getmygid(): int
+function getmygid()
 {
-    error_clear_last();
+
     $result = \getmygid();
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -214,9 +214,9 @@ function getmygid(): int
  * @throws InfoException
  *
  */
-function getmyinode(): int
+function getmyinode()
 {
-    error_clear_last();
+
     $result = \getmyinode();
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -232,9 +232,9 @@ function getmyinode(): int
  * @throws InfoException
  *
  */
-function getmypid(): int
+function getmypid()
 {
-    error_clear_last();
+
     $result = \getmypid();
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -250,9 +250,9 @@ function getmypid(): int
  * @throws InfoException
  *
  */
-function getmyuid(): int
+function getmyuid()
 {
-    error_clear_last();
+
     $result = \getmyuid();
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -264,16 +264,16 @@ function getmyuid(): int
 /**
  * Parses options passed to the script.
  *
- * @param string $options
+ * @param $options
  * @param array $longopts
  * @param int $optind
  * @return array|array|array This function will return an array of option / argument pairs.
  * @throws InfoException
  *
  */
-function getopt(string $options, array $longopts = null, ?int &$optind = null): array
+function getopt($options, array $longopts = null, &$optind = null): array
 {
-    error_clear_last();
+
     if ($optind !== null) {
         $result = \getopt($options, $longopts, $optind);
     } elseif ($longopts !== null) {
@@ -293,7 +293,7 @@ function getopt(string $options, array $longopts = null, ?int &$optind = null): 
  * will keep this new value during the script's execution, and will be restored
  * at the script's ending.
  *
- * @param string $varname Not all the available options can be changed using
+ * @param $varname Not all the available options can be changed using
  * ini_set. There is a list of all available options
  * in the appendix.
  * @param string|int|float|bool $newvalue The new value for the option.
@@ -301,9 +301,9 @@ function getopt(string $options, array $longopts = null, ?int &$optind = null): 
  * @throws InfoException
  *
  */
-function ini_set(string $varname, string $newvalue): string
+function ini_set($varname, $newvalue)
 {
-    error_clear_last();
+
     $result = \ini_set($varname, $newvalue);
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -381,9 +381,9 @@ function ini_set(string $varname, string $newvalue): string
  * @throws InfoException
  *
  */
-function phpcredits(int $flag = CREDITS_ALL): void
+function phpcredits($flag = CREDITS_ALL)
 {
-    error_clear_last();
+
     $result = \phpcredits($flag);
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -491,9 +491,9 @@ function phpcredits(int $flag = CREDITS_ALL): void
  * @throws InfoException
  *
  */
-function phpinfo(int $what = INFO_ALL): void
+function phpinfo($what = INFO_ALL)
 {
-    error_clear_last();
+
     $result = \phpinfo($what);
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -522,13 +522,13 @@ function phpinfo(int $what = INFO_ALL): void
  * be protected even if safe_mode_allowed_env_vars is set
  * to allow to change them.
  *
- * @param string $setting The setting, like "FOO=BAR"
+ * @param $setting The setting, like "FOO=BAR"
  * @throws InfoException
  *
  */
-function putenv(string $setting): void
+function putenv($setting)
 {
-    error_clear_last();
+
     $result = \putenv($setting);
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -540,15 +540,15 @@ function putenv(string $setting): void
  * Sets the include_path
  * configuration option for the duration of the script.
  *
- * @param string $new_include_path The new value for the include_path
+ * @param $new_include_path The new value for the include_path
  * @return string Returns the old include_path on
  * success.
  * @throws InfoException
  *
  */
-function set_include_path(string $new_include_path): string
+function set_include_path($new_include_path)
 {
-    error_clear_last();
+
     $result = \set_include_path($new_include_path);
     if ($result === false) {
         throw InfoException::createFromPhpError();
@@ -574,9 +574,9 @@ function set_include_path(string $new_include_path): string
  * @throws InfoException
  *
  */
-function set_time_limit(int $seconds): void
+function set_time_limit($seconds)
 {
-    error_clear_last();
+
     $result = \set_time_limit($seconds);
     if ($result === false) {
         throw InfoException::createFromPhpError();

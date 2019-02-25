@@ -8,16 +8,16 @@ use Safe\Exceptions\LdapException;
  * Does the same thing as ldap_add but returns the LDAP result resource to be parsed with ldap_parse_result.
  *
  * @param resource $link_identifier
- * @param string $dn
+ * @param $dn
  * @param array $entry
  * @param array $serverctrls
  * @return resource Returns an LDAP result identifier.
  * @throws LdapException
  *
  */
-function ldap_add_ext($link_identifier, string $dn, array $entry, array $serverctrls = null)
+function ldap_add_ext($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_add_ext($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -30,7 +30,7 @@ function ldap_add_ext($link_identifier, string $dn, array $entry, array $serverc
  * Add entries in the LDAP directory.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $dn The distinguished name of an LDAP entity.
+ * @param $dn The distinguished name of an LDAP entity.
  * @param array $entry An array that specifies the information about the entry. The values in
  * the entries are indexed by individual attributes.
  * In case of multiple values for an attribute, they are indexed using
@@ -45,9 +45,9 @@ function ldap_add_ext($link_identifier, string $dn, array $entry, array $serverc
  * @throws LdapException
  *
  */
-function ldap_add($link_identifier, string $dn, array $entry, array $serverctrls = null): void
+function ldap_add($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_add($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -65,9 +65,9 @@ function ldap_add($link_identifier, string $dn, array $entry, array $serverctrls
  * @throws LdapException
  *
  */
-function ldap_bind_ext($link_identifier, ?string $bind_rdn = null, ?string $bind_password = null)
+function ldap_bind_ext($link_identifier, $bind_rdn = null, $bind_password = null)
 {
-    error_clear_last();
+
     $result = \ldap_bind_ext($link_identifier, $bind_rdn, $bind_password);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -80,14 +80,14 @@ function ldap_bind_ext($link_identifier, ?string $bind_rdn = null, ?string $bind
  * Binds to the LDAP directory with specified RDN and password.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $bind_rdn
- * @param string $bind_password
+ * @param $bind_rdn
+ * @param $bind_password
  * @throws LdapException
  *
  */
-function ldap_bind($link_identifier, ?string $bind_rdn = null, ?string $bind_password = null): void
+function ldap_bind($link_identifier, $bind_rdn = null, $bind_password = null)
 {
-    error_clear_last();
+
     $result = \ldap_bind($link_identifier, $bind_rdn, $bind_password);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -100,14 +100,14 @@ function ldap_bind($link_identifier, ?string $bind_rdn = null, ?string $bind_pas
  *
  * @param resource $link An LDAP link identifier, returned by ldap_connect.
  * @param resource $result
- * @param string $cookie An opaque structure sent by the server.
+ * @param $cookie An opaque structure sent by the server.
  * @param int $estimated The estimated number of entries to retrieve.
  * @throws LdapException
  *
  */
-function ldap_control_paged_result_response($link, $result, ?string &$cookie = null, ?int &$estimated = null): void
+function ldap_control_paged_result_response($link, $result, &$cookie = null, &$estimated = null)
 {
-    error_clear_last();
+
     $result = \ldap_control_paged_result_response($link, $result, $cookie, $estimated);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -123,14 +123,14 @@ function ldap_control_paged_result_response($link, $result, ?string &$cookie = n
  * @param bool $iscritical Indicates whether the pagination is critical or not.
  * If true and if the server doesn't support pagination, the search
  * will return no result.
- * @param string $cookie An opaque structure sent by the server
+ * @param $cookie An opaque structure sent by the server
  * (ldap_control_paged_result_response).
  * @throws LdapException
  *
  */
-function ldap_control_paged_result($link, int $pagesize, bool $iscritical = false, string $cookie = ""): void
+function ldap_control_paged_result($link, $pagesize, $iscritical = false, $cookie = "")
 {
-    error_clear_last();
+
     $result = \ldap_control_paged_result($link, $pagesize, $iscritical, $cookie);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -148,9 +148,9 @@ function ldap_control_paged_result($link, int $pagesize, bool $iscritical = fals
  * @throws LdapException
  *
  */
-function ldap_count_entries($link_identifier, $result_identifier): int
+function ldap_count_entries($link_identifier, $result_identifier)
 {
-    error_clear_last();
+
     $result = \ldap_count_entries($link_identifier, $result_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -163,15 +163,15 @@ function ldap_count_entries($link_identifier, $result_identifier): int
  * Does the same thing as ldap_delete but returns the LDAP result resource to be parsed with ldap_parse_result.
  *
  * @param resource $link_identifier
- * @param string $dn
+ * @param $dn
  * @param array $serverctrls
  * @return resource Returns an LDAP result identifier.
  * @throws LdapException
  *
  */
-function ldap_delete_ext($link_identifier, string $dn, array $serverctrls = null)
+function ldap_delete_ext($link_identifier, $dn, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_delete_ext($link_identifier, $dn, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -184,14 +184,14 @@ function ldap_delete_ext($link_identifier, string $dn, array $serverctrls = null
  * Deletes a particular entry in LDAP directory.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $dn The distinguished name of an LDAP entity.
+ * @param $dn The distinguished name of an LDAP entity.
  * @param array $serverctrls Array of LDAP Controls to send with the request.
  * @throws LdapException
  *
  */
-function ldap_delete($link_identifier, string $dn, array $serverctrls = null): void
+function ldap_delete($link_identifier, $dn, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_delete($link_identifier, $dn, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -203,9 +203,9 @@ function ldap_delete($link_identifier, string $dn, array $serverctrls = null): v
  * Performs a PASSWD extended operation.
  *
  * @param resource $link An LDAP link identifier, returned by ldap_connect.
- * @param string $user dn of the user to change the password of.
- * @param string $oldpw The old password of this user. May be ommited depending of server configuration.
- * @param string $newpw The new password for this user. May be omitted or empty to have a generated password.
+ * @param $user dn of the user to change the password of.
+ * @param $oldpw The old password of this user. May be ommited depending of server configuration.
+ * @param $newpw The new password for this user. May be omitted or empty to have a generated password.
  * @param array $serverctrls If provided, a password policy request control is send with the request and this is
  * filled with an array of LDAP Controls
  * returned with the request.
@@ -214,9 +214,9 @@ function ldap_delete($link_identifier, string $dn, array $serverctrls = null): v
  * @throws LdapException
  *
  */
-function ldap_exop_passwd($link, string $user = "", string $oldpw = "", string $newpw = "", array &$serverctrls = null)
+function ldap_exop_passwd($link, $user = "", $oldpw = "", $newpw = "", array &$serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_exop_passwd($link, $user, $oldpw, $newpw, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -233,9 +233,9 @@ function ldap_exop_passwd($link, string $user = "", string $oldpw = "", string $
  * @throws LdapException
  *
  */
-function ldap_exop_whoami($link): string
+function ldap_exop_whoami($link)
 {
-    error_clear_last();
+
     $result = \ldap_exop_whoami($link);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -250,10 +250,10 @@ function ldap_exop_whoami($link): string
  * reqdata the data.
  *
  * @param resource $link An LDAP link identifier, returned by ldap_connect.
- * @param string $reqoid The extended operation request OID. You may use one of LDAP_EXOP_START_TLS, LDAP_EXOP_MODIFY_PASSWD, LDAP_EXOP_REFRESH, LDAP_EXOP_WHO_AM_I, LDAP_EXOP_TURN, or a string with the OID of the operation you want to send.
- * @param string $reqdata The extended operation request data. May be NULL for some operations like LDAP_EXOP_WHO_AM_I, may also need to be BER encoded.
+ * @param $reqoid The extended operation request OID. You may use one of LDAP_EXOP_START_TLS, LDAP_EXOP_MODIFY_PASSWD, LDAP_EXOP_REFRESH, LDAP_EXOP_WHO_AM_I, LDAP_EXOP_TURN, or a string with the OID of the operation you want to send.
+ * @param $reqdata The extended operation request data. May be NULL for some operations like LDAP_EXOP_WHO_AM_I, may also need to be BER encoded.
  * @param array $serverctrls Array of LDAP Controls to send with the request.
- * @param string $retdata Will be filled with the extended operation response data if provided.
+ * @param $retdata Will be filled with the extended operation response data if provided.
  * If not provided you may use ldap_parse_exop on the result object
  * later to get this data.
  * @param string $retoid Will be filled with the response OID if provided, usually equal to the request OID.
@@ -262,9 +262,9 @@ function ldap_exop_whoami($link): string
  * @throws LdapException
  *
  */
-function ldap_exop($link, string $reqoid, string $reqdata = null, ?array $serverctrls = null, string &$retdata = null, string &$retoid = null)
+function ldap_exop($link, $reqoid, $reqdata = null, $serverctrls = null, string &$retdata = null, string &$retoid = null)
 {
-    error_clear_last();
+
     $result = \ldap_exop($link, $reqoid, $reqdata, $serverctrls, $retdata, $retoid);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -278,7 +278,7 @@ function ldap_exop($link, string $reqoid, string $reqdata = null, ?array $server
  * up into its component parts. Each part is known as Relative Distinguished
  * Name, or RDN.
  *
- * @param string $dn The distinguished name of an LDAP entity.
+ * @param $dn The distinguished name of an LDAP entity.
  * @param int $with_attrib Used to request if the RDNs are returned with only values or their
  * attributes as well.  To get RDNs with the attributes (i.e. in
  * attribute=value format) set with_attrib to 0
@@ -290,9 +290,9 @@ function ldap_exop($link, string $reqoid, string $reqdata = null, ?array $server
  * @throws LdapException
  *
  */
-function ldap_explode_dn(string $dn, int $with_attrib): array
+function ldap_explode_dn($dn, $with_attrib): array
 {
-    error_clear_last();
+
     $result = \ldap_explode_dn($dn, $with_attrib);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -315,9 +315,9 @@ function ldap_explode_dn(string $dn, int $with_attrib): array
  * @throws LdapException
  *
  */
-function ldap_first_attribute($link_identifier, $result_entry_identifier): string
+function ldap_first_attribute($link_identifier, $result_entry_identifier)
 {
-    error_clear_last();
+
     $result = \ldap_first_attribute($link_identifier, $result_entry_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -344,7 +344,7 @@ function ldap_first_attribute($link_identifier, $result_entry_identifier): strin
  */
 function ldap_first_entry($link_identifier, $result_identifier)
 {
-    error_clear_last();
+
     $result = \ldap_first_entry($link_identifier, $result_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -366,9 +366,9 @@ function ldap_first_entry($link_identifier, $result_identifier)
  * @throws LdapException
  *
  */
-function ldap_free_result($result_identifier): void
+function ldap_free_result($result_identifier)
 {
-    error_clear_last();
+
     $result = \ldap_free_result($result_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -400,7 +400,7 @@ function ldap_free_result($result_identifier): void
  */
 function ldap_get_attributes($link_identifier, $result_entry_identifier): array
 {
-    error_clear_last();
+
     $result = \ldap_get_attributes($link_identifier, $result_entry_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -418,9 +418,9 @@ function ldap_get_attributes($link_identifier, $result_entry_identifier): array
  * @throws LdapException
  *
  */
-function ldap_get_dn($link_identifier, $result_entry_identifier): string
+function ldap_get_dn($link_identifier, $result_entry_identifier)
 {
-    error_clear_last();
+
     $result = \ldap_get_dn($link_identifier, $result_entry_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -452,7 +452,7 @@ function ldap_get_dn($link_identifier, $result_entry_identifier): string
  */
 function ldap_get_entries($link_identifier, $result_identifier): array
 {
-    error_clear_last();
+
     $result = \ldap_get_entries($link_identifier, $result_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -643,9 +643,9 @@ function ldap_get_entries($link_identifier, $result_identifier): array
  * @throws LdapException
  *
  */
-function ldap_get_option($link_identifier, int $option, &$retval): void
+function ldap_get_option($link_identifier, $option, &$retval)
 {
-    error_clear_last();
+
     $result = \ldap_get_option($link_identifier, $option, $retval);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -661,7 +661,7 @@ function ldap_get_option($link_identifier, int $option, &$retval): void
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
  * @param resource $result_entry_identifier
- * @param string $attribute
+ * @param $attribute
  * @return array Returns an array of values for the attribute on success and FALSE on
  * error. Individual values are accessed by integer index in the array. The
  * first index is 0. The number of values can be found by indexing "count"
@@ -669,9 +669,9 @@ function ldap_get_option($link_identifier, int $option, &$retval): void
  * @throws LdapException
  *
  */
-function ldap_get_values_len($link_identifier, $result_entry_identifier, string $attribute): array
+function ldap_get_values_len($link_identifier, $result_entry_identifier, $attribute): array
 {
-    error_clear_last();
+
     $result = \ldap_get_values_len($link_identifier, $result_entry_identifier, $attribute);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -694,7 +694,7 @@ function ldap_get_values_len($link_identifier, $result_entry_identifier, string 
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
  * @param resource $result_entry_identifier
- * @param string $attribute
+ * @param $attribute
  * @return array Returns an array of values for the attribute on success and FALSE on
  * error. The number of values can be found by indexing "count" in the
  * resultant array. Individual values are accessed by integer index in the
@@ -713,9 +713,9 @@ function ldap_get_values_len($link_identifier, $result_entry_identifier, string 
  * @throws LdapException
  *
  */
-function ldap_get_values($link_identifier, $result_entry_identifier, string $attribute): array
+function ldap_get_values($link_identifier, $result_entry_identifier, $attribute): array
 {
-    error_clear_last();
+
     $result = \ldap_get_values($link_identifier, $result_entry_identifier, $attribute);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -735,8 +735,8 @@ function ldap_get_values($link_identifier, $result_entry_identifier, string $att
  * current working directory.)
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $base_dn The base DN for the directory.
- * @param string $filter
+ * @param $base_dn The base DN for the directory.
+ * @param $filter
  * @param array $attributes An array of the required attributes, e.g. array("mail", "sn", "cn").
  * Note that the "dn" is always returned irrespective of which attributes
  * types are requested.
@@ -797,9 +797,9 @@ function ldap_get_values($link_identifier, $result_entry_identifier, string $att
  * @throws LdapException
  *
  */
-function ldap_list($link_identifier, string $base_dn, string $filter, array $attributes = null, int $attrsonly = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = LDAP_DEREF_NEVER, array $serverctrls = null)
+function ldap_list($link_identifier, $base_dn, $filter, array $attributes = null, $attrsonly = 0, $sizelimit = -1, $timelimit = -1, $deref = LDAP_DEREF_NEVER, array $serverctrls = null)
 {
-    error_clear_last();
+
     if ($serverctrls !== null) {
         $result = \ldap_list($link_identifier, $base_dn, $filter, $attributes, $attrsonly, $sizelimit, $timelimit, $deref, $serverctrls);
     } elseif ($deref !== LDAP_DEREF_NEVER) {
@@ -826,16 +826,16 @@ function ldap_list($link_identifier, string $base_dn, string $filter, array $att
  * Does the same thing as ldap_mod_add but returns the LDAP result resource to be parsed with ldap_parse_result.
  *
  * @param resource $link_identifier
- * @param string $dn
+ * @param $dn
  * @param array $entry
  * @param array $serverctrls
  * @return resource Returns an LDAP result identifier.
  * @throws LdapException
  *
  */
-function ldap_mod_add_ext($link_identifier, string $dn, array $entry, array $serverctrls = null)
+function ldap_mod_add_ext($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_mod_add_ext($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -849,15 +849,15 @@ function ldap_mod_add_ext($link_identifier, string $dn, array $entry, array $ser
  * To add a whole new object see ldap_add function.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $dn The distinguished name of an LDAP entity.
+ * @param $dn The distinguished name of an LDAP entity.
  * @param array $entry An associative array listing the attirbute values to add. If an attribute was not existing yet it will be added. If an attribute is existing you can only add values to it if it supports multiple values.
  * @param array $serverctrls Array of LDAP Controls to send with the request.
  * @throws LdapException
  *
  */
-function ldap_mod_add($link_identifier, string $dn, array $entry, array $serverctrls = null): void
+function ldap_mod_add($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_mod_add($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -869,16 +869,16 @@ function ldap_mod_add($link_identifier, string $dn, array $entry, array $serverc
  * Does the same thing as ldap_mod_del but returns the LDAP result resource to be parsed with ldap_parse_result.
  *
  * @param resource $link_identifier
- * @param string $dn
+ * @param $dn
  * @param array $entry
  * @param array $serverctrls
  * @return resource Returns an LDAP result identifier.
  * @throws LdapException
  *
  */
-function ldap_mod_del_ext($link_identifier, string $dn, array $entry, array $serverctrls = null)
+function ldap_mod_del_ext($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_mod_del_ext($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -893,15 +893,15 @@ function ldap_mod_del_ext($link_identifier, string $dn, array $entry, array $ser
  * ldap_delete function.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $dn The distinguished name of an LDAP entity.
+ * @param $dn The distinguished name of an LDAP entity.
  * @param array $entry
  * @param array $serverctrls Array of LDAP Controls to send with the request.
  * @throws LdapException
  *
  */
-function ldap_mod_del($link_identifier, string $dn, array $entry, array $serverctrls = null): void
+function ldap_mod_del($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_mod_del($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -913,16 +913,16 @@ function ldap_mod_del($link_identifier, string $dn, array $entry, array $serverc
  * Does the same thing as ldap_mod_replace but returns the LDAP result resource to be parsed with ldap_parse_result.
  *
  * @param resource $link_identifier
- * @param string $dn
+ * @param $dn
  * @param array $entry
  * @param array $serverctrls
  * @return resource Returns an LDAP result identifier.
  * @throws LdapException
  *
  */
-function ldap_mod_replace_ext($link_identifier, string $dn, array $entry, array $serverctrls = null)
+function ldap_mod_replace_ext($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_mod_replace_ext($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -936,15 +936,15 @@ function ldap_mod_replace_ext($link_identifier, string $dn, array $entry, array 
  * It may also add or remove attributes.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $dn The distinguished name of an LDAP entity.
+ * @param $dn The distinguished name of an LDAP entity.
  * @param array $entry An associative array listing the attributes to replace. Sending an empty array as value will remove the attribute, while sending an attribute not existing yet on this entry will add it.
  * @param array $serverctrls Array of LDAP Controls to send with the request.
  * @throws LdapException
  *
  */
-function ldap_mod_replace($link_identifier, string $dn, array $entry, array $serverctrls = null): void
+function ldap_mod_replace($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_mod_replace($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -957,7 +957,7 @@ function ldap_mod_replace($link_identifier, string $dn, array $entry, array $ser
  * specification of the modifications to perform.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $dn The distinguished name of an LDAP entity.
+ * @param $dn The distinguished name of an LDAP entity.
  * @param array $entry An array that specifies the modifications to make. Each entry in this
  * array is an associative array with two or three keys:
  * attrib maps to the name of the attribute to modify,
@@ -1037,9 +1037,9 @@ function ldap_mod_replace($link_identifier, string $dn, array $entry, array $ser
  * @throws LdapException
  *
  */
-function ldap_modify_batch($link_identifier, string $dn, array $entry, array $serverctrls = null): void
+function ldap_modify_batch($link_identifier, $dn, array $entry, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_modify_batch($link_identifier, $dn, $entry, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -1060,9 +1060,9 @@ function ldap_modify_batch($link_identifier, string $dn, array $entry, array $se
  * @throws LdapException
  *
  */
-function ldap_next_attribute($link_identifier, $result_entry_identifier): string
+function ldap_next_attribute($link_identifier, $result_entry_identifier)
 {
-    error_clear_last();
+
     $result = \ldap_next_attribute($link_identifier, $result_entry_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -1076,14 +1076,14 @@ function ldap_next_attribute($link_identifier, $result_entry_identifier): string
  *
  * @param resource $link An LDAP link identifier, returned by ldap_connect.
  * @param resource $result An LDAP result resource, returned by ldap_exop.
- * @param string $retdata Will be filled by the response data.
- * @param string $retoid Will be filled by the response OID.
+ * @param $retdata Will be filled by the response data.
+ * @param $retoid Will be filled by the response OID.
  * @throws LdapException
  *
  */
-function ldap_parse_exop($link, $result, string &$retdata = null, string &$retoid = null): void
+function ldap_parse_exop($link, $result, string &$retdata = null, string &$retoid = null)
 {
-    error_clear_last();
+
     $result = \ldap_parse_exop($link, $result, $retdata, $retoid);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -1099,9 +1099,9 @@ function ldap_parse_exop($link, $result, string &$retdata = null, string &$retoi
  * ldap_search.
  * @param int $errcode A reference to a variable that will be set to the LDAP error code in
  * the result, or 0 if no error occurred.
- * @param string $matcheddn A reference to a variable that will be set to a matched DN if one was
+ * @param $matcheddn A reference to a variable that will be set to a matched DN if one was
  * recognised within the request, otherwise it will be set to NULL.
- * @param string $errmsg A reference to a variable that will be set to the LDAP error message in
+ * @param $errmsg A reference to a variable that will be set to the LDAP error message in
  * the result, or an empty string if no error occurred.
  * @param array $referrals A reference to a variable that will be set to an array set
  * to all of the referral strings in the result, or an empty array if no
@@ -1110,9 +1110,9 @@ function ldap_parse_exop($link, $result, string &$retdata = null, string &$retoi
  * @throws LdapException
  *
  */
-function ldap_parse_result($link, $result, int &$errcode, string &$matcheddn = null, string &$errmsg = null, array &$referrals = null, array &$serverctrls = null): void
+function ldap_parse_result($link, $result, int &$errcode, string &$matcheddn = null, string &$errmsg = null, array &$referrals = null, array &$serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_parse_result($link, $result, $errcode, $matcheddn, $errmsg, $referrals, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -1126,8 +1126,8 @@ function ldap_parse_result($link, $result, int &$errcode, string &$matcheddn = n
  * equivalent to reading an entry from the directory.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $base_dn The base DN for the directory.
- * @param string $filter An empty filter is not allowed. If you want to retrieve absolutely all
+ * @param $base_dn The base DN for the directory.
+ * @param $filter An empty filter is not allowed. If you want to retrieve absolutely all
  * information for this entry, use a filter of
  * objectClass=*. If you know which entry types are
  * used on the directory server, you might use an appropriate filter such
@@ -1192,9 +1192,9 @@ function ldap_parse_result($link, $result, int &$errcode, string &$matcheddn = n
  * @throws LdapException
  *
  */
-function ldap_read($link_identifier, string $base_dn, string $filter, array $attributes = null, int $attrsonly = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = LDAP_DEREF_NEVER, array $serverctrls = null)
+function ldap_read($link_identifier, $base_dn, $filter, array $attributes = null, $attrsonly = 0, $sizelimit = -1, $timelimit = -1, $deref = LDAP_DEREF_NEVER, array $serverctrls = null)
 {
-    error_clear_last();
+
     if ($serverctrls !== null) {
         $result = \ldap_read($link_identifier, $base_dn, $filter, $attributes, $attrsonly, $sizelimit, $timelimit, $deref, $serverctrls);
     } elseif ($deref !== LDAP_DEREF_NEVER) {
@@ -1221,18 +1221,18 @@ function ldap_read($link_identifier, string $base_dn, string $filter, array $att
  * Does the same thing as ldap_rename but returns the LDAP result resource to be parsed with ldap_parse_result.
  *
  * @param resource $link_identifier
- * @param string $dn
- * @param string $newrdn
- * @param string $newparent
+ * @param $dn
+ * @param $newrdn
+ * @param $newparent
  * @param bool $deleteoldrdn
  * @param array $serverctrls
  * @return resource Returns an LDAP result identifier.
  * @throws LdapException
  *
  */
-function ldap_rename_ext($link_identifier, string $dn, string $newrdn, string $newparent, bool $deleteoldrdn, array $serverctrls = null)
+function ldap_rename_ext($link_identifier, $dn, $newrdn, $newparent, $deleteoldrdn, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_rename_ext($link_identifier, $dn, $newrdn, $newparent, $deleteoldrdn, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -1245,18 +1245,18 @@ function ldap_rename_ext($link_identifier, string $dn, string $newrdn, string $n
  * The entry specified by dn is renamed/moved.
  *
  * @param resource $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $dn The distinguished name of an LDAP entity.
- * @param string $newrdn The new RDN.
- * @param string $newparent The new parent/superior entry.
+ * @param $dn The distinguished name of an LDAP entity.
+ * @param $newrdn The new RDN.
+ * @param $newparent The new parent/superior entry.
  * @param bool $deleteoldrdn If TRUE the old RDN value(s) is removed, else the old RDN value(s)
  * is retained as non-distinguished values of the entry.
  * @param array $serverctrls Array of LDAP Controls to send with the request.
  * @throws LdapException
  *
  */
-function ldap_rename($link_identifier, string $dn, string $newrdn, string $newparent, bool $deleteoldrdn, array $serverctrls = null): void
+function ldap_rename($link_identifier, $dn, $newrdn, $newparent, $deleteoldrdn, array $serverctrls = null)
 {
-    error_clear_last();
+
     $result = \ldap_rename($link_identifier, $dn, $newrdn, $newparent, $deleteoldrdn, $serverctrls);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -1268,19 +1268,19 @@ function ldap_rename($link_identifier, string $dn, string $newrdn, string $newpa
  *
  *
  * @param resource $link
- * @param string $binddn
- * @param string $password
- * @param string $sasl_mech
- * @param string $sasl_realm
- * @param string $sasl_authc_id
- * @param string $sasl_authz_id
- * @param string $props
+ * @param $binddn
+ * @param $password
+ * @param $sasl_mech
+ * @param $sasl_realm
+ * @param $sasl_authc_id
+ * @param $sasl_authz_id
+ * @param $props
  * @throws LdapException
  *
  */
-function ldap_sasl_bind($link, string $binddn = null, string $password = null, string $sasl_mech = null, string $sasl_realm = null, string $sasl_authc_id = null, string $sasl_authz_id = null, string $props = null): void
+function ldap_sasl_bind($link, $binddn = null, $password = null, $sasl_mech = null, $sasl_realm = null, $sasl_authc_id = null, $sasl_authz_id = null, $props = null)
 {
-    error_clear_last();
+
     $result = \ldap_sasl_bind($link, $binddn, $password, $sasl_mech, $sasl_realm, $sasl_authc_id, $sasl_authz_id, $props);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -1309,8 +1309,8 @@ function ldap_sasl_bind($link, string $binddn = null, string $password = null, s
  * identifier.
  *
  * @param resource|array $link_identifier An LDAP link identifier, returned by ldap_connect.
- * @param string $base_dn The base DN for the directory.
- * @param string $filter The search filter can be simple or advanced, using boolean operators in
+ * @param $base_dn The base DN for the directory.
+ * @param $filter The search filter can be simple or advanced, using boolean operators in
  * the format described in the LDAP documentation (see the Netscape Directory SDK or
  * RFC4515 for full
  * information on filters).
@@ -1374,9 +1374,9 @@ function ldap_sasl_bind($link, string $binddn = null, string $password = null, s
  * @throws LdapException
  *
  */
-function ldap_search($link_identifier, string $base_dn, string $filter, array $attributes = null, int $attrsonly = 0, int $sizelimit = -1, int $timelimit = -1, int $deref = LDAP_DEREF_NEVER, array $serverctrls = null)
+function ldap_search($link_identifier, $base_dn, $filter, array $attributes = null, $attrsonly = 0, $sizelimit = -1, $timelimit = -1, $deref = LDAP_DEREF_NEVER, array $serverctrls = null)
 {
-    error_clear_last();
+
     if ($serverctrls !== null) {
         $result = \ldap_search($link_identifier, $base_dn, $filter, $attributes, $attrsonly, $sizelimit, $timelimit, $deref, $serverctrls);
     } elseif ($deref !== LDAP_DEREF_NEVER) {
@@ -1575,9 +1575,9 @@ function ldap_search($link_identifier, string $base_dn, string $filter, array $a
  * @throws LdapException
  *
  */
-function ldap_set_option($link_identifier, int $option, $newval): void
+function ldap_set_option($link_identifier, $option, $newval)
 {
-    error_clear_last();
+
     $result = \ldap_set_option($link_identifier, $option, $newval);
     if ($result === false) {
         throw LdapException::createFromPhpError();
@@ -1592,9 +1592,9 @@ function ldap_set_option($link_identifier, int $option, $newval): void
  * @throws LdapException
  *
  */
-function ldap_unbind($link_identifier): void
+function ldap_unbind($link_identifier)
 {
-    error_clear_last();
+
     $result = \ldap_unbind($link_identifier);
     if ($result === false) {
         throw LdapException::createFromPhpError();

@@ -13,9 +13,9 @@ use Safe\Exceptions\StatsException;
  * @throws StatsException
  *
  */
-function stats_covariance(array $a, array $b): float
+function stats_covariance(array $a, array $b)
 {
-    error_clear_last();
+
     $result = \stats_covariance($a, $b);
     if ($result === false) {
         throw StatsException::createFromPhpError();
@@ -35,9 +35,9 @@ function stats_covariance(array $a, array $b): float
  * @throws StatsException
  *
  */
-function stats_standard_deviation(array $a, bool $sample = false): float
+function stats_standard_deviation(array $a, $sample = false)
 {
-    error_clear_last();
+
     $result = \stats_standard_deviation($a, $sample);
     if ($result === false) {
         throw StatsException::createFromPhpError();
@@ -55,9 +55,9 @@ function stats_standard_deviation(array $a, bool $sample = false): float
  * @throws StatsException
  *
  */
-function stats_stat_correlation(array $arr1, array $arr2): float
+function stats_stat_correlation(array $arr1, array $arr2)
 {
-    error_clear_last();
+
     $result = \stats_stat_correlation($arr1, $arr2);
     if ($result === false) {
         throw StatsException::createFromPhpError();
@@ -75,9 +75,9 @@ function stats_stat_correlation(array $arr1, array $arr2): float
  * @throws StatsException
  *
  */
-function stats_stat_innerproduct(array $arr1, array $arr2): float
+function stats_stat_innerproduct(array $arr1, array $arr2)
 {
-    error_clear_last();
+
     $result = \stats_stat_innerproduct($arr1, $arr2);
     if ($result === false) {
         throw StatsException::createFromPhpError();
@@ -97,9 +97,9 @@ function stats_stat_innerproduct(array $arr1, array $arr2): float
  * @throws StatsException
  *
  */
-function stats_variance(array $a, bool $sample = false): float
+function stats_variance(array $a, $sample = false)
 {
-    error_clear_last();
+
     $result = \stats_variance($a, $sample);
     if ($result === false) {
         throw StatsException::createFromPhpError();

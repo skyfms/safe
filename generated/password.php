@@ -91,7 +91,7 @@ use Safe\Exceptions\PasswordException;
  *
  *
  *
- * @param string $password The user's password.
+ * @param $password The user's password.
  *
  * Using the PASSWORD_BCRYPT as the
  * algorithm, will result
@@ -111,9 +111,9 @@ use Safe\Exceptions\PasswordException;
  * @throws PasswordException
  *
  */
-function password_hash(string $password, int $algo, array $options = null): string
+function password_hash($password, $algo, array $options = null)
 {
-    error_clear_last();
+
     if ($options !== null) {
         $result = \password_hash($password, $algo, $options);
     } else {

@@ -14,9 +14,9 @@ use Safe\Exceptions\CubridException;
  * @throws CubridException
  *
  */
-function cubrid_free_result($req_identifier): void
+function cubrid_free_result($req_identifier)
 {
-    error_clear_last();
+
     $result = \cubrid_free_result($req_identifier);
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -36,9 +36,9 @@ function cubrid_free_result($req_identifier): void
  * @throws CubridException
  *
  */
-function cubrid_get_charset($conn_identifier): string
+function cubrid_get_charset($conn_identifier)
 {
-    error_clear_last();
+
     $result = \cubrid_get_charset($conn_identifier);
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -56,9 +56,9 @@ function cubrid_get_charset($conn_identifier): string
  * @throws CubridException
  *
  */
-function cubrid_get_client_info(): string
+function cubrid_get_client_info()
 {
-    error_clear_last();
+
     $result = \cubrid_get_client_info();
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -185,7 +185,7 @@ function cubrid_get_client_info(): string
  */
 function cubrid_get_db_parameter($conn_identifier): array
 {
-    error_clear_last();
+
     $result = \cubrid_get_db_parameter($conn_identifier);
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -204,9 +204,9 @@ function cubrid_get_db_parameter($conn_identifier): array
  * @throws CubridException
  *
  */
-function cubrid_get_server_info($conn_identifier): string
+function cubrid_get_server_info($conn_identifier)
 {
-    error_clear_last();
+
     $result = \cubrid_get_server_info($conn_identifier);
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -232,9 +232,9 @@ function cubrid_get_server_info($conn_identifier): string
  * @throws CubridException
  *
  */
-function cubrid_insert_id($conn_identifier = null): string
+function cubrid_insert_id($conn_identifier = null)
 {
-    error_clear_last();
+
     if ($conn_identifier !== null) {
         $result = \cubrid_insert_id($conn_identifier);
     } else {
@@ -254,16 +254,16 @@ function cubrid_insert_id($conn_identifier = null): string
  * @param resource $conn_identifier Connection identifier. If the connection identifier is not specified,
  * the last connection opened by cubrid_connect or
  * cubrid_connect_with_url is assumed.
- * @param string $type It may be "BLOB" or "CLOB", it won't be case-sensitive. The default value is "BLOB".
+ * @param $type It may be "BLOB" or "CLOB", it won't be case-sensitive. The default value is "BLOB".
  * @return resource Lob identifier when it is successful.
  *
  * FALSE  on failure.
  * @throws CubridException
  *
  */
-function cubrid_lob2_new($conn_identifier = null, string $type = "BLOB")
+function cubrid_lob2_new($conn_identifier = null, $type = "BLOB")
 {
-    error_clear_last();
+
     if ($type !== "BLOB") {
         $result = \cubrid_lob2_new($conn_identifier, $type);
     } elseif ($conn_identifier !== null) {
@@ -288,9 +288,9 @@ function cubrid_lob2_new($conn_identifier = null, string $type = "BLOB")
  * @throws CubridException
  *
  */
-function cubrid_lob2_size($lob_identifier): int
+function cubrid_lob2_size($lob_identifier)
 {
-    error_clear_last();
+
     $result = \cubrid_lob2_size($lob_identifier);
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -312,9 +312,9 @@ function cubrid_lob2_size($lob_identifier): int
  * @throws CubridException
  *
  */
-function cubrid_lob2_size64($lob_identifier): string
+function cubrid_lob2_size64($lob_identifier)
 {
-    error_clear_last();
+
     $result = \cubrid_lob2_size64($lob_identifier);
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -333,9 +333,9 @@ function cubrid_lob2_size64($lob_identifier): string
  * @throws CubridException
  *
  */
-function cubrid_lob2_tell($lob_identifier): int
+function cubrid_lob2_tell($lob_identifier)
 {
-    error_clear_last();
+
     $result = \cubrid_lob2_tell($lob_identifier);
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -357,9 +357,9 @@ function cubrid_lob2_tell($lob_identifier): int
  * @throws CubridException
  *
  */
-function cubrid_lob2_tell64($lob_identifier): string
+function cubrid_lob2_tell64($lob_identifier)
 {
-    error_clear_last();
+
     $result = \cubrid_lob2_tell64($lob_identifier);
     if ($result === false) {
         throw CubridException::createFromPhpError();
@@ -385,9 +385,9 @@ function cubrid_lob2_tell64($lob_identifier): string
  * @throws CubridException
  *
  */
-function cubrid_set_db_parameter($conn_identifier, int $param_type, int $param_value): void
+function cubrid_set_db_parameter($conn_identifier, $param_type, $param_value)
 {
-    error_clear_last();
+
     $result = \cubrid_set_db_parameter($conn_identifier, $param_type, $param_value);
     if ($result === false) {
         throw CubridException::createFromPhpError();

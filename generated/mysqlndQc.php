@@ -19,9 +19,9 @@ use Safe\Exceptions\MysqlndQcException;
  * @throws MysqlndQcException
  *
  */
-function mysqlnd_qc_clear_cache(): void
+function mysqlnd_qc_clear_cache()
 {
-    error_clear_last();
+
     $result = \mysqlnd_qc_clear_cache();
     if ($result === false) {
         throw MysqlndQcException::createFromPhpError();
@@ -61,9 +61,9 @@ function mysqlnd_qc_clear_cache(): void
  * @throws MysqlndQcException
  *
  */
-function mysqlnd_qc_set_is_select(string $callback)
+function mysqlnd_qc_set_is_select($callback)
 {
-    error_clear_last();
+
     $result = \mysqlnd_qc_set_is_select($callback);
     if ($result === false) {
         throw MysqlndQcException::createFromPhpError();
@@ -82,7 +82,7 @@ function mysqlnd_qc_set_is_select(string $callback)
  * All other storage handler must be enabled explicitly when building the
  * extension.
  *
- * @param string $handler Handler can be of type string representing the name of a
+ * @param $handler Handler can be of type string representing the name of a
  * built-in storage handler or an object of type
  * mysqlnd_qc_handler_default.
  * The names of the built-in storage handler are
@@ -93,9 +93,9 @@ function mysqlnd_qc_set_is_select(string $callback)
  * @throws MysqlndQcException
  *
  */
-function mysqlnd_qc_set_storage_handler(string $handler): void
+function mysqlnd_qc_set_storage_handler($handler)
 {
-    error_clear_last();
+
     $result = \mysqlnd_qc_set_storage_handler($handler);
     if ($result === false) {
         throw MysqlndQcException::createFromPhpError();

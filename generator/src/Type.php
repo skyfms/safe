@@ -8,10 +8,10 @@ class Type
     /**
      * Returns true if the type passed in parameter is a class, false if it is scalar or resource
      *
-     * @param string $type
+     * @param $type
      * @return bool
      */
-    private static function isClass(string $type): bool
+    private static function isClass($type)
     {
         if ($type === '') {
             throw new EmptyTypeException('Empty type passed');
@@ -29,10 +29,10 @@ class Type
     /**
      * Put classes in the root namespace
      *
-     * @param string $type
+     * @param $type
      * @return string
      */
-    public static function toRootNamespace(string $type): string
+    public static function toRootNamespace($type)
     {
         if (self::isClass($type)) {
             return '\\'.$type;

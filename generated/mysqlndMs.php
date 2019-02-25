@@ -25,7 +25,7 @@ use Safe\Exceptions\MysqlndMsException;
  */
 function mysqlnd_ms_dump_servers($connection): array
 {
-    error_clear_last();
+
     $result = \mysqlnd_ms_dump_servers($connection);
     if ($result === false) {
         throw MysqlndMsException::createFromPhpError();
@@ -51,7 +51,7 @@ function mysqlnd_ms_dump_servers($connection): array
  */
 function mysqlnd_ms_fabric_select_global($connection, $table_name): array
 {
-    error_clear_last();
+
     $result = \mysqlnd_ms_fabric_select_global($connection, $table_name);
     if ($result === false) {
         throw MysqlndMsException::createFromPhpError();
@@ -78,7 +78,7 @@ function mysqlnd_ms_fabric_select_global($connection, $table_name): array
  */
 function mysqlnd_ms_fabric_select_shard($connection, $table_name, $shard_key): array
 {
-    error_clear_last();
+
     $result = \mysqlnd_ms_fabric_select_shard($connection, $table_name, $shard_key);
     if ($result === false) {
         throw MysqlndMsException::createFromPhpError();
@@ -110,7 +110,7 @@ function mysqlnd_ms_fabric_select_shard($connection, $table_name, $shard_key): a
  */
 function mysqlnd_ms_get_last_used_connection($connection): array
 {
-    error_clear_last();
+
     $result = \mysqlnd_ms_get_last_used_connection($connection);
     if ($result === false) {
         throw MysqlndMsException::createFromPhpError();

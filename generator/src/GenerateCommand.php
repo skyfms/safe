@@ -73,7 +73,7 @@ class GenerateCommand extends Command
         ComposerJsonEditor::editFiles(\array_values($modules));
     }
 
-    private function rmGenerated(): void
+    private function rmGenerated()
     {
         $exceptions = \glob(__DIR__.'/../../generated/Exceptions/*.php');
 
@@ -92,7 +92,7 @@ class GenerateCommand extends Command
         }
     }
 
-    private function runCsFix(OutputInterface $output): void
+    private function runCsFix(OutputInterface $output)
     {
         $process = new Process('vendor/bin/phpcbf', __DIR__.'/../..');
         $process->setTimeout(600);

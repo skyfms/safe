@@ -13,9 +13,9 @@ use Safe\Exceptions\Bzip2Exception;
  * @throws Bzip2Exception
  *
  */
-function bzclose($bz): int
+function bzclose($bz)
 {
-    error_clear_last();
+
     $result = \bzclose($bz);
     if ($result === false) {
         throw Bzip2Exception::createFromPhpError();
@@ -34,9 +34,9 @@ function bzclose($bz): int
  * @throws Bzip2Exception
  *
  */
-function bzflush($bz): void
+function bzflush($bz)
 {
-    error_clear_last();
+
     $result = \bzflush($bz);
     if ($result === false) {
         throw Bzip2Exception::createFromPhpError();
@@ -59,9 +59,9 @@ function bzflush($bz): void
  * @throws Bzip2Exception
  *
  */
-function bzread($bz, int $length = 1024): string
+function bzread($bz, $length = 1024)
 {
-    error_clear_last();
+
     $result = \bzread($bz, $length);
     if ($result === false) {
         throw Bzip2Exception::createFromPhpError();
@@ -76,7 +76,7 @@ function bzread($bz, int $length = 1024): string
  *
  * @param resource $bz The file pointer. It must be valid and must point to a file
  * successfully opened by bzopen.
- * @param string $data The written data.
+ * @param $data The written data.
  * @param int $length If supplied, writing will stop after length
  * (uncompressed) bytes have been written or the end of
  * data is reached, whichever comes first.
@@ -84,9 +84,9 @@ function bzread($bz, int $length = 1024): string
  * @throws Bzip2Exception
  *
  */
-function bzwrite($bz, string $data, int $length = null): int
+function bzwrite($bz, $data, $length = null)
 {
-    error_clear_last();
+
     if ($length !== null) {
         $result = \bzwrite($bz, $data, $length);
     } else {

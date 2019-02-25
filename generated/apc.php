@@ -7,7 +7,7 @@ use Safe\Exceptions\ApcException;
 /**
  * Retrieves cached information and meta-data from APC's data store.
  *
- * @param string $cache_type If cache_type is "user",
+ * @param $cache_type If cache_type is "user",
  * information about the user cache will be returned.
  *
  * If cache_type is "filehits",
@@ -24,9 +24,9 @@ use Safe\Exceptions\ApcException;
  * @throws ApcException
  *
  */
-function apc_cache_info(string $cache_type = '', bool $limited = false): array
+function apc_cache_info($cache_type = '', $limited = false): array
 {
-    error_clear_last();
+
     $result = \apc_cache_info($cache_type, $limited);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -40,15 +40,15 @@ function apc_cache_info(string $cache_type = '', bool $limited = false): array
  * old parameter matches the currently stored value
  * with the value of the new parameter.
  *
- * @param string $key The key of the value being updated.
+ * @param $key The key of the value being updated.
  * @param int $old The old value (the value currently stored).
  * @param int $new The new value to update to.
  * @throws ApcException
  *
  */
-function apc_cas(string $key, int $old, int $new): void
+function apc_cas($key, $old, $new)
 {
-    error_clear_last();
+
     $result = \apc_cas($key, $old, $new);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -59,16 +59,16 @@ function apc_cas(string $key, int $old, int $new): void
 /**
  * Stores a file in the bytecode cache, bypassing all filters.
  *
- * @param string $filename Full or relative path to a PHP file that will be compiled and stored in
+ * @param $filename Full or relative path to a PHP file that will be compiled and stored in
  * the bytecode cache.
  * @param bool $atomic
  * @return mixed Returns TRUE on success.
  * @throws ApcException
  *
  */
-function apc_compile_file(string $filename, bool $atomic = true)
+function apc_compile_file($filename, $atomic = true)
 {
-    error_clear_last();
+
     $result = \apc_compile_file($filename, $atomic);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -80,7 +80,7 @@ function apc_compile_file(string $filename, bool $atomic = true)
 /**
  * Decreases a stored integer value.
  *
- * @param string $key The key of the value being decreased.
+ * @param $key The key of the value being decreased.
  * @param int $step The step, or value to decrease.
  * @param bool $success Optionally pass the success or fail boolean value to
  * this referenced variable.
@@ -88,9 +88,9 @@ function apc_compile_file(string $filename, bool $atomic = true)
  * @throws ApcException
  *
  */
-function apc_dec(string $key, int $step = 1, ?bool &$success = null): int
+function apc_dec($key, $step = 1, &$success = null)
 {
-    error_clear_last();
+
     $result = \apc_dec($key, $step, $success);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -108,7 +108,7 @@ function apc_dec(string $key, int $step = 1, ?bool &$success = null): int
  * For a better-performing solution, try the
  * hidef extension from PECL.
  *
- * @param string $key The key serves as the name of the constant set
+ * @param $key The key serves as the name of the constant set
  * being stored. This key is used to retrieve the
  * stored constants in apc_load_constants.
  * @param array $constants An associative array of constant_name =&gt; value
@@ -122,9 +122,9 @@ function apc_dec(string $key, int $step = 1, ?bool &$success = null): int
  * @throws ApcException
  *
  */
-function apc_define_constants(string $key, array $constants, bool $case_sensitive = true): void
+function apc_define_constants($key, array $constants, $case_sensitive = true)
 {
-    error_clear_last();
+
     $result = \apc_define_constants($key, $constants, $case_sensitive);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -147,7 +147,7 @@ function apc_define_constants(string $key, array $constants, bool $case_sensitiv
  */
 function apc_delete_file($keys)
 {
-    error_clear_last();
+
     $result = \apc_delete_file($keys);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -164,9 +164,9 @@ function apc_delete_file($keys)
  * @throws ApcException
  *
  */
-function apc_delete(string $key)
+function apc_delete($key)
 {
-    error_clear_last();
+
     $result = \apc_delete($key);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -178,7 +178,7 @@ function apc_delete(string $key)
 /**
  * Increases a stored number.
  *
- * @param string $key The key of the value being increased.
+ * @param $key The key of the value being increased.
  * @param int $step The step, or value to increase.
  * @param bool $success Optionally pass the success or fail boolean value to
  * this referenced variable.
@@ -186,9 +186,9 @@ function apc_delete(string $key)
  * @throws ApcException
  *
  */
-function apc_inc(string $key, int $step = 1, ?bool &$success = null): int
+function apc_inc($key, $step = 1, &$success = null)
 {
-    error_clear_last();
+
     $result = \apc_inc($key, $step, $success);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -200,7 +200,7 @@ function apc_inc(string $key, int $step = 1, ?bool &$success = null): int
 /**
  * Loads a set of constants from the cache.
  *
- * @param string $key The name of the constant set (that was stored with
+ * @param $key The name of the constant set (that was stored with
  * apc_define_constants) to be retrieved.
  * @param bool $case_sensitive The default behaviour for constants is to be declared case-sensitive;
  * i.e. CONSTANT and Constant
@@ -209,9 +209,9 @@ function apc_inc(string $key, int $step = 1, ?bool &$success = null): int
  * @throws ApcException
  *
  */
-function apc_load_constants(string $key, bool $case_sensitive = true): void
+function apc_load_constants($key, $case_sensitive = true)
 {
-    error_clear_last();
+
     $result = \apc_load_constants($key, $case_sensitive);
     if ($result === false) {
         throw ApcException::createFromPhpError();
@@ -228,9 +228,9 @@ function apc_load_constants(string $key, bool $case_sensitive = true): void
  * @throws ApcException
  *
  */
-function apc_sma_info(bool $limited = false): array
+function apc_sma_info($limited = false): array
 {
-    error_clear_last();
+
     $result = \apc_sma_info($limited);
     if ($result === false) {
         throw ApcException::createFromPhpError();

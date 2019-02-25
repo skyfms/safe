@@ -19,7 +19,7 @@ use Safe\Exceptions\ArrayException;
  */
 function array_combine(array $keys, array $values): array
 {
-    error_clear_last();
+
     $result = \array_combine($keys, $values);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -88,9 +88,9 @@ function array_combine(array $keys, array $values): array
  * @throws ArrayException
  *
  */
-function array_multisort(array &$array1, $array1_sort_order = SORT_ASC, $array1_sort_flags = SORT_REGULAR, ...$params): void
+function array_multisort(array &$array1, $array1_sort_order = SORT_ASC, $array1_sort_flags = SORT_REGULAR, ...$params)
 {
-    error_clear_last();
+
     if ($params !== []) {
         $result = \array_multisort($array1, $array1_sort_order, $array1_sort_flags, ...$params);
     } else {
@@ -124,9 +124,9 @@ function array_multisort(array &$array1, $array1_sort_order = SORT_ASC, $array1_
  * @throws ArrayException
  *
  */
-function array_walk_recursive(array &$array, callable $callback, $userdata = null): void
+function array_walk_recursive(array &$array, callable $callback, $userdata = null)
 {
-    error_clear_last();
+
     $result = \array_walk_recursive($array, $callback, $userdata);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -148,9 +148,9 @@ function array_walk_recursive(array &$array, callable $callback, $userdata = nul
  * @throws ArrayException
  *
  */
-function arsort(array &$array, int $sort_flags = SORT_REGULAR): void
+function arsort(array &$array, $sort_flags = SORT_REGULAR)
 {
-    error_clear_last();
+
     $result = \arsort($array, $sort_flags);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -171,9 +171,9 @@ function arsort(array &$array, int $sort_flags = SORT_REGULAR): void
  * @throws ArrayException
  *
  */
-function asort(array &$array, int $sort_flags = SORT_REGULAR): void
+function asort(array &$array, $sort_flags = SORT_REGULAR)
 {
-    error_clear_last();
+
     $result = \asort($array, $sort_flags);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -192,9 +192,9 @@ function asort(array &$array, int $sort_flags = SORT_REGULAR): void
  * @throws ArrayException
  *
  */
-function krsort(array &$array, int $sort_flags = SORT_REGULAR): void
+function krsort(array &$array, $sort_flags = SORT_REGULAR)
 {
-    error_clear_last();
+
     $result = \krsort($array, $sort_flags);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -213,9 +213,9 @@ function krsort(array &$array, int $sort_flags = SORT_REGULAR): void
  * @throws ArrayException
  *
  */
-function ksort(array &$array, int $sort_flags = SORT_REGULAR): void
+function ksort(array &$array, $sort_flags = SORT_REGULAR)
 {
-    error_clear_last();
+
     $result = \ksort($array, $sort_flags);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -235,9 +235,9 @@ function ksort(array &$array, int $sort_flags = SORT_REGULAR): void
  * @throws ArrayException
  *
  */
-function natcasesort(array &$array): void
+function natcasesort(array &$array)
 {
-    error_clear_last();
+
     $result = \natcasesort($array);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -256,9 +256,9 @@ function natcasesort(array &$array): void
  * @throws ArrayException
  *
  */
-function natsort(array &$array): void
+function natsort(array &$array)
 {
-    error_clear_last();
+
     $result = \natsort($array);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -276,9 +276,9 @@ function natsort(array &$array): void
  * @throws ArrayException
  *
  */
-function rsort(array &$array, int $sort_flags = SORT_REGULAR): void
+function rsort(array &$array, $sort_flags = SORT_REGULAR)
 {
-    error_clear_last();
+
     $result = \rsort($array, $sort_flags);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -295,9 +295,9 @@ function rsort(array &$array, int $sort_flags = SORT_REGULAR): void
  * @throws ArrayException
  *
  */
-function shuffle(array &$array): void
+function shuffle(array &$array)
 {
-    error_clear_last();
+
     $result = \shuffle($array);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -350,9 +350,9 @@ function shuffle(array &$array): void
  * @throws ArrayException
  *
  */
-function sort(array &$array, int $sort_flags = SORT_REGULAR): void
+function sort(array &$array, $sort_flags = SORT_REGULAR)
 {
-    error_clear_last();
+
     $result = \sort($array, $sort_flags);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -374,9 +374,9 @@ function sort(array &$array, int $sort_flags = SORT_REGULAR): void
  * @throws ArrayException
  *
  */
-function uasort(array &$array, callable $value_compare_func): void
+function uasort(array &$array, callable $value_compare_func)
 {
-    error_clear_last();
+
     $result = \uasort($array, $value_compare_func);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -396,9 +396,9 @@ function uasort(array &$array, callable $value_compare_func): void
  * @throws ArrayException
  *
  */
-function uksort(array &$array, callable $key_compare_func): void
+function uksort(array &$array, callable $key_compare_func)
 {
-    error_clear_last();
+
     $result = \uksort($array, $key_compare_func);
     if ($result === false) {
         throw ArrayException::createFromPhpError();
@@ -423,9 +423,9 @@ function uksort(array &$array, callable $key_compare_func): void
  * @throws ArrayException
  *
  */
-function usort(array &$array, callable $value_compare_func): void
+function usort(array &$array, callable $value_compare_func)
 {
-    error_clear_last();
+
     $result = \usort($array, $value_compare_func);
     if ($result === false) {
         throw ArrayException::createFromPhpError();

@@ -14,9 +14,9 @@ use Safe\Exceptions\CurlException;
  * @throws CurlException
  *
  */
-function curl_escape($ch, string $str): string
+function curl_escape($ch, $str)
 {
-    error_clear_last();
+
     $result = \curl_escape($ch, $str);
     if ($result === false) {
         throw CurlException::createFromCurlResource($ch);
@@ -41,7 +41,7 @@ function curl_escape($ch, string $str): string
  */
 function curl_exec($ch)
 {
-    error_clear_last();
+
     $result = \curl_exec($ch);
     if ($result === false) {
         throw CurlException::createFromCurlResource($ch);
@@ -422,9 +422,9 @@ function curl_exec($ch)
  * @throws CurlException
  *
  */
-function curl_getinfo($ch, int $opt = null)
+function curl_getinfo($ch, $opt = null)
 {
-    error_clear_last();
+
     if ($opt !== null) {
         $result = \curl_getinfo($ch, $opt);
     } else {
@@ -442,7 +442,7 @@ function curl_getinfo($ch, int $opt = null)
  * curl_setopt, curl_exec,
  * and curl_close functions.
  *
- * @param string $url If provided, the CURLOPT_URL option will be set
+ * @param $url If provided, the CURLOPT_URL option will be set
  * to its value. You can manually set this using the
  * curl_setopt function.
  *
@@ -452,9 +452,9 @@ function curl_getinfo($ch, int $opt = null)
  * @throws CurlException
  *
  */
-function curl_init(string $url = null)
+function curl_init($url = null)
 {
-    error_clear_last();
+
     $result = \curl_init($url);
     if ($result === false) {
         throw CurlException::createFromPhpError();
@@ -472,9 +472,9 @@ function curl_init(string $url = null)
  * @throws CurlException
  *
  */
-function curl_multi_errno($mh): int
+function curl_multi_errno($mh)
 {
-    error_clear_last();
+
     $result = \curl_multi_errno($mh);
     if ($result === false) {
         throw CurlException::createFromPhpError();
@@ -530,7 +530,7 @@ function curl_multi_errno($mh): int
  */
 function curl_multi_info_read($mh, int &$msgs_in_queue = null): array
 {
-    error_clear_last();
+
     $result = \curl_multi_info_read($mh, $msgs_in_queue);
     if ($result === false) {
         throw CurlException::createFromPhpError();
@@ -548,7 +548,7 @@ function curl_multi_info_read($mh, int &$msgs_in_queue = null): array
  */
 function curl_multi_init()
 {
-    error_clear_last();
+
     $result = \curl_multi_init();
     if ($result === false) {
         throw CurlException::createFromPhpError();
@@ -2415,9 +2415,9 @@ function curl_multi_init()
  * @throws CurlException
  *
  */
-function curl_setopt($ch, int $option, $value): void
+function curl_setopt($ch, $option, $value)
 {
-    error_clear_last();
+
     $result = \curl_setopt($ch, $option, $value);
     if ($result === false) {
         throw CurlException::createFromCurlResource($ch);
@@ -2433,9 +2433,9 @@ function curl_setopt($ch, int $option, $value): void
  * @throws CurlException
  *
  */
-function curl_share_errno($sh): int
+function curl_share_errno($sh)
 {
-    error_clear_last();
+
     $result = \curl_share_errno($sh);
     if ($result === false) {
         throw CurlException::createFromPhpError();
@@ -2472,7 +2472,7 @@ function curl_share_errno($sh): int
  *
  *
  *
- * @param string $value
+ * @param $value
  *
  *
  *
@@ -2509,9 +2509,9 @@ function curl_share_errno($sh): int
  * @throws CurlException
  *
  */
-function curl_share_setopt($sh, int $option, string $value): void
+function curl_share_setopt($sh, $option, $value)
 {
-    error_clear_last();
+
     $result = \curl_share_setopt($sh, $option, $value);
     if ($result === false) {
         throw CurlException::createFromPhpError();
@@ -2529,9 +2529,9 @@ function curl_share_setopt($sh, int $option, string $value): void
  * @throws CurlException
  *
  */
-function curl_unescape($ch, string $str): string
+function curl_unescape($ch, $str)
 {
-    error_clear_last();
+
     $result = \curl_unescape($ch, $str);
     if ($result === false) {
         throw CurlException::createFromCurlResource($ch);

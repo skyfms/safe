@@ -14,9 +14,9 @@ use Safe\Exceptions\PgsqlException;
  * @throws PgsqlException
  *
  */
-function pg_cancel_query($connection): void
+function pg_cancel_query($connection)
 {
-    error_clear_last();
+
     $result = \pg_cancel_query($connection);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -39,9 +39,9 @@ function pg_cancel_query($connection): void
  * @throws PgsqlException
  *
  */
-function pg_client_encoding($connection = null): string
+function pg_client_encoding($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_client_encoding($connection);
     } else {
@@ -69,9 +69,9 @@ function pg_client_encoding($connection = null): string
  * @throws PgsqlException
  *
  */
-function pg_close($connection = null): void
+function pg_close($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_close($connection);
     } else {
@@ -98,7 +98,7 @@ function pg_close($connection = null): void
  * $conn = pg_connect("host", "port", "options", "tty", "dbname")
  * has been deprecated.
  *
- * @param string $connection_string The connection_string can be empty to use all default parameters, or it
+ * @param $connection_string The connection_string can be empty to use all default parameters, or it
  * can contain one or more parameter settings separated by whitespace.
  * Each parameter setting is in the form keyword = value. Spaces around
  * the equal sign are optional. To write an empty value or a value
@@ -130,9 +130,9 @@ function pg_close($connection = null): void
  * @throws PgsqlException
  *
  */
-function pg_connect(string $connection_string, int $connect_type = null)
+function pg_connect($connection_string, $connect_type = null)
 {
-    error_clear_last();
+
     if ($connect_type !== null) {
         $result = \pg_connect($connection_string, $connect_type);
     } else {
@@ -153,9 +153,9 @@ function pg_connect(string $connection_string, int $connect_type = null)
  * @throws PgsqlException
  *
  */
-function pg_connection_reset($connection): void
+function pg_connection_reset($connection)
 {
-    error_clear_last();
+
     $result = \pg_connection_reset($connection);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -175,7 +175,7 @@ function pg_connection_reset($connection): void
  * otherwise.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $table_name Name of the table against which to convert types.
+ * @param $table_name Name of the table against which to convert types.
  * @param array $assoc_array Data to be converted.
  * @param int $options Any number of PGSQL_CONV_IGNORE_DEFAULT,
  * PGSQL_CONV_FORCE_NULL or
@@ -184,9 +184,9 @@ function pg_connection_reset($connection): void
  * @throws PgsqlException
  *
  */
-function pg_convert($connection, string $table_name, array $assoc_array, int $options = 0): array
+function pg_convert($connection, $table_name, array $assoc_array, $options = 0): array
 {
-    error_clear_last();
+
     $result = \pg_convert($connection, $table_name, $assoc_array, $options);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -201,21 +201,21 @@ function pg_convert($connection, string $table_name, array $assoc_array, int $op
  * internally to insert records.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $table_name Name of the table into which to copy the rows.
+ * @param $table_name Name of the table into which to copy the rows.
  * @param array $rows An array of data to be copied into table_name.
  * Each value in rows becomes a row in table_name.
  * Each value in rows should be a delimited string of the values
  * to insert into each field.  Values should be linefeed terminated.
- * @param string $delimiter The token that separates values for each field in each element of
+ * @param $delimiter The token that separates values for each field in each element of
  * rows.  Default is TAB.
- * @param string $null_as How SQL NULL values are represented in the
+ * @param $null_as How SQL NULL values are represented in the
  * rows.  Default is \N ("\\N").
  * @throws PgsqlException
  *
  */
-function pg_copy_from($connection, string $table_name, array $rows, string $delimiter = null, string $null_as = null): void
+function pg_copy_from($connection, $table_name, array $rows, $delimiter = null, $null_as = null)
 {
-    error_clear_last();
+
     if ($null_as !== null) {
         $result = \pg_copy_from($connection, $table_name, $rows, $delimiter, $null_as);
     } elseif ($delimiter !== null) {
@@ -235,19 +235,19 @@ function pg_copy_from($connection, string $table_name, array $rows, string $deli
  * retrieve records.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $table_name Name of the table from which to copy the data into rows.
- * @param string $delimiter The token that separates values for each field in each element of
+ * @param $table_name Name of the table from which to copy the data into rows.
+ * @param $delimiter The token that separates values for each field in each element of
  * rows.  Default is TAB.
- * @param string $null_as How SQL NULL values are represented in the
+ * @param $null_as How SQL NULL values are represented in the
  * rows.  Default is \N ("\\N").
  * @return array An array with one element for each line of COPY data.
  * It returns FALSE on failure.
  * @throws PgsqlException
  *
  */
-function pg_copy_to($connection, string $table_name, string $delimiter = null, string $null_as = null): array
+function pg_copy_to($connection, $table_name, $delimiter = null, $null_as = null): array
 {
-    error_clear_last();
+
     if ($null_as !== null) {
         $result = \pg_copy_to($connection, $table_name, $delimiter, $null_as);
     } elseif ($delimiter !== null) {
@@ -276,9 +276,9 @@ function pg_copy_to($connection, string $table_name, string $delimiter = null, s
  * @throws PgsqlException
  *
  */
-function pg_dbname($connection = null): string
+function pg_dbname($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_dbname($connection);
     } else {
@@ -313,7 +313,7 @@ function pg_dbname($connection = null): string
  * according to their contexts. i.e. Escape/validate values.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $table_name Name of the table from which to delete rows.
+ * @param $table_name Name of the table from which to delete rows.
  * @param array $assoc_array An array whose keys are field names in the table table_name,
  * and whose values are the values of those fields that are to be deleted.
  * @param int $options Any number of PGSQL_CONV_FORCE_NULL,
@@ -329,9 +329,9 @@ function pg_dbname($connection = null): string
  * @throws PgsqlException
  *
  */
-function pg_delete($connection, string $table_name, array $assoc_array, int $options = PGSQL_DML_EXEC)
+function pg_delete($connection, $table_name, array $assoc_array, $options = PGSQL_DML_EXEC)
 {
-    error_clear_last();
+
     $result = \pg_delete($connection, $table_name, $assoc_array, $options);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -355,9 +355,9 @@ function pg_delete($connection, string $table_name, array $assoc_array, int $opt
  * @throws PgsqlException
  *
  */
-function pg_end_copy($connection = null): void
+function pg_end_copy($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_end_copy($connection);
     } else {
@@ -389,7 +389,7 @@ function pg_end_copy($connection = null): void
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $stmtname The name of the prepared statement to execute.  if
+ * @param $stmtname The name of the prepared statement to execute.  if
  * "" is specified, then the unnamed statement is executed.  The name must have
  * been previously prepared using pg_prepare,
  * pg_send_prepare or a PREPARE SQL
@@ -403,9 +403,9 @@ function pg_end_copy($connection = null): void
  * @throws PgsqlException
  *
  */
-function pg_execute($connection = null, string $stmtname = null, array $params = null)
+function pg_execute($connection = null, $stmtname = null, array $params = null)
 {
-    error_clear_last();
+
     if ($params !== null) {
         $result = \pg_execute($connection, $stmtname, $params);
     } elseif ($stmtname !== null) {
@@ -436,9 +436,9 @@ function pg_execute($connection = null, string $stmtname = null, array $params =
  * @throws PgsqlException
  *
  */
-function pg_field_name($result, int $field_number): string
+function pg_field_name($result, $field_number)
 {
-    error_clear_last();
+
     $result = \pg_field_name($result, $field_number);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -462,9 +462,9 @@ function pg_field_name($result, int $field_number): string
  * @throws PgsqlException
  *
  */
-function pg_field_table($result, int $field_number, bool $oid_only = false)
+function pg_field_table($result, $field_number, $oid_only = false)
 {
-    error_clear_last();
+
     $result = \pg_field_table($result, $field_number, $oid_only);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -486,9 +486,9 @@ function pg_field_table($result, int $field_number, bool $oid_only = false)
  * @throws PgsqlException
  *
  */
-function pg_field_type($result, int $field_number): string
+function pg_field_type($result, $field_number)
 {
-    error_clear_last();
+
     $result = \pg_field_type($result, $field_number);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -510,7 +510,7 @@ function pg_field_type($result, int $field_number): string
  */
 function pg_flush($connection)
 {
-    error_clear_last();
+
     $result = \pg_flush($connection);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -533,9 +533,9 @@ function pg_flush($connection)
  * @throws PgsqlException
  *
  */
-function pg_free_result($result): void
+function pg_free_result($result)
 {
-    error_clear_last();
+
     $result = \pg_free_result($result);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -557,9 +557,9 @@ function pg_free_result($result): void
  * @throws PgsqlException
  *
  */
-function pg_host($connection = null): string
+function pg_host($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_host($connection);
     } else {
@@ -594,7 +594,7 @@ function pg_host($connection = null): string
  * according to their contexts. i.e. Escape/validate values.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $table_name Name of the table into which to insert rows.  The table table_name must at least
+ * @param $table_name Name of the table into which to insert rows.  The table table_name must at least
  * have as many columns as assoc_array has elements.
  * @param array $assoc_array An array whose keys are field names in the table table_name,
  * and whose values are the values of those fields that are to be inserted.
@@ -611,9 +611,9 @@ function pg_host($connection = null): string
  * @throws PgsqlException
  *
  */
-function pg_insert($connection, string $table_name, array $assoc_array, int $options = PGSQL_DML_EXEC)
+function pg_insert($connection, $table_name, array $assoc_array, $options = PGSQL_DML_EXEC)
 {
-    error_clear_last();
+
     $result = \pg_insert($connection, $table_name, $assoc_array, $options);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -643,9 +643,9 @@ function pg_insert($connection, string $table_name, array $assoc_array, int $opt
  * @throws PgsqlException
  *
  */
-function pg_last_error($connection = null): string
+function pg_last_error($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_last_error($connection);
     } else {
@@ -688,9 +688,9 @@ function pg_last_error($connection = null): string
  * @throws PgsqlException
  *
  */
-function pg_last_notice($connection, int $option = PGSQL_NOTICE_LAST)
+function pg_last_notice($connection, $option = PGSQL_NOTICE_LAST)
 {
-    error_clear_last();
+
     $result = \pg_last_notice($connection, $option);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -728,9 +728,9 @@ function pg_last_notice($connection, int $option = PGSQL_NOTICE_LAST)
  * @throws PgsqlException
  *
  */
-function pg_last_oid($result): string
+function pg_last_oid($result)
 {
-    error_clear_last();
+
     $result = \pg_last_oid($result);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -751,9 +751,9 @@ function pg_last_oid($result): string
  * @throws PgsqlException
  *
  */
-function pg_lo_close($large_object): void
+function pg_lo_close($large_object)
 {
-    error_clear_last();
+
     $result = \pg_lo_close($large_object);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -774,14 +774,14 @@ function pg_lo_close($large_object): void
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
  * @param int $oid The OID of the large object in the database.
- * @param string $pathname The full path and file name of the file in which to write the
+ * @param $pathname The full path and file name of the file in which to write the
  * large object on the client filesystem.
  * @throws PgsqlException
  *
  */
-function pg_lo_export($connection = null, int $oid = null, string $pathname = null): void
+function pg_lo_export($connection = null, $oid = null, $pathname = null)
 {
-    error_clear_last();
+
     if ($pathname !== null) {
         $result = \pg_lo_export($connection, $oid, $pathname);
     } elseif ($oid !== null) {
@@ -809,7 +809,7 @@ function pg_lo_export($connection = null, int $oid = null, string $pathname = nu
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $pathname The full path and file name of the file on the client
+ * @param $pathname The full path and file name of the file on the client
  * filesystem from which to read the large object data.
  * @param mixed $object_id If an object_id is given the function
  * will try to create a large object with this id, else a free
@@ -820,9 +820,9 @@ function pg_lo_export($connection = null, int $oid = null, string $pathname = nu
  * @throws PgsqlException
  *
  */
-function pg_lo_import($connection = null, string $pathname = null, $object_id = null): int
+function pg_lo_import($connection = null, $pathname = null, $object_id = null)
 {
-    error_clear_last();
+
     if ($object_id !== null) {
         $result = \pg_lo_import($connection, $pathname, $object_id);
     } elseif ($pathname !== null) {
@@ -851,15 +851,15 @@ function pg_lo_import($connection = null, string $pathname = null, $object_id = 
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
  * @param int $oid The OID of the large object in the database.
- * @param string $mode Can be either "r" for read-only, "w" for write only or "rw" for read and
+ * @param $mode Can be either "r" for read-only, "w" for write only or "rw" for read and
  * write.
  * @return resource A large object resource.
  * @throws PgsqlException
  *
  */
-function pg_lo_open($connection, int $oid, string $mode)
+function pg_lo_open($connection, $oid, $mode)
 {
-    error_clear_last();
+
     $result = \pg_lo_open($connection, $oid, $mode);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -882,9 +882,9 @@ function pg_lo_open($connection, int $oid, string $mode)
  * @throws PgsqlException
  *
  */
-function pg_lo_read_all($large_object): int
+function pg_lo_read_all($large_object)
 {
-    error_clear_last();
+
     $result = \pg_lo_read_all($large_object);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -908,9 +908,9 @@ function pg_lo_read_all($large_object): int
  * @throws PgsqlException
  *
  */
-function pg_lo_read($large_object, int $len = 8192): string
+function pg_lo_read($large_object, $len = 8192)
 {
-    error_clear_last();
+
     $result = \pg_lo_read($large_object, $len);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -934,9 +934,9 @@ function pg_lo_read($large_object, int $len = 8192): string
  * @throws PgsqlException
  *
  */
-function pg_lo_seek($large_object, int $offset, int $whence = PGSQL_SEEK_CUR): void
+function pg_lo_seek($large_object, $offset, $whence = PGSQL_SEEK_CUR)
 {
-    error_clear_last();
+
     $result = \pg_lo_seek($large_object, $offset, $whence);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -956,9 +956,9 @@ function pg_lo_seek($large_object, int $offset, int $whence = PGSQL_SEEK_CUR): v
  * @throws PgsqlException
  *
  */
-function pg_lo_truncate($large_object, int $size): void
+function pg_lo_truncate($large_object, $size)
 {
-    error_clear_last();
+
     $result = \pg_lo_truncate($large_object, $size);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -981,9 +981,9 @@ function pg_lo_truncate($large_object, int $size): void
  * @throws PgsqlException
  *
  */
-function pg_lo_unlink($connection, int $oid): void
+function pg_lo_unlink($connection, $oid)
 {
-    error_clear_last();
+
     $result = \pg_lo_unlink($connection, $oid);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -999,7 +999,7 @@ function pg_lo_unlink($connection, int $oid): void
  * enclose it within a transaction block.
  *
  * @param resource $large_object PostgreSQL large object (LOB) resource, returned by pg_lo_open.
- * @param string $data The data to be written to the large object.  If len is
+ * @param $data The data to be written to the large object.  If len is
  * specified and is less than the length of data, only
  * len bytes will be written.
  * @param int $len An optional maximum number of bytes to write.  Must be greater than zero
@@ -1009,9 +1009,9 @@ function pg_lo_unlink($connection, int $oid): void
  * @throws PgsqlException
  *
  */
-function pg_lo_write($large_object, string $data, int $len = null): int
+function pg_lo_write($large_object, $data, $len = null)
 {
-    error_clear_last();
+
     if ($len !== null) {
         $result = \pg_lo_write($large_object, $data, $len);
     } else {
@@ -1029,15 +1029,15 @@ function pg_lo_write($large_object, string $data, int $len = null): int
  * table_name as an array.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $table_name The name of the table.
+ * @param $table_name The name of the table.
  * @param bool $extended Flag for returning extended meta data. Default to FALSE.
  * @return array An array of the table definition.
  * @throws PgsqlException
  *
  */
-function pg_meta_data($connection, string $table_name, bool $extended = false): array
+function pg_meta_data($connection, $table_name, $extended = false): array
 {
-    error_clear_last();
+
     $result = \pg_meta_data($connection, $table_name, $extended);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1060,9 +1060,9 @@ function pg_meta_data($connection, string $table_name, bool $extended = false): 
  * @throws PgsqlException
  *
  */
-function pg_options($connection = null): string
+function pg_options($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_options($connection);
     } else {
@@ -1103,7 +1103,7 @@ function pg_options($connection = null): string
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $param_name Possible param_name values include server_version,
+ * @param $param_name Possible param_name values include server_version,
  * server_encoding, client_encoding,
  * is_superuser, session_authorization,
  * DateStyle, TimeZone, and
@@ -1113,9 +1113,9 @@ function pg_options($connection = null): string
  * @throws PgsqlException
  *
  */
-function pg_parameter_status($connection = null, string $param_name = null): string
+function pg_parameter_status($connection = null, $param_name = null)
 {
-    error_clear_last();
+
     if ($param_name !== null) {
         $result = \pg_parameter_status($connection, $param_name);
     } elseif ($connection !== null) {
@@ -1151,7 +1151,7 @@ function pg_parameter_status($connection = null, string $param_name = null): str
  * pg_close will not close persistent links
  * generated by pg_pconnect.
  *
- * @param string $connection_string The connection_string can be empty to use all default parameters, or it
+ * @param $connection_string The connection_string can be empty to use all default parameters, or it
  * can contain one or more parameter settings separated by whitespace.
  * Each parameter setting is in the form keyword = value. Spaces around
  * the equal sign are optional. To write an empty value or a value
@@ -1174,9 +1174,9 @@ function pg_parameter_status($connection = null, string $param_name = null): str
  * @throws PgsqlException
  *
  */
-function pg_pconnect(string $connection_string, int $connect_type = null)
+function pg_pconnect($connection_string, $connect_type = null)
 {
-    error_clear_last();
+
     if ($connect_type !== null) {
         $result = \pg_pconnect($connection_string, $connect_type);
     } else {
@@ -1200,9 +1200,9 @@ function pg_pconnect(string $connection_string, int $connect_type = null)
  * @throws PgsqlException
  *
  */
-function pg_ping($connection = null): void
+function pg_ping($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_ping($connection);
     } else {
@@ -1228,9 +1228,9 @@ function pg_ping($connection = null): void
  * @throws PgsqlException
  *
  */
-function pg_port($connection = null): int
+function pg_port($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_port($connection);
     } else {
@@ -1268,19 +1268,19 @@ function pg_port($connection = null): int
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $stmtname The name to give the prepared statement.  Must be unique per-connection.  If
+ * @param $stmtname The name to give the prepared statement.  Must be unique per-connection.  If
  * "" is specified, then an unnamed statement is created, overwriting any
  * previously defined unnamed statement.
- * @param string $query The parameterized SQL statement.  Must contain only a single statement.
+ * @param $query The parameterized SQL statement.  Must contain only a single statement.
  * (multiple statements separated by semi-colons are not allowed.)  If any parameters
  * are used, they are referred to as $1, $2, etc.
  * @return resource A query result resource on success.
  * @throws PgsqlException
  *
  */
-function pg_prepare($connection = null, string $stmtname = null, string $query = null)
+function pg_prepare($connection = null, $stmtname = null, $query = null)
 {
-    error_clear_last();
+
     if ($query !== null) {
         $result = \pg_prepare($connection, $stmtname, $query);
     } elseif ($stmtname !== null) {
@@ -1314,14 +1314,14 @@ function pg_prepare($connection = null, string $stmtname = null, string $query =
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $data A line of text to be sent directly to the PostgreSQL backend.  A NULL
+ * @param $data A line of text to be sent directly to the PostgreSQL backend.  A NULL
  * terminator is added automatically.
  * @throws PgsqlException
  *
  */
-function pg_put_line($connection = null, string $data = null): void
+function pg_put_line($connection = null, $data = null)
 {
-    error_clear_last();
+
     if ($data !== null) {
         $result = \pg_put_line($connection, $data);
     } elseif ($connection !== null) {
@@ -1364,7 +1364,7 @@ function pg_put_line($connection = null, string $data = null): void
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $query The parameterized SQL statement.  Must contain only a single statement.
+ * @param $query The parameterized SQL statement.  Must contain only a single statement.
  * (multiple statements separated by semi-colons are not allowed.)  If any parameters
  * are used, they are referred to as $1, $2, etc.
  *
@@ -1385,9 +1385,9 @@ function pg_put_line($connection = null, string $data = null): void
  * @throws PgsqlException
  *
  */
-function pg_query_params($connection = null, string $query = null, array $params = null)
+function pg_query_params($connection = null, $query = null, array $params = null)
 {
-    error_clear_last();
+
     if ($params !== null) {
         $result = \pg_query_params($connection, $query, $params);
     } elseif ($query !== null) {
@@ -1426,7 +1426,7 @@ function pg_query_params($connection = null, string $query = null, array $params
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $query The SQL statement or statements to be executed. When multiple statements are passed to the function,
+ * @param $query The SQL statement or statements to be executed. When multiple statements are passed to the function,
  * they are automatically executed as one transaction, unless there are explicit BEGIN/COMMIT commands
  * included in the query string. However, using multiple transactions in one function call is not recommended.
  *
@@ -1443,9 +1443,9 @@ function pg_query_params($connection = null, string $query = null, array $params
  * @throws PgsqlException
  *
  */
-function pg_query($connection = null, string $query = null)
+function pg_query($connection = null, $query = null)
 {
-    error_clear_last();
+
     if ($query !== null) {
         $result = \pg_query($connection, $query);
     } elseif ($connection !== null) {
@@ -1489,9 +1489,9 @@ function pg_query($connection = null, string $query = null)
  * @throws PgsqlException
  *
  */
-function pg_result_error_field($result, int $fieldcode): string
+function pg_result_error_field($result, $fieldcode)
 {
-    error_clear_last();
+
     $result = \pg_result_error_field($result, $fieldcode);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1512,9 +1512,9 @@ function pg_result_error_field($result, int $fieldcode): string
  * @throws PgsqlException
  *
  */
-function pg_result_seek($result, int $offset): void
+function pg_result_seek($result, $offset)
 {
-    error_clear_last();
+
     $result = \pg_result_seek($result, $offset);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1544,7 +1544,7 @@ function pg_result_seek($result, int $offset): void
  * according to their contexts. i.e. Escape/validate values.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $table_name Name of the table from which to select rows.
+ * @param $table_name Name of the table from which to select rows.
  * @param array $assoc_array An array whose keys are field names in the table table_name,
  * and whose values are the conditions that a row must meet to be retrieved.
  * @param int $options Any number of PGSQL_CONV_FORCE_NULL,
@@ -1561,9 +1561,9 @@ function pg_result_seek($result, int $offset): void
  * @throws PgsqlException
  *
  */
-function pg_select($connection, string $table_name, array $assoc_array, int $options = PGSQL_DML_EXEC, int $result_type = PGSQL_ASSOC)
+function pg_select($connection, $table_name, array $assoc_array, $options = PGSQL_DML_EXEC, $result_type = PGSQL_ASSOC)
 {
-    error_clear_last();
+
     $result = \pg_select($connection, $table_name, $assoc_array, $options, $result_type);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1586,7 +1586,7 @@ function pg_select($connection, string $table_name, array $assoc_array, int $opt
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $stmtname The name of the prepared statement to execute.  if
+ * @param $stmtname The name of the prepared statement to execute.  if
  * "" is specified, then the unnamed statement is executed.  The name must have
  * been previously prepared using pg_prepare,
  * pg_send_prepare or a PREPARE SQL
@@ -1597,9 +1597,9 @@ function pg_select($connection, string $table_name, array $assoc_array, int $opt
  * @throws PgsqlException
  *
  */
-function pg_send_execute($connection, string $stmtname, array $params): void
+function pg_send_execute($connection, $stmtname, array $params)
 {
-    error_clear_last();
+
     $result = \pg_send_execute($connection, $stmtname, $params);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1622,18 +1622,18 @@ function pg_send_execute($connection, string $stmtname, array $params): void
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
  * pg_connect or pg_pconnect.
- * @param string $stmtname The name to give the prepared statement.  Must be unique per-connection.  If
+ * @param $stmtname The name to give the prepared statement.  Must be unique per-connection.  If
  * "" is specified, then an unnamed statement is created, overwriting any
  * previously defined unnamed statement.
- * @param string $query The parameterized SQL statement.  Must contain only a single statement.
+ * @param $query The parameterized SQL statement.  Must contain only a single statement.
  * (multiple statements separated by semi-colons are not allowed.)  If any parameters
  * are used, they are referred to as $1, $2, etc.
  * @throws PgsqlException
  *
  */
-function pg_send_prepare($connection, string $stmtname, string $query): void
+function pg_send_prepare($connection, $stmtname, $query)
 {
-    error_clear_last();
+
     $result = \pg_send_prepare($connection, $stmtname, $query);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1653,7 +1653,7 @@ function pg_send_prepare($connection, string $stmtname, string $query): void
  * connections, and it allows only one command in the query string.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $query The parameterized SQL statement.  Must contain only a single statement.
+ * @param $query The parameterized SQL statement.  Must contain only a single statement.
  * (multiple statements separated by semi-colons are not allowed.)  If any parameters
  * are used, they are referred to as $1, $2, etc.
  * @param array $params An array of parameter values to substitute for the $1, $2, etc. placeholders
@@ -1662,9 +1662,9 @@ function pg_send_prepare($connection, string $stmtname, string $query): void
  * @throws PgsqlException
  *
  */
-function pg_send_query_params($connection, string $query, array $params): void
+function pg_send_query_params($connection, $query, array $params)
 {
-    error_clear_last();
+
     $result = \pg_send_query_params($connection, $query, $params);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1690,15 +1690,15 @@ function pg_send_query_params($connection, string $query, array $params): void
  * discards all its results.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $query The SQL statement or statements to be executed.
+ * @param $query The SQL statement or statements to be executed.
  *
  * Data inside the query should be properly escaped.
  * @throws PgsqlException
  *
  */
-function pg_send_query($connection, string $query): void
+function pg_send_query($connection, $query)
 {
-    error_clear_last();
+
     $result = \pg_send_query($connection, $query);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1717,7 +1717,7 @@ function pg_send_query($connection, string $query): void
  */
 function pg_socket($connection)
 {
-    error_clear_last();
+
     $result = \pg_socket($connection);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1739,9 +1739,9 @@ function pg_socket($connection)
  * PostgreSQL server. For more information, refer to the
  * PostgreSQL Documentation.
  *
- * @param string $pathname The full path and file name of the file in which to write the
+ * @param $pathname The full path and file name of the file in which to write the
  * trace log.  Same as in fopen.
- * @param string $mode An optional file access mode, same as for fopen.
+ * @param $mode An optional file access mode, same as for fopen.
  * @param resource $connection PostgreSQL database connection resource.  When
  * connection is not present, the default connection
  * is used. The default connection is the last connection made by
@@ -1749,9 +1749,9 @@ function pg_socket($connection)
  * @throws PgsqlException
  *
  */
-function pg_trace(string $pathname, string $mode = "w", $connection = null): void
+function pg_trace($pathname, $mode = "w", $connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_trace($pathname, $mode, $connection);
     } else {
@@ -1777,9 +1777,9 @@ function pg_trace(string $pathname, string $mode = "w", $connection = null): voi
  * @throws PgsqlException
  *
  */
-function pg_tty($connection = null): string
+function pg_tty($connection = null)
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_tty($connection);
     } else {
@@ -1818,7 +1818,7 @@ function pg_tty($connection = null): string
  * according to their contexts. i.e. Escape/validate values.
  *
  * @param resource $connection PostgreSQL database connection resource.
- * @param string $table_name Name of the table into which to update rows.
+ * @param $table_name Name of the table into which to update rows.
  * @param array $data An array whose keys are field names in the table table_name,
  * and whose values are what matched rows are to be updated to.
  * @param array $condition An array whose keys are field names in the table table_name,
@@ -1836,9 +1836,9 @@ function pg_tty($connection = null): string
  * @throws PgsqlException
  *
  */
-function pg_update($connection, string $table_name, array $data, array $condition, int $options = PGSQL_DML_EXEC)
+function pg_update($connection, $table_name, array $data, array $condition, $options = PGSQL_DML_EXEC)
 {
-    error_clear_last();
+
     $result = \pg_update($connection, $table_name, $data, $condition, $options);
     if ($result === false) {
         throw PgsqlException::createFromPhpError();
@@ -1866,7 +1866,7 @@ function pg_update($connection, string $table_name, array $data, array $conditio
  */
 function pg_version($connection = null): array
 {
-    error_clear_last();
+
     if ($connection !== null) {
         $result = \pg_version($connection);
     } else {

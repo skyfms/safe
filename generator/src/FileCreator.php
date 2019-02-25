@@ -14,9 +14,9 @@ class FileCreator
      * This function generate an xls file
      *
      * @param string[] $protoFunctions
-     * @param string $path
+     * @param $path
      */
-    public function generateXlsFile(array $protoFunctions, string $path): void
+    public function generateXlsFile(array $protoFunctions, $path)
     {
         $spreadsheet = new Spreadsheet();
         $numb = 1;
@@ -46,9 +46,9 @@ class FileCreator
      * This function generate an improved php lib function in a php file
      *
      * @param Method[] $functions
-     * @param string $path
+     * @param $path
      */
-    public function generatePhpFile(array $functions, string $path): void
+    public function generatePhpFile(array $functions, $path)
     {
         $path = rtrim($path, '/').'/';
         $phpFunctionsByModule = [];
@@ -94,9 +94,9 @@ use Safe\\Exceptions\\".self::toExceptionName($module). ';
      * This function generate a PHP file containing the list of functions we can handle.
      *
      * @param Method[] $functions
-     * @param string $path
+     * @param $path
      */
-    public function generateFunctionsList(array $functions, string $path): void
+    public function generateFunctionsList(array $functions, $path)
     {
         $functionNames = $this->getFunctionsNameList($functions);
         $stream = fopen($path, 'w');
@@ -116,9 +116,9 @@ return [\n");
      * This function generate a rector yml file containing a replacer for all functions
      *
      * @param Method[] $functions
-     * @param string $path
+     * @param $path
      */
-    public function generateRectorFile(array $functions, string $path): void
+    public function generateRectorFile(array $functions, $path)
     {
         $functionNames = $this->getFunctionsNameList($functions);
         $stream = fopen($path, 'w');
@@ -137,7 +137,7 @@ services:
     }
 
 
-    public function createExceptionFile(string $moduleName): void
+    public function createExceptionFile($moduleName)
     {
         $exceptionName = self::toExceptionName($moduleName);
         if (!file_exists(__DIR__.'/../../lib/Exceptions/'.$exceptionName.'.php')) {
@@ -159,10 +159,10 @@ EOF
     /**
      * Generates the name of the exception class
      *
-     * @param string $moduleName
+     * @param $moduleName
      * @return string
      */
-    public static function toExceptionName(string $moduleName): string
+    public static function toExceptionName($moduleName)
     {
         return str_replace('-', '', \ucfirst($moduleName)).'Exception';
     }

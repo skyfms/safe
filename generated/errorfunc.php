@@ -7,7 +7,7 @@ use Safe\Exceptions\ErrorfuncException;
 /**
  * Sends an error message to the web server's error log or to a file.
  *
- * @param string $message The error message that should be logged.
+ * @param $message The error message that should be logged.
  * @param int $message_type Says where the error should go. The possible message types are as
  * follows:
  *
@@ -57,18 +57,18 @@ use Safe\Exceptions\ErrorfuncException;
  *
  *
  *
- * @param string $destination The destination. Its meaning depends on the
+ * @param $destination The destination. Its meaning depends on the
  * message_type parameter as described above.
- * @param string $extra_headers The extra headers. It's used when the message_type
+ * @param $extra_headers The extra headers. It's used when the message_type
  * parameter is set to 1.
  * This message type uses the same internal function as
  * mail does.
  * @throws ErrorfuncException
  *
  */
-function error_log(string $message, int $message_type = 0, string $destination = null, string $extra_headers = null): void
+function error_log($message, $message_type = 0, $destination = null, $extra_headers = null)
 {
-    error_clear_last();
+
     if ($extra_headers !== null) {
         $result = \error_log($message, $message_type, $destination, $extra_headers);
     } elseif ($destination !== null) {

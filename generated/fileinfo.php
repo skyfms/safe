@@ -11,9 +11,9 @@ use Safe\Exceptions\FileinfoException;
  * @throws FileinfoException
  *
  */
-function finfo_close($finfo): void
+function finfo_close($finfo)
 {
-    error_clear_last();
+
     $result = \finfo_close($finfo);
     if ($result === false) {
         throw FileinfoException::createFromPhpError();
@@ -30,7 +30,7 @@ function finfo_close($finfo): void
  *
  * @param int $options One or disjunction of more Fileinfo
  * constants.
- * @param string $magic_file Name of a magic database file, usually something like
+ * @param $magic_file Name of a magic database file, usually something like
  * /path/to/magic.mime. If not specified, the
  * MAGIC environment variable is used. If the
  * environment variable isn't set, then PHP's bundled magic database will
@@ -43,9 +43,9 @@ function finfo_close($finfo): void
  * @throws FileinfoException
  *
  */
-function finfo_open(int $options = FILEINFO_NONE, ?string $magic_file = null)
+function finfo_open($options = FILEINFO_NONE, $magic_file = null)
 {
-    error_clear_last();
+
     $result = \finfo_open($options, $magic_file);
     if ($result === false) {
         throw FileinfoException::createFromPhpError();
@@ -58,15 +58,15 @@ function finfo_open(int $options = FILEINFO_NONE, ?string $magic_file = null)
  * Returns the MIME content type for a file as determined by using
  * information from the magic.mime file.
  *
- * @param string $filename Path to the tested file.
+ * @param $filename Path to the tested file.
  * @return string Returns the content type in MIME format, like
  * text/plain or application/octet-stream.
  * @throws FileinfoException
  *
  */
-function mime_content_type(string $filename): string
+function mime_content_type($filename)
 {
-    error_clear_last();
+
     $result = \mime_content_type($filename);
     if ($result === false) {
         throw FileinfoException::createFromPhpError();

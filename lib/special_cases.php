@@ -17,7 +17,7 @@ use Safe\Exceptions\PcreException;
 /**
  * Wrapper for json_decode that throws when an error occurs.
  *
- * @param string $json    JSON data to parse
+ * @param $json    JSON data to parse
  * @param bool $assoc     When true, returned objects will be converted
  *                        into associative arrays.
  * @param int $depth   User specified recursion depth.
@@ -27,7 +27,7 @@ use Safe\Exceptions\PcreException;
  * @throws JsonException if the JSON cannot be decoded.
  * @link http://www.php.net/manual/en/function.json-decode.php
  */
-function json_decode(string $json, bool $assoc = false, int $depth = 512, int $options = 0)
+function json_decode($json, $assoc = false, $depth = 512, $options = 0)
 {
     $data = \json_decode($json, $assoc, $depth, $options);
     if (JSON_ERROR_NONE !== json_last_error()) {
@@ -49,7 +49,7 @@ function json_decode(string $json, bool $assoc = false, int $depth = 512, int $o
  */
 function apc_fetch($key)
 {
-    error_clear_last();
+
     $result = \apc_fetch($key, $success);
     if ($success === false) {
         throw ApcException::createFromPhpError();
@@ -69,7 +69,7 @@ function apc_fetch($key)
  */
 function apcu_fetch($key)
 {
-    error_clear_last();
+
     $result = \apcu_fetch($key, $success);
     if ($success === false) {
         throw ApcuException::createFromPhpError();
@@ -151,9 +151,9 @@ function apcu_fetch($key)
  * @throws PcreException
  *
  */
-function preg_replace($pattern, $replacement, $subject, int $limit = -1, int &$count = null)
+function preg_replace($pattern, $replacement, $subject, $limit = -1, &$count = null)
 {
-    error_clear_last();
+
     $result = \preg_replace($pattern, $replacement, $subject, $limit, $count);
     if (preg_last_error() !== PREG_NO_ERROR || $result === null) {
         throw PcreException::createFromPhpError();
@@ -179,9 +179,8 @@ function preg_replace($pattern, $replacement, $subject, int $limit = -1, int &$c
  * @throws OpensslException
  *
  */
-function openssl_encrypt(string $data, string $method, string $key, int $options = 0, string $iv = "", string &$tag = "", string $aad = "", int $tag_length = 16): string
+function openssl_encrypt($data, $method, $key, $options = 0, $iv = "", &$tag = "", $aad = "", $tag_length = 16)
 {
-    error_clear_last();
     // The $tag parameter is handled in a weird way by openssl_encrypt. It cannot be provided unless encoding is AEAD
     if (func_num_args() <= 5) {
         $result = \openssl_encrypt($data, $method, $key, $options, $iv);

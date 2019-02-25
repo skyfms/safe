@@ -13,7 +13,7 @@ use Safe\Exceptions\YazException;
  * prior to this function.
  *
  * @param resource $id The connection resource returned by yaz_connect.
- * @param string $query The CCL FIND query.
+ * @param $query The CCL FIND query.
  * @param array $result If the function was executed successfully, this will be an array
  * containing the valid RPN query under the key rpn.
  *
@@ -47,9 +47,9 @@ use Safe\Exceptions\YazException;
  * @throws YazException
  *
  */
-function yaz_ccl_parse($id, string $query, array &$result): void
+function yaz_ccl_parse($id, $query, array &$result)
 {
-    error_clear_last();
+
     $result = \yaz_ccl_parse($id, $query, $result);
     if ($result === false) {
         throw YazException::createFromPhpError();
@@ -64,9 +64,9 @@ function yaz_ccl_parse($id, string $query, array &$result): void
  * @throws YazException
  *
  */
-function yaz_close($id): void
+function yaz_close($id)
 {
-    error_clear_last();
+
     $result = \yaz_close($id);
     if ($result === false) {
         throw YazException::createFromPhpError();
@@ -84,7 +84,7 @@ function yaz_close($id): void
  * a connection  - it merely prepares a connect to be performed later when
  * yaz_wait is called.
  *
- * @param string $zurl A string that takes the form host[:port][/database].
+ * @param $zurl A string that takes the form host[:port][/database].
  * If port is omitted, port 210 is used. If database is omitted
  * Default is used.
  * @param mixed $options If given as a string, it is treated as the Z39.50 V2 authentication
@@ -265,9 +265,9 @@ function yaz_close($id): void
  * @throws YazException
  *
  */
-function yaz_connect(string $zurl, $options = null)
+function yaz_connect($zurl, $options = null)
 {
-    error_clear_last();
+
     if ($options !== null) {
         $result = \yaz_connect($zurl, $options);
     } else {
@@ -287,14 +287,14 @@ function yaz_connect(string $zurl, $options = null)
  * yaz_connect.
  *
  * @param resource $id The connection resource returned by yaz_connect.
- * @param string $databases A string containing one or more databases. Multiple databases are
+ * @param $databases A string containing one or more databases. Multiple databases are
  * separated by a plus sign +.
  * @throws YazException
  *
  */
-function yaz_database($id, string $databases): void
+function yaz_database($id, $databases)
 {
-    error_clear_last();
+
     $result = \yaz_database($id, $databases);
     if ($result === false) {
         throw YazException::createFromPhpError();
@@ -310,14 +310,14 @@ function yaz_database($id, string $databases): void
  * records to be retrieved.
  *
  * @param resource $id The connection resource returned by yaz_connect.
- * @param string $elementset Most servers support F (for full records) and
+ * @param $elementset Most servers support F (for full records) and
  * B (for brief records).
  * @throws YazException
  *
  */
-function yaz_element($id, string $elementset): void
+function yaz_element($id, $elementset)
 {
-    error_clear_last();
+
     $result = \yaz_element($id, $elementset);
     if ($result === false) {
         throw YazException::createFromPhpError();
@@ -335,9 +335,9 @@ function yaz_element($id, string $elementset): void
  * @throws YazException
  *
  */
-function yaz_present($id): void
+function yaz_present($id)
 {
-    error_clear_last();
+
     $result = \yaz_present($id);
     if ($result === false) {
         throw YazException::createFromPhpError();
@@ -354,10 +354,10 @@ function yaz_present($id): void
  * yaz_wait is called.
  *
  * @param resource $id The connection resource returned by yaz_connect.
- * @param string $type This parameter represents the query type - only "rpn"
+ * @param $type This parameter represents the query type - only "rpn"
  * is supported now in which case the third argument specifies a Type-1
  * query in prefix query notation.
- * @param string $query The RPN query is a textual representation of the Type-1 query as
+ * @param $query The RPN query is a textual representation of the Type-1 query as
  * defined by the Z39.50 standard. However, in the text representation
  * as used by YAZ a prefix notation is used, that is the operator
  * precedes the operands. The query string is a sequence of tokens where
@@ -375,9 +375,9 @@ function yaz_present($id): void
  * @throws YazException
  *
  */
-function yaz_search($id, string $type, string $query): void
+function yaz_search($id, $type, $query)
 {
-    error_clear_last();
+
     $result = \yaz_search($id, $type, $query);
     if ($result === false) {
         throw YazException::createFromPhpError();
@@ -429,7 +429,7 @@ function yaz_search($id, string $type, string $query): void
  */
 function yaz_wait(array &$options = null)
 {
-    error_clear_last();
+
     $result = \yaz_wait($options);
     if ($result === false) {
         throw YazException::createFromPhpError();

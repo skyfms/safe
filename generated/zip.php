@@ -11,9 +11,9 @@ use Safe\Exceptions\ZipException;
  * @throws ZipException
  *
  */
-function zip_entry_close($zip_entry): void
+function zip_entry_close($zip_entry)
 {
-    error_clear_last();
+
     $result = \zip_entry_close($zip_entry);
     if ($result === false) {
         throw ZipException::createFromPhpError();
@@ -26,7 +26,7 @@ function zip_entry_close($zip_entry): void
  *
  * @param resource $zip A valid resource handle returned by zip_open.
  * @param resource $zip_entry A directory entry returned by zip_read.
- * @param string $mode Any of the modes specified in the documentation of
+ * @param $mode Any of the modes specified in the documentation of
  * fopen.
  *
  * Currently, mode is ignored and is always
@@ -35,9 +35,9 @@ function zip_entry_close($zip_entry): void
  * @throws ZipException
  *
  */
-function zip_entry_open($zip, $zip_entry, string $mode = null): void
+function zip_entry_open($zip, $zip_entry, $mode = null)
 {
-    error_clear_last();
+
     if ($mode !== null) {
         $result = \zip_entry_open($zip, $zip_entry, $mode);
     } else {
@@ -60,9 +60,9 @@ function zip_entry_open($zip, $zip_entry, string $mode = null): void
  * @throws ZipException
  *
  */
-function zip_entry_read($zip_entry, int $length = 1024): string
+function zip_entry_read($zip_entry, $length = 1024)
 {
-    error_clear_last();
+
     $result = \zip_entry_read($zip_entry, $length);
     if ($result === false) {
         throw ZipException::createFromPhpError();

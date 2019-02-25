@@ -11,9 +11,9 @@ use Safe\Exceptions\SolrException;
  * @throws SolrException
  *
  */
-function solr_get_version(): string
+function solr_get_version()
 {
-    error_clear_last();
+
     $result = \solr_get_version();
     if ($result === false) {
         throw SolrException::createFromPhpError();

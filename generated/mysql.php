@@ -26,9 +26,9 @@ use Safe\Exceptions\MysqlException;
  * @throws MysqlException
  *
  */
-function mysql_close($link_identifier = null): void
+function mysql_close($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_close($link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -39,7 +39,7 @@ function mysql_close($link_identifier = null): void
 /**
  * Opens or reuses a connection to a MySQL server.
  *
- * @param string $server The MySQL server. It can also include a port number. e.g.
+ * @param $server The MySQL server. It can also include a port number. e.g.
  * "hostname:port" or a path to a local socket e.g. ":/path/to/socket" for
  * the localhost.
  *
@@ -47,10 +47,10 @@ function mysql_close($link_identifier = null): void
  * mysql.default_host is undefined (default), then the default
  * value is 'localhost:3306'. In SQL safe mode, this parameter is ignored
  * and value 'localhost:3306' is always used.
- * @param string $username The username. Default value is defined by mysql.default_user. In
+ * @param $username The username. Default value is defined by mysql.default_user. In
  * SQL safe mode, this parameter is ignored and the name of the user that
  * owns the server process is used.
- * @param string $password The password. Default value is defined by mysql.default_password. In
+ * @param $password The password. Default value is defined by mysql.default_password. In
  * SQL safe mode, this parameter is ignored and empty password is used.
  * @param bool $new_link If a second call is made to mysql_connect
  * with the same arguments, no new link will be established, but
@@ -73,9 +73,9 @@ function mysql_close($link_identifier = null): void
  * @throws MysqlException
  *
  */
-function mysql_connect(string $server = null, string $username = null, string $password = null, bool $new_link = false, int $client_flags = 0)
+function mysql_connect($server = null, $username = null, $password = null, $new_link = false, $client_flags = 0)
 {
-    error_clear_last();
+
     if ($client_flags !== 0) {
         $result = \mysql_connect($server, $username, $password, $new_link, $client_flags);
     } elseif ($new_link !== false) {
@@ -101,7 +101,7 @@ function mysql_connect(string $server = null, string $username = null, string $p
  * database on the server associated with the specified link
  * identifier.
  *
- * @param string $database_name The name of the database being created.
+ * @param $database_name The name of the database being created.
  * @param resource $link_identifier The MySQL connection. If the
  * link identifier is not specified, the last link opened by
  * mysql_connect is assumed. If no such link is found, it
@@ -111,9 +111,9 @@ function mysql_connect(string $server = null, string $username = null, string $p
  * @throws MysqlException
  *
  */
-function mysql_create_db(string $database_name, $link_identifier = null): void
+function mysql_create_db($database_name, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_create_db($database_name, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -142,9 +142,9 @@ function mysql_create_db(string $database_name, $link_identifier = null): void
  * @throws MysqlException
  *
  */
-function mysql_data_seek($result, int $row_number): void
+function mysql_data_seek($result, $row_number)
 {
-    error_clear_last();
+
     $result = \mysql_data_seek($result, $row_number);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -165,9 +165,9 @@ function mysql_data_seek($result, int $row_number): void
  * @throws MysqlException
  *
  */
-function mysql_db_name($result, int $row, $field = null): string
+function mysql_db_name($result, $row, $field = null)
 {
-    error_clear_last();
+
     $result = \mysql_db_name($result, $row, $field);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -180,8 +180,8 @@ function mysql_db_name($result, int $row, $field = null): string
  * mysql_db_query selects a database, and executes a
  * query on it.
  *
- * @param string $database The name of the database that will be selected.
- * @param string $query The MySQL query.
+ * @param $database The name of the database that will be selected.
+ * @param $query The MySQL query.
  *
  * Data inside the query should be properly escaped.
  * @param resource $link_identifier The MySQL connection. If the
@@ -196,9 +196,9 @@ function mysql_db_name($result, int $row, $field = null): string
  * @throws MysqlException
  *
  */
-function mysql_db_query(string $database, string $query, $link_identifier = null)
+function mysql_db_query($database, $query, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_db_query($database, $query, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -214,7 +214,7 @@ function mysql_db_query(string $database, string $query, $link_identifier = null
  * mysql_query to issue an sql
  * DROP DATABASE statement instead.
  *
- * @param string $database_name The name of the database that will be deleted.
+ * @param $database_name The name of the database that will be deleted.
  * @param resource $link_identifier The MySQL connection. If the
  * link identifier is not specified, the last link opened by
  * mysql_connect is assumed. If no such link is found, it
@@ -224,9 +224,9 @@ function mysql_db_query(string $database, string $query, $link_identifier = null
  * @throws MysqlException
  *
  */
-function mysql_drop_db(string $database_name, $link_identifier = null): void
+function mysql_drop_db($database_name, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_drop_db($database_name, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -255,7 +255,7 @@ function mysql_drop_db(string $database_name, $link_identifier = null): void
  */
 function mysql_fetch_lengths($result): array
 {
-    error_clear_last();
+
     $result = \mysql_fetch_lengths($result);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -289,9 +289,9 @@ function mysql_fetch_lengths($result): array
  * @throws MysqlException
  *
  */
-function mysql_field_flags($result, int $field_offset): string
+function mysql_field_flags($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \mysql_field_flags($result, $field_offset);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -315,9 +315,9 @@ function mysql_field_flags($result, int $field_offset): string
  * @throws MysqlException
  *
  */
-function mysql_field_len($result, int $field_offset): int
+function mysql_field_len($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \mysql_field_len($result, $field_offset);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -341,9 +341,9 @@ function mysql_field_len($result, int $field_offset): int
  * @throws MysqlException
  *
  */
-function mysql_field_name($result, int $field_offset): string
+function mysql_field_name($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \mysql_field_name($result, $field_offset);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -368,9 +368,9 @@ function mysql_field_name($result, int $field_offset): string
  * @throws MysqlException
  *
  */
-function mysql_field_seek($result, int $field_offset): void
+function mysql_field_seek($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \mysql_field_seek($result, $field_offset);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -393,9 +393,9 @@ function mysql_field_seek($result, int $field_offset): void
  * @throws MysqlException
  *
  */
-function mysql_free_result($result): void
+function mysql_free_result($result)
 {
-    error_clear_last();
+
     $result = \mysql_free_result($result);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -418,9 +418,9 @@ function mysql_free_result($result): void
  * @throws MysqlException
  *
  */
-function mysql_get_host_info($link_identifier = null): string
+function mysql_get_host_info($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_get_host_info($link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -442,9 +442,9 @@ function mysql_get_host_info($link_identifier = null): string
  * @throws MysqlException
  *
  */
-function mysql_get_proto_info($link_identifier = null): int
+function mysql_get_proto_info($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_get_proto_info($link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -466,9 +466,9 @@ function mysql_get_proto_info($link_identifier = null): int
  * @throws MysqlException
  *
  */
-function mysql_get_server_info($link_identifier = null): string
+function mysql_get_server_info($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_get_server_info($link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -492,9 +492,9 @@ function mysql_get_server_info($link_identifier = null): string
  * @throws MysqlException
  *
  */
-function mysql_info($link_identifier = null): string
+function mysql_info($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_info($link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -521,7 +521,7 @@ function mysql_info($link_identifier = null): string
  */
 function mysql_list_dbs($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_list_dbs($link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -537,8 +537,8 @@ function mysql_list_dbs($link_identifier = null)
  * mysql_query to issue an SQL SHOW COLUMNS FROM
  * table [LIKE 'name'] statement instead.
  *
- * @param string $database_name The name of the database that's being queried.
- * @param string $table_name The name of the table that's being queried.
+ * @param $database_name The name of the database that's being queried.
+ * @param $table_name The name of the table that's being queried.
  * @param resource $link_identifier The MySQL connection. If the
  * link identifier is not specified, the last link opened by
  * mysql_connect is assumed. If no such link is found, it
@@ -554,9 +554,9 @@ function mysql_list_dbs($link_identifier = null)
  * @throws MysqlException
  *
  */
-function mysql_list_fields(string $database_name, string $table_name, $link_identifier = null)
+function mysql_list_fields($database_name, $table_name, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_list_fields($database_name, $table_name, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -580,7 +580,7 @@ function mysql_list_fields(string $database_name, string $table_name, $link_iden
  */
 function mysql_list_processes($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_list_processes($link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -596,7 +596,7 @@ function mysql_list_processes($link_identifier = null)
  * mysql_query to issue an SQL SHOW TABLES
  * [FROM db_name] [LIKE 'pattern'] statement instead.
  *
- * @param string $database The name of the database
+ * @param $database The name of the database
  * @param resource $link_identifier The MySQL connection. If the
  * link identifier is not specified, the last link opened by
  * mysql_connect is assumed. If no such link is found, it
@@ -611,9 +611,9 @@ function mysql_list_processes($link_identifier = null)
  * @throws MysqlException
  *
  */
-function mysql_list_tables(string $database, $link_identifier = null)
+function mysql_list_tables($database, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_list_tables($database, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -633,9 +633,9 @@ function mysql_list_tables(string $database, $link_identifier = null)
  * @throws MysqlException
  *
  */
-function mysql_num_fields($result): int
+function mysql_num_fields($result)
 {
-    error_clear_last();
+
     $result = \mysql_num_fields($result);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -657,9 +657,9 @@ function mysql_num_fields($result): int
  * @throws MysqlException
  *
  */
-function mysql_num_rows($result): int
+function mysql_num_rows($result)
 {
-    error_clear_last();
+
     $result = \mysql_num_rows($result);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -674,7 +674,7 @@ function mysql_num_rows($result): int
  * active database on the server that's associated with the
  * specified link_identifier.
  *
- * @param string $query An SQL query
+ * @param $query An SQL query
  *
  * The query string should not end with a semicolon.
  * Data inside the query should be properly escaped.
@@ -707,9 +707,9 @@ function mysql_num_rows($result): int
  * @throws MysqlException
  *
  */
-function mysql_query(string $query, $link_identifier = null)
+function mysql_query($query, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_query($query, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -733,7 +733,7 @@ function mysql_query(string $query, $link_identifier = null)
  * This function must always (with few exceptions) be used to make data
  * safe before sending a query to MySQL.
  *
- * @param string $unescaped_string The string that is to be escaped.
+ * @param $unescaped_string The string that is to be escaped.
  * @param resource $link_identifier The MySQL connection. If the
  * link identifier is not specified, the last link opened by
  * mysql_connect is assumed. If no such link is found, it
@@ -744,9 +744,9 @@ function mysql_query(string $query, $link_identifier = null)
  * @throws MysqlException
  *
  */
-function mysql_real_escape_string(string $unescaped_string, $link_identifier = null): string
+function mysql_real_escape_string($unescaped_string, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_real_escape_string($unescaped_string, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -781,9 +781,9 @@ function mysql_real_escape_string(string $unescaped_string, $link_identifier = n
  * @throws MysqlException
  *
  */
-function mysql_result($result, int $row, $field = 0): string
+function mysql_result($result, $row, $field = 0)
 {
-    error_clear_last();
+
     $result = \mysql_result($result, $row, $field);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -797,7 +797,7 @@ function mysql_result($result, int $row, $field = 0): string
  * specified link identifier. Every subsequent call to
  * mysql_query will be made on the active database.
  *
- * @param string $database_name The name of the database that is to be selected.
+ * @param $database_name The name of the database that is to be selected.
  * @param resource $link_identifier The MySQL connection. If the
  * link identifier is not specified, the last link opened by
  * mysql_connect is assumed. If no such link is found, it
@@ -807,9 +807,9 @@ function mysql_result($result, int $row, $field = 0): string
  * @throws MysqlException
  *
  */
-function mysql_select_db(string $database_name, $link_identifier = null): void
+function mysql_select_db($database_name, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_select_db($database_name, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -820,7 +820,7 @@ function mysql_select_db(string $database_name, $link_identifier = null): void
 /**
  * Sets the default character set for the current connection.
  *
- * @param string $charset A valid character set name.
+ * @param $charset A valid character set name.
  * @param resource $link_identifier The MySQL connection. If the
  * link identifier is not specified, the last link opened by
  * mysql_connect is assumed. If no such link is found, it
@@ -830,9 +830,9 @@ function mysql_select_db(string $database_name, $link_identifier = null): void
  * @throws MysqlException
  *
  */
-function mysql_set_charset(string $charset, $link_identifier = null): void
+function mysql_set_charset($charset, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_set_charset($charset, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -858,9 +858,9 @@ function mysql_set_charset(string $charset, $link_identifier = null): void
  * @throws MysqlException
  *
  */
-function mysql_tablename($result, int $i): string
+function mysql_tablename($result, $i)
 {
-    error_clear_last();
+
     $result = \mysql_tablename($result, $i);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -884,9 +884,9 @@ function mysql_tablename($result, int $i): string
  * @throws MysqlException
  *
  */
-function mysql_thread_id($link_identifier = null): int
+function mysql_thread_id($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_thread_id($link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();
@@ -909,7 +909,7 @@ function mysql_thread_id($link_identifier = null): int
  * link_identifier to identify which connection
  * you want to use.
  *
- * @param string $query The SQL query to execute.
+ * @param $query The SQL query to execute.
  *
  * Data inside the query should be properly escaped.
  * @param resource $link_identifier The MySQL connection. If the
@@ -927,9 +927,9 @@ function mysql_thread_id($link_identifier = null): int
  * @throws MysqlException
  *
  */
-function mysql_unbuffered_query(string $query, $link_identifier = null)
+function mysql_unbuffered_query($query, $link_identifier = null)
 {
-    error_clear_last();
+
     $result = \mysql_unbuffered_query($query, $link_identifier);
     if ($result === false) {
         throw MysqlException::createFromPhpError();

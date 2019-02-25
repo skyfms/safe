@@ -13,9 +13,9 @@ use Safe\Exceptions\MbstringException;
  * @throws MbstringException
  *
  */
-function mb_chr(int $cp, string $encoding = null): string
+function mb_chr($cp, $encoding = null)
 {
-    error_clear_last();
+
     if ($encoding !== null) {
         $result = \mb_chr($cp, $encoding);
     } else {
@@ -59,7 +59,7 @@ function mb_chr(int $cp, string $encoding = null): string
  */
 function mb_detect_order($encoding_list = null)
 {
-    error_clear_last();
+
     if ($encoding_list !== null) {
         $result = \mb_detect_order($encoding_list);
     } else {
@@ -80,9 +80,9 @@ function mb_detect_order($encoding_list = null)
  * @throws MbstringException
  *
  */
-function mb_encoding_aliases(string $encoding): array
+function mb_encoding_aliases($encoding): array
 {
-    error_clear_last();
+
     $result = \mb_encoding_aliases($encoding);
     if ($result === false) {
         throw MbstringException::createFromPhpError();
@@ -101,10 +101,10 @@ function mb_encoding_aliases(string $encoding): array
  * replacement parameter, one should specify a
  * callback.
  *
- * @param string $pattern The regular expression pattern.
+ * @param $pattern The regular expression pattern.
  *
  * Multibyte characters may be used in pattern.
- * @param string $callback A callback that will be called and passed an array of matched elements
+ * @param $callback A callback that will be called and passed an array of matched elements
  * in the  subject string. The callback should
  * return the replacement string.
  *
@@ -123,9 +123,9 @@ function mb_encoding_aliases(string $encoding): array
  * @throws MbstringException
  *
  */
-function mb_ereg_replace_callback(string $pattern, callable $callback, string $string, string $option = "msr"): string
+function mb_ereg_replace_callback($pattern, callable $callback, $string, $option = "msr")
 {
-    error_clear_last();
+
     $result = \mb_ereg_replace_callback($pattern, $callback, $string, $option);
     if ($result === false) {
         throw MbstringException::createFromPhpError();
@@ -137,7 +137,7 @@ function mb_ereg_replace_callback(string $pattern, callable $callback, string $s
 /**
  *
  *
- * @param string $pattern The regular expression pattern.
+ * @param $pattern The regular expression pattern.
  *
  * Multibyte characters may be used in pattern.
  * @param string $replacement The replacement text.
@@ -147,9 +147,9 @@ function mb_ereg_replace_callback(string $pattern, callable $callback, string $s
  * @throws MbstringException
  *
  */
-function mb_ereg_replace(string $pattern, string $replacement, string $string, string $option = "msr"): string
+function mb_ereg_replace($pattern, $replacement, $string, $option = "msr")
 {
-    error_clear_last();
+
     $result = \mb_ereg_replace($pattern, $replacement, $string, $option);
     if ($result === false) {
         throw MbstringException::createFromPhpError();
@@ -167,7 +167,7 @@ function mb_ereg_replace(string $pattern, string $replacement, string $string, s
  */
 function mb_ereg_search_getregs(): array
 {
-    error_clear_last();
+
     $result = \mb_ereg_search_getregs();
     if ($result === false) {
         throw MbstringException::createFromPhpError();
@@ -184,15 +184,15 @@ function mb_ereg_search_getregs(): array
  * mb_ereg_search_pos, and
  * mb_ereg_search_regs.
  *
- * @param string $string The search string.
- * @param string $pattern The search pattern.
- * @param string $option The search option. See mb_regex_set_options for explanation.
+ * @param $string The search string.
+ * @param $pattern The search pattern.
+ * @param $option The search option. See mb_regex_set_options for explanation.
  * @throws MbstringException
  *
  */
-function mb_ereg_search_init(string $string, string $pattern = null, string $option = "msr"): void
+function mb_ereg_search_init($string, $pattern = null, $option = "msr")
 {
-    error_clear_last();
+
     if ($option !== "msr") {
         $result = \mb_ereg_search_init($string, $pattern, $option);
     } elseif ($pattern !== null) {
@@ -209,15 +209,15 @@ function mb_ereg_search_init(string $string, string $pattern = null, string $opt
 /**
  * Returns the matched part of a multibyte regular expression.
  *
- * @param string $pattern The search pattern.
- * @param string $option The search option. See mb_regex_set_options for explanation.
+ * @param $pattern The search pattern.
+ * @param $option The search option. See mb_regex_set_options for explanation.
  * @return array
  * @throws MbstringException
  *
  */
-function mb_ereg_search_regs(string $pattern = null, string $option = "ms"): array
+function mb_ereg_search_regs($pattern = null, $option = "ms"): array
 {
-    error_clear_last();
+
     if ($option !== "ms") {
         $result = \mb_ereg_search_regs($pattern, $option);
     } elseif ($pattern !== null) {
@@ -239,9 +239,9 @@ function mb_ereg_search_regs(string $pattern = null, string $option = "ms"): arr
  * @throws MbstringException
  *
  */
-function mb_ereg_search_setpos(int $position): void
+function mb_ereg_search_setpos($position)
 {
-    error_clear_last();
+
     $result = \mb_ereg_search_setpos($position);
     if ($result === false) {
         throw MbstringException::createFromPhpError();
@@ -260,9 +260,9 @@ function mb_ereg_search_setpos(int $position): void
  * @throws MbstringException
  *
  */
-function mb_eregi_replace(string $pattern, string $replace, string $string, string $option = "msri"): string
+function mb_eregi_replace($pattern, $replace, $string, $option = "msri")
 {
-    error_clear_last();
+
     $result = \mb_eregi_replace($pattern, $replace, $string, $option);
     if ($result === false) {
         throw MbstringException::createFromPhpError();
@@ -275,7 +275,7 @@ function mb_eregi_replace(string $pattern, string $replace, string $string, stri
  * Set/Get the HTTP output character encoding.
  * Output after this function is called will be converted from the set internal encoding to encoding.
  *
- * @param string $encoding If encoding is set,
+ * @param $encoding If encoding is set,
  * mb_http_output sets the HTTP output character
  * encoding to encoding.
  *
@@ -289,9 +289,9 @@ function mb_eregi_replace(string $pattern, string $replace, string $string, stri
  * @throws MbstringException
  *
  */
-function mb_http_output(string $encoding = null)
+function mb_http_output($encoding = null)
 {
-    error_clear_last();
+
     if ($encoding !== null) {
         $result = \mb_http_output($encoding);
     } else {
@@ -307,7 +307,7 @@ function mb_http_output(string $encoding = null)
 /**
  * Set/Get the internal character encoding
  *
- * @param string $encoding encoding is the character encoding name
+ * @param $encoding encoding is the character encoding name
  * used for the HTTP input character encoding conversion, HTTP output
  * character encoding conversion, and the default character encoding
  * for string functions defined by the mbstring module.
@@ -320,9 +320,9 @@ function mb_http_output(string $encoding = null)
  * @throws MbstringException
  *
  */
-function mb_internal_encoding(string $encoding = null)
+function mb_internal_encoding($encoding = null)
 {
-    error_clear_last();
+
     if ($encoding !== null) {
         $result = \mb_internal_encoding($encoding);
     } else {
@@ -344,9 +344,9 @@ function mb_internal_encoding(string $encoding = null)
  * @throws MbstringException
  *
  */
-function mb_ord(string $str, string $encoding = null): int
+function mb_ord($str, $encoding = null)
 {
-    error_clear_last();
+
     if ($encoding !== null) {
         $result = \mb_ord($str, $encoding);
     } else {
@@ -367,14 +367,14 @@ function mb_ord(string $str, string $encoding = null): int
  * encoding and set values to the result array or
  * global variables.
  *
- * @param string $encoded_string The URL encoded data.
+ * @param $encoded_string The URL encoded data.
  * @param array $result An array containing decoded and character encoded converted values.
  * @throws MbstringException
  *
  */
-function mb_parse_str(string $encoded_string, ?array &$result = null): void
+function mb_parse_str($encoded_string, &$result = null)
 {
-    error_clear_last();
+
     $result = \mb_parse_str($encoded_string, $result);
     if ($result === false) {
         throw MbstringException::createFromPhpError();
@@ -385,16 +385,16 @@ function mb_parse_str(string $encoded_string, ?array &$result = null): void
 /**
  * Set/Get character encoding for a multibyte regex.
  *
- * @param string $encoding The encoding
+ * @param $encoding The encoding
  * parameter is the character encoding. If it is omitted, the internal character
  * encoding value will be used.
  * @return string
  * @throws MbstringException
  *
  */
-function mb_regex_encoding(string $encoding = null)
+function mb_regex_encoding($encoding = null)
 {
-    error_clear_last();
+
     if ($encoding !== null) {
         $result = \mb_regex_encoding($encoding);
     } else {
@@ -412,13 +412,13 @@ function mb_regex_encoding(string $encoding = null)
  * to the mb_language setting. It's a wrapper function
  * for mail, so see also mail for details.
  *
- * @param string $to The mail addresses being sent to. Multiple
+ * @param $to The mail addresses being sent to. Multiple
  * recipients may be specified by putting a comma between each
  * address in to.
  * This parameter is not automatically encoded.
- * @param string $subject The subject of the mail.
- * @param string $message The message of the mail.
- * @param string $additional_headers String or array to be inserted at the end of the email header.
+ * @param $subject The subject of the mail.
+ * @param $message The message of the mail.
+ * @param $additional_headers String or array to be inserted at the end of the email header.
  *
  * This is typically used to add extra headers (From, Cc, and Bcc).
  * Multiple extra headers should be separated with a CRLF (\r\n).
@@ -444,7 +444,7 @@ function mb_regex_encoding(string $encoding = null)
  * automatically (which leads to doubling CR if CRLF is used).
  * This should be a last resort, as it does not comply with
  * RFC 2822.
- * @param string $additional_parameter additional_parameter is a MTA command line
+ * @param $additional_parameter additional_parameter is a MTA command line
  * parameter. It is useful when setting the correct Return-Path
  * header when using sendmail.
  *
@@ -464,9 +464,9 @@ function mb_regex_encoding(string $encoding = null)
  * @throws MbstringException
  *
  */
-function mb_send_mail(string $to, string $subject, string $message, $additional_headers = null, string $additional_parameter = null): void
+function mb_send_mail($to, $subject, $message, $additional_headers = null, $additional_parameter = null)
 {
-    error_clear_last();
+
     $result = \mb_send_mail($to, $subject, $message, $additional_headers, $additional_parameter);
     if ($result === false) {
         throw MbstringException::createFromPhpError();

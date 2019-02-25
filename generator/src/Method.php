@@ -28,7 +28,7 @@ class Method
      */
     private $phpStanFunctionMapReader;
 
-    public function __construct(\SimpleXMLElement $_functionObject, \SimpleXMLElement $rootEntity, string $moduleName, PhpStanFunctionMapReader $phpStanFunctionMapReader)
+    public function __construct(\SimpleXMLElement $_functionObject, \SimpleXMLElement $rootEntity, $moduleName, PhpStanFunctionMapReader $phpStanFunctionMapReader)
     {
         $this->functionObject = $_functionObject;
         $this->rootEntity = $rootEntity;
@@ -36,12 +36,12 @@ class Method
         $this->phpStanFunctionMapReader = $phpStanFunctionMapReader;
     }
 
-    public function getFunctionName(): string
+    public function getFunctionName()
     {
         return $this->functionObject->methodname->__toString();
     }
 
-    public function getReturnType(): string
+    public function getReturnType()
     {
         // If the function returns a boolean, since false is for error, true is for success.
         // Let's replace this with a "void".
@@ -89,10 +89,10 @@ class Method
         return $this->params;
     }
 
-    public function getPhpDoc(): string
+    public function getPhpDoc()
     {
         $str = "/**\n".
-            implode("\n", array_map(function (string $line) {
+            implode("\n", array_map(function ($line) {
                 return ' * '.ltrim($line);
             }, \explode("\n", \strip_tags($this->getDocBlock()))))
             ."\n */\n";
@@ -100,7 +100,7 @@ class Method
         return $str;
     }
 
-    private function getDocBlock(): string
+    private function getDocBlock()
     {
         $str = $this->stripReturnFalseText($this->getStringForXPath("//docbook:refsect1[@role='description']/docbook:para"));
         $str .= "\n\n";
@@ -122,13 +122,13 @@ class Method
         return $str;
     }
 
-    private function getReturnDoc(): string
+    private function getReturnDoc()
     {
         $returnDoc = $this->getStringForXPath("//docbook:refsect1[@role='returnvalues']/docbook:para");
         return $this->stripReturnFalseText($returnDoc);
     }
 
-    private function stripReturnFalseText(string $string): string
+    private function stripReturnFalseText($string)
     {
         $string = \strip_tags($string);
         $string = $this->removeString($string, 'or FALSE on failure');
@@ -143,11 +143,11 @@ class Method
 
     /**
      * Removes a string, even if the string is split on multiple lines.
-     * @param string $string
-     * @param string $search
+     * @param $string
+     * @param $search
      * @return string
      */
-    private function removeString(string $string, string $search): string
+    private function removeString($string, $search)
     {
         $search = str_replace(' ', '\s+', $search);
         $result = preg_replace('/[\s\,]*'.$search.'/m', '', $string);
@@ -157,7 +157,7 @@ class Method
         return $result;
     }
 
-    private function getStringForXPath(string $xpath): string
+    private function getStringForXPath($xpath)
     {
         $paragraphs = $this->rootEntity->xpath($xpath);
         if ($paragraphs === false) {
@@ -170,7 +170,7 @@ class Method
         return trim($str);
     }
 
-    private function getBestReturnType(): ?string
+    private function getBestReturnType()
     {
         $phpStanFunction = $this->getPhpStanData();
         // Get the type from PhpStan database first, then from the php doc.
@@ -181,7 +181,7 @@ class Method
         }
     }
 
-    private function getPhpStanData(): ?PhpStanFunction
+    private function getPhpStanData()
     {
         $functionName = $this->getFunctionName();
         if (!$this->phpStanFunctionMapReader->hasFunction($functionName)) {
@@ -190,7 +190,7 @@ class Method
         return $this->phpStanFunctionMapReader->getFunction($functionName);
     }
 
-    private function getInnerXml(\SimpleXMLElement $SimpleXMLElement): string
+    private function getInnerXml(\SimpleXMLElement $SimpleXMLElement)
     {
         $element_name = $SimpleXMLElement->getName();
         $inner_xml = $SimpleXMLElement->asXML();
@@ -202,7 +202,7 @@ class Method
         return $inner_xml;
     }
 
-    public function getModuleName(): string
+    public function getModuleName()
     {
         return $this->moduleName;
     }
@@ -212,7 +212,7 @@ class Method
      *
      * @return bool
      */
-    public function isOverloaded(): bool
+    public function isOverloaded()
     {
         foreach ($this->getParams() as $parameter) {
             if ($parameter->isOptionalWithNoDefault() && !$parameter->isByReference()) {

@@ -26,9 +26,9 @@ use Safe\Exceptions\ComException;
  * @throws ComException
  *
  */
-function com_event_sink(variant $comobject, object $sinkobject, $sinkinterface = null): void
+function com_event_sink(variant $comobject, object $sinkobject, $sinkinterface = null)
 {
-    error_clear_last();
+
     if ($sinkinterface !== null) {
         $result = \com_event_sink($comobject, $sinkobject, $sinkinterface);
     } else {
@@ -52,7 +52,7 @@ function com_event_sink(variant $comobject, object $sinkobject, $sinkinterface =
  * COM object when you instantiate it.  This depends on the interfaces
  * provided by the COM object itself, and may not always be possible.
  *
- * @param string $typelib_name typelib_name can be one of the following:
+ * @param $typelib_name typelib_name can be one of the following:
  *
  *
  *
@@ -92,9 +92,8 @@ function com_event_sink(variant $comobject, object $sinkobject, $sinkinterface =
  * @throws ComException
  *
  */
-function com_load_typelib(string $typelib_name, bool $case_sensitive = true): void
+function com_load_typelib($typelib_name, $case_sensitive = true)
 {
-    error_clear_last();
     $result = \com_load_typelib($typelib_name, $case_sensitive);
     if ($result === false) {
         throw ComException::createFromPhpError();
@@ -111,15 +110,15 @@ function com_load_typelib(string $typelib_name, bool $case_sensitive = true): vo
  * @param object $comobject comobject should be either an instance of a COM
  * object, or be the name of a typelibrary (which will be resolved according
  * to the rules set out in com_load_typelib).
- * @param string $dispinterface The name of an IDispatch descendant interface that you want to display.
+ * @param $dispinterface The name of an IDispatch descendant interface that you want to display.
  * @param bool $wantsink If set to TRUE, the corresponding sink interface will be displayed
  * instead.
  * @throws ComException
  *
  */
-function com_print_typeinfo(object $comobject, string $dispinterface = null, bool $wantsink = false): void
+function com_print_typeinfo(object $comobject, $dispinterface = null, $wantsink = false)
 {
-    error_clear_last();
+
     if ($wantsink !== false) {
         $result = \com_print_typeinfo($comobject, $dispinterface, $wantsink);
     } elseif ($dispinterface !== null) {

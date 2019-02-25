@@ -11,14 +11,14 @@ use Safe\Exceptions\FilesystemException;
  * Only the superuser may change the group of a file arbitrarily; other users
  * may change the group of a file to any group of which that user is a member.
  *
- * @param string $filename Path to the file.
+ * @param $filename Path to the file.
  * @param string|int $group A group name or number.
  * @throws FilesystemException
  *
  */
-function chgrp(string $filename, $group): void
+function chgrp($filename, $group)
 {
-    error_clear_last();
+
     $result = \chgrp($filename, $group);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -30,7 +30,7 @@ function chgrp(string $filename, $group): void
  * Attempts to change the mode of the specified file to that given in
  * mode.
  *
- * @param string $filename Path to the file.
+ * @param $filename Path to the file.
  * @param int $mode Note that mode is not automatically
  * assumed to be an octal value, so to ensure the expected operation,
  * you need to prefix mode with a zero (0).
@@ -58,9 +58,9 @@ function chgrp(string $filename, $group): void
  *
  *
  */
-function chmod(string $filename, int $mode): void
+function chmod($filename, $mode)
 {
-    error_clear_last();
+
     $result = \chmod($filename, $mode);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -73,14 +73,14 @@ function chmod(string $filename, int $mode): void
  * to user user. Only the superuser may change the
  * owner of a file.
  *
- * @param string $filename Path to the file.
+ * @param $filename Path to the file.
  * @param string|int $user A user name or number.
  * @throws FilesystemException
  *
  */
-function chown(string $filename, $user): void
+function chown($filename, $user)
 {
-    error_clear_last();
+
     $result = \chown($filename, $user);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -94,8 +94,8 @@ function chown(string $filename, $user): void
  *
  * If you wish to move a file, use the rename function.
  *
- * @param string $source Path to the source file.
- * @param string $dest The destination path. If dest is a URL, the
+ * @param $source Path to the source file.
+ * @param $dest The destination path. If dest is a URL, the
  * copy operation may fail if the wrapper does not support overwriting of
  * existing files.
  *
@@ -105,9 +105,9 @@ function chown(string $filename, $user): void
  * @throws FilesystemException
  *
  */
-function copy(string $source, string $dest, $context = null): void
+function copy($source, $dest, $context = null)
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \copy($source, $dest, $context);
     } else {
@@ -124,7 +124,7 @@ function copy(string $source, string $dest, $context = null): void
  * number of bytes available on the corresponding filesystem or disk
  * partition.
  *
- * @param string $directory A directory of the filesystem or disk partition.
+ * @param $directory A directory of the filesystem or disk partition.
  *
  * Given a file name instead of a directory, the behaviour of the
  * function is unspecified and may differ between operating systems and
@@ -133,9 +133,9 @@ function copy(string $source, string $dest, $context = null): void
  * @throws FilesystemException
  *
  */
-function disk_free_space(string $directory): float
+function disk_free_space($directory)
 {
-    error_clear_last();
+
     $result = \disk_free_space($directory);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -153,9 +153,9 @@ function disk_free_space(string $directory): float
  * @throws FilesystemException
  *
  */
-function disk_total_space(string $directory): float
+function disk_total_space($directory)
 {
-    error_clear_last();
+
     $result = \disk_total_space($directory);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -172,9 +172,9 @@ function disk_total_space(string $directory): float
  * @throws FilesystemException
  *
  */
-function fclose($handle): void
+function fclose($handle)
 {
-    error_clear_last();
+
     $result = \fclose($handle);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -193,9 +193,9 @@ function fclose($handle): void
  * @throws FilesystemException
  *
  */
-function fflush($handle): void
+function fflush($handle)
 {
-    error_clear_last();
+
     $result = \fflush($handle);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -214,7 +214,7 @@ function fflush($handle): void
  * contents of a file into a string.  It will use memory mapping techniques if
  * supported by your OS to enhance performance.
  *
- * @param string $filename Name of the file to read.
+ * @param $filename Name of the file to read.
  * @param bool $use_include_path As of PHP 5 the FILE_USE_INCLUDE_PATH constant can be used
  * to trigger include path
  * search.
@@ -237,9 +237,9 @@ function fflush($handle): void
  * @throws FilesystemException
  *
  */
-function file_get_contents(string $filename, bool $use_include_path = false, $context = null, int $offset = 0, int $maxlen = null): string
+function file_get_contents($filename, $use_include_path = false, $context = null, $offset = 0, $maxlen = null)
 {
-    error_clear_last();
+
     if ($maxlen !== null) {
         $result = \file_get_contents($filename, $use_include_path, $context, $offset, $maxlen);
     } elseif ($offset !== 0) {
@@ -265,7 +265,7 @@ function file_get_contents(string $filename, bool $use_include_path = false, $co
  * Otherwise, the existing file is overwritten, unless the
  * FILE_APPEND flag is set.
  *
- * @param string $filename Path to the file where to write the data.
+ * @param $filename Path to the file where to write the data.
  * @param mixed $data The data to write. Can be either a string, an
  * array or a stream resource.
  *
@@ -330,9 +330,9 @@ function file_get_contents(string $filename, bool $use_include_path = false, $co
  * @throws FilesystemException
  *
  */
-function file_put_contents(string $filename, $data, int $flags = 0, $context = null): int
+function file_put_contents($filename, $data, $flags = 0, $context = null)
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \file_put_contents($filename, $data, $flags, $context);
     } else {
@@ -354,9 +354,9 @@ function file_put_contents(string $filename, $data, int $flags = 0, $context = n
  * @throws FilesystemException
  *
  */
-function fileatime(string $filename): int
+function fileatime($filename)
 {
-    error_clear_last();
+
     $result = \fileatime($filename);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -374,9 +374,9 @@ function fileatime(string $filename): int
  * @throws FilesystemException
  *
  */
-function filectime(string $filename): int
+function filectime($filename)
 {
-    error_clear_last();
+
     $result = \filectime($filename);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -393,9 +393,9 @@ function filectime(string $filename): int
  * @throws FilesystemException
  *
  */
-function fileinode(string $filename): int
+function fileinode($filename)
 {
-    error_clear_last();
+
     $result = \fileinode($filename);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -415,9 +415,9 @@ function fileinode(string $filename): int
  * @throws FilesystemException
  *
  */
-function filemtime(string $filename): int
+function filemtime($filename)
 {
-    error_clear_last();
+
     $result = \filemtime($filename);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -436,9 +436,9 @@ function filemtime(string $filename): int
  * @throws FilesystemException
  *
  */
-function fileowner(string $filename): int
+function fileowner($filename)
 {
-    error_clear_last();
+
     $result = \fileowner($filename);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -450,15 +450,15 @@ function fileowner(string $filename): int
 /**
  * Gets the size for the given file.
  *
- * @param string $filename Path to the file.
+ * @param $filename Path to the file.
  * @return int Returns the size of the file in bytes, or FALSE (and generates an error
  * of level E_WARNING) in case of an error.
  * @throws FilesystemException
  *
  */
-function filesize(string $filename): int
+function filesize($filename)
 {
-    error_clear_last();
+
     $result = \filesize($filename);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -510,9 +510,9 @@ function filesize(string $filename): int
  * @throws FilesystemException
  *
  */
-function flock($handle, int $operation, ?int &$wouldblock = null): void
+function flock($handle, $operation, &$wouldblock = null)
 {
-    error_clear_last();
+
     $result = \flock($handle, $operation, $wouldblock);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -524,7 +524,7 @@ function flock($handle, int $operation, ?int &$wouldblock = null): void
  * fopen binds a named resource, specified by
  * filename, to a stream.
  *
- * @param string $filename If filename is of the form "scheme://...", it
+ * @param $filename If filename is of the form "scheme://...", it
  * is assumed to be a URL and PHP will search for a protocol handler
  * (also known as a wrapper) for that scheme. If no wrappers for that
  * protocol are registered, PHP will emit a notice to help you track
@@ -561,7 +561,7 @@ function flock($handle, int $operation, ?int &$wouldblock = null): void
  * ]]>
  *
  *
- * @param string $mode The mode parameter specifies the type of access
+ * @param $mode The mode parameter specifies the type of access
  * you require to the stream.  It may be any of the following:
  *
  *
@@ -723,9 +723,9 @@ function flock($handle, int $operation, ?int &$wouldblock = null): void
  * @throws FilesystemException
  *
  */
-function fopen(string $filename, string $mode, bool $use_include_path = false, $context = null)
+function fopen($filename, $mode, $use_include_path = false, $context = null)
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \fopen($filename, $mode, $use_include_path, $context);
     } else {
@@ -748,20 +748,20 @@ function fopen(string $filename, string $mode, bool $use_include_path = false, $
  * fsockopen (and not yet closed by
  * fclose).
  * @param array $fields An array of strings.
- * @param string $delimiter The optional delimiter parameter sets the field
+ * @param $delimiter The optional delimiter parameter sets the field
  * delimiter (one character only).
- * @param string $enclosure The optional enclosure parameter sets the field
+ * @param $enclosure The optional enclosure parameter sets the field
  * enclosure (one character only).
- * @param string $escape_char The optional escape_char parameter sets the
+ * @param $escape_char The optional escape_char parameter sets the
  * escape character (at most one character).
  * An empty string ("") disables the proprietary escape mechanism.
  * @return int Returns the length of the written string.
  * @throws FilesystemException
  *
  */
-function fputcsv($handle, array $fields, string $delimiter = ",", string $enclosure = '"', string $escape_char = "\\"): int
+function fputcsv($handle, array $fields, $delimiter = ",", $enclosure = '"', $escape_char = "\\")
 {
-    error_clear_last();
+
     $result = \fputcsv($handle, $fields, $delimiter, $enclosure, $escape_char);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -809,9 +809,9 @@ function fputcsv($handle, array $fields, string $delimiter = ",", string $enclos
  * @throws FilesystemException
  *
  */
-function fread($handle, int $length): string
+function fread($handle, $length)
 {
-    error_clear_last();
+
     $result = \fread($handle, $length);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -837,9 +837,9 @@ function fread($handle, int $length): string
  * @throws FilesystemException
  *
  */
-function ftruncate($handle, int $size): void
+function ftruncate($handle, $size)
 {
-    error_clear_last();
+
     $result = \ftruncate($handle, $size);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -852,7 +852,7 @@ function ftruncate($handle, int $size): void
  *
  * @param resource $handle A file system pointer resource
  * that is typically created using fopen.
- * @param string $string The string that is to be written.
+ * @param $string The string that is to be written.
  * @param int $length If the length argument is given, writing will
  * stop after length bytes have been written or
  * the end of string is reached, whichever comes
@@ -866,9 +866,9 @@ function ftruncate($handle, int $size): void
  * @throws FilesystemException
  *
  */
-function fwrite($handle, string $string, int $length = null): int
+function fwrite($handle, $string, $length = null)
 {
-    error_clear_last();
+
     if ($length !== null) {
         $result = \fwrite($handle, $string, $length);
     } else {
@@ -887,7 +887,7 @@ function fwrite($handle, string $string, int $length = null): int
  * the libc glob() function, which is similar to the rules used by common
  * shells.
  *
- * @param string $pattern The pattern. No tilde expansion or parameter substitution is done.
+ * @param $pattern The pattern. No tilde expansion or parameter substitution is done.
  * @param int $flags Valid flags:
  *
  *
@@ -938,9 +938,9 @@ function fwrite($handle, string $string, int $length = null): int
  * @throws FilesystemException
  *
  */
-function glob(string $pattern, int $flags = 0): array
+function glob($pattern, $flags = 0): array
 {
-    error_clear_last();
+
     $result = \glob($pattern, $flags);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -957,14 +957,14 @@ function glob(string $pattern, int $flags = 0): array
  * users may change the group of a symlink to any group of which that user is
  * a member.
  *
- * @param string $filename Path to the symlink.
+ * @param $filename Path to the symlink.
  * @param string|int $group The group specified by name or number.
  * @throws FilesystemException
  *
  */
-function lchgrp(string $filename, $group): void
+function lchgrp($filename, $group)
 {
-    error_clear_last();
+
     $result = \lchgrp($filename, $group);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -978,14 +978,14 @@ function lchgrp(string $filename, $group): void
  *
  * Only the superuser may change the owner of a symlink.
  *
- * @param string $filename Path to the file.
+ * @param $filename Path to the file.
  * @param string|int $user User name or number.
  * @throws FilesystemException
  *
  */
-function lchown(string $filename, $user): void
+function lchown($filename, $user)
 {
-    error_clear_last();
+
     $result = \lchown($filename, $user);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -996,14 +996,14 @@ function lchown(string $filename, $user): void
 /**
  * link creates a hard link.
  *
- * @param string $target Target of the link.
- * @param string $link The link name.
+ * @param $target Target of the link.
+ * @param $link The link name.
  * @throws FilesystemException
  *
  */
-function link(string $target, string $link): void
+function link($target, $link)
 {
-    error_clear_last();
+
     $result = \link($target, $link);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1014,7 +1014,7 @@ function link(string $target, string $link): void
 /**
  * Attempts to create the directory specified by pathname.
  *
- * @param string $pathname The directory path.
+ * @param $pathname The directory path.
  * @param int $mode The mode is 0777 by default, which means the widest possible
  * access. For more information on modes, read the details
  * on the chmod page.
@@ -1031,9 +1031,9 @@ function link(string $target, string $link): void
  * @throws FilesystemException
  *
  */
-function mkdir(string $pathname, int $mode = 0777, bool $recursive = false, $context = null): void
+function mkdir($pathname, $mode = 0777, $recursive = false, $context = null)
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \mkdir($pathname, $mode, $recursive, $context);
     } else {
@@ -1052,7 +1052,7 @@ function mkdir(string $pathname, int $mode = 0777, bool $recursive = false, $con
  *
  * The structure of the ini file is the same as the php.ini's.
  *
- * @param string $filename The filename of the ini file being parsed.
+ * @param $filename The filename of the ini file being parsed.
  * @param bool $process_sections By setting the process_sections
  * parameter to TRUE, you get a multidimensional array, with
  * the section names and settings included. The default
@@ -1072,9 +1072,9 @@ function mkdir(string $pathname, int $mode = 0777, bool $recursive = false, $con
  * @throws FilesystemException
  *
  */
-function parse_ini_file(string $filename, bool $process_sections = false, int $scanner_mode = INI_SCANNER_NORMAL): array
+function parse_ini_file($filename, $process_sections = false, $scanner_mode = INI_SCANNER_NORMAL): array
 {
-    error_clear_last();
+
     $result = \parse_ini_file($filename, $process_sections, $scanner_mode);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1089,7 +1089,7 @@ function parse_ini_file(string $filename, bool $process_sections = false, int $s
  *
  * The structure of the ini string is the same as the php.ini's.
  *
- * @param string $ini The contents of the ini file being parsed.
+ * @param $ini The contents of the ini file being parsed.
  * @param bool $process_sections By setting the process_sections
  * parameter to TRUE, you get a multidimensional array, with
  * the section names and settings included. The default
@@ -1109,9 +1109,9 @@ function parse_ini_file(string $filename, bool $process_sections = false, int $s
  * @throws FilesystemException
  *
  */
-function parse_ini_string(string $ini, bool $process_sections = false, int $scanner_mode = INI_SCANNER_NORMAL): array
+function parse_ini_string($ini, $process_sections = false, $scanner_mode = INI_SCANNER_NORMAL): array
 {
-    error_clear_last();
+
     $result = \parse_ini_string($ini, $process_sections, $scanner_mode);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1128,9 +1128,9 @@ function parse_ini_string(string $ini, bool $process_sections = false, int $scan
  * @throws FilesystemException
  *
  */
-function readlink(string $path): string
+function readlink($path)
 {
-    error_clear_last();
+
     $result = \readlink($path);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1145,7 +1145,7 @@ function readlink(string $path): string
  * the input path and returns the canonicalized
  * absolute pathname.
  *
- * @param string $path The path being checked.
+ * @param $path The path being checked.
  *
  *
  * Whilst a path must be supplied, the value can be an empty string.
@@ -1164,9 +1164,9 @@ function readlink(string $path): string
  * @throws FilesystemException
  *
  */
-function realpath(string $path): string
+function realpath($path)
 {
-    error_clear_last();
+
     $result = \realpath($path);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1183,19 +1183,19 @@ function realpath(string $path): string
  * newname exists,
  * this function will emit a warning.
  *
- * @param string $oldname The old name.
+ * @param $oldname The old name.
  *
  * The wrapper used in oldname
  * must match the wrapper used in
  * newname.
- * @param string $newname The new name.
+ * @param $newname The new name.
  * @param resource $context
  * @throws FilesystemException
  *
  */
-function rename(string $oldname, string $newname, $context = null): void
+function rename($oldname, $newname, $context = null)
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \rename($oldname, $newname, $context);
     } else {
@@ -1216,9 +1216,9 @@ function rename(string $oldname, string $newname, $context = null): void
  * @throws FilesystemException
  *
  */
-function rewind($handle): void
+function rewind($handle)
 {
-    error_clear_last();
+
     $result = \rewind($handle);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1231,14 +1231,14 @@ function rewind($handle): void
  * The directory must be empty, and the relevant permissions must permit this.
  * A E_WARNING level error will be generated on failure.
  *
- * @param string $dirname Path to the directory.
+ * @param $dirname Path to the directory.
  * @param resource $context
  * @throws FilesystemException
  *
  */
-function rmdir(string $dirname, $context = null): void
+function rmdir($dirname, $context = null)
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \rmdir($dirname, $context);
     } else {
@@ -1255,14 +1255,14 @@ function rmdir(string $dirname, $context = null): void
  * target with the specified name
  * link.
  *
- * @param string $target Target of the link.
- * @param string $link The link name.
+ * @param $target Target of the link.
+ * @param $link The link name.
  * @throws FilesystemException
  *
  */
-function symlink(string $target, string $link): void
+function symlink($target, $link)
 {
-    error_clear_last();
+
     $result = \symlink($target, $link);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1282,9 +1282,9 @@ function symlink(string $target, string $link): void
  * @throws FilesystemException
  *
  */
-function tempnam(string $dir, string $prefix): string
+function tempnam($dir, $prefix)
 {
-    error_clear_last();
+
     $result = \tempnam($dir, $prefix);
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1309,7 +1309,7 @@ function tempnam(string $dir, string $prefix): string
  */
 function tmpfile()
 {
-    error_clear_last();
+
     $result = \tmpfile();
     if ($result === false) {
         throw FilesystemException::createFromPhpError();
@@ -1327,7 +1327,7 @@ function tmpfile()
  *
  * If the file does not exist, it will be created.
  *
- * @param string $filename The name of the file being touched.
+ * @param $filename The name of the file being touched.
  * @param int $time The touch time. If time is not supplied,
  * the current system time is used.
  * @param int $atime If present, the access time of the given filename is set to
@@ -1337,9 +1337,9 @@ function tmpfile()
  * @throws FilesystemException
  *
  */
-function touch(string $filename, int $time = null, int $atime = null): void
+function touch($filename, $time = null, $atime = null)
 {
-    error_clear_last();
+
     if ($atime !== null) {
         $result = \touch($filename, $time, $atime);
     } elseif ($time !== null) {
@@ -1358,14 +1358,14 @@ function touch(string $filename, int $time = null, int $atime = null): void
  * function. An E_WARNING level error will be generated on
  * failure.
  *
- * @param string $filename Path to the file.
+ * @param $filename Path to the file.
  * @param resource $context
  * @throws FilesystemException
  *
  */
-function unlink(string $filename, $context = null): void
+function unlink($filename, $context = null)
 {
-    error_clear_last();
+
     if ($context !== null) {
         $result = \unlink($filename, $context);
     } else {

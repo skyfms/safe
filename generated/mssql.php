@@ -8,7 +8,7 @@ use Safe\Exceptions\MssqlException;
  * Binds a parameter to a stored procedure or a remote stored procedure.
  *
  * @param resource $stmt Statement resource, obtained with mssql_init.
- * @param string $param_name The parameter name, as a string.
+ * @param $param_name The parameter name, as a string.
  *
  * You have to include the @ character, like in the
  * T-SQL syntax. See the explanation included in
@@ -33,9 +33,9 @@ use Safe\Exceptions\MssqlException;
  * @throws MssqlException
  *
  */
-function mssql_bind($stmt, string $param_name, &$var, int $type, bool $is_output = false, bool $is_null = false, int $maxlen = -1): void
+function mssql_bind($stmt, $param_name, &$var, $type, $is_output = false, $is_null = false, $maxlen = -1)
 {
-    error_clear_last();
+
     $result = \mssql_bind($stmt, $param_name, $var, $type, $is_output, $is_null, $maxlen);
     if ($result === false) {
         throw MssqlException::createFromPhpError();
@@ -60,9 +60,9 @@ function mssql_bind($stmt, string $param_name, &$var, int $type, bool $is_output
  * @throws MssqlException
  *
  */
-function mssql_close($link_identifier = null): void
+function mssql_close($link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \mssql_close($link_identifier);
     } else {
@@ -82,11 +82,11 @@ function mssql_close($link_identifier = null): void
  * the script ends, unless it's closed earlier by explicitly calling
  * mssql_close.
  *
- * @param string $servername The MS SQL server. It can also include a port number, e.g.
+ * @param $servername The MS SQL server. It can also include a port number, e.g.
  * hostname:port (Linux), or
  * hostname,port (Windows).
- * @param string $username The username.
- * @param string $password The password.
+ * @param $username The username.
+ * @param $password The password.
  * @param bool $new_link If a second call is made to mssql_connect with the
  * same arguments, no new link will be established, but instead, the link
  * identifier of the already opened link will be returned. This parameter
@@ -97,9 +97,9 @@ function mssql_close($link_identifier = null): void
  * @throws MssqlException
  *
  */
-function mssql_connect(string $servername = null, string $username = null, string $password = null, bool $new_link = false)
+function mssql_connect($servername = null, $username = null, $password = null, $new_link = false)
 {
-    error_clear_last();
+
     if ($new_link !== false) {
         $result = \mssql_connect($servername, $username, $password, $new_link);
     } elseif ($password !== null) {
@@ -130,9 +130,9 @@ function mssql_connect(string $servername = null, string $username = null, strin
  * @throws MssqlException
  *
  */
-function mssql_data_seek($result_identifier, int $row_number): void
+function mssql_data_seek($result_identifier, $row_number)
 {
-    error_clear_last();
+
     $result = \mssql_data_seek($result_identifier, $row_number);
     if ($result === false) {
         throw MssqlException::createFromPhpError();
@@ -151,9 +151,9 @@ function mssql_data_seek($result_identifier, int $row_number): void
  * @throws MssqlException
  *
  */
-function mssql_field_length($result, int $offset = -1): int
+function mssql_field_length($result, $offset = -1)
 {
-    error_clear_last();
+
     $result = \mssql_field_length($result, $offset);
     if ($result === false) {
         throw MssqlException::createFromPhpError();
@@ -173,9 +173,9 @@ function mssql_field_length($result, int $offset = -1): int
  * @throws MssqlException
  *
  */
-function mssql_field_name($result, int $offset = -1): string
+function mssql_field_name($result, $offset = -1)
 {
-    error_clear_last();
+
     $result = \mssql_field_name($result, $offset);
     if ($result === false) {
         throw MssqlException::createFromPhpError();
@@ -195,9 +195,9 @@ function mssql_field_name($result, int $offset = -1): string
  * @throws MssqlException
  *
  */
-function mssql_field_seek($result, int $field_offset): void
+function mssql_field_seek($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \mssql_field_seek($result, $field_offset);
     if ($result === false) {
         throw MssqlException::createFromPhpError();
@@ -216,9 +216,9 @@ function mssql_field_seek($result, int $field_offset): void
  * @throws MssqlException
  *
  */
-function mssql_field_type($result, int $offset = -1): string
+function mssql_field_type($result, $offset = -1)
 {
-    error_clear_last();
+
     $result = \mssql_field_type($result, $offset);
     if ($result === false) {
         throw MssqlException::createFromPhpError();
@@ -240,9 +240,9 @@ function mssql_field_type($result, int $offset = -1): string
  * @throws MssqlException
  *
  */
-function mssql_free_result($result): void
+function mssql_free_result($result)
 {
-    error_clear_last();
+
     $result = \mssql_free_result($result);
     if ($result === false) {
         throw MssqlException::createFromPhpError();
@@ -262,9 +262,9 @@ function mssql_free_result($result): void
  * @throws MssqlException
  *
  */
-function mssql_free_statement($stmt): void
+function mssql_free_statement($stmt)
 {
-    error_clear_last();
+
     $result = \mssql_free_statement($stmt);
     if ($result === false) {
         throw MssqlException::createFromPhpError();
@@ -275,7 +275,7 @@ function mssql_free_statement($stmt): void
 /**
  * Initializes a stored procedure or a remote stored procedure.
  *
- * @param string $sp_name Stored procedure name, like ownew.sp_name or
+ * @param $sp_name Stored procedure name, like ownew.sp_name or
  * otherdb.owner.sp_name.
  * @param resource $link_identifier A MS SQL link identifier, returned by
  * mssql_connect.
@@ -284,9 +284,9 @@ function mssql_free_statement($stmt): void
  * @throws MssqlException
  *
  */
-function mssql_init(string $sp_name, $link_identifier = null)
+function mssql_init($sp_name, $link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \mssql_init($sp_name, $link_identifier);
     } else {
@@ -315,10 +315,10 @@ function mssql_init(string $sp_name, $link_identifier = null)
  *
  * This type of links is therefore called 'persistent'.
  *
- * @param string $servername The MS SQL server. It can also include a port number. e.g.
+ * @param $servername The MS SQL server. It can also include a port number. e.g.
  * hostname:port.
- * @param string $username The username.
- * @param string $password The password.
+ * @param $username The username.
+ * @param $password The password.
  * @param bool $new_link If a second call is made to mssql_pconnect with
  * the same arguments, no new link will be established, but instead, the
  * link identifier of the already opened link will be returned. This
@@ -330,9 +330,9 @@ function mssql_init(string $sp_name, $link_identifier = null)
  * @throws MssqlException
  *
  */
-function mssql_pconnect(string $servername = null, string $username = null, string $password = null, bool $new_link = false)
+function mssql_pconnect($servername = null, $username = null, $password = null, $new_link = false)
 {
-    error_clear_last();
+
     if ($new_link !== false) {
         $result = \mssql_pconnect($servername, $username, $password, $new_link);
     } elseif ($password !== null) {
@@ -356,7 +356,7 @@ function mssql_pconnect(string $servername = null, string $username = null, stri
  * database on the server that's associated with the specified link
  * identifier.
  *
- * @param string $query An SQL query.
+ * @param $query An SQL query.
  * @param resource $link_identifier A MS SQL link identifier, returned by
  * mssql_connect or
  * mssql_pconnect.
@@ -370,9 +370,9 @@ function mssql_pconnect(string $servername = null, string $username = null, stri
  * @throws MssqlException
  *
  */
-function mssql_query(string $query, $link_identifier = null, int $batch_size = 0)
+function mssql_query($query, $link_identifier = null, $batch_size = 0)
 {
-    error_clear_last();
+
     if ($batch_size !== 0) {
         $result = \mssql_query($query, $link_identifier, $batch_size);
     } elseif ($link_identifier !== null) {
@@ -395,7 +395,7 @@ function mssql_query(string $query, $link_identifier = null, int $batch_size = 0
  * Every subsequent call to mssql_query will be
  * made on the active database.
  *
- * @param string $database_name The database name.
+ * @param $database_name The database name.
  *
  * To escape the name of a database that contains spaces, hyphens ("-"),
  * or any other exceptional characters, the database name must be
@@ -412,9 +412,9 @@ function mssql_query(string $query, $link_identifier = null, int $batch_size = 0
  * @throws MssqlException
  *
  */
-function mssql_select_db(string $database_name, $link_identifier = null): void
+function mssql_select_db($database_name, $link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \mssql_select_db($database_name, $link_identifier);
     } else {

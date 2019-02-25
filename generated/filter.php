@@ -10,13 +10,13 @@ use Safe\Exceptions\FilterException;
  * @param int $type One of INPUT_GET, INPUT_POST,
  * INPUT_COOKIE, INPUT_SERVER, or
  * INPUT_ENV.
- * @param string $variable_name Name of a variable to check.
+ * @param $variable_name Name of a variable to check.
  * @throws FilterException
  *
  */
-function filter_has_var(int $type, string $variable_name): void
+function filter_has_var($type, $variable_name)
 {
-    error_clear_last();
+
     $result = \filter_has_var($type, $variable_name);
     if ($result === false) {
         throw FilterException::createFromPhpError();
@@ -56,9 +56,9 @@ function filter_has_var(int $type, string $variable_name): void
  * @throws FilterException
  *
  */
-function filter_input_array(int $type, $definition = null, bool $add_empty = true)
+function filter_input_array($type, $definition = null, $add_empty = true)
 {
-    error_clear_last();
+
     if ($add_empty !== true) {
         $result = \filter_input_array($type, $definition, $add_empty);
     } elseif ($definition !== null) {
@@ -96,9 +96,9 @@ function filter_input_array(int $type, $definition = null, bool $add_empty = tru
  * @throws FilterException
  *
  */
-function filter_var_array(array $data, $definition = null, bool $add_empty = true)
+function filter_var_array(array $data, $definition = null, $add_empty = true)
 {
-    error_clear_last();
+
     if ($add_empty !== true) {
         $result = \filter_var_array($data, $definition, $add_empty);
     } elseif ($definition !== null) {

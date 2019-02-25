@@ -7,13 +7,13 @@ use Safe\Exceptions\ReadlineException;
 /**
  * This function adds a line to the command line history.
  *
- * @param string $line The line to be added in the history.
+ * @param $line The line to be added in the history.
  * @throws ReadlineException
  *
  */
-function readline_add_history(string $line): void
+function readline_add_history($line)
 {
-    error_clear_last();
+
     $result = \readline_add_history($line);
     if ($result === false) {
         throw ReadlineException::createFromPhpError();
@@ -64,15 +64,15 @@ function readline_add_history(string $line): void
  *
  *
  *
- * @param string $prompt The prompt message.
+ * @param $prompt The prompt message.
  * @param callable $callback The callback function takes one parameter; the
  * user input returned.
  * @throws ReadlineException
  *
  */
-function readline_callback_handler_install(string $prompt, callable $callback): void
+function readline_callback_handler_install($prompt, callable $callback)
 {
-    error_clear_last();
+
     $result = \readline_callback_handler_install($prompt, $callback);
     if ($result === false) {
         throw ReadlineException::createFromPhpError();
@@ -86,9 +86,9 @@ function readline_callback_handler_install(string $prompt, callable $callback): 
  * @throws ReadlineException
  *
  */
-function readline_clear_history(): void
+function readline_clear_history()
 {
-    error_clear_last();
+
     $result = \readline_clear_history();
     if ($result === false) {
         throw ReadlineException::createFromPhpError();
@@ -105,9 +105,9 @@ function readline_clear_history(): void
  * @throws ReadlineException
  *
  */
-function readline_completion_function(callable $function): void
+function readline_completion_function(callable $function)
 {
-    error_clear_last();
+
     $result = \readline_completion_function($function);
     if ($result === false) {
         throw ReadlineException::createFromPhpError();
@@ -118,13 +118,13 @@ function readline_completion_function(callable $function): void
 /**
  * This function reads a command history from a file.
  *
- * @param string $filename Path to the filename containing the command history.
+ * @param $filename Path to the filename containing the command history.
  * @throws ReadlineException
  *
  */
-function readline_read_history(string $filename = null): void
+function readline_read_history($filename = null)
 {
-    error_clear_last();
+
     if ($filename !== null) {
         $result = \readline_read_history($filename);
     } else {
@@ -139,13 +139,13 @@ function readline_read_history(string $filename = null): void
 /**
  * This function writes the command history to a file.
  *
- * @param string $filename Path to the saved file.
+ * @param $filename Path to the saved file.
  * @throws ReadlineException
  *
  */
-function readline_write_history(string $filename = null): void
+function readline_write_history($filename = null)
 {
-    error_clear_last();
+
     if ($filename !== null) {
         $result = \readline_write_history($filename);
     } else {

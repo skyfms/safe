@@ -14,9 +14,9 @@ use Safe\Exceptions\ApcuException;
  * @throws ApcuException
  *
  */
-function apcu_cache_info(bool $limited = false): array
+function apcu_cache_info($limited = false): array
 {
-    error_clear_last();
+
     $result = \apcu_cache_info($limited);
     if ($result === false) {
         throw ApcuException::createFromPhpError();
@@ -30,15 +30,15 @@ function apcu_cache_info(bool $limited = false): array
  * old parameter matches the currently stored value
  * with the value of the new parameter.
  *
- * @param string $key The key of the value being updated.
+ * @param $key The key of the value being updated.
  * @param int $old The old value (the value currently stored).
  * @param int $new The new value to update to.
  * @throws ApcuException
  *
  */
-function apcu_cas(string $key, int $old, int $new): void
+function apcu_cas($key, $old, $new)
 {
-    error_clear_last();
+
     $result = \apcu_cas($key, $old, $new);
     if ($result === false) {
         throw ApcuException::createFromPhpError();
@@ -49,7 +49,7 @@ function apcu_cas(string $key, int $old, int $new): void
 /**
  * Decreases a stored integer value.
  *
- * @param string $key The key of the value being decreased.
+ * @param $key The key of the value being decreased.
  * @param int $step The step, or value to decrease.
  * @param bool $success Optionally pass the success or fail boolean value to
  * this referenced variable.
@@ -57,9 +57,9 @@ function apcu_cas(string $key, int $old, int $new): void
  * @throws ApcuException
  *
  */
-function apcu_dec(string $key, int $step = 1, ?bool &$success = null): int
+function apcu_dec($key, $step = 1, &$success = null)
 {
-    error_clear_last();
+
     $result = \apcu_dec($key, $step, $success);
     if ($result === false) {
         throw ApcuException::createFromPhpError();
@@ -79,9 +79,9 @@ function apcu_dec(string $key, int $step = 1, ?bool &$success = null): int
  * @throws ApcuException
  *
  */
-function apcu_delete($key): void
+function apcu_delete($key)
 {
-    error_clear_last();
+
     $result = \apcu_delete($key);
     if ($result === false) {
         throw ApcuException::createFromPhpError();
@@ -92,7 +92,7 @@ function apcu_delete($key): void
 /**
  * Increases a stored number.
  *
- * @param string $key The key of the value being increased.
+ * @param $key The key of the value being increased.
  * @param int $step The step, or value to increase.
  * @param bool $success Optionally pass the success or fail boolean value to
  * this referenced variable.
@@ -100,9 +100,9 @@ function apcu_delete($key): void
  * @throws ApcuException
  *
  */
-function apcu_inc(string $key, int $step = 1, ?bool &$success = null): int
+function apcu_inc($key, $step = 1, &$success = null)
 {
-    error_clear_last();
+
     $result = \apcu_inc($key, $step, $success);
     if ($result === false) {
         throw ApcuException::createFromPhpError();
@@ -120,9 +120,9 @@ function apcu_inc(string $key, int $step = 1, ?bool &$success = null): int
  * @throws ApcuException
  *
  */
-function apcu_sma_info(bool $limited = false): array
+function apcu_sma_info($limited = false): array
 {
-    error_clear_last();
+
     $result = \apcu_sma_info($limited);
     if ($result === false) {
         throw ApcuException::createFromPhpError();

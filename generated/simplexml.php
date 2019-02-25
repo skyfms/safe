@@ -10,7 +10,7 @@ use Safe\Exceptions\SimplexmlException;
  * then be used as a native SimpleXML element.
  *
  * @param \DOMNode $node A DOM Element node
- * @param string $class_name You may use this optional parameter so that
+ * @param $class_name You may use this optional parameter so that
  * simplexml_import_dom will return an object of
  * the specified class. That class should extend the
  * SimpleXMLElement class.
@@ -18,9 +18,9 @@ use Safe\Exceptions\SimplexmlException;
  * @throws SimplexmlException
  *
  */
-function simplexml_import_dom(\DOMNode $node, string $class_name = "SimpleXMLElement"): \SimpleXMLElement
+function simplexml_import_dom(\DOMNode $node, $class_name = "SimpleXMLElement"): \SimpleXMLElement
 {
-    error_clear_last();
+
     $result = \simplexml_import_dom($node, $class_name);
     if ($result === false) {
         throw SimplexmlException::createFromPhpError();
@@ -32,7 +32,7 @@ function simplexml_import_dom(\DOMNode $node, string $class_name = "SimpleXMLEle
 /**
  * Convert the well-formed XML document in the given file to an object.
  *
- * @param string $filename Path to the XML file
+ * @param $filename Path to the XML file
  *
  * Libxml 2 unescapes the URI, so if you want to pass e.g.
  * b&amp;c as the URI parameter a,
@@ -40,13 +40,13 @@ function simplexml_import_dom(\DOMNode $node, string $class_name = "SimpleXMLEle
  * simplexml_load_file(rawurlencode('http://example.com/?a=' .
  * urlencode('b&amp;c'))). Since PHP 5.1.0 you don't need to do
  * this because PHP will do it for you.
- * @param string $class_name You may use this optional parameter so that
+ * @param $class_name You may use this optional parameter so that
  * simplexml_load_file will return an object of
  * the specified class. That class should extend the
  * SimpleXMLElement class.
  * @param int $options Since PHP 5.1.0 and Libxml 2.6.0, you may also use the
  * options parameter to specify additional Libxml parameters.
- * @param string $ns Namespace prefix or URI.
+ * @param $ns Namespace prefix or URI.
  * @param bool $is_prefix TRUE if ns is a prefix, FALSE if it's a URI;
  * defaults to FALSE.
  * @return \SimpleXMLElement Returns an object of class SimpleXMLElement with
@@ -54,9 +54,9 @@ function simplexml_import_dom(\DOMNode $node, string $class_name = "SimpleXMLEle
  * @throws SimplexmlException
  *
  */
-function simplexml_load_file(string $filename, string $class_name = "SimpleXMLElement", int $options = 0, string $ns = "", bool $is_prefix = false): \SimpleXMLElement
+function simplexml_load_file($filename, $class_name = "SimpleXMLElement", $options = 0, $ns = "", $is_prefix = false): \SimpleXMLElement
 {
-    error_clear_last();
+
     $result = \simplexml_load_file($filename, $class_name, $options, $ns, $is_prefix);
     if ($result === false) {
         throw SimplexmlException::createFromPhpError();
@@ -68,14 +68,14 @@ function simplexml_load_file(string $filename, string $class_name = "SimpleXMLEl
 /**
  * Takes a well-formed XML string and returns it as an object.
  *
- * @param string $data A well-formed XML string
- * @param string $class_name You may use this optional parameter so that
+ * @param $data A well-formed XML string
+ * @param $class_name You may use this optional parameter so that
  * simplexml_load_string will return an object of
  * the specified class. That class should extend the
  * SimpleXMLElement class.
  * @param int $options Since PHP 5.1.0 and Libxml 2.6.0, you may also use the
  * options parameter to specify additional Libxml parameters.
- * @param string $ns Namespace prefix or URI.
+ * @param $ns Namespace prefix or URI.
  * @param bool $is_prefix TRUE if ns is a prefix, FALSE if it's a URI;
  * defaults to FALSE.
  * @return \SimpleXMLElement Returns an object of class SimpleXMLElement with
@@ -83,9 +83,9 @@ function simplexml_load_file(string $filename, string $class_name = "SimpleXMLEl
  * @throws SimplexmlException
  *
  */
-function simplexml_load_string(string $data, string $class_name = "SimpleXMLElement", int $options = 0, string $ns = "", bool $is_prefix = false): \SimpleXMLElement
+function simplexml_load_string($data, $class_name = "SimpleXMLElement", $options = 0, $ns = "", $is_prefix = false): \SimpleXMLElement
 {
-    error_clear_last();
+
     $result = \simplexml_load_string($data, $class_name, $options, $ns, $is_prefix);
     if ($result === false) {
         throw SimplexmlException::createFromPhpError();

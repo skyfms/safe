@@ -15,9 +15,9 @@ use Safe\Exceptions\MsqlException;
  * @throws MsqlException
  *
  */
-function msql_affected_rows($result): int
+function msql_affected_rows($result)
 {
-    error_clear_last();
+
     $result = \msql_affected_rows($result);
     if ($result === false) {
         throw MsqlException::createFromPhpError();
@@ -41,9 +41,9 @@ function msql_affected_rows($result): int
  * @throws MsqlException
  *
  */
-function msql_close($link_identifier = null): void
+function msql_close($link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \msql_close($link_identifier);
     } else {
@@ -67,7 +67,7 @@ function msql_close($link_identifier = null): void
  * script ends, unless it's closed earlier by explicitly calling
  * msql_close.
  *
- * @param string $hostname The hostname can also include a port number. e.g.
+ * @param $hostname The hostname can also include a port number. e.g.
  * hostname,port.
  *
  * If not specified, the connection is established by the means of a Unix
@@ -81,9 +81,9 @@ function msql_close($link_identifier = null): void
  * @throws MsqlException
  *
  */
-function msql_connect(string $hostname = null)
+function msql_connect($hostname = null)
 {
-    error_clear_last();
+
     if ($hostname !== null) {
         $result = \msql_connect($hostname);
     } else {
@@ -100,7 +100,7 @@ function msql_connect(string $hostname = null)
  * msql_create_db attempts to create a new database on
  * the mSQL server.
  *
- * @param string $database_name The name of the mSQL database.
+ * @param $database_name The name of the mSQL database.
  * @param resource|null $link_identifier The mSQL connection.
  * If not specified, the last link opened by msql_connect
  * is assumed. If no such link is found, the function will try to establish a
@@ -108,9 +108,9 @@ function msql_connect(string $hostname = null)
  * @throws MsqlException
  *
  */
-function msql_create_db(string $database_name, $link_identifier = null): void
+function msql_create_db($database_name, $link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \msql_create_db($database_name, $link_identifier);
     } else {
@@ -136,9 +136,9 @@ function msql_create_db(string $database_name, $link_identifier = null): void
  * @throws MsqlException
  *
  */
-function msql_data_seek($result, int $row_number): void
+function msql_data_seek($result, $row_number)
 {
-    error_clear_last();
+
     $result = \msql_data_seek($result, $row_number);
     if ($result === false) {
         throw MsqlException::createFromPhpError();
@@ -150,8 +150,8 @@ function msql_data_seek($result, int $row_number): void
  * msql_db_query selects a database and executes a query
  * on it.
  *
- * @param string $database The name of the mSQL database.
- * @param string $query The SQL query.
+ * @param $database The name of the mSQL database.
+ * @param $query The SQL query.
  * @param resource|null $link_identifier The mSQL connection.
  * If not specified, the last link opened by msql_connect
  * is assumed. If no such link is found, the function will try to establish a
@@ -160,9 +160,9 @@ function msql_data_seek($result, int $row_number): void
  * @throws MsqlException
  *
  */
-function msql_db_query(string $database, string $query, $link_identifier = null)
+function msql_db_query($database, $query, $link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \msql_db_query($database, $query, $link_identifier);
     } else {
@@ -179,7 +179,7 @@ function msql_db_query(string $database, string $query, $link_identifier = null)
  * msql_drop_db attempts to drop (remove) a database
  * from the mSQL server.
  *
- * @param string $database_name The name of the database.
+ * @param $database_name The name of the database.
  * @param resource|null $link_identifier The mSQL connection.
  * If not specified, the last link opened by msql_connect
  * is assumed. If no such link is found, the function will try to establish a
@@ -187,9 +187,9 @@ function msql_db_query(string $database, string $query, $link_identifier = null)
  * @throws MsqlException
  *
  */
-function msql_drop_db(string $database_name, $link_identifier = null): void
+function msql_drop_db($database_name, $link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \msql_drop_db($database_name, $link_identifier);
     } else {
@@ -214,9 +214,9 @@ function msql_drop_db(string $database_name, $link_identifier = null): void
  * @throws MsqlException
  *
  */
-function msql_field_len($result, int $field_offset): int
+function msql_field_len($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \msql_field_len($result, $field_offset);
     if ($result === false) {
         throw MsqlException::createFromPhpError();
@@ -238,9 +238,9 @@ function msql_field_len($result, int $field_offset): int
  * @throws MsqlException
  *
  */
-function msql_field_name($result, int $field_offset): string
+function msql_field_name($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \msql_field_name($result, $field_offset);
     if ($result === false) {
         throw MsqlException::createFromPhpError();
@@ -262,9 +262,9 @@ function msql_field_name($result, int $field_offset): string
  * @throws MsqlException
  *
  */
-function msql_field_seek($result, int $field_offset): void
+function msql_field_seek($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \msql_field_seek($result, $field_offset);
     if ($result === false) {
         throw MsqlException::createFromPhpError();
@@ -284,9 +284,9 @@ function msql_field_seek($result, int $field_offset): void
  * @throws MsqlException
  *
  */
-function msql_field_table($result, int $field_offset): int
+function msql_field_table($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \msql_field_table($result, $field_offset);
     if ($result === false) {
         throw MsqlException::createFromPhpError();
@@ -311,9 +311,9 @@ function msql_field_table($result, int $field_offset): int
  * @throws MsqlException
  *
  */
-function msql_field_type($result, int $field_offset): string
+function msql_field_type($result, $field_offset)
 {
-    error_clear_last();
+
     $result = \msql_field_type($result, $field_offset);
     if ($result === false) {
         throw MsqlException::createFromPhpError();
@@ -335,9 +335,9 @@ function msql_field_type($result, int $field_offset): string
  * @throws MsqlException
  *
  */
-function msql_free_result($result): void
+function msql_free_result($result)
 {
-    error_clear_last();
+
     $result = \msql_free_result($result);
     if ($result === false) {
         throw MsqlException::createFromPhpError();
@@ -359,7 +359,7 @@ function msql_free_result($result): void
  * future use (msql_close will not close links
  * established by this function).
  *
- * @param string $hostname The hostname can also include a port number. e.g.
+ * @param $hostname The hostname can also include a port number. e.g.
  * hostname,port.
  *
  * If not specified, the connection is established by the means of a Unix
@@ -369,9 +369,9 @@ function msql_free_result($result): void
  * @throws MsqlException
  *
  */
-function msql_pconnect(string $hostname = null)
+function msql_pconnect($hostname = null)
 {
-    error_clear_last();
+
     if ($hostname !== null) {
         $result = \msql_pconnect($hostname);
     } else {
@@ -389,7 +389,7 @@ function msql_pconnect(string $hostname = null)
  * database on the server that's associated with the specified link
  * identifier.
  *
- * @param string $query The SQL query.
+ * @param $query The SQL query.
  * @param resource|null $link_identifier The mSQL connection.
  * If not specified, the last link opened by msql_connect
  * is assumed. If no such link is found, the function will try to establish a
@@ -398,9 +398,9 @@ function msql_pconnect(string $hostname = null)
  * @throws MsqlException
  *
  */
-function msql_query(string $query, $link_identifier = null)
+function msql_query($query, $link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \msql_query($query, $link_identifier);
     } else {
@@ -421,7 +421,7 @@ function msql_query(string $query, $link_identifier = null)
  * Subsequent calls to msql_query will be made on the
  * active database.
  *
- * @param string $database_name The database name.
+ * @param $database_name The database name.
  * @param resource|null $link_identifier The mSQL connection.
  * If not specified, the last link opened by msql_connect
  * is assumed. If no such link is found, the function will try to establish a
@@ -429,9 +429,9 @@ function msql_query(string $query, $link_identifier = null)
  * @throws MsqlException
  *
  */
-function msql_select_db(string $database_name, $link_identifier = null): void
+function msql_select_db($database_name, $link_identifier = null)
 {
-    error_clear_last();
+
     if ($link_identifier !== null) {
         $result = \msql_select_db($database_name, $link_identifier);
     } else {

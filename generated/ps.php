@@ -21,13 +21,13 @@ use Safe\Exceptions\PsException;
  * @param float $lly The y-coordinate of the lower left corner.
  * @param float $urx The x-coordinate of the upper right corner.
  * @param float $ury The y-coordinate of the upper right corner.
- * @param string $filename The path of the program to be started, when the link is clicked on.
+ * @param $filename The path of the program to be started, when the link is clicked on.
  * @throws PsException
  *
  */
-function ps_add_launchlink($psdoc, float $llx, float $lly, float $urx, float $ury, string $filename): void
+function ps_add_launchlink($psdoc, $llx, $lly, $urx, $ury, $filename)
 {
-    error_clear_last();
+
     $result = \ps_add_launchlink($psdoc, $llx, $lly, $urx, $ury, $filename);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -56,16 +56,16 @@ function ps_add_launchlink($psdoc, float $llx, float $lly, float $urx, float $ur
  * @param float $urx The x-coordinate of the upper right corner.
  * @param float $ury The y-coordinate of the upper right corner.
  * @param int $page The number of the page displayed when clicking on the link.
- * @param string $dest The parameter dest determines how the document
+ * @param $dest The parameter dest determines how the document
  * is being viewed. It can be fitpage,
  * fitwidth, fitheight, or
  * fitbbox.
  * @throws PsException
  *
  */
-function ps_add_locallink($psdoc, float $llx, float $lly, float $urx, float $ury, int $page, string $dest): void
+function ps_add_locallink($psdoc, $llx, $lly, $urx, $ury, $page, $dest)
 {
-    error_clear_last();
+
     $result = \ps_add_locallink($psdoc, $llx, $lly, $urx, $ury, $page, $dest);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -90,9 +90,9 @@ function ps_add_locallink($psdoc, float $llx, float $lly, float $urx, float $ury
  * @param float $lly The y-coordinate of the lower left corner.
  * @param float $urx The x-coordinate of the upper right corner.
  * @param float $ury The y-coordinate of the upper right corner.
- * @param string $contents The text of the note.
- * @param string $title The title of the note as displayed in the header of the note.
- * @param string $icon The icon shown if the note is folded. This parameter can be set
+ * @param $contents The text of the note.
+ * @param $title The title of the note as displayed in the header of the note.
+ * @param $icon The icon shown if the note is folded. This parameter can be set
  * to comment, insert,
  * note, paragraph,
  * newparagraph, key, or
@@ -102,9 +102,9 @@ function ps_add_locallink($psdoc, float $llx, float $lly, float $urx, float $ury
  * @throws PsException
  *
  */
-function ps_add_note($psdoc, float $llx, float $lly, float $urx, float $ury, string $contents, string $title, string $icon, int $open): void
+function ps_add_note($psdoc, $llx, $lly, $urx, $ury, $contents, $title, $icon, $open)
 {
-    error_clear_last();
+
     $result = \ps_add_note($psdoc, $llx, $lly, $urx, $ury, $contents, $title, $icon, $open);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -132,19 +132,19 @@ function ps_add_note($psdoc, float $llx, float $lly, float $urx, float $ury, str
  * @param float $lly The y-coordinate of the lower left corner.
  * @param float $urx The x-coordinate of the upper right corner.
  * @param float $ury The y-coordinate of the upper right corner.
- * @param string $filename The name of the pdf document to be opened when clicking on
+ * @param $filename The name of the pdf document to be opened when clicking on
  * this link.
  * @param int $page The page number of the destination pdf document
- * @param string $dest The parameter dest determines how the document
+ * @param $dest The parameter dest determines how the document
  * is being viewed. It can be fitpage,
  * fitwidth, fitheight, or
  * fitbbox.
  * @throws PsException
  *
  */
-function ps_add_pdflink($psdoc, float $llx, float $lly, float $urx, float $ury, string $filename, int $page, string $dest): void
+function ps_add_pdflink($psdoc, $llx, $lly, $urx, $ury, $filename, $page, $dest)
 {
-    error_clear_last();
+
     $result = \ps_add_pdflink($psdoc, $llx, $lly, $urx, $ury, $filename, $page, $dest);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -170,14 +170,14 @@ function ps_add_pdflink($psdoc, float $llx, float $lly, float $urx, float $ury, 
  * @param float $lly The y-coordinate of the lower left corner.
  * @param float $urx The x-coordinate of the upper right corner.
  * @param float $ury The y-coordinate of the upper right corner.
- * @param string $url The url of the hyperlink to be opened when clicking on
+ * @param $url The url of the hyperlink to be opened when clicking on
  * this link, e.g. http://www.php.net.
  * @throws PsException
  *
  */
-function ps_add_weblink($psdoc, float $llx, float $lly, float $urx, float $ury, string $url): void
+function ps_add_weblink($psdoc, $llx, $lly, $urx, $ury, $url)
 {
-    error_clear_last();
+
     $result = \ps_add_weblink($psdoc, $llx, $lly, $urx, $ury, $url);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -204,9 +204,9 @@ function ps_add_weblink($psdoc, float $llx, float $lly, float $urx, float $ury, 
  * @throws PsException
  *
  */
-function ps_arc($psdoc, float $x, float $y, float $radius, float $alpha, float $beta): void
+function ps_arc($psdoc, $x, $y, $radius, $alpha, $beta)
 {
-    error_clear_last();
+
     $result = \ps_arc($psdoc, $x, $y, $radius, $alpha, $beta);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -233,9 +233,9 @@ function ps_arc($psdoc, float $x, float $y, float $radius, float $alpha, float $
  * @throws PsException
  *
  */
-function ps_arcn($psdoc, float $x, float $y, float $radius, float $alpha, float $beta): void
+function ps_arcn($psdoc, $x, $y, $radius, $alpha, $beta)
 {
-    error_clear_last();
+
     $result = \ps_arcn($psdoc, $x, $y, $radius, $alpha, $beta);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -284,9 +284,9 @@ function ps_arcn($psdoc, float $x, float $y, float $radius, float $alpha, float 
  * @throws PsException
  *
  */
-function ps_begin_page($psdoc, float $width, float $height): void
+function ps_begin_page($psdoc, $width, $height)
 {
-    error_clear_last();
+
     $result = \ps_begin_page($psdoc, $width, $height);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -313,9 +313,9 @@ function ps_begin_page($psdoc, float $width, float $height): void
  * @throws PsException
  *
  */
-function ps_begin_pattern($psdoc, float $width, float $height, float $xstep, float $ystep, int $painttype): int
+function ps_begin_pattern($psdoc, $width, $height, $xstep, $ystep, $painttype)
 {
-    error_clear_last();
+
     $result = \ps_begin_pattern($psdoc, $width, $height, $xstep, $ystep, $painttype);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -340,9 +340,9 @@ function ps_begin_pattern($psdoc, float $width, float $height, float $xstep, flo
  * @throws PsException
  *
  */
-function ps_begin_template($psdoc, float $width, float $height): int
+function ps_begin_template($psdoc, $width, $height)
 {
-    error_clear_last();
+
     $result = \ps_begin_template($psdoc, $width, $height);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -369,9 +369,9 @@ function ps_begin_template($psdoc, float $width, float $height): int
  * @throws PsException
  *
  */
-function ps_circle($psdoc, float $x, float $y, float $radius): void
+function ps_circle($psdoc, $x, $y, $radius)
 {
-    error_clear_last();
+
     $result = \ps_circle($psdoc, $x, $y, $radius);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -388,9 +388,9 @@ function ps_circle($psdoc, float $x, float $y, float $radius): void
  * @throws PsException
  *
  */
-function ps_clip($psdoc): void
+function ps_clip($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_clip($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -410,9 +410,9 @@ function ps_clip($psdoc): void
  * @throws PsException
  *
  */
-function ps_close_image($psdoc, int $imageid): void
+function ps_close_image($psdoc, $imageid)
 {
-    error_clear_last();
+
     $result = \ps_close_image($psdoc, $imageid);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -435,9 +435,9 @@ function ps_close_image($psdoc, int $imageid): void
  * @throws PsException
  *
  */
-function ps_close($psdoc): void
+function ps_close($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_close($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -454,9 +454,9 @@ function ps_close($psdoc): void
  * @throws PsException
  *
  */
-function ps_closepath_stroke($psdoc): void
+function ps_closepath_stroke($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_closepath_stroke($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -473,9 +473,9 @@ function ps_closepath_stroke($psdoc): void
  * @throws PsException
  *
  */
-function ps_closepath($psdoc): void
+function ps_closepath($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_closepath($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -492,13 +492,13 @@ function ps_closepath($psdoc): void
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $text The text to output.
+ * @param $text The text to output.
  * @throws PsException
  *
  */
-function ps_continue_text($psdoc, string $text): void
+function ps_continue_text($psdoc, $text)
 {
-    error_clear_last();
+
     $result = \ps_continue_text($psdoc, $text);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -521,9 +521,9 @@ function ps_continue_text($psdoc, string $text): void
  * @throws PsException
  *
  */
-function ps_curveto($psdoc, float $x1, float $y1, float $x2, float $y2, float $x3, float $y3): void
+function ps_curveto($psdoc, $x1, $y1, $x2, $y2, $x3, $y3)
 {
-    error_clear_last();
+
     $result = \ps_curveto($psdoc, $x1, $y1, $x2, $y2, $x3, $y3);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -544,9 +544,9 @@ function ps_curveto($psdoc, float $x1, float $y1, float $x2, float $y2, float $x
  * @throws PsException
  *
  */
-function ps_delete($psdoc): void
+function ps_delete($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_delete($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -565,9 +565,9 @@ function ps_delete($psdoc): void
  * @throws PsException
  *
  */
-function ps_end_page($psdoc): void
+function ps_end_page($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_end_page($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -585,9 +585,9 @@ function ps_end_page($psdoc): void
  * @throws PsException
  *
  */
-function ps_end_pattern($psdoc): void
+function ps_end_pattern($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_end_pattern($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -604,9 +604,9 @@ function ps_end_pattern($psdoc): void
  * @throws PsException
  *
  */
-function ps_end_template($psdoc): void
+function ps_end_template($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_end_template($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -623,9 +623,9 @@ function ps_end_template($psdoc): void
  * @throws PsException
  *
  */
-function ps_fill_stroke($psdoc): void
+function ps_fill_stroke($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_fill_stroke($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -642,9 +642,9 @@ function ps_fill_stroke($psdoc): void
  * @throws PsException
  *
  */
-function ps_fill($psdoc): void
+function ps_fill($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_fill($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -770,7 +770,7 @@ function ps_fill($psdoc): void
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $name Name of the parameter.
+ * @param $name Name of the parameter.
  * @param float $modifier An identifier needed if a parameter of a resource is requested,
  * e.g. the size of an image. In such a case the resource id is
  * passed.
@@ -778,9 +778,9 @@ function ps_fill($psdoc): void
  * @throws PsException
  *
  */
-function ps_get_parameter($psdoc, string $name, float $modifier = null): string
+function ps_get_parameter($psdoc, $name, $modifier = null)
 {
-    error_clear_last();
+
     if ($modifier !== null) {
         $result = \ps_get_parameter($psdoc, $name, $modifier);
     } else {
@@ -805,7 +805,7 @@ function ps_get_parameter($psdoc, string $name, float $modifier = null): string
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $text text should not contain any non alpha
+ * @param $text text should not contain any non alpha
  * characters. Possible positions for breaks are returned in an array of
  * interger numbers. Each number is the position of the char in
  * text after which a hyphenation can take place.
@@ -814,9 +814,9 @@ function ps_get_parameter($psdoc, string $name, float $modifier = null): string
  * @throws PsException
  *
  */
-function ps_hyphenate($psdoc, string $text): array
+function ps_hyphenate($psdoc, $text): array
 {
-    error_clear_last();
+
     $result = \ps_hyphenate($psdoc, $text);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -832,13 +832,13 @@ function ps_hyphenate($psdoc, string $text): array
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $file
+ * @param $file
  * @throws PsException
  *
  */
-function ps_include_file($psdoc, string $file): void
+function ps_include_file($psdoc, $file)
 {
-    error_clear_last();
+
     $result = \ps_include_file($psdoc, $file);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -858,9 +858,9 @@ function ps_include_file($psdoc, string $file): void
  * @throws PsException
  *
  */
-function ps_lineto($psdoc, float $x, float $y): void
+function ps_lineto($psdoc, $x, $y)
 {
-    error_clear_last();
+
     $result = \ps_lineto($psdoc, $x, $y);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -881,9 +881,9 @@ function ps_lineto($psdoc, float $x, float $y): void
  * @throws PsException
  *
  */
-function ps_moveto($psdoc, float $x, float $y): void
+function ps_moveto($psdoc, $x, $y)
 {
-    error_clear_last();
+
     $result = \ps_moveto($psdoc, $x, $y);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -904,7 +904,7 @@ function ps_moveto($psdoc, float $x, float $y): void
  */
 function ps_new()
 {
-    error_clear_last();
+
     $result = \ps_new();
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -919,15 +919,15 @@ function ps_new()
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $filename The name of the postscript file.
+ * @param $filename The name of the postscript file.
  * If filename is not passed the document will be
  * created in memory and all output will go straight to the browser.
  * @throws PsException
  *
  */
-function ps_open_file($psdoc, string $filename = null): void
+function ps_open_file($psdoc, $filename = null)
 {
-    error_clear_last();
+
     if ($filename !== null) {
         $result = \ps_open_file($psdoc, $filename);
     } else {
@@ -957,9 +957,9 @@ function ps_open_file($psdoc, string $filename = null): void
  * @throws PsException
  *
  */
-function ps_place_image($psdoc, int $imageid, float $x, float $y, float $scale): void
+function ps_place_image($psdoc, $imageid, $x, $y, $scale)
 {
-    error_clear_last();
+
     $result = \ps_place_image($psdoc, $imageid, $x, $y, $scale);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -984,9 +984,9 @@ function ps_place_image($psdoc, int $imageid, float $x, float $y, float $scale):
  * @throws PsException
  *
  */
-function ps_rect($psdoc, float $x, float $y, float $width, float $height): void
+function ps_rect($psdoc, $x, $y, $width, $height)
 {
-    error_clear_last();
+
     $result = \ps_rect($psdoc, $x, $y, $width, $height);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1006,9 +1006,9 @@ function ps_rect($psdoc, float $x, float $y, float $width, float $height): void
  * @throws PsException
  *
  */
-function ps_restore($psdoc): void
+function ps_restore($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_restore($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1025,9 +1025,9 @@ function ps_restore($psdoc): void
  * @throws PsException
  *
  */
-function ps_rotate($psdoc, float $rot): void
+function ps_rotate($psdoc, $rot)
 {
-    error_clear_last();
+
     $result = \ps_rotate($psdoc, $rot);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1045,9 +1045,9 @@ function ps_rotate($psdoc, float $rot): void
  * @throws PsException
  *
  */
-function ps_save($psdoc): void
+function ps_save($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_save($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1065,9 +1065,9 @@ function ps_save($psdoc): void
  * @throws PsException
  *
  */
-function ps_scale($psdoc, float $x, float $y): void
+function ps_scale($psdoc, $x, $y)
 {
-    error_clear_last();
+
     $result = \ps_scale($psdoc, $x, $y);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1091,9 +1091,9 @@ function ps_scale($psdoc, float $x, float $y): void
  * @throws PsException
  *
  */
-function ps_set_border_color($psdoc, float $red, float $green, float $blue): void
+function ps_set_border_color($psdoc, $red, $green, $blue)
 {
-    error_clear_last();
+
     $result = \ps_set_border_color($psdoc, $red, $green, $blue);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1117,9 +1117,9 @@ function ps_set_border_color($psdoc, float $red, float $green, float $blue): voi
  * @throws PsException
  *
  */
-function ps_set_border_dash($psdoc, float $black, float $white): void
+function ps_set_border_dash($psdoc, $black, $white)
 {
-    error_clear_last();
+
     $result = \ps_set_border_dash($psdoc, $black, $white);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1137,15 +1137,15 @@ function ps_set_border_dash($psdoc, float $black, float $white): void
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $style style can be solid or
+ * @param $style style can be solid or
  * dashed.
  * @param float $width The line width of the border.
  * @throws PsException
  *
  */
-function ps_set_border_style($psdoc, string $style, float $width): void
+function ps_set_border_style($psdoc, $style, $width)
 {
-    error_clear_last();
+
     $result = \ps_set_border_style($psdoc, $style, $width);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1170,13 +1170,13 @@ function ps_set_border_style($psdoc, string $style, float $width): void
  *
  * @param resource $p Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $key The name of the information field to set. The values which can be
+ * @param $key The name of the information field to set. The values which can be
  * set are Keywords, Subject,
  * Title, Creator,
  * Author, BoundingBox, and
  * Orientation. Be aware that some of them has a
  * meaning to PostScript viewers.
- * @param string $val The value of the information field. The field
+ * @param $val The value of the information field. The field
  * Orientation can be set to either
  * Portrait or Landscape. The
  * BoundingBox is a string consisting of four numbers.
@@ -1190,9 +1190,9 @@ function ps_set_border_style($psdoc, string $style, float $width): void
  * @throws PsException
  *
  */
-function ps_set_info($p, string $key, string $val): void
+function ps_set_info($p, $key, $val)
 {
-    error_clear_last();
+
     $result = \ps_set_info($p, $key, $val);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1206,14 +1206,14 @@ function ps_set_info($p, string $key, string $val): void
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $name For a list of possible names see ps_get_parameter.
- * @param string $value The value of the parameter.
+ * @param $name For a list of possible names see ps_get_parameter.
+ * @param $value The value of the parameter.
  * @throws PsException
  *
  */
-function ps_set_parameter($psdoc, string $name, string $value): void
+function ps_set_parameter($psdoc, $name, $value)
 {
-    error_clear_last();
+
     $result = \ps_set_parameter($psdoc, $name, $value);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1238,9 +1238,9 @@ function ps_set_parameter($psdoc, string $name, string $value): void
  * @throws PsException
  *
  */
-function ps_set_text_pos($psdoc, float $x, float $y): void
+function ps_set_text_pos($psdoc, $x, $y)
 {
-    error_clear_last();
+
     $result = \ps_set_text_pos($psdoc, $x, $y);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1254,7 +1254,7 @@ function ps_set_text_pos($psdoc, float $x, float $y): void
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $name The name can be one of the following:
+ * @param $name The name can be one of the following:
  *
  *
  * textrendering
@@ -1311,9 +1311,9 @@ function ps_set_text_pos($psdoc, float $x, float $y): void
  * @throws PsException
  *
  */
-function ps_set_value($psdoc, string $name, float $value): void
+function ps_set_value($psdoc, $name, $value)
 {
-    error_clear_last();
+
     $result = \ps_set_value($psdoc, $name, $value);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1326,10 +1326,10 @@ function ps_set_value($psdoc, string $name, float $value): void
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $type The parameter type can be
+ * @param $type The parameter type can be
  * both, fill, or
  * fillstroke.
- * @param string $colorspace The colorspace should be one of gray,
+ * @param $colorspace The colorspace should be one of gray,
  * rgb, cmyk,
  * spot, pattern. Depending on the
  * colorspace either only the first, the first three or all parameters
@@ -1346,9 +1346,9 @@ function ps_set_value($psdoc, string $name, float $value): void
  * @throws PsException
  *
  */
-function ps_setcolor($psdoc, string $type, string $colorspace, float $c1, float $c2, float $c3, float $c4): void
+function ps_setcolor($psdoc, $type, $colorspace, $c1, $c2, $c3, $c4)
 {
-    error_clear_last();
+
     $result = \ps_setcolor($psdoc, $type, $colorspace, $c1, $c2, $c3, $c4);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1366,9 +1366,9 @@ function ps_setcolor($psdoc, string $type, string $colorspace, float $c1, float 
  * @throws PsException
  *
  */
-function ps_setdash($psdoc, float $on, float $off): void
+function ps_setdash($psdoc, $on, $off)
 {
-    error_clear_last();
+
     $result = \ps_setdash($psdoc, $on, $off);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1387,9 +1387,9 @@ function ps_setdash($psdoc, float $on, float $off): void
  * @throws PsException
  *
  */
-function ps_setflat($psdoc, float $value): void
+function ps_setflat($psdoc, $value)
 {
-    error_clear_last();
+
     $result = \ps_setflat($psdoc, $value);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1409,9 +1409,9 @@ function ps_setflat($psdoc, float $value): void
  * @throws PsException
  *
  */
-function ps_setfont($psdoc, int $fontid, float $size): void
+function ps_setfont($psdoc, $fontid, $size)
 {
-    error_clear_last();
+
     $result = \ps_setfont($psdoc, $fontid, $size);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1428,9 +1428,9 @@ function ps_setfont($psdoc, int $fontid, float $size): void
  * @throws PsException
  *
  */
-function ps_setgray($psdoc, float $gray): void
+function ps_setgray($psdoc, $gray)
 {
-    error_clear_last();
+
     $result = \ps_setgray($psdoc, $gray);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1450,9 +1450,9 @@ function ps_setgray($psdoc, float $gray): void
  * @throws PsException
  *
  */
-function ps_setlinecap($psdoc, int $type): void
+function ps_setlinecap($psdoc, $type)
 {
-    error_clear_last();
+
     $result = \ps_setlinecap($psdoc, $type);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1472,9 +1472,9 @@ function ps_setlinecap($psdoc, int $type): void
  * @throws PsException
  *
  */
-function ps_setlinejoin($psdoc, int $type): void
+function ps_setlinejoin($psdoc, $type)
 {
-    error_clear_last();
+
     $result = \ps_setlinejoin($psdoc, $type);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1491,9 +1491,9 @@ function ps_setlinejoin($psdoc, int $type): void
  * @throws PsException
  *
  */
-function ps_setlinewidth($psdoc, float $width): void
+function ps_setlinewidth($psdoc, $width)
 {
-    error_clear_last();
+
     $result = \ps_setlinewidth($psdoc, $width);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1515,9 +1515,9 @@ function ps_setlinewidth($psdoc, float $width): void
  * @throws PsException
  *
  */
-function ps_setmiterlimit($psdoc, float $value): void
+function ps_setmiterlimit($psdoc, $value)
 {
-    error_clear_last();
+
     $result = \ps_setmiterlimit($psdoc, $value);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1536,9 +1536,9 @@ function ps_setmiterlimit($psdoc, float $value): void
  * @throws PsException
  *
  */
-function ps_setoverprintmode($psdoc, int $mode): void
+function ps_setoverprintmode($psdoc, $mode)
 {
-    error_clear_last();
+
     $result = \ps_setoverprintmode($psdoc, $mode);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1558,9 +1558,9 @@ function ps_setoverprintmode($psdoc, int $mode): void
  * @throws PsException
  *
  */
-function ps_setpolydash($psdoc, float $arr): void
+function ps_setpolydash($psdoc, $arr)
 {
-    error_clear_last();
+
     $result = \ps_setpolydash($psdoc, $arr);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1582,9 +1582,9 @@ function ps_setpolydash($psdoc, float $arr): void
  * @throws PsException
  *
  */
-function ps_shading_pattern($psdoc, int $shadingid, string $optlist): int
+function ps_shading_pattern($psdoc, $shadingid, $optlist)
 {
-    error_clear_last();
+
     $result = \ps_shading_pattern($psdoc, $shadingid, $optlist);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1602,7 +1602,7 @@ function ps_shading_pattern($psdoc, int $shadingid, string $optlist): int
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $type The type of shading can be either radial or
+ * @param $type The type of shading can be either radial or
  * axial. Each shading starts with the current fill
  * color and ends with the given color values passed in the parameters
  * c1 to c4
@@ -1627,9 +1627,9 @@ function ps_shading_pattern($psdoc, int $shadingid, string $optlist): int
  * @throws PsException
  *
  */
-function ps_shading($psdoc, string $type, float $x0, float $y0, float $x1, float $y1, float $c1, float $c2, float $c3, float $c4, string $optlist): int
+function ps_shading($psdoc, $type, $x0, $y0, $x1, $y1, $c1, $c2, $c3, $c4, $optlist)
 {
-    error_clear_last();
+
     $result = \ps_shading($psdoc, $type, $x0, $y0, $x1, $y1, $c1, $c2, $c3, $c4, $optlist);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1651,9 +1651,9 @@ function ps_shading($psdoc, string $type, float $x0, float $y0, float $x1, float
  * @throws PsException
  *
  */
-function ps_shfill($psdoc, int $shadingid): void
+function ps_shfill($psdoc, $shadingid)
 {
-    error_clear_last();
+
     $result = \ps_shfill($psdoc, $shadingid);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1666,15 +1666,15 @@ function ps_shfill($psdoc, int $shadingid): void
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $text The text to be output.
+ * @param $text The text to be output.
  * @param float $x x-coordinate of the lower left corner of the box surrounding the text.
  * @param float $y y-coordinate of the lower left corner of the box surrounding the text.
  * @throws PsException
  *
  */
-function ps_show_xy($psdoc, string $text, float $x, float $y): void
+function ps_show_xy($psdoc, $text, $x, $y)
 {
-    error_clear_last();
+
     $result = \ps_show_xy($psdoc, $text, $x, $y);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1688,16 +1688,16 @@ function ps_show_xy($psdoc, string $text, float $x, float $y): void
  *
  *
  * @param resource $psdoc
- * @param string $text
+ * @param $text
  * @param int $len
  * @param float $xcoor
  * @param float $ycoor
  * @throws PsException
  *
  */
-function ps_show_xy2($psdoc, string $text, int $len, float $xcoor, float $ycoor): void
+function ps_show_xy2($psdoc, $text, $len, $xcoor, $ycoor)
 {
-    error_clear_last();
+
     $result = \ps_show_xy2($psdoc, $text, $len, $xcoor, $ycoor);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1718,13 +1718,13 @@ function ps_show_xy2($psdoc, string $text, int $len, float $xcoor, float $ycoor)
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $text The text to be output.
+ * @param $text The text to be output.
  * @throws PsException
  *
  */
-function ps_show($psdoc, string $text): void
+function ps_show($psdoc, $text)
 {
-    error_clear_last();
+
     $result = \ps_show($psdoc, $text);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1737,14 +1737,14 @@ function ps_show($psdoc, string $text): void
  *
  * @param resource $psdoc Resource identifier of the postscript file
  * as returned by ps_new.
- * @param string $text The text to be output.
+ * @param $text The text to be output.
  * @param int $len The maximum number of characters to print.
  * @throws PsException
  *
  */
-function ps_show2($psdoc, string $text, int $len): void
+function ps_show2($psdoc, $text, $len)
 {
-    error_clear_last();
+
     $result = \ps_show2($psdoc, $text, $len);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1761,9 +1761,9 @@ function ps_show2($psdoc, string $text, int $len): void
  * @throws PsException
  *
  */
-function ps_stroke($psdoc): void
+function ps_stroke($psdoc)
 {
-    error_clear_last();
+
     $result = \ps_stroke($psdoc);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1782,9 +1782,9 @@ function ps_stroke($psdoc): void
  * @throws PsException
  *
  */
-function ps_symbol($psdoc, int $ord): void
+function ps_symbol($psdoc, $ord)
 {
-    error_clear_last();
+
     $result = \ps_symbol($psdoc, $ord);
     if ($result === false) {
         throw PsException::createFromPhpError();
@@ -1802,9 +1802,9 @@ function ps_symbol($psdoc, int $ord): void
  * @throws PsException
  *
  */
-function ps_translate($psdoc, float $x, float $y): void
+function ps_translate($psdoc, $x, $y)
 {
-    error_clear_last();
+
     $result = \ps_translate($psdoc, $x, $y);
     if ($result === false) {
         throw PsException::createFromPhpError();

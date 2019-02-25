@@ -7,15 +7,15 @@ use Safe\Exceptions\DatetimeException;
 /**
  * Returns associative array with detailed info about given date.
  *
- * @param string $format Format accepted by DateTime::createFromFormat.
- * @param string $date String representing the date.
+ * @param $format Format accepted by DateTime::createFromFormat.
+ * @param $date String representing the date.
  * @return array Returns associative array with detailed info about given date.
  * @throws DatetimeException
  *
  */
-function date_parse_from_format(string $format, string $date): array
+function date_parse_from_format($format, $date): array
 {
-    error_clear_last();
+
     $result = \date_parse_from_format($format, $date);
     if ($result === false) {
         throw DatetimeException::createFromPhpError();
@@ -27,15 +27,15 @@ function date_parse_from_format(string $format, string $date): array
 /**
  *
  *
- * @param string $date Date in format accepted by strtotime.
+ * @param $date Date in format accepted by strtotime.
  * @return array Returns array with information about the parsed date
  * on success.
  * @throws DatetimeException
  *
  */
-function date_parse(string $date): array
+function date_parse($date): array
 {
-    error_clear_last();
+
     $result = \date_parse($date);
     if ($result === false) {
         throw DatetimeException::createFromPhpError();
@@ -139,9 +139,9 @@ function date_parse(string $date): array
  * @throws DatetimeException
  *
  */
-function date_sun_info(int $time, float $latitude, float $longitude): array
+function date_sun_info($time, $latitude, $longitude): array
 {
-    error_clear_last();
+
     $result = \date_sun_info($time, $latitude, $longitude);
     if ($result === false) {
         throw DatetimeException::createFromPhpError();
@@ -232,9 +232,9 @@ function date_sun_info(int $time, float $latitude, float $longitude): array
  * @throws DatetimeException
  *
  */
-function date_sunrise(int $timestamp, int $format = SUNFUNCS_RET_STRING, float $latitude = null, float $longitude = null, float $zenith = null, float $gmt_offset = 0)
+function date_sunrise($timestamp, $format = SUNFUNCS_RET_STRING, $latitude = null, $longitude = null, $zenith = null, $gmt_offset = 0)
 {
-    error_clear_last();
+
     if ($gmt_offset !== 0) {
         $result = \date_sunrise($timestamp, $format, $latitude, $longitude, $zenith, $gmt_offset);
     } elseif ($zenith !== null) {
@@ -335,9 +335,9 @@ function date_sunrise(int $timestamp, int $format = SUNFUNCS_RET_STRING, float $
  * @throws DatetimeException
  *
  */
-function date_sunset(int $timestamp, int $format = SUNFUNCS_RET_STRING, float $latitude = null, float $longitude = null, float $zenith = null, float $gmt_offset = 0)
+function date_sunset($timestamp, $format = SUNFUNCS_RET_STRING, $latitude = null, $longitude = null, $zenith = null, $gmt_offset = 0)
 {
-    error_clear_last();
+
     if ($gmt_offset !== 0) {
         $result = \date_sunset($timestamp, $format, $latitude, $longitude, $zenith, $gmt_offset);
     } elseif ($zenith !== null) {
@@ -397,9 +397,9 @@ function date_sunset(int $timestamp, int $format = SUNFUNCS_RET_STRING, float $l
  * @throws DatetimeException
  *
  */
-function mktime(int $hour = null, int $minute = null, int $second = null, int $month = null, int $day = null, int $year = null): int
+function mktime($hour = null, $minute = null, $second = null, $month = null, $day = null, $year = null)
 {
-    error_clear_last();
+
     if ($year !== null) {
         $result = \mktime($hour, $minute, $second, $month, $day, $year);
     } elseif ($day !== null) {
@@ -429,8 +429,8 @@ function mktime(int $hour = null, int $minute = null, int $second = null, int $m
  * Month and weekday names and other language dependent strings respect the
  * current locale set with setlocale (LC_TIME).
  *
- * @param string $date The string to parse (e.g. returned from strftime).
- * @param string $format The format used in date (e.g. the same as
+ * @param $date The string to parse (e.g. returned from strftime).
+ * @param $format The format used in date (e.g. the same as
  * used in strftime). Note that some of the format
  * options available to strftime may not have any
  * effect within strptime; the exact subset that are
@@ -494,9 +494,9 @@ function mktime(int $hour = null, int $minute = null, int $second = null, int $m
  * @throws DatetimeException
  *
  */
-function strptime(string $date, string $format): array
+function strptime($date, $format): array
 {
-    error_clear_last();
+
     $result = \strptime($date, $format);
     if ($result === false) {
         throw DatetimeException::createFromPhpError();
@@ -512,7 +512,7 @@ function strptime(string $date, string $format): array
  * See date_default_timezone_get on the various
  * ways to define the default time zone.
  *
- * @param string $time A date/time string. Valid formats are explained in Date and Time Formats.
+ * @param $time A date/time string. Valid formats are explained in Date and Time Formats.
  * @param int $now The timestamp which is used as a base for the calculation of relative
  * dates.
  * @return int Returns a timestamp on success, FALSE otherwise. Previous to PHP 5.1.0,
@@ -520,9 +520,9 @@ function strptime(string $date, string $format): array
  * @throws DatetimeException
  *
  */
-function strtotime(string $time, int $now = null): int
+function strtotime($time, $now = null)
 {
-    error_clear_last();
+
     if ($now !== null) {
         $result = \strtotime($time, $now);
     } else {
@@ -538,7 +538,7 @@ function strtotime(string $time, int $now = null): int
 /**
  *
  *
- * @param string $abbr Time zone abbreviation.
+ * @param $abbr Time zone abbreviation.
  * @param int $gmtOffset Offset from GMT in seconds. Defaults to -1 which means that first found
  * time zone corresponding to abbr is returned.
  * Otherwise exact offset is searched and only if not found then the first
@@ -556,9 +556,9 @@ function strtotime(string $time, int $now = null): int
  * @throws DatetimeException
  *
  */
-function timezone_name_from_abbr(string $abbr, int $gmtOffset = -1, int $isdst = -1): string
+function timezone_name_from_abbr($abbr, $gmtOffset = -1, $isdst = -1)
 {
-    error_clear_last();
+
     $result = \timezone_name_from_abbr($abbr, $gmtOffset, $isdst);
     if ($result === false) {
         throw DatetimeException::createFromPhpError();

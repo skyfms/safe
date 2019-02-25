@@ -22,9 +22,8 @@ use Safe\Exceptions\XmlException;
  * @throws XmlException
  *
  */
-function xml_parser_create_ns(string $encoding = null, string $separator = ":")
+function xml_parser_create_ns($encoding = null, $separator = ":")
 {
-    error_clear_last();
     if ($separator !== ":") {
         $result = \xml_parser_create_ns($encoding, $separator);
     } elseif ($encoding !== null) {
@@ -59,9 +58,8 @@ function xml_parser_create_ns(string $encoding = null, string $separator = ":")
  * @throws XmlException
  *
  */
-function xml_parser_create(string $encoding = null)
+function xml_parser_create($encoding = null)
 {
-    error_clear_last();
     if ($encoding !== null) {
         $result = \xml_parser_create($encoding);
     } else {
@@ -85,9 +83,9 @@ function xml_parser_create(string $encoding = null)
  * @throws XmlException
  *
  */
-function xml_set_object($parser, object &$object): void
+function xml_set_object($parser, &$object)
 {
-    error_clear_last();
+
     $result = \xml_set_object($parser, $object);
     if ($result === false) {
         throw XmlException::createFromPhpError();

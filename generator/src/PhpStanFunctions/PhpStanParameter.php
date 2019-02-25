@@ -38,7 +38,7 @@ class PhpStanParameter
      */
     private $writeOnly = false;
 
-    public function __construct(string $name, string $type)
+    public function __construct($name, $type)
     {
         if (\strpos($name, '=') !== false) {
             $this->optional = true;
@@ -68,7 +68,7 @@ class PhpStanParameter
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -76,7 +76,7 @@ class PhpStanParameter
     /**
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return Type::toRootNamespace($this->type);
     }
@@ -84,7 +84,7 @@ class PhpStanParameter
     /**
      * @return bool
      */
-    public function isOptional(): bool
+    public function isOptional()
     {
         return $this->optional;
     }
@@ -92,7 +92,7 @@ class PhpStanParameter
     /**
      * @return bool
      */
-    public function isVariadic(): bool
+    public function isVariadic()
     {
         return $this->variadic;
     }
@@ -100,7 +100,7 @@ class PhpStanParameter
     /**
      * @return bool
      */
-    public function isByReference(): bool
+    public function isByReference()
     {
         return $this->byReference;
     }
@@ -109,7 +109,7 @@ class PhpStanParameter
      * Whether the parameter is "write only" (applies only to "by reference" parameters)
      * @return bool
      */
-    public function isWriteOnly(): bool
+    public function isWriteOnly()
     {
         return $this->writeOnly;
     }
@@ -117,7 +117,7 @@ class PhpStanParameter
     /**
      * @return bool
      */
-    public function isNullable(): bool
+    public function isNullable()
     {
         return $this->nullable;
     }

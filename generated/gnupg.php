@@ -9,14 +9,14 @@ use Safe\Exceptions\GnupgException;
  *
  * @param resource $identifier The gnupg identifier, from a call to
  * gnupg_init or gnupg.
- * @param string $fingerprint The fingerprint key.
- * @param string $passphrase The pass phrase.
+ * @param $fingerprint The fingerprint key.
+ * @param $passphrase The pass phrase.
  * @throws GnupgException
  *
  */
-function gnupg_adddecryptkey($identifier, string $fingerprint, string $passphrase): void
+function gnupg_adddecryptkey($identifier, $fingerprint, $passphrase)
 {
-    error_clear_last();
+
     $result = \gnupg_adddecryptkey($identifier, $fingerprint, $passphrase);
     if ($result === false) {
         throw GnupgException::createFromPhpError();
@@ -29,13 +29,13 @@ function gnupg_adddecryptkey($identifier, string $fingerprint, string $passphras
  *
  * @param resource $identifier The gnupg identifier, from a call to
  * gnupg_init or gnupg.
- * @param string $fingerprint The fingerprint key.
+ * @param $fingerprint The fingerprint key.
  * @throws GnupgException
  *
  */
-function gnupg_addencryptkey($identifier, string $fingerprint): void
+function gnupg_addencryptkey($identifier, $fingerprint)
 {
-    error_clear_last();
+
     $result = \gnupg_addencryptkey($identifier, $fingerprint);
     if ($result === false) {
         throw GnupgException::createFromPhpError();
@@ -48,14 +48,14 @@ function gnupg_addencryptkey($identifier, string $fingerprint): void
  *
  * @param resource $identifier The gnupg identifier, from a call to
  * gnupg_init or gnupg.
- * @param string $fingerprint The fingerprint key.
- * @param string $passphrase The pass phrase.
+ * @param $fingerprint The fingerprint key.
+ * @param $passphrase The pass phrase.
  * @throws GnupgException
  *
  */
-function gnupg_addsignkey($identifier, string $fingerprint, string $passphrase = null): void
+function gnupg_addsignkey($identifier, $fingerprint, $passphrase = null)
 {
-    error_clear_last();
+
     if ($passphrase !== null) {
         $result = \gnupg_addsignkey($identifier, $fingerprint, $passphrase);
     } else {
@@ -75,9 +75,9 @@ function gnupg_addsignkey($identifier, string $fingerprint, string $passphrase =
  * @throws GnupgException
  *
  */
-function gnupg_cleardecryptkeys($identifier): void
+function gnupg_cleardecryptkeys($identifier)
 {
-    error_clear_last();
+
     $result = \gnupg_cleardecryptkeys($identifier);
     if ($result === false) {
         throw GnupgException::createFromPhpError();
@@ -93,9 +93,9 @@ function gnupg_cleardecryptkeys($identifier): void
  * @throws GnupgException
  *
  */
-function gnupg_clearencryptkeys($identifier): void
+function gnupg_clearencryptkeys($identifier)
 {
-    error_clear_last();
+
     $result = \gnupg_clearencryptkeys($identifier);
     if ($result === false) {
         throw GnupgException::createFromPhpError();
@@ -111,9 +111,9 @@ function gnupg_clearencryptkeys($identifier): void
  * @throws GnupgException
  *
  */
-function gnupg_clearsignkeys($identifier): void
+function gnupg_clearsignkeys($identifier)
 {
-    error_clear_last();
+
     $result = \gnupg_clearsignkeys($identifier);
     if ($result === false) {
         throw GnupgException::createFromPhpError();
@@ -132,9 +132,9 @@ function gnupg_clearsignkeys($identifier): void
  * @throws GnupgException
  *
  */
-function gnupg_setarmor($identifier, int $armor): void
+function gnupg_setarmor($identifier, $armor)
 {
-    error_clear_last();
+
     $result = \gnupg_setarmor($identifier, $armor);
     if ($result === false) {
         throw GnupgException::createFromPhpError();
@@ -158,9 +158,9 @@ function gnupg_setarmor($identifier, int $armor): void
  * @throws GnupgException
  *
  */
-function gnupg_setsignmode($identifier, int $signmode): void
+function gnupg_setsignmode($identifier, $signmode)
 {
-    error_clear_last();
+
     $result = \gnupg_setsignmode($identifier, $signmode);
     if ($result === false) {
         throw GnupgException::createFromPhpError();

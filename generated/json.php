@@ -39,9 +39,9 @@ use Safe\Exceptions\JsonException;
  * @throws JsonException
  *
  */
-function json_encode($value, int $options = 0, int $depth = 512): string
+function json_encode($value, $options = 0, $depth = 512)
 {
-    error_clear_last();
+
     $result = \json_encode($value, $options, $depth);
     if ($result === false) {
         throw JsonException::createFromPhpError();
@@ -58,9 +58,9 @@ function json_encode($value, int $options = 0, int $depth = 512): string
  * @throws JsonException
  *
  */
-function json_last_error_msg(): string
+function json_last_error_msg()
 {
-    error_clear_last();
+
     $result = \json_last_error_msg();
     if ($result === false) {
         throw JsonException::createFromPhpError();

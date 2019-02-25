@@ -46,9 +46,9 @@ use Safe\Exceptions\IbmDb2Exception;
  * @throws IbmDb2Exception
  *
  */
-function db2_autocommit($connection, bool $value = null)
+function db2_autocommit($connection, $value = null)
 {
-    error_clear_last();
+
     if ($value !== null) {
         $result = \db2_autocommit($connection, $value);
     } else {
@@ -71,7 +71,7 @@ function db2_autocommit($connection, bool $value = null)
  * @param resource $stmt A prepared statement returned from db2_prepare.
  * @param int $parameter_number Specifies the 1-indexed position of the parameter in the prepared
  * statement.
- * @param string $variable_name A string specifying the name of the PHP variable to bind to the
+ * @param $variable_name A string specifying the name of the PHP variable to bind to the
  * parameter specified by parameter_number.
  * @param int $parameter_type A constant specifying whether the PHP variable should be bound to the
  * SQL parameter as an input parameter (DB2_PARAM_IN),
@@ -96,9 +96,9 @@ function db2_autocommit($connection, bool $value = null)
  * @throws IbmDb2Exception
  *
  */
-function db2_bind_param($stmt, int $parameter_number, string $variable_name, int $parameter_type = null, int $data_type = 0, int $precision = -1, int $scale = 0): void
+function db2_bind_param($stmt, $parameter_number, $variable_name, $parameter_type = null, $data_type = 0, $precision = -1, $scale = 0)
 {
-    error_clear_last();
+
     if ($scale !== 0) {
         $result = \db2_bind_param($stmt, $parameter_number, $variable_name, $parameter_type, $data_type, $precision, $scale);
     } elseif ($precision !== -1) {
@@ -227,7 +227,7 @@ function db2_bind_param($stmt, int $parameter_number, string $variable_name, int
  */
 function db2_client_info($connection): object
 {
-    error_clear_last();
+
     $result = \db2_client_info($connection);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -249,9 +249,9 @@ function db2_client_info($connection): object
  * @throws IbmDb2Exception
  *
  */
-function db2_close($connection): void
+function db2_close($connection)
 {
-    error_clear_last();
+
     $result = \db2_close($connection);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -270,9 +270,9 @@ function db2_close($connection): void
  * @throws IbmDb2Exception
  *
  */
-function db2_commit($connection): void
+function db2_commit($connection)
 {
-    error_clear_last();
+
     $result = \db2_commit($connection);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -304,9 +304,9 @@ function db2_commit($connection): void
  * @throws IbmDb2Exception
  *
  */
-function db2_execute($stmt, array $parameters = null): void
+function db2_execute($stmt, array $parameters = null)
 {
-    error_clear_last();
+
     if ($parameters !== null) {
         $result = \db2_execute($stmt, $parameters);
     } else {
@@ -328,9 +328,9 @@ function db2_execute($stmt, array $parameters = null): void
  * @throws IbmDb2Exception
  *
  */
-function db2_free_result($stmt): void
+function db2_free_result($stmt)
 {
-    error_clear_last();
+
     $result = \db2_free_result($stmt);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -348,9 +348,9 @@ function db2_free_result($stmt): void
  * @throws IbmDb2Exception
  *
  */
-function db2_free_stmt($stmt): void
+function db2_free_stmt($stmt)
 {
-    error_clear_last();
+
     $result = \db2_free_stmt($stmt);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -366,7 +366,7 @@ function db2_free_stmt($stmt): void
  * db2_prepare or a valid connection resource as
  * returned from db2_connect or
  * db2_pconnect.
- * @param string $option A valid statement or connection options. The following new options are available
+ * @param $option A valid statement or connection options. The following new options are available
  * as of ibm_db2 version 1.6.0. They provide useful tracking information
  * that can be set during execution with db2_get_option.
  *
@@ -508,9 +508,9 @@ function db2_free_stmt($stmt): void
  * @throws IbmDb2Exception
  *
  */
-function db2_get_option($resource, string $option): string
+function db2_get_option($resource, $option)
 {
-    error_clear_last();
+
     $result = \db2_get_option($resource, $option);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -541,9 +541,9 @@ function db2_get_option($resource, string $option): string
  * @throws IbmDb2Exception
  *
  */
-function db2_pclose($resource): void
+function db2_pclose($resource)
 {
-    error_clear_last();
+
     $result = \db2_pclose($resource);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -562,9 +562,9 @@ function db2_pclose($resource): void
  * @throws IbmDb2Exception
  *
  */
-function db2_rollback($connection): void
+function db2_rollback($connection)
 {
-    error_clear_last();
+
     $result = \db2_rollback($connection);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -825,7 +825,7 @@ function db2_rollback($connection): void
  */
 function db2_server_info($connection): object
 {
-    error_clear_last();
+
     $result = \db2_server_info($connection);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();
@@ -1211,9 +1211,9 @@ function db2_server_info($connection): object
  * @throws IbmDb2Exception
  *
  */
-function db2_set_option($resource, array $options, int $type): void
+function db2_set_option($resource, array $options, $type)
 {
-    error_clear_last();
+
     $result = \db2_set_option($resource, $options, $type);
     if ($result === false) {
         throw IbmDb2Exception::createFromPhpError();

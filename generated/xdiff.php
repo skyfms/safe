@@ -9,16 +9,16 @@ use Safe\Exceptions\XdiffException;
  * This function works with both text and binary files. Resulting patch
  * file can be later applied using xdiff_file_bpatch/xdiff_string_bpatch.
  *
- * @param string $old_file Path to the first file. This file acts as "old" file.
- * @param string $new_file Path to the second file. This file acts as "new" file.
- * @param string $dest Path of the resulting patch file. Resulting file contains differences
+ * @param $old_file Path to the first file. This file acts as "old" file.
+ * @param $new_file Path to the second file. This file acts as "new" file.
+ * @param $dest Path of the resulting patch file. Resulting file contains differences
  * between "old" and "new" files. It is in binary format and is human-unreadable.
  * @throws XdiffException
  *
  */
-function xdiff_file_bdiff(string $old_file, string $new_file, string $dest): void
+function xdiff_file_bdiff($old_file, $new_file, $dest)
 {
-    error_clear_last();
+
     $result = \xdiff_file_bdiff($old_file, $new_file, $dest);
     if ($result === false) {
         throw XdiffException::createFromPhpError();
@@ -32,15 +32,15 @@ function xdiff_file_bdiff(string $old_file, string $new_file, string $dest): voi
  * This function accepts patches created both via xdiff_file_bdiff
  * and xdiff_file_rabdiff functions or their string counterparts.
  *
- * @param string $file The original file.
- * @param string $patch The binary patch file.
- * @param string $dest Path of the resulting file.
+ * @param $file The original file.
+ * @param $patch The binary patch file.
+ * @param $dest Path of the resulting file.
  * @throws XdiffException
  *
  */
-function xdiff_file_bpatch(string $file, string $patch, string $dest): void
+function xdiff_file_bpatch($file, $patch, $dest)
 {
-    error_clear_last();
+
     $result = \xdiff_file_bpatch($file, $patch, $dest);
     if ($result === false) {
         throw XdiffException::createFromPhpError();
@@ -55,16 +55,16 @@ function xdiff_file_bpatch(string $file, string $patch, string $dest): void
  *
  * Starting with version 1.5.0 this function is an alias of xdiff_file_bdiff.
  *
- * @param string $old_file Path to the first file. This file acts as "old" file.
- * @param string $new_file Path to the second file. This file acts as "new" file.
- * @param string $dest Path of the resulting patch file. Resulting file contains differences
+ * @param $old_file Path to the first file. This file acts as "old" file.
+ * @param $new_file Path to the second file. This file acts as "new" file.
+ * @param $dest Path of the resulting patch file. Resulting file contains differences
  * between "old" and "new" files. It is in binary format and is human-unreadable.
  * @throws XdiffException
  *
  */
-function xdiff_file_diff_binary(string $old_file, string $new_file, string $dest): void
+function xdiff_file_diff_binary($old_file, $new_file, $dest)
 {
-    error_clear_last();
+
     $result = \xdiff_file_diff_binary($old_file, $new_file, $dest);
     if ($result === false) {
         throw XdiffException::createFromPhpError();
@@ -80,9 +80,9 @@ function xdiff_file_diff_binary(string $old_file, string $new_file, string $dest
  * Setting minimal parameter to true will result in outputting the shortest
  * patch file possible (can take a long time).
  *
- * @param string $old_file Path to the first file. This file acts as "old" file.
- * @param string $new_file Path to the second file. This file acts as "new" file.
- * @param string $dest Path of the resulting patch file.
+ * @param $old_file Path to the first file. This file acts as "old" file.
+ * @param $new_file Path to the second file. This file acts as "new" file.
+ * @param $dest Path of the resulting patch file.
  * @param int $context Indicates how many lines of context you want to include in diff
  * result.
  * @param bool $minimal Set this parameter to TRUE if you want to minimalize size of the result
@@ -90,9 +90,9 @@ function xdiff_file_diff_binary(string $old_file, string $new_file, string $dest
  * @throws XdiffException
  *
  */
-function xdiff_file_diff(string $old_file, string $new_file, string $dest, int $context = 3, bool $minimal = false): void
+function xdiff_file_diff($old_file, $new_file, $dest, $context = 3, $minimal = false)
 {
-    error_clear_last();
+
     $result = \xdiff_file_diff($old_file, $new_file, $dest, $context, $minimal);
     if ($result === false) {
         throw XdiffException::createFromPhpError();
@@ -108,15 +108,15 @@ function xdiff_file_diff(string $old_file, string $new_file, string $dest, int $
  *
  * Starting with version 1.5.0 this function is an alias of xdiff_file_bpatch.
  *
- * @param string $file The original file.
- * @param string $patch The binary patch file.
- * @param string $dest Path of the resulting file.
+ * @param $file The original file.
+ * @param $patch The binary patch file.
+ * @param $dest Path of the resulting file.
  * @throws XdiffException
  *
  */
-function xdiff_file_patch_binary(string $file, string $patch, string $dest): void
+function xdiff_file_patch_binary($file, $patch, $dest)
 {
-    error_clear_last();
+
     $result = \xdiff_file_patch_binary($file, $patch, $dest);
     if ($result === false) {
         throw XdiffException::createFromPhpError();
@@ -134,16 +134,16 @@ function xdiff_file_patch_binary(string $file, string $patch, string $dest): voi
  * For more details about differences between algorithm used please check libxdiff
  * website.
  *
- * @param string $old_file Path to the first file. This file acts as "old" file.
- * @param string $new_file Path to the second file. This file acts as "new" file.
- * @param string $dest Path of the resulting patch file. Resulting file contains differences
+ * @param $old_file Path to the first file. This file acts as "old" file.
+ * @param $new_file Path to the second file. This file acts as "new" file.
+ * @param $dest Path of the resulting patch file. Resulting file contains differences
  * between "old" and "new" files. It is in binary format and is human-unreadable.
  * @throws XdiffException
  *
  */
-function xdiff_file_rabdiff(string $old_file, string $new_file, string $dest): void
+function xdiff_file_rabdiff($old_file, $new_file, $dest)
 {
-    error_clear_last();
+
     $result = \xdiff_file_rabdiff($old_file, $new_file, $dest);
     if ($result === false) {
         throw XdiffException::createFromPhpError();
@@ -162,9 +162,9 @@ function xdiff_file_rabdiff(string $old_file, string $new_file, string $dest): v
  * @throws XdiffException
  *
  */
-function xdiff_string_bpatch(string $str, string $patch): string
+function xdiff_string_bpatch($str, $patch)
 {
-    error_clear_last();
+
     $result = \xdiff_string_bpatch($str, $patch);
     if ($result === false) {
         throw XdiffException::createFromPhpError();
@@ -186,9 +186,9 @@ function xdiff_string_bpatch(string $str, string $patch): string
  * @throws XdiffException
  *
  */
-function xdiff_string_patch_binary(string $str, string $patch): string
+function xdiff_string_patch_binary($str, $patch)
 {
-    error_clear_last();
+
     $result = \xdiff_string_patch_binary($str, $patch);
     if ($result === false) {
         throw XdiffException::createFromPhpError();
@@ -205,8 +205,8 @@ function xdiff_string_patch_binary(string $str, string $patch): string
  * rejected parts of the patch will be stored inside error variable if
  * it is provided.
  *
- * @param string $str The original string.
- * @param string $patch The unified patch string. It has to be created using xdiff_string_diff,
+ * @param $str The original string.
+ * @param $patch The unified patch string. It has to be created using xdiff_string_diff,
  * xdiff_file_diff functions or compatible tools.
  * @param int $flags flags can be either
  * XDIFF_PATCH_NORMAL (default mode, normal patch)
@@ -219,9 +219,9 @@ function xdiff_string_patch_binary(string $str, string $patch): string
  * @throws XdiffException
  *
  */
-function xdiff_string_patch(string $str, string $patch, int $flags = null, string &$error = null): string
+function xdiff_string_patch($str, $patch, $flags = null, string &$error = null)
 {
-    error_clear_last();
+
     if ($error !== null) {
         $result = \xdiff_string_patch($str, $patch, $flags, $error);
     } elseif ($flags !== null) {

@@ -10,15 +10,15 @@ use Safe\Exceptions\SsdeepException;
  * context-triggered piecewise hashing, and returns the match
  * score.
  *
- * @param string $signature1 The first fuzzy hash signature string.
- * @param string $signature2 The second fuzzy hash signature string.
+ * @param $signature1 The first fuzzy hash signature string.
+ * @param $signature2 The second fuzzy hash signature string.
  * @return int Returns an integer from 0 to 100 on success, FALSE otherwise.
  * @throws SsdeepException
  *
  */
-function ssdeep_fuzzy_compare(string $signature1, string $signature2): int
+function ssdeep_fuzzy_compare($signature1, $signature2)
 {
-    error_clear_last();
+
     $result = \ssdeep_fuzzy_compare($signature1, $signature2);
     if ($result === false) {
         throw SsdeepException::createFromPhpError();
@@ -33,14 +33,14 @@ function ssdeep_fuzzy_compare(string $signature1, string $signature2): int
  * context-triggered piecewise
  * hashing, and returns that hash.
  *
- * @param string $file_name The filename of the file to hash.
+ * @param $file_name The filename of the file to hash.
  * @return string Returns a string on success, FALSE otherwise.
  * @throws SsdeepException
  *
  */
-function ssdeep_fuzzy_hash_filename(string $file_name): string
+function ssdeep_fuzzy_hash_filename($file_name)
 {
-    error_clear_last();
+
     $result = \ssdeep_fuzzy_hash_filename($file_name);
     if ($result === false) {
         throw SsdeepException::createFromPhpError();
@@ -54,14 +54,14 @@ function ssdeep_fuzzy_hash_filename(string $file_name): string
  * to_hash using
  * context-triggered piecewise hashing, and returns that hash.
  *
- * @param string $to_hash The input string.
+ * @param $to_hash The input string.
  * @return string Returns a string on success, FALSE otherwise.
  * @throws SsdeepException
  *
  */
-function ssdeep_fuzzy_hash(string $to_hash): string
+function ssdeep_fuzzy_hash($to_hash)
 {
-    error_clear_last();
+
     $result = \ssdeep_fuzzy_hash($to_hash);
     if ($result === false) {
         throw SsdeepException::createFromPhpError();

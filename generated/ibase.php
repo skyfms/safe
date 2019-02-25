@@ -8,17 +8,17 @@ use Safe\Exceptions\IbaseException;
  *
  *
  * @param resource $service_handle The handle on the database server service.
- * @param string $user_name The login name of the new database user.
- * @param string $password The password of the new user.
- * @param string $first_name The first name of the new database user.
- * @param string $middle_name The middle name of the new database user.
- * @param string $last_name The last name of the new database user.
+ * @param $user_name The login name of the new database user.
+ * @param $password The password of the new user.
+ * @param $first_name The first name of the new database user.
+ * @param $middle_name The middle name of the new database user.
+ * @param $last_name The last name of the new database user.
  * @throws IbaseException
  *
  */
-function ibase_add_user($service_handle, string $user_name, string $password, string $first_name = null, string $middle_name = null, string $last_name = null): void
+function ibase_add_user($service_handle, $user_name, $password, $first_name = null, $middle_name = null, $last_name = null)
 {
-    error_clear_last();
+
     if ($last_name !== null) {
         $result = \ibase_add_user($service_handle, $user_name, $password, $first_name, $middle_name, $last_name);
     } elseif ($middle_name !== null) {
@@ -42,9 +42,9 @@ function ibase_add_user($service_handle, string $user_name, string $password, st
  * @throws IbaseException
  *
  */
-function ibase_blob_cancel($blob_handle): void
+function ibase_blob_cancel($blob_handle)
 {
-    error_clear_last();
+
     $result = \ibase_blob_cancel($blob_handle);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -65,7 +65,7 @@ function ibase_blob_cancel($blob_handle): void
  */
 function ibase_blob_create($link_identifier = null)
 {
-    error_clear_last();
+
     $result = \ibase_blob_create($link_identifier);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -84,9 +84,9 @@ function ibase_blob_create($link_identifier = null)
  * @throws IbaseException
  *
  */
-function ibase_blob_get($blob_handle, int $len): string
+function ibase_blob_get($blob_handle, $len)
 {
-    error_clear_last();
+
     $result = \ibase_blob_get($blob_handle, $len);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -107,9 +107,9 @@ function ibase_blob_get($blob_handle, int $len): string
  * @throws IbaseException
  *
  */
-function ibase_close($connection_id = null): void
+function ibase_close($connection_id = null)
 {
-    error_clear_last();
+
     $result = \ibase_close($connection_id);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -130,9 +130,9 @@ function ibase_close($connection_id = null): void
  * @throws IbaseException
  *
  */
-function ibase_commit_ret($link_or_trans_identifier = null): void
+function ibase_commit_ret($link_or_trans_identifier = null)
 {
-    error_clear_last();
+
     $result = \ibase_commit_ret($link_or_trans_identifier);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -151,9 +151,9 @@ function ibase_commit_ret($link_or_trans_identifier = null): void
  * @throws IbaseException
  *
  */
-function ibase_commit($link_or_trans_identifier = null): void
+function ibase_commit($link_or_trans_identifier = null)
 {
-    error_clear_last();
+
     $result = \ibase_commit($link_or_trans_identifier);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -170,17 +170,17 @@ function ibase_commit($link_or_trans_identifier = null): void
  * server will be closed as soon as the execution of the script ends, unless
  * it's closed earlier by explicitly calling ibase_close.
  *
- * @param string $database The database argument has to be a valid path to
+ * @param $database The database argument has to be a valid path to
  * database file on the server it resides on. If the server is not local,
  * it must be prefixed with either 'hostname:' (TCP/IP), 'hostname/port:'
  * (TCP/IP with interbase server on custom TCP port), '//hostname/'
  * (NetBEUI), depending on the connection
  * protocol used.
- * @param string $username The user name. Can be set with the
+ * @param $username The user name. Can be set with the
  * ibase.default_user php.ini directive.
- * @param string $password The password for username. Can be set with the
+ * @param $password The password for username. Can be set with the
  * ibase.default_password php.ini directive.
- * @param string $charset charset is the default character set for a
+ * @param $charset charset is the default character set for a
  * database.
  * @param int $buffers buffers is the number of database buffers to
  * allocate for the server-side cache. If 0 or omitted, server chooses
@@ -188,15 +188,15 @@ function ibase_commit($link_or_trans_identifier = null): void
  * @param int $dialect dialect selects the default SQL dialect for any
  * statement executed within a connection, and it defaults to the highest
  * one supported by client libraries.
- * @param string $role Functional only with InterBase 5 and up.
+ * @param $role Functional only with InterBase 5 and up.
  * @param int $sync
  * @return resource Returns an Firebird/InterBase link identifier on success.
  * @throws IbaseException
  *
  */
-function ibase_connect(string $database = null, string $username = null, string $password = null, string $charset = null, int $buffers = null, int $dialect = null, string $role = null, int $sync = null)
+function ibase_connect($database = null, $username = null, $password = null, $charset = null, $buffers = null, $dialect = null, $role = null, $sync = null)
 {
-    error_clear_last();
+
     if ($sync !== null) {
         $result = \ibase_connect($database, $username, $password, $charset, $buffers, $dialect, $role, $sync);
     } elseif ($role !== null) {
@@ -227,13 +227,13 @@ function ibase_connect(string $database = null, string $username = null, string 
  *
  *
  * @param resource $service_handle The handle on the database server service.
- * @param string $user_name The login name of the user you want to delete from the database.
+ * @param $user_name The login name of the user you want to delete from the database.
  * @throws IbaseException
  *
  */
-function ibase_delete_user($service_handle, string $user_name): void
+function ibase_delete_user($service_handle, $user_name)
 {
-    error_clear_last();
+
     $result = \ibase_delete_user($service_handle, $user_name);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -250,9 +250,9 @@ function ibase_delete_user($service_handle, string $user_name): void
  * @throws IbaseException
  *
  */
-function ibase_drop_db($connection = null): void
+function ibase_drop_db($connection = null)
 {
-    error_clear_last();
+
     $result = \ibase_drop_db($connection);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -270,9 +270,9 @@ function ibase_drop_db($connection = null): void
  * @throws IbaseException
  *
  */
-function ibase_free_event_handler($event): void
+function ibase_free_event_handler($event)
 {
-    error_clear_last();
+
     $result = \ibase_free_event_handler($event);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -287,9 +287,9 @@ function ibase_free_event_handler($event): void
  * @throws IbaseException
  *
  */
-function ibase_free_query($query): void
+function ibase_free_query($query)
 {
-    error_clear_last();
+
     $result = \ibase_free_query($query);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -305,9 +305,9 @@ function ibase_free_query($query): void
  * @throws IbaseException
  *
  */
-function ibase_free_result($result_identifier): void
+function ibase_free_result($result_identifier)
 {
-    error_clear_last();
+
     $result = \ibase_free_result($result_identifier);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -319,15 +319,15 @@ function ibase_free_result($result_identifier): void
  *
  *
  * @param resource $service_handle
- * @param string $db
+ * @param $db
  * @param int $action
  * @param int $argument
  * @throws IbaseException
  *
  */
-function ibase_maintain_db($service_handle, string $db, int $action, int $argument = 0): void
+function ibase_maintain_db($service_handle, $db, $action, $argument = 0)
 {
-    error_clear_last();
+
     $result = \ibase_maintain_db($service_handle, $db, $action, $argument);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -339,17 +339,17 @@ function ibase_maintain_db($service_handle, string $db, int $action, int $argume
  *
  *
  * @param resource $service_handle The handle on the database server service.
- * @param string $user_name The login name of the database user to modify.
- * @param string $password The user's new password.
- * @param string $first_name The user's new first name.
- * @param string $middle_name The user's new middle name.
- * @param string $last_name The user's new last name.
+ * @param $user_name The login name of the database user to modify.
+ * @param $password The user's new password.
+ * @param $first_name The user's new first name.
+ * @param $middle_name The user's new middle name.
+ * @param $last_name The user's new last name.
  * @throws IbaseException
  *
  */
-function ibase_modify_user($service_handle, string $user_name, string $password, string $first_name = null, string $middle_name = null, string $last_name = null): void
+function ibase_modify_user($service_handle, $user_name, $password, $first_name = null, $middle_name = null, $last_name = null)
 {
-    error_clear_last();
+
     if ($last_name !== null) {
         $result = \ibase_modify_user($service_handle, $user_name, $password, $first_name, $middle_name, $last_name);
     } elseif ($middle_name !== null) {
@@ -370,13 +370,13 @@ function ibase_modify_user($service_handle, string $user_name, string $password,
  * UPDATE|DELETE ... WHERE CURRENT OF name statements.
  *
  * @param resource $result An InterBase result set.
- * @param string $name The name to be assigned.
+ * @param $name The name to be assigned.
  * @throws IbaseException
  *
  */
-function ibase_name_result($result, string $name): void
+function ibase_name_result($result, $name)
 {
-    error_clear_last();
+
     $result = \ibase_name_result($result, $name);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -400,16 +400,16 @@ function ibase_name_result($result, string $name): void
  * established by ibase_pconnect). This type of link is
  * therefore called 'persistent'.
  *
- * @param string $database The database argument has to be a valid path to
+ * @param $database The database argument has to be a valid path to
  * database file on the server it resides on. If the server is not local,
  * it must be prefixed with either 'hostname:' (TCP/IP), '//hostname/'
  * (NetBEUI) or 'hostname@' (IPX/SPX), depending on the connection
  * protocol used.
- * @param string $username The user name. Can be set with the
+ * @param $username The user name. Can be set with the
  * ibase.default_user php.ini directive.
- * @param string $password The password for username. Can be set with the
+ * @param $password The password for username. Can be set with the
  * ibase.default_password php.ini directive.
- * @param string $charset charset is the default character set for a
+ * @param $charset charset is the default character set for a
  * database.
  * @param int $buffers buffers is the number of database buffers to
  * allocate for the server-side cache. If 0 or omitted, server chooses
@@ -418,15 +418,15 @@ function ibase_name_result($result, string $name): void
  * statement executed within a connection, and it defaults to the highest
  * one supported by client libraries. Functional only with InterBase 6
  * and up.
- * @param string $role Functional only with InterBase 5 and up.
+ * @param $role Functional only with InterBase 5 and up.
  * @param int $sync
  * @return resource Returns an InterBase link identifier on success.
  * @throws IbaseException
  *
  */
-function ibase_pconnect(string $database = null, string $username = null, string $password = null, string $charset = null, int $buffers = null, int $dialect = null, string $role = null, int $sync = null)
+function ibase_pconnect($database = null, $username = null, $password = null, $charset = null, $buffers = null, $dialect = null, $role = null, $sync = null)
 {
-    error_clear_last();
+
     if ($sync !== null) {
         $result = \ibase_pconnect($database, $username, $password, $charset, $buffers, $dialect, $role, $sync);
     } elseif ($role !== null) {
@@ -466,9 +466,9 @@ function ibase_pconnect(string $database = null, string $username = null, string
  * @throws IbaseException
  *
  */
-function ibase_rollback_ret($link_or_trans_identifier = null): void
+function ibase_rollback_ret($link_or_trans_identifier = null)
 {
-    error_clear_last();
+
     $result = \ibase_rollback_ret($link_or_trans_identifier);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -487,9 +487,9 @@ function ibase_rollback_ret($link_or_trans_identifier = null): void
  * @throws IbaseException
  *
  */
-function ibase_rollback($link_or_trans_identifier = null): void
+function ibase_rollback($link_or_trans_identifier = null)
 {
-    error_clear_last();
+
     $result = \ibase_rollback($link_or_trans_identifier);
     if ($result === false) {
         throw IbaseException::createFromPhpError();
@@ -504,9 +504,9 @@ function ibase_rollback($link_or_trans_identifier = null): void
  * @throws IbaseException
  *
  */
-function ibase_service_detach($service_handle): void
+function ibase_service_detach($service_handle)
 {
-    error_clear_last();
+
     $result = \ibase_service_detach($service_handle);
     if ($result === false) {
         throw IbaseException::createFromPhpError();

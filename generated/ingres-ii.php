@@ -27,9 +27,9 @@ use Safe\Exceptions\IngresiiException;
  * @throws IngresiiException
  *
  */
-function ingres_autocommit($link): void
+function ingres_autocommit($link)
 {
-    error_clear_last();
+
     $result = \ingres_autocommit($link);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
@@ -49,9 +49,9 @@ function ingres_autocommit($link): void
  * @throws IngresiiException
  *
  */
-function ingres_close($link): void
+function ingres_close($link)
 {
-    error_clear_last();
+
     $result = \ingres_close($link);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
@@ -78,9 +78,9 @@ function ingres_close($link): void
  * @throws IngresiiException
  *
  */
-function ingres_commit($link): void
+function ingres_commit($link)
 {
-    error_clear_last();
+
     $result = \ingres_commit($link);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
@@ -95,11 +95,11 @@ function ingres_commit($link): void
  * The connection is closed when the script ends or when
  * ingres_close is called on this link.
  *
- * @param string $database The database name. Must follow the syntax:
+ * @param $database The database name. Must follow the syntax:
  *
  * [vnode::]dbname[/svr_class]
- * @param string $username The Ingres user name
- * @param string $password The password associated with username
+ * @param $username The Ingres user name
+ * @param $password The password associated with username
  * @param array $options ingres_connect options
  *
  *
@@ -332,9 +332,9 @@ function ingres_commit($link): void
  * @throws IngresiiException
  *
  */
-function ingres_connect(string $database = null, string $username = null, string $password = null, array $options = null)
+function ingres_connect($database = null, $username = null, $password = null, array $options = null)
 {
-    error_clear_last();
+
     if ($options !== null) {
         $result = \ingres_connect($database, $username, $password, $options);
     } elseif ($password !== null) {
@@ -358,15 +358,15 @@ function ingres_connect(string $database = null, string $username = null, string
  *
  * @param resource $result The result query identifier
  * @param array $params An array of parameter values to be used with the query
- * @param string $types A string containing a sequence of types for the parameter values
+ * @param $types A string containing a sequence of types for the parameter values
  * passed. See the types parameter in
  * ingres_query for the list of type codes.
  * @throws IngresiiException
  *
  */
-function ingres_execute($result, array $params = null, string $types = null): void
+function ingres_execute($result, array $params = null, $types = null)
 {
-    error_clear_last();
+
     if ($types !== null) {
         $result = \ingres_execute($result, $params, $types);
     } elseif ($params !== null) {
@@ -405,9 +405,9 @@ function ingres_execute($result, array $params = null, string $types = null): vo
  * @throws IngresiiException
  *
  */
-function ingres_field_name($result, int $index): string
+function ingres_field_name($result, $index)
 {
-    error_clear_last();
+
     $result = \ingres_field_name($result, $index);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
@@ -449,9 +449,9 @@ function ingres_field_name($result, int $index): string
  * @throws IngresiiException
  *
  */
-function ingres_field_type($result, int $index): string
+function ingres_field_type($result, $index)
 {
-    error_clear_last();
+
     $result = \ingres_field_type($result, $index);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
@@ -467,9 +467,9 @@ function ingres_field_type($result, int $index): string
  * @throws IngresiiException
  *
  */
-function ingres_free_result($result): void
+function ingres_free_result($result)
 {
-    error_clear_last();
+
     $result = \ingres_free_result($result);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
@@ -492,20 +492,20 @@ function ingres_free_result($result): void
  * established by ingres_pconnect). This type
  * of link is therefore called "persistent".
  *
- * @param string $database The database name. Must follow the syntax:
+ * @param $database The database name. Must follow the syntax:
  *
  * [vnode::]dbname[/svr_class]
- * @param string $username The Ingres user name
- * @param string $password The password associated with username
+ * @param $username The Ingres user name
+ * @param $password The password associated with username
  * @param array $options See ingres_connect for the list of options that
  * can be passed
  * @return resource Returns an Ingres link resource on success
  * @throws IngresiiException
  *
  */
-function ingres_pconnect(string $database = null, string $username = null, string $password = null, array $options = null)
+function ingres_pconnect($database = null, $username = null, $password = null, array $options = null)
 {
-    error_clear_last();
+
     if ($options !== null) {
         $result = \ingres_pconnect($database, $username, $password, $options);
     } elseif ($password !== null) {
@@ -539,9 +539,9 @@ function ingres_pconnect(string $database = null, string $username = null, strin
  * @throws IngresiiException
  *
  */
-function ingres_result_seek($result, int $position): void
+function ingres_result_seek($result, $position)
 {
-    error_clear_last();
+
     $result = \ingres_result_seek($result, $position);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
@@ -561,9 +561,9 @@ function ingres_result_seek($result, int $position): void
  * @throws IngresiiException
  *
  */
-function ingres_rollback($link): void
+function ingres_rollback($link)
 {
-    error_clear_last();
+
     $result = \ingres_rollback($link);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
@@ -710,9 +710,9 @@ function ingres_rollback($link): void
  * @throws IngresiiException
  *
  */
-function ingres_set_environment($link, array $options): void
+function ingres_set_environment($link, array $options)
 {
-    error_clear_last();
+
     $result = \ingres_set_environment($link, $options);
     if ($result === false) {
         throw IngresiiException::createFromPhpError();
